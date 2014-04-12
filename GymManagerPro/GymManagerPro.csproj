@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F8FF2652-D4CC-457B-9F7E-DF1D50444E1A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GymManagerPro</RootNamespace>
+    <AssemblyName>GymManagerPro</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataLayer\DB.cs" />
+    <Compile Include="DataLayer\Member.cs" />
+    <Compile Include="DataLayer\Plan.cs" />
+    <Compile Include="DataLayer\Trainer.cs" />
+    <Compile Include="DesktopApplication\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopApplication\AboutBox.designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopApplication\AddNewContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopApplication\AddNewContract.designer.cs">
+      <DependentUpon>AddNewContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopApplication\AddNewMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopApplication\AddNewMember.designer.cs">
+      <DependentUpon>AddNewMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopApplication\Attedance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopApplication\Attedance.designer.cs">
+      <DependentUpon>Attedance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopApplication\EditPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopApplication\EditPlan.designer.cs">
+      <DependentUpon>EditPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopApplication\FindMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopApplication\FindMembers.designer.cs">
+      <DependentUpon>FindMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopApplication\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopApplication\Main.designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopApplication\MemberManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopApplication\MemberManager.designer.cs">
+      <DependentUpon>MemberManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopApplication\Plans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopApplication\Plans.designer.cs">
+      <DependentUpon>Plans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopApplication\TrainerAssignmentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopApplication\TrainerAssignmentDialog.designer.cs">
+      <DependentUpon>TrainerAssignmentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopApplication\Trainers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopApplication\Trainers.designer.cs">
+      <DependentUpon>Trainers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DesktopApplication\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopApplication\AddNewContract.resx">
+      <DependentUpon>AddNewContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopApplication\AddNewMember.resx">
+      <DependentUpon>AddNewMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopApplication\Attedance.resx">
+      <DependentUpon>Attedance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopApplication\EditPlan.resx">
+      <DependentUpon>EditPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopApplication\FindMembers.resx">
+      <DependentUpon>FindMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopApplication\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopApplication\MemberManager.resx">
+      <DependentUpon>MemberManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopApplication\Plans.resx">
+      <DependentUpon>Plans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopApplication\TrainerAssignmentDialog.resx">
+      <DependentUpon>TrainerAssignmentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopApplication\Trainers.resx">
+      <DependentUpon>Trainers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.Config" />
+    <None Include="Properties\DataSources\DatabaseEntities.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1385791136_user-group-new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1385791252_3floppy_unmount.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1385791360_iSync.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1385792996_human-folder-public.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1385793693_Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1385793703_Previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1385797237_preferences-contact-list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1386059751_031.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1386059953_104180.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1386060600_Run.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\findIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\symbol_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.10.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2008 Express</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
