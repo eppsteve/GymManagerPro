@@ -151,18 +151,16 @@ namespace DataLayer
             DataTable table = new DataTable();
             SqlCeDataAdapter da = null;
 
-            string query = "SELECT Memberships.Id, Memberships.Plan, Memberships.StartDate, Memberships.EndDate, Plans.Price " +
-                           "FROM Memberships " +
-                           "JOIN Plans " +
-                           "ON Memberships.Plan = Plans.Name " +
-                           "JOIN Members " +
-                           "ON Memberships.Member = Members.Id " +
-                           "WHERE Members.Id = @memberID";
+            string query = "SELECT        Plans.Id, Plans.Name, Memberships.StartDate, Memberships.EndDate, Plans.Price " +
+                           "FROM          Plans INNER JOIN " +
+                           "                 Memberships INNER JOIN " +
+                           "                  Members ON Memberships.Member = Members.Id ON Plans.Id = Memberships.[Plan] " +
+                           "WHERE        (Members.Id = @memberId)";
 
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
-                cmd.Parameters.AddWithValue("@memberID", memberID);
+                cmd.Parameters.AddWithValue("@memberId", memberID);
 
                 da = new SqlCeDataAdapter(cmd);
                 da.Fill(table);

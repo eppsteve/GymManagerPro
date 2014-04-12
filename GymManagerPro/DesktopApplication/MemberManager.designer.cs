@@ -298,7 +298,7 @@
             this.txtNotes.Location = new System.Drawing.Point(18, 314);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(210, 40);
+            this.txtNotes.Size = new System.Drawing.Size(210, 64);
             this.txtNotes.TabIndex = 14;
             // 
             // label2
@@ -718,7 +718,7 @@
             this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(0, 1, 4, 2);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(88, 19);
+            this.toolStripLabel1.Size = new System.Drawing.Size(88, 23);
             this.toolStripLabel1.Text = "Quick Search";
             // 
             // txtStreet

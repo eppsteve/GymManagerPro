@@ -322,7 +322,7 @@ namespace GymManagerPro
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 
-                programmeComboBox.SelectedItem = row.Cells["Programme"].Value.ToString();
+                programmeComboBox.SelectedItem = row.Cells["Name"].Value.ToString();
                 startDateDateTimePicker.Text = row.Cells["StartDate"].Value.ToString();
                 endDateDateTimePicker.Text = row.Cells["EndDate"].Value.ToString();
                 membershipId = Convert.ToInt32(row.Cells["Id"].Value.ToString());
