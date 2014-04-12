@@ -77,7 +77,8 @@ namespace GymManagerPro
                 txtEmail.Text = member.Email;
                 txtOccupation.Text = member.Occupation;
                 txtNotes.Text = member.Notes;
-                txtPersonalTrainer.Text = DataLayer.Trainers.GetTrainerNameById(id);
+                //txtPersonalTrainer.Text = DataLayer.Trainers.GetTrainerNameById(id);
+                txtPersonalTrainer.Text = member.PersonalTrainer;
                 lblName.Text = member.FName + " " + member.LName;
                 txtMemberId.Text = id.ToString();
 

@@ -26,7 +26,7 @@ namespace DataLayer
         public string CellPhone { get; set; }
         public string Email { get; set; }
         public string Occupation { get; set; }
-        public int PersonalTrainer { get; set; }
+        public string PersonalTrainer { get; set; }
         public string Notes { get; set; }
         public byte[] Image { get; set; }
 
@@ -55,10 +55,11 @@ namespace DataLayer
             CellPhone = reader["CellPhone"].ToString();
             Email = reader["email"].ToString();
             Occupation = reader["Occupation"].ToString();
-            if (!reader.IsDBNull(14))
-            {
-                PersonalTrainer = reader.GetInt32(14);
-            }
+            //if (!reader.IsDBNull(14))
+            //{
+            //    PersonalTrainer = reader.GetInt32(14);
+            //}
+            PersonalTrainer = reader["PersonalTrainer"].ToString();
             Notes = reader["Notes"].ToString();
             if (!reader.IsDBNull(15))
             {
@@ -118,7 +119,12 @@ namespace DataLayer
 
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
-                String query = "SELECT * FROM Members WHERE Id = @memberID ";
+                String query = " SELECT Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.DOB, Members.Sex, Members.Street, Members.Suburb, " +
+                               " Members.City, Members.PostalCode, Members.CellPhone, Members.HomePhone, Members.Email, Members.Occupation, Members.Image, Members.Notes, " +
+                               " Trainers.FirstName + ' ' + Trainers.LastName AS PersonalTrainer " +
+                               "FROM            Members LEFT OUTER JOIN " +
+                               "  Trainers ON Members.PersonalTrainer = Trainers.Id "+
+                               "WHERE        (Members.Id = @memberid)";
 
                 using (SqlCeCommand cmd = new SqlCeCommand(query, con))
                 {
