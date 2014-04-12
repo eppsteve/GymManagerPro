@@ -40,9 +40,9 @@ namespace GymManagerPro
         }
 
         /// <summary>
-        /// loads the data for the specific member id
+        /// Loads the data for the specified member
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The member's id</param>
         private void LoadMember(int id)
         {
             DataLayer.Members members = new DataLayer.Members();
@@ -106,7 +106,7 @@ namespace GymManagerPro
         }
 
         /// <summary>
-        /// clears membership textboxes
+        /// Clears membership textboxes
         /// </summary>
         private void resetTextBoxes()
         {
@@ -117,6 +117,8 @@ namespace GymManagerPro
             endDateDateTimePicker.Text = "";
         }
 
+
+        // sets up auto-complete search box
         private void SetUpSearch()
         {
             txtSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -196,6 +198,7 @@ namespace GymManagerPro
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            // Deletes the current member
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this member? All related data will be lost!!!", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {
@@ -208,8 +211,10 @@ namespace GymManagerPro
             }
         }
 
+
         private void btnNext_Click(object sender, EventArgs e)
         {
+            // Retrieves and displays the next member (if any)
             if (DataLayer.Members.MemberHasNext(id))
             {
                 id = DataLayer.Members.GetNextMember(id);
@@ -308,13 +313,10 @@ namespace GymManagerPro
             }
         }
 
-        /// <summary>
-        /// populates textboxes with datagridview's data
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // populates textboxes with datagridview data based on the selected row
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
@@ -327,24 +329,30 @@ namespace GymManagerPro
             }
         }
 
+        
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            // Displays the selected member from the search box
             LoadMember(DataLayer.Members.QuickSearch(txtSearch.Text));
         }
 
         private void startDateDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
+            // calculates the end date of the selected plan based on the start date
             endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Members.GetProgrammeDuration(programmeComboBox.Text)).AddDays(-1);
         }
 
+    
         private void programmeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Calculates the duration of the selected plan and dispays its price to priceTextBox
             endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Members.GetProgrammeDuration(programmeComboBox.Text)).AddDays(-1);
             priceTextBox.Text = DataLayer.Members.GetProgrammePrice(programmeComboBox.Text).ToString();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            //loads an image for the member
             OpenFileDialog fd = new OpenFileDialog();
             fd.Filter = "JPG Files(*.jpg)|*.jpg|PNG Files(*.png)|*.png|All Files(*.*)|*.*";
             if (fd.ShowDialog() == DialogResult.OK)
@@ -356,6 +364,7 @@ namespace GymManagerPro
 
         private void btnDeleteMembership_Click(object sender, EventArgs e)
         {
+            // deletes/expires the selected membership
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this membership? The selected membership will expire and the operation cannot be undone!!!", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {

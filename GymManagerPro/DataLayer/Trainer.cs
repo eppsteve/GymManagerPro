@@ -98,10 +98,10 @@ namespace DataLayer
         }
 
         /// <summary>
-        /// gets personal trainer's name by specified member id
+        /// Gets personal trainer's name by specified member id
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns>trainer id</returns>
+        /// <param name="id">The member's id</param>
+        /// <returns>The trainer's id</returns>
         public static string GetTrainerNameById(int id)
         {
             string name = null;

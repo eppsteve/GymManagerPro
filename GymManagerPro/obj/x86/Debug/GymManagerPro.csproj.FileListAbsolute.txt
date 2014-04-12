@@ -16,5 +16,5 @@ C:\Users\user\documents\visual studio 2010\Projects\GymManagerPro\GymManagerPro\
 C:\Users\user\documents\visual studio 2010\Projects\GymManagerPro\GymManagerPro\obj\x86\Debug\GymManagerPro.exe
 C:\Users\user\documents\visual studio 2010\Projects\GymManagerPro\GymManagerPro\obj\x86\Debug\GymManagerPro.pdb
 C:\Users\user\Documents\Visual Studio 2010\Projects\GymManagerPro\GymManagerPro\bin\Debug\GymManagerPro.exe.config
-C:\Users\user\Documents\Visual Studio 2010\Projects\GymManagerPro\GymManagerPro\obj\x86\Debug\GymManagerPro.Form1.resources
 C:\Users\user\Documents\Visual Studio 2010\Projects\GymManagerPro\GymManagerPro\bin\Debug\Database.sdf
+C:\Users\user\Documents\Visual Studio 2010\Projects\GymManagerPro\GymManagerPro\obj\x86\Debug\GymManagerPro.csprojResolveAssemblyReference.cache

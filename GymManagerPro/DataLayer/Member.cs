@@ -9,6 +9,7 @@ using System.Data.SqlServerCe;
 
 namespace DataLayer
 {
+    // Class for creating and handling the members
     public class Member
     {
         public int MemberID { get; set; }
@@ -29,6 +30,8 @@ namespace DataLayer
         public string Notes { get; set; }
         public byte[] Image { get; set; }
 
+
+        // Loads member data
         public void LoadMember(SqlCeDataReader reader)
         {
             //MemberID = Int32.Parse(reader["Id"].ToString());

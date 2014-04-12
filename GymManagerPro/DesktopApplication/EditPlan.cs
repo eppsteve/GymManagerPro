@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace GymManagerPro
 {
+    //This class is used for editing an existing plan or adding a new one
     public partial class EditPlan : Form
     {
         DataLayer.Plan plan;
