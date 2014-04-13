@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlServerCe;
+using System.Data;
 
 namespace DataLayer
 {
@@ -55,6 +56,35 @@ namespace DataLayer
                 int rowsAffected = cmd.ExecuteNonQuery();
                 return rowsAffected;
             }
+        }
+
+
+        /// <summary>
+        /// retrieves membership details for a given member
+        /// </summary>
+        /// <param name="memberID"></param>
+        /// <returns></returns>
+        public static DataTable GetMembershipById(int memberID)
+        {
+            DataTable table = new DataTable();
+            SqlCeDataAdapter da = null;
+
+            string query = "SELECT        Plans.Id, Plans.Name, Memberships.StartDate, Memberships.EndDate, Plans.Price " +
+                           "FROM          Plans INNER JOIN " +
+                           "                 Memberships INNER JOIN " +
+                           "                  Members ON Memberships.Member = Members.Id ON Plans.Id = Memberships.[Plan] " +
+                           "WHERE        (Members.Id = @memberId)";
+
+            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            {
+                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                cmd.Parameters.AddWithValue("@memberId", memberID);
+
+                da = new SqlCeDataAdapter(cmd);
+                da.Fill(table);
+            }
+
+            return table;
         }
 
     }

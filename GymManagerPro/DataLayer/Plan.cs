@@ -42,23 +42,32 @@ namespace DataLayer
             return plan;
         }
 
+
         /// <summary>
-        /// retrieves all membereship plans/programmes
+        /// retrieves all programmes from the db
         /// </summary>
-        /// <returns></returns>
-        public static DataTable GetAllPlans()
+        /// <returns>dictionary with all plans</returns>
+        public static Dictionary<int, String> GetAllPlans()
         {
+            Dictionary<int, string> plans = new Dictionary<int, string>();
+
+            string query = "SELECT Id, Name FROM Plans";
+
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
-                string query = "SELECT * FROM Plans";
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
-                SqlCeDataAdapter sda = new SqlCeDataAdapter();
-                sda.SelectCommand = cmd;
-                DataTable dataset = new DataTable();
-                sda.Fill(dataset);
-                sda.Update(dataset);
-                return dataset;
+
+                SqlCeDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int plan_id = reader.GetInt32(0);
+                    string plan_name = reader.GetString(1);
+
+                    plans.Add(plan_id, plan_name);
+                }
             }
+            return plans;
         }
 
         /// <summary>

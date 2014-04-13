@@ -28,7 +28,7 @@ namespace GymManagerPro
         private void AddNewContract_Load(object sender, EventArgs e)
         {
             // bind dictionary to combobox
-            cbProgrammes.DataSource = new BindingSource(DataLayer.Members.GetAllPlans(), null);
+            cbProgrammes.DataSource = new BindingSource(DataLayer.Plan.GetAllPlans(), null);
             cbProgrammes.DisplayMember = "Value";
             cbProgrammes.ValueMember = "Key";
         }

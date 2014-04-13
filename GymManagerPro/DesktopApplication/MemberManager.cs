@@ -37,7 +37,7 @@ namespace GymManagerPro
             LoadMember(id);
 
             //bind dictionary, which holds all plans, to combobox
-            programmeComboBox.DataSource = new BindingSource(DataLayer.Members.GetAllPlans(), null);
+            programmeComboBox.DataSource = new BindingSource(DataLayer.Plan.GetAllPlans(), null);
             programmeComboBox.DisplayMember = "Value";
             programmeComboBox.ValueMember = "Key";
 
@@ -55,6 +55,7 @@ namespace GymManagerPro
 
             try
             {
+                // retrieves member data from db
                 member = members.GetMember(id);
 
                 // populate controls with the data  
@@ -82,7 +83,6 @@ namespace GymManagerPro
                 txtEmail.Text = member.Email;
                 txtOccupation.Text = member.Occupation;
                 txtNotes.Text = member.Notes;
-                //txtPersonalTrainer.Text = DataLayer.Trainers.GetTrainerNameById(id);
                 txtPersonalTrainer.Text = member.PersonalTrainer;
                 lblName.Text = member.FName + " " + member.LName;
                 txtMemberId.Text = id.ToString();
@@ -101,7 +101,7 @@ namespace GymManagerPro
                 }
 
                 //load membership data
-                DataTable table = DataLayer.Members.GetMembership(id);
+                DataTable table = DataLayer.Memberships.GetMembershipById(id);
                 dataGridView1.DataSource = table;
                 resetTextBoxes();
             }
@@ -333,7 +333,7 @@ namespace GymManagerPro
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // populates textboxes with datagridview data based on the selected row
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 

@@ -141,33 +141,7 @@ namespace DataLayer
             return member;
         }
 
-        /// <summary>
-        /// retrieves membership details for a given member
-        /// </summary>
-        /// <param name="memberID"></param>
-        /// <returns></returns>
-        public static DataTable GetMembership(int memberID)
-        {
-            DataTable table = new DataTable();
-            SqlCeDataAdapter da = null;
 
-            string query = "SELECT        Plans.Id, Plans.Name, Memberships.StartDate, Memberships.EndDate, Plans.Price " +
-                           "FROM          Plans INNER JOIN " +
-                           "                 Memberships INNER JOIN " +
-                           "                  Members ON Memberships.Member = Members.Id ON Plans.Id = Memberships.[Plan] " +
-                           "WHERE        (Members.Id = @memberId)";
-
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
-            {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                cmd.Parameters.AddWithValue("@memberId", memberID);
-
-                da = new SqlCeDataAdapter(cmd);
-                da.Fill(table);
-            }
-
-            return table;
-        }
 
         /// <summary>
         /// updates database with new data
@@ -397,60 +371,6 @@ namespace DataLayer
             return rowsAffected;
         }
 
-        /// <summary>
-        /// retrieves all programmes from the db
-        /// </summary>
-        /// <returns>dictionary with all plans</returns>
-        public static Dictionary<int, String> GetAllPlans()
-        {
-            Dictionary<int, string> plans = new Dictionary<int, string>();
-
-            string query = "SELECT Id, Name FROM Plans";
-
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
-            {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                
-                SqlCeDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    int plan_id = reader.GetInt32(0);
-                    string plan_name = reader.GetString(1);
-
-                    plans.Add(plan_id, plan_name);
-                }
-            }
-            return plans;
-        }
-
-        /// <summary>
-        /// adds a new membership for the specified member
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="programme"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <returns>number of affected rows</returns>
-        //public static int AddNewMembership(int id, int plan_id, DateTime startDate, DateTime endDate)
-        //{
-        //    //DateTime startDate = datePickerStart.Value.Date;
-        //    //DateTime endDate = datePickerEnd.Value.Date;
-
-        //    string query = "INSERT INTO Memberships (Member, Plan, StartDate, EndDate) VALUES (@id, @plan, @startDate, @endDate)";
-
-        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
-        //    {
-        //        SqlCeCommand cmd = new SqlCeCommand(query, con);
-        //        cmd.Parameters.AddWithValue("@id", id);
-        //        cmd.Parameters.AddWithValue("@plan", plan_id);
-        //        cmd.Parameters.AddWithValue("@StartDate", startDate.Date);
-        //        cmd.Parameters.AddWithValue("@EndDate", endDate.Date);
-
-        //        int rowsAffected = cmd.ExecuteNonQuery();
-        //        return rowsAffected;
-        //    }
-        //}
 
         /// <summary>
         /// deletes the specified membership
@@ -469,30 +389,7 @@ namespace DataLayer
             }
         }
 
-        /// <summary>
-        /// updates specified membership of the specified member
-        /// </summary>
-        /// <param name="memberID"></param>
-        /// <param name="membershipID"></param>
-        /// <param name="programme"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <returns>number of affected rows</returns>
-        public static int UpdateMembership(int memberID, int membershipID, string programme, DateTime startDate, DateTime endDate)
-        {
-            string query = "UPDATE Memberships SET Plan = @programme, StartDate = @startdate, EndDate = @enddate WHERE Member = @memberid AND Id = @membershipid";
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
-            {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                cmd.Parameters.AddWithValue("@programme", programme);
-                cmd.Parameters.AddWithValue("@startdate", startDate.Date);
-                cmd.Parameters.AddWithValue("@enddate", endDate.Date);
-                cmd.Parameters.AddWithValue("@memberid", memberID);
-                cmd.Parameters.AddWithValue("@membershipid", membershipID);
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected;
-            }
-        }
+ 
 
         /// <summary>
         /// retrieves programme duration for the specified programme
