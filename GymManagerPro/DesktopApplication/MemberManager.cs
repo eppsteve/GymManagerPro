@@ -335,12 +335,13 @@ namespace GymManagerPro
             // populates textboxes with datagridview data based on the selected row
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];  //get selected row
 
                 programmeComboBox.SelectedItem = row.Cells["Name"].Value.ToString();
                 startDateDateTimePicker.Text = row.Cells["StartDate"].Value.ToString();
                 endDateDateTimePicker.Text = row.Cells["EndDate"].Value.ToString();
                 membershipId = Convert.ToInt32(row.Cells["Id"].Value.ToString());
+                priceTextBox.Text = row.Cells["Price"].Value.ToString();
                 //priceTextBox.Text = row.Cells["Price"].Value.ToString();
             }
         }
