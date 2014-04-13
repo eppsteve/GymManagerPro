@@ -22,9 +22,9 @@ namespace GymManagerPro
 
         private void Plans_Load(object sender, EventArgs e)
         {
-            listBox1.DataSource = DataLayer.Plan.GetAllPlans();
-            listBox1.ValueMember = "Id";
-            listBox1.DisplayMember = "Name"; 
+            listBox1.DataSource = DataLayer.Plan.GetAllPlans().ToList();
+            listBox1.ValueMember = "Key";
+            listBox1.DisplayMember = "Value"; 
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
