@@ -33,8 +33,10 @@ namespace GymManagerPro
 
         private void MemberManager1_Load(object sender, EventArgs e)
         {
+            // load member data
             LoadMember(id);
-            programmeComboBox.DataSource = DataLayer.Members.GetAllProgrammes();
+
+            programmeComboBox.DataSource = DataLayer.Members.GetAllPlans().ToList();
             //cbPersonalTrainer.DataSource = DataLayer.Members.GetAllTrainers();
             SetUpSearch();
         }

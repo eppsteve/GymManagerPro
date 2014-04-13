@@ -400,13 +400,12 @@ namespace DataLayer
         /// <summary>
         /// retrieves all programmes from the db
         /// </summary>
-        /// <returns>list with all programmes</returns>
-        public static List<String> GetAllProgrammes()
+        /// <returns>dictionary with all plans</returns>
+        public static Dictionary<int, String> GetAllPlans()
         {
-            //System.Windows.Forms.ComboBox cb = new System.Windows.Forms.ComboBox();
-            List<string> programmes = new List<string>();
+            Dictionary<int, string> plans = new Dictionary<int, string>();
 
-            string query = "SELECT Name FROM Plans";
+            string query = "SELECT Id, Name FROM Plans";
 
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
@@ -416,12 +415,13 @@ namespace DataLayer
 
                 while (reader.Read())
                 {
-                    string programme = reader.GetString(0);
-                    //cb.Items.Add(programme);
-                    programmes.Add(programme);
+                    int plan_id = reader.GetInt32(0);
+                    string plan_name = reader.GetString(1);
+
+                    plans.Add(plan_id, plan_name);
                 }
             }
-            return programmes;
+            return plans;
         }
 
         /// <summary>
@@ -432,18 +432,18 @@ namespace DataLayer
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
         /// <returns>number of affected rows</returns>
-        public static int AddNewMembership(int id, string programme, DateTime startDate, DateTime endDate)
+        public static int AddNewMembership(int id, int plan_id, DateTime startDate, DateTime endDate)
         {
             //DateTime startDate = datePickerStart.Value.Date;
             //DateTime endDate = datePickerEnd.Value.Date;
 
-            string query = "INSERT INTO Memberships (Member, Plan, StartDate, EndDate) VALUES (@id, @programme, @startDate, @endDate)";
+            string query = "INSERT INTO Memberships (Member, Plan, StartDate, EndDate) VALUES (@id, @plan, @startDate, @endDate)";
 
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@programme", programme);
+                cmd.Parameters.AddWithValue("@plan", plan_id);
                 cmd.Parameters.AddWithValue("@StartDate", startDate.Date);
                 cmd.Parameters.AddWithValue("@EndDate", endDate.Date);
 
@@ -555,7 +555,8 @@ namespace DataLayer
         public static int GetLastInsertedMember()
         {
             int id = (int)default(int);
-            string query = "SELECT Id FROM Members WHERE  ID = IDENT_CURRENT('Members')";
+            //string query = "SELECT Id FROM Members WHERE  ID = IDENT_CURRENT('Members')";
+            string query = "SELECT MAX(Id) FROM Members";
 
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {

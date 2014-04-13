@@ -29,14 +29,20 @@ namespace GymManagerPro
         {
             //cbProgrammes = DataLayer.Members.GetAllProgrammes();
             //cbProgrammes.Items.Add();
-            cbProgrammes.DataSource = DataLayer.Members.GetAllProgrammes();
+            //cbProgrammes.DataSource = DataLayer.Members.GetAllPlans();
+            cbProgrammes.DataSource = new BindingSource(DataLayer.Members.GetAllPlans(), null);
+            cbProgrammes.DisplayMember = "Value";
+            cbProgrammes.ValueMember = "Key";
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
             if (cbProgrammes.Text != "")
             {
-                if (DataLayer.Members.AddNewMembership(id, cbProgrammes.Text, datePickerStart.Value, datePickerEnd.Value) > 0)
+                // get id of the selected plan
+                int plan_id = (int) cbProgrammes.SelectedValue;
+
+                if (DataLayer.Members.AddNewMembership(id, plan_id, datePickerStart.Value, datePickerEnd.Value) > 0)
                 {
                     MessageBox.Show("Membership added successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
