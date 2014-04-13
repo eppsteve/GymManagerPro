@@ -358,14 +358,14 @@ namespace GymManagerPro
         private void startDateDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             // calculates the end date of the selected plan based on the start date
-            endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Members.GetProgrammeDuration(programmeComboBox.Text)).AddDays(-1);
+            endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Plan.GetPlanDuration(programmeComboBox.Text)).AddDays(-1);
         }
 
     
         private void programmeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Calculates the duration of the selected plan and dispays its price to priceTextBox
-            endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Members.GetProgrammeDuration(programmeComboBox.Text)).AddDays(-1);
+            endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Plan.GetPlanDuration(programmeComboBox.Text)).AddDays(-1);
             priceTextBox.Text = DataLayer.Members.GetProgrammePrice(programmeComboBox.Text).ToString();
         }
 
@@ -387,8 +387,10 @@ namespace GymManagerPro
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this membership? The selected membership will expire and the operation cannot be undone!!!", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {
+                //get id of the selected membership
                 int delid = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
-                DataLayer.Members.DeleteMembership(delid);
+                // delete the membership
+                DataLayer.Memberships.DeleteMembership(delid);
                 MessageBox.Show("Membership deleted and has been expired!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

@@ -60,6 +60,23 @@ namespace DataLayer
 
 
         /// <summary>
+        /// deletes the specified membership
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>number of affected rows</returns>
+        public static int DeleteMembership(int id)
+        {
+            string query = "DELETE FROM Memberships WHERE Id = @id";
+            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            {
+                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                cmd.Parameters.AddWithValue("@id", id);
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected;
+            }
+        }
+
+        /// <summary>
         /// retrieves membership details for a given member
         /// </summary>
         /// <param name="memberID"></param>
@@ -86,6 +103,7 @@ namespace DataLayer
 
             return table;
         }
+
 
 
     }

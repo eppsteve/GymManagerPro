@@ -117,6 +117,31 @@ namespace DataLayer
             }
         }
 
+        /// <summary>
+        /// retrieves plan duration for the specified plan
+        /// </summary>
+        /// <param name="programme"></param>
+        /// <returns>plan duration in months</returns>
+        public static int GetPlanDuration(string plan)
+        {
+            int duration = 0;
+
+            string query = "SELECT Duration FROM Plans WHERE Name = @plan";
+
+            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            {
+                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                cmd.Parameters.AddWithValue("@plan", plan);
+
+                SqlCeDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    duration = reader.GetInt32(0);
+                }
+            }
+            return duration;
+        }
 
     }
 }

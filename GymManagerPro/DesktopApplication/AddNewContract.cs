@@ -70,7 +70,7 @@ namespace GymManagerPro
         private void datePickerStart_ValueChanged(object sender, EventArgs e)
         {
             datePickerEnd.Value = datePickerStart.Value;
-            datePickerEnd.Value = datePickerEnd.Value.AddMonths(DataLayer.Members.GetProgrammeDuration(cbProgrammes.Text));
+            datePickerEnd.Value = datePickerEnd.Value.AddMonths(DataLayer.Plan.GetPlanDuration(cbProgrammes.Text));
             datePickerEnd.Value = datePickerEnd.Value.AddDays(-1);
         }
 
@@ -78,7 +78,7 @@ namespace GymManagerPro
         {
             txtMembershipFee.Text = DataLayer.Members.GetProgrammePrice(cbProgrammes.Text).ToString();
             datePickerEnd.Value = datePickerStart.Value;
-            datePickerEnd.Value = datePickerEnd.Value.AddMonths(DataLayer.Members.GetProgrammeDuration(cbProgrammes.Text));
+            datePickerEnd.Value = datePickerEnd.Value.AddMonths(DataLayer.Plan.GetPlanDuration(cbProgrammes.Text));
             datePickerEnd.Value = datePickerEnd.Value.AddDays(-1);
         }
 
