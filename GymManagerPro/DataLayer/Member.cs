@@ -359,7 +359,7 @@ namespace DataLayer
             //DateTime datetime = DateTime.Now;
             //String dt = datetime.ToString();
             int rowsAffected = 0;
-            String query = "INSERT INTO Checkin VALUES(@id, @time)";
+            String query = "INSERT INTO Checkin(MemberID, Time) VALUES(@id, @time)";
 
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
@@ -524,7 +524,7 @@ namespace DataLayer
         {
             StringBuilder data = new StringBuilder();
             string query = "SELECT Members.FirstName, Members.LastName, Checkin.Time FROM Checkin " +
-                           "JOIN Members ON Checkin.Member = Members.Id";
+                           "JOIN Members ON Checkin.MemberID = Members.Id";
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
