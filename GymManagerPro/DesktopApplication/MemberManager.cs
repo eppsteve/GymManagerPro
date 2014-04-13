@@ -101,15 +101,29 @@ namespace GymManagerPro
                 }
 
                 //load membership data
-                DataTable table = DataLayer.Memberships.GetMembershipById(id);
+                DataTable table = DataLayer.Memberships.GetMembershipByMemberId(id);
                 dataGridView1.DataSource = table;
                 resetTextBoxes();
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        //private void LoadMembership(int id)
+        //{
+        //    DataLayer.Membership membership = new DataLayer.Membership();
+        //    List<DataLayer.Membership> list = new List<DataLayer.Membership>();
+
+        //    foreach (DataLayer.Membership ms in list)
+        //    {
+
+        //    }
+        //    //DataTable table = DataLayer.Memberships.GetMembershipObjectByMemberId(id);
+            
+        //}
 
         /// <summary>
         /// Clears membership textboxes

@@ -16,11 +16,11 @@ namespace DataLayer
         public DateTime end { get; set; }
         public double price { get; set; }
 
-
     }
 
     class Memberships
     {
+
 
         // inserts a new membership in the db
         public static int NewMembership(Membership membership)
@@ -44,7 +44,7 @@ namespace DataLayer
 
         public static int UpdateMembership(Membership membership)
         {
-            string query = "UPDATE Memberships SET Plan = @planid, StartDate = @startdate, EndDate = @enddate WHERE Member = @memberid AND Id = @membershipid";
+           string query = "UPDATE Memberships SET [Plan] = @planid, StartDate = @startdate, EndDate = @enddate WHERE Member = @memberid AND Id = @membershipid";
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
@@ -64,7 +64,7 @@ namespace DataLayer
         /// </summary>
         /// <param name="memberID"></param>
         /// <returns></returns>
-        public static DataTable GetMembershipById(int memberID)
+        public static DataTable GetMembershipByMemberId(int memberID)
         {
             DataTable table = new DataTable();
             SqlCeDataAdapter da = null;
@@ -86,6 +86,7 @@ namespace DataLayer
 
             return table;
         }
+
 
     }
 }
