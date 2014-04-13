@@ -44,15 +44,16 @@ namespace DataLayer
 
         public static int UpdateMembership(Membership membership)
         {
-           string query = "UPDATE Memberships SET [Plan] = @planid, StartDate = @startdate, EndDate = @enddate WHERE Member = @memberid AND Id = @membershipid";
+           //string query = "UPDATE Memberships SET [Plan] = @planid, StartDate = @startdate, EndDate = @enddate WHERE Member = @memberid AND Id = @membershipid";
+            string query = "UPDATE Memberships SET [Plan] = @planid, StartDate = @startdate, EndDate = @enddate WHERE Id = @membership_id";
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
                 cmd.Parameters.AddWithValue("@planid", membership.Plan);
                 cmd.Parameters.AddWithValue("@startdate", membership.start);
                 cmd.Parameters.AddWithValue("@enddate", membership.end);
-                cmd.Parameters.AddWithValue("@memberid", membership.MemberId);
-                cmd.Parameters.AddWithValue("@membershipid", membership.Id);
+                //cmd.Parameters.AddWithValue("@memberid", membership.MemberId);
+                cmd.Parameters.AddWithValue("@membership_id", membership.Id);
                 int rowsAffected = cmd.ExecuteNonQuery();
                 return rowsAffected;
             }
@@ -86,7 +87,7 @@ namespace DataLayer
             DataTable table = new DataTable();
             SqlCeDataAdapter da = null;
 
-            string query = "SELECT        Plans.Id, Plans.Name, Memberships.StartDate, Memberships.EndDate, Plans.Price " +
+            string query = "SELECT        Memberships.Id AS MembershipID, Plans.Name, Plans.Id AS PlanID, Memberships.StartDate, Memberships.EndDate, Plans.Price " +
                            "FROM          Plans INNER JOIN " +
                            "                 Memberships INNER JOIN " +
                            "                  Members ON Memberships.Member = Members.Id ON Plans.Id = Memberships.[Plan] " +

@@ -120,7 +120,7 @@ namespace DataLayer
         /// <summary>
         /// retrieves plan duration for the specified plan
         /// </summary>
-        /// <param name="programme"></param>
+        /// <param name="programme">The name of the plan</param>
         /// <returns>plan duration in months</returns>
         public static int GetPlanDuration(string plan)
         {
@@ -143,5 +143,27 @@ namespace DataLayer
             return duration;
         }
 
+
+
+        public static int GetPlanDuration(int plan_id)
+        {
+            int duration = 0;
+
+            string query = "SELECT Duration FROM Plans WHERE Id = @plan";
+
+            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            {
+                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                cmd.Parameters.AddWithValue("@plan", plan_id);
+
+                SqlCeDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    duration = reader.GetInt32(0);
+                }
+            }
+            return duration;
+        }
     }
 }

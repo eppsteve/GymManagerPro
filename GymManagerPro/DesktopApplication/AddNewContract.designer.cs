@@ -204,9 +204,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 16);
+            this.label1.Size = new System.Drawing.Size(35, 16);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Membership";
+            this.label1.Text = "Plan";
             // 
             // groupBox1
             // 

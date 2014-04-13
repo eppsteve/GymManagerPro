@@ -19,6 +19,7 @@ namespace GymManagerPro
         
         private int id;     // holds the id value of the current member
         private int membershipId;  // the selected membership id
+        private int planId; // id of the selected plan
         
         public MemberManager()
         {
@@ -284,6 +285,7 @@ namespace GymManagerPro
                 programmeComboBox.Enabled = true;
                 startDateDateTimePicker.Enabled = true;
                 btnEdit.Text = "Cancel";
+                //btnSave.Enabled = true;
             }
             else if (btnEdit.Text == "Cancel")
             {
@@ -291,6 +293,7 @@ namespace GymManagerPro
                 startDateDateTimePicker.Enabled = false;
                 btnEdit.Text = "Edit";
                 resetTextBoxes();
+                //btnSave.Enabled = false;
             }
         }
 
@@ -303,8 +306,9 @@ namespace GymManagerPro
                     // create new membership object
                     DataLayer.Membership membership = new DataLayer.Membership();
                     membership.Id = membershipId;
-                    membership.MemberId = id;
-                    membership.Plan = (int)programmeComboBox.SelectedValue;
+                    //MessageBox.Show(membership.Id.ToString());
+                    //membership.MemberId = id;
+                    membership.Plan = (int)programmeComboBox.SelectedValue; //3
                     membership.start = startDateDateTimePicker.Value;
                     membership.end = endDateDateTimePicker.Value;
 
@@ -342,9 +346,9 @@ namespace GymManagerPro
                 programmeComboBox.SelectedItem = row.Cells["Name"].Value.ToString();  
                 startDateDateTimePicker.Text = row.Cells["StartDate"].Value.ToString();
                 endDateDateTimePicker.Text = row.Cells["EndDate"].Value.ToString();
-                membershipId = Convert.ToInt32(row.Cells["Id"].Value.ToString());
+                membershipId = Convert.ToInt32(row.Cells["MembershipID"].Value.ToString());
+                planId = Convert.ToInt32(row.Cells["PlanID"].Value.ToString());
                 priceTextBox.Text = row.Cells["Price"].Value.ToString();
-                //priceTextBox.Text = row.Cells["Price"].Value.ToString();
             }
         }
 
@@ -358,7 +362,10 @@ namespace GymManagerPro
         private void startDateDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             // calculates the end date of the selected plan based on the start date
-            endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Plan.GetPlanDuration(programmeComboBox.Text)).AddDays(-1);
+            //endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Plan.GetPlanDuration(programmeComboBox.Text)).AddDays(-1);
+          
+            // we need to get Plan id!!!!!!!
+            endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Plan.GetPlanDuration(planId)).AddDays(-1);
         }
 
     

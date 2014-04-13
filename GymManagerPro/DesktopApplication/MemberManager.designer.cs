@@ -718,7 +718,7 @@
             this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(0, 1, 4, 2);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(88, 19);
+            this.toolStripLabel1.Size = new System.Drawing.Size(88, 23);
             this.toolStripLabel1.Text = "Quick Search";
             // 
             // txtStreet
