@@ -43,15 +43,12 @@ namespace GymManagerPro
             }
         }
 
-        /// <summary>
-        /// populates the listbox with all trainers
-        /// </summary>
-        public void LoadTrainers()
+        // populates listbox with the names of all the trainers
+        public void LoadAllTrainersNames()
         {
-            DataTable trainersTable = DataLayer.Trainers.GetAllTrainers();
-            listBox1.DataSource = trainersTable;
-            listBox1.ValueMember = "Id";
-            listBox1.DisplayMember = "Surname";
+            listBox1.DataSource = new BindingSource( DataLayer.Trainers.GetAllTrainers(), null );
+            listBox1.DisplayMember = "Value";
+            listBox1.ValueMember = "Key";
         }
 
         /// <summary>
@@ -90,8 +87,9 @@ namespace GymManagerPro
 
         private void Trainers_Load(object sender, EventArgs e)
         {
-            LoadTrainers();
+            //LoadTrainers();
             LoadTrainer(id);
+            LoadAllTrainersNames();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,7 +99,6 @@ namespace GymManagerPro
                 try
                 {
                     id = Convert.ToInt32(listBox1.SelectedValue.ToString());
-                    //MessageBox.Show(id.ToString());
                     LoadTrainer(id);
                 }
                 catch (Exception ex)
@@ -206,7 +203,8 @@ namespace GymManagerPro
                 if (DataLayer.Trainers.UpdateTrainer(trainer) > 0)
                 {
                     MessageBox.Show("Trainer Updated successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadTrainers();
+                    //LoadTrainers();
+                    LoadAllTrainersNames();
                 }
                 else
                 {
@@ -240,8 +238,7 @@ namespace GymManagerPro
             {
                 //MessageBox.Show("success");
                 id = DataLayer.Trainers.GetLastInsertedTrainer();
-                //MessageBox.Show(id.ToString());
-                LoadTrainers();
+                LoadAllTrainersNames();
                 this.listBox1.SelectedIndex = this.listBox1.Items.Count - 1;
             }
             else
@@ -255,7 +252,7 @@ namespace GymManagerPro
             if (DataLayer.Trainers.DeleteTrainer(this.id) > 0)
             {
                 MessageBox.Show("Trainer deleted!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadTrainers();
+                LoadAllTrainersNames();
             }
             else
             {

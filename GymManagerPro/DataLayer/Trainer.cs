@@ -57,18 +57,37 @@ namespace DataLayer
         /// retrieves id and lastname from all trainers
         /// </summary>
         /// <returns></returns>
-        public static DataTable GetAllTrainers()
+        //public static DataTable GetAllTrainers()
+        //{
+        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
+        //    {
+        //        string query = "SELECT Id, (FirstName + LastName) AS Name FROM Trainers";
+        //        SqlCeCommand cmd = new SqlCeCommand(query, con);
+        //        SqlCeDataAdapter sda = new SqlCeDataAdapter();
+        //        sda.SelectCommand = cmd;
+        //        DataTable dataset = new DataTable();
+        //        sda.Fill(dataset);
+        //        sda.Update(dataset);
+        //        return dataset;
+        //    }
+        //}
+
+        public static Dictionary<int, string> GetAllTrainers()
         {
+            Dictionary<int, string> trainers = new Dictionary<int,string>();
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
-                string query = "SELECT Id, (FirstName + LastName) AS Name FROM Trainers";
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                SqlCeDataAdapter sda = new SqlCeDataAdapter();
-                sda.SelectCommand = cmd;
-                DataTable dataset = new DataTable();
-                sda.Fill(dataset);
-                sda.Update(dataset);
-                return dataset;
+                string query = "SELECT Id, (FirstName + ' ' + LastName) AS Name FROM Trainers";
+                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
+                {
+                    SqlCeDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        trainers.Add(reader.GetInt32(0), reader.GetString(1));
+                    }
+
+                    return trainers;
+                }
             }
         }
 
