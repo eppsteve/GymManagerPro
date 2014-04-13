@@ -36,8 +36,11 @@ namespace GymManagerPro
             // load member data
             LoadMember(id);
 
-            programmeComboBox.DataSource = DataLayer.Members.GetAllPlans().ToList();
-            //cbPersonalTrainer.DataSource = DataLayer.Members.GetAllTrainers();
+            //bind dictionary, which holds all plans, to combobox
+            programmeComboBox.DataSource = new BindingSource(DataLayer.Members.GetAllPlans(), null);
+            programmeComboBox.DisplayMember = "Value";
+            programmeComboBox.ValueMember = "Key";
+
             SetUpSearch();
         }
 
@@ -295,7 +298,16 @@ namespace GymManagerPro
             {
                 try
                 {
-                    if (DataLayer.Members.UpdateMembership(id, membershipId, programmeComboBox.Text, startDateDateTimePicker.Value, endDateDateTimePicker.Value) > 0)
+                    // create new membership object
+                    DataLayer.Membership membership = new DataLayer.Membership();
+                    membership.Id = membershipId;
+                    membership.MemberId = id;
+                    membership.Plan = (int)programmeComboBox.SelectedValue;
+                    membership.start = startDateDateTimePicker.Value;
+                    membership.end = endDateDateTimePicker.Value;
+
+                    
+                    if (DataLayer.Memberships.UpdateMembership(membership) >0 ) 
                     {
                         MessageBox.Show("Membership Updated!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -303,6 +315,7 @@ namespace GymManagerPro
                     {
                         MessageBox.Show("Failed to update membership. Please try again.", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
                     LoadMember(id);     //refresh
                     programmeComboBox.Enabled = false;
                     startDateDateTimePicker.Enabled = false;
@@ -320,7 +333,7 @@ namespace GymManagerPro
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // populates textboxes with datagridview data based on the selected row
-            if (e.RowIndex >= 0)
+            if (e.RowIndex > 0)
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 

@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="DataLayer\DB.cs" />
     <Compile Include="DataLayer\Member.cs" />
+    <Compile Include="DataLayer\Membership.cs" />
     <Compile Include="DataLayer\Plan.cs" />
     <Compile Include="DataLayer\Trainer.cs" />
     <Compile Include="DesktopApplication\AboutBox.cs">

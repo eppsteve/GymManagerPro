@@ -432,25 +432,25 @@ namespace DataLayer
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
         /// <returns>number of affected rows</returns>
-        public static int AddNewMembership(int id, int plan_id, DateTime startDate, DateTime endDate)
-        {
-            //DateTime startDate = datePickerStart.Value.Date;
-            //DateTime endDate = datePickerEnd.Value.Date;
+        //public static int AddNewMembership(int id, int plan_id, DateTime startDate, DateTime endDate)
+        //{
+        //    //DateTime startDate = datePickerStart.Value.Date;
+        //    //DateTime endDate = datePickerEnd.Value.Date;
 
-            string query = "INSERT INTO Memberships (Member, Plan, StartDate, EndDate) VALUES (@id, @plan, @startDate, @endDate)";
+        //    string query = "INSERT INTO Memberships (Member, Plan, StartDate, EndDate) VALUES (@id, @plan, @startDate, @endDate)";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
-            {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@plan", plan_id);
-                cmd.Parameters.AddWithValue("@StartDate", startDate.Date);
-                cmd.Parameters.AddWithValue("@EndDate", endDate.Date);
+        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
+        //    {
+        //        SqlCeCommand cmd = new SqlCeCommand(query, con);
+        //        cmd.Parameters.AddWithValue("@id", id);
+        //        cmd.Parameters.AddWithValue("@plan", plan_id);
+        //        cmd.Parameters.AddWithValue("@StartDate", startDate.Date);
+        //        cmd.Parameters.AddWithValue("@EndDate", endDate.Date);
 
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected;
-            }
-        }
+        //        int rowsAffected = cmd.ExecuteNonQuery();
+        //        return rowsAffected;
+        //    }
+        //}
 
         /// <summary>
         /// deletes the specified membership

@@ -27,9 +27,7 @@ namespace GymManagerPro
 
         private void AddNewContract_Load(object sender, EventArgs e)
         {
-            //cbProgrammes = DataLayer.Members.GetAllProgrammes();
-            //cbProgrammes.Items.Add();
-            //cbProgrammes.DataSource = DataLayer.Members.GetAllPlans();
+            // bind dictionary to combobox
             cbProgrammes.DataSource = new BindingSource(DataLayer.Members.GetAllPlans(), null);
             cbProgrammes.DisplayMember = "Value";
             cbProgrammes.ValueMember = "Key";
@@ -39,10 +37,16 @@ namespace GymManagerPro
         {
             if (cbProgrammes.Text != "")
             {
-                // get id of the selected plan
-                int plan_id = (int) cbProgrammes.SelectedValue;
+                
+                // create a new membership
+                DataLayer.Membership membership = new DataLayer.Membership();
+                membership.MemberId = this.id;
+                membership.Plan = (int) cbProgrammes.SelectedValue; // get id of the selected plan
+                membership.start = datePickerStart.Value;
+                membership.end = datePickerEnd.Value;
 
-                if (DataLayer.Members.AddNewMembership(id, plan_id, datePickerStart.Value, datePickerEnd.Value) > 0)
+                //if (DataLayer.Members.AddNewMembership(id, plan_id, datePickerStart.Value, datePickerEnd.Value) > 0)
+                if (DataLayer.Memberships.NewMembership(membership) >0 )
                 {
                     MessageBox.Show("Membership added successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
