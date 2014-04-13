@@ -61,7 +61,7 @@ namespace DataLayer
         {
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
-                string query = "SELECT Id, Surname FROM Trainers";
+                string query = "SELECT Id, (FirstName + LastName) AS Name FROM Trainers";
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
                 SqlCeDataAdapter sda = new SqlCeDataAdapter();
                 sda.SelectCommand = cmd;
@@ -155,7 +155,8 @@ namespace DataLayer
         public static int GetLastInsertedTrainer()
         {
             int id = (int)default(int);
-            string query = "SELECT Id FROM Trainers WHERE ID = IDENT_CURRENT('Trainers')";
+            //string query = "SELECT Id FROM Trainers WHERE ID = IDENT_CURRENT('Trainers')";
+            string query = "SELECT MAX(Id) FROM Trainers";
 
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
@@ -178,7 +179,7 @@ namespace DataLayer
         {
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
-                string query = "INSERT INTO Trainers (Name, Surname, Sex, DateOfBirth, Street, Suburb, City, HomePhone, CellPhone, email, salary, Notes) " +
+                string query = "INSERT INTO Trainers (FirstName, LAstName, Sex, DOB, Street, Suburb, City, HomePhone, CellPhone, Email, Salary, Notes) " +
                                "VALUES (@fname, @lname, @sex, @dob, @street, @suburb, @city, @homephone, @cellphone, @email, @salary, @notes)";
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
                 cmd.Parameters.AddWithValue("@fname", trainer.FName);
@@ -210,8 +211,8 @@ namespace DataLayer
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
                 String query = "UPDATE Trainers " +
-                           "SET Surname = @lastname, salary = @salary, " +
-                           "Name = @firstname, Sex = @Sex, DateOfBirth = @dateofbirth, Street = @street, " +
+                           "SET LastName = @lastname, salary = @salary, " +
+                           "FirstName = @firstname, Sex = @Sex, DOB = @dateofbirth, Street = @street, " +
                            "Suburb = @suburb, City = @city, HomePhone = @homephone, " +
                            "CellPhone = @cellphone, email = @email, Notes = @notes " +
                            "WHERE Id = @id";
