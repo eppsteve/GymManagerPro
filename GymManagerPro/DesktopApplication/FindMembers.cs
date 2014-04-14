@@ -19,17 +19,33 @@ namespace GymManagerPro
 
         private void FindMembers_Load(object sender, EventArgs e)
         {
+            // get all members and bind them to the datagridview
             BindingSource bSource = new BindingSource();
             bSource.DataSource = DataLayer.Members.GetAllMembers();
             membersDataGridView.DataSource = bSource;
+
+            // fill plan combobox with all plans
+            SortedDictionary<int, string> plans = new SortedDictionary<int,string>(DataLayer.Plan.GetAllPlans());           // get all the plans and put them to a sorted dictionary
+            plans.Add(0, "All");                                                                                            // add 'All' entry to dictionary
+            cbPlan.DataSource = new BindingSource(plans, null);                                                             // bind dictionary to combobox
+            cbPlan.DisplayMember = "Value";                                                                                 // name of the plan
+            cbPlan.ValueMember = "Key";                                                                                     // id of the plan
+            
+            // fill personal trainer combobox with all trainers
+            SortedDictionary<int, string> trainers = new SortedDictionary<int,string>(DataLayer.Trainers.GetAllTrainers());  // get id and name of all trainers and put them to a sorted dictionary
+            trainers.Add(0, "All");                                                                 // add 'All' entry
+            cbPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
+            cbPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
+            cbPersonalTrainer.ValueMember = "Key";                                                  // id of the trainer
         }
 
         private void membersDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //gets the value of the first cell
-            int val = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value.ToString());
-            //MessageBox.Show(val.ToString());
-            MemberManager mm = new MemberManager(val);
+            
+            int val = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value.ToString());         // get the value of the first cell, which is the member's id
+            
+            // open member's data in member manager
+            MemberManager mm = new MemberManager(val);                                                     
             mm.MdiParent = this.MdiParent;
             mm.Show();
         }
@@ -48,6 +64,7 @@ namespace GymManagerPro
             {
                 // get the selected member id
                 int val = int.Parse(membersDataGridView.SelectedRows[0].Cells[0].Value.ToString());
+                
                 // open selected member in member manager
                 MemberManager manager = new MemberManager(val);
                 manager.MdiParent = this.MdiParent;

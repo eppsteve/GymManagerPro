@@ -30,8 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.membersDataGridView = new System.Windows.Forms.DataGridView();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbPersonalTrainer = new System.Windows.Forms.ComboBox();
+            this.cbPlan = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -86,21 +86,21 @@
             this.membersDataGridView.TabIndex = 5;
             this.membersDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.membersDataGridView_CellDoubleClick);
             // 
-            // comboBox2
+            // cbPersonalTrainer
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(674, 59);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(239, 23);
-            this.comboBox2.TabIndex = 4;
+            this.cbPersonalTrainer.FormattingEnabled = true;
+            this.cbPersonalTrainer.Location = new System.Drawing.Point(672, 59);
+            this.cbPersonalTrainer.Name = "cbPersonalTrainer";
+            this.cbPersonalTrainer.Size = new System.Drawing.Size(241, 23);
+            this.cbPersonalTrainer.TabIndex = 4;
             // 
-            // comboBox1
+            // cbPlan
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(672, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(241, 23);
-            this.comboBox1.TabIndex = 3;
+            this.cbPlan.FormattingEnabled = true;
+            this.cbPlan.Location = new System.Drawing.Point(672, 28);
+            this.cbPlan.Name = "cbPlan";
+            this.cbPlan.Size = new System.Drawing.Size(241, 23);
+            this.cbPlan.TabIndex = 3;
             // 
             // label4
             // 
@@ -116,9 +116,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(560, 30);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 16);
+            this.label3.Size = new System.Drawing.Size(35, 16);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Programme";
+            this.label3.Text = "Plan";
             // 
             // textBox2
             // 
@@ -138,8 +138,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cbPersonalTrainer);
+            this.groupBox1.Controls.Add(this.cbPlan);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBox2);
@@ -252,8 +252,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView membersDataGridView;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbPersonalTrainer;
+        private System.Windows.Forms.ComboBox cbPlan;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
