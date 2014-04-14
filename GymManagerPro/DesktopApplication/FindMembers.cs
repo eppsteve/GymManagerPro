@@ -12,6 +12,8 @@ namespace GymManagerPro
 {
     public partial class FindMembers : Form
     {
+        bool form_loaded = false;        // set to true when the form has been loaded using shown event. This is used to avoid errors with the initialization of combobox values
+
         public FindMembers()
         {
             InitializeComponent();
@@ -86,6 +88,34 @@ namespace GymManagerPro
             {
                 MessageBox.Show("Couldnot check-in. Please try again.", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cbPlan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (form_loaded)
+            {
+                // retrieve the members who have the selected plan and bind them to datagridview
+                int plan_id = Int32.Parse(cbPlan.SelectedValue.ToString());                         // get id of the selected plan
+
+                if (plan_id != 0)                                                           // if the selected plan is not 'All'
+                {
+                    BindingSource bSource = new BindingSource();
+                    bSource.DataSource = DataLayer.Members.GetMembersByPlan(plan_id);
+                    membersDataGridView.DataSource = bSource;
+                }
+                else 
+                {
+                    // get all members and bind them to the datagridview
+                    BindingSource bSource = new BindingSource();
+                    bSource.DataSource = DataLayer.Members.GetAllMembers();
+                    membersDataGridView.DataSource = bSource;
+                }
+            }
+        }
+
+        private void FindMembers_Shown(object sender, EventArgs e)
+        {
+            form_loaded = true;
         }
     }
 }

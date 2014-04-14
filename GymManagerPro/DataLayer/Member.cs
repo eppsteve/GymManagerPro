@@ -506,5 +506,37 @@ namespace DataLayer
                 return rowsAffected;
             }
         }
+
+        /// <summary>
+        /// retrieves all members who have been assigned to the specified plan
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable GetMembersByPlan( int plan_id )
+        {
+            DataTable dataset;
+            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            {
+                String sql = "SELECT DISTINCT " +
+                             "Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.HomePhone, Members.CellPhone, Members.Email, " +
+                             "Trainers.FirstName + ' ' + Trainers.LastName AS PersonalTrainer " +
+                             "FROM            Memberships INNER JOIN " +
+                             "Members ON Memberships.Member = Members.Id " +
+                             "LEFT OUTER JOIN "+
+                             "Trainers ON Members.PersonalTrainer = Trainers.Id " +
+                             "WHERE        (Memberships.[Plan] = @plan_id) ";
+
+                SqlCeCommand cmd = new SqlCeCommand(sql, con);
+                cmd.Parameters.AddWithValue("@plan_id", plan_id);
+
+                SqlCeDataAdapter sda = new SqlCeDataAdapter();
+                sda.SelectCommand = cmd;
+
+                dataset = new DataTable();
+                sda.Fill(dataset);
+
+                sda.Update(dataset);
+                return dataset;
+            }
+        }
     }
 }

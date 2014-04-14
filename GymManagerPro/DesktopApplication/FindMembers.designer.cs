@@ -101,6 +101,7 @@
             this.cbPlan.Name = "cbPlan";
             this.cbPlan.Size = new System.Drawing.Size(241, 23);
             this.cbPlan.TabIndex = 3;
+            this.cbPlan.SelectedIndexChanged += new System.EventHandler(this.cbPlan_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -237,6 +238,7 @@
             this.ShowIcon = false;
             this.Text = "Find Members";
             this.Load += new System.EventHandler(this.FindMembers_Load);
+            this.Shown += new System.EventHandler(this.FindMembers_Shown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.membersDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
