@@ -12,7 +12,7 @@ namespace GymManagerPro
 {
     public partial class AddNewContract : Form
     {
-        private int id; 
+        private int id;         // member's id
 
         public AddNewContract()
         {
@@ -27,7 +27,7 @@ namespace GymManagerPro
 
         private void AddNewContract_Load(object sender, EventArgs e)
         {
-            // bind dictionary to combobox
+            // get all plans and fill the combobox with the data
             cbProgrammes.DataSource = new BindingSource(DataLayer.Plan.GetAllPlans(), null);
             cbProgrammes.DisplayMember = "Value";
             cbProgrammes.ValueMember = "Key";
@@ -38,14 +38,14 @@ namespace GymManagerPro
             if (cbProgrammes.Text != "")
             {
                 
-                // create a new membership
+                // create a new membership and fill with data
                 DataLayer.Membership membership = new DataLayer.Membership();
-                membership.MemberId = this.id;
-                membership.Plan = (int) cbProgrammes.SelectedValue; // get id of the selected plan
-                membership.start = datePickerStart.Value;
-                membership.end = datePickerEnd.Value;
+                membership.MemberId = this.id;                                      // member's id
+                membership.Plan = (int) cbProgrammes.SelectedValue;                 // id of the selected plan
+                membership.start = datePickerStart.Value;                           // when the membership starts
+                membership.end = datePickerEnd.Value;                               // when the membership expires
 
-                //if (DataLayer.Members.AddNewMembership(id, plan_id, datePickerStart.Value, datePickerEnd.Value) > 0)
+               
                 if (DataLayer.Memberships.NewMembership(membership) >0 )
                 {
                     MessageBox.Show("Membership added successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -69,17 +69,18 @@ namespace GymManagerPro
 
         private void datePickerStart_ValueChanged(object sender, EventArgs e)
         {
-            datePickerEnd.Value = datePickerStart.Value;
-            datePickerEnd.Value = datePickerEnd.Value.AddMonths(DataLayer.Plan.GetPlanDuration(cbProgrammes.Text));
-            datePickerEnd.Value = datePickerEnd.Value.AddDays(-1);
+            // set the expiration date of the membership based on the start date
+            datePickerEnd.Value = datePickerStart.Value;                                                            // get membership's start date
+            datePickerEnd.Value = datePickerEnd.Value.AddMonths(DataLayer.Plan.GetPlanDuration(cbProgrammes.Text)); // calculate membership duration
+            datePickerEnd.Value = datePickerEnd.Value.AddDays(-1);                                                  // subtract one day
         }
 
         private void cbProgrammes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtMembershipFee.Text = DataLayer.Members.GetProgrammePrice(cbProgrammes.Text).ToString();
-            datePickerEnd.Value = datePickerStart.Value;
-            datePickerEnd.Value = datePickerEnd.Value.AddMonths(DataLayer.Plan.GetPlanDuration(cbProgrammes.Text));
-            datePickerEnd.Value = datePickerEnd.Value.AddDays(-1);
+            txtMembershipFee.Text = DataLayer.Members.GetProgrammePrice(cbProgrammes.Text).ToString();                  // get membership's cost
+            datePickerEnd.Value = datePickerStart.Value;                                                                // get membership's start date
+            datePickerEnd.Value = datePickerEnd.Value.AddMonths(DataLayer.Plan.GetPlanDuration(cbProgrammes.Text));     // calculate membership duration
+            datePickerEnd.Value = datePickerEnd.Value.AddDays(-1);                                                      // subtract one day
         }
 
         private void txtInitiationFee_TextChanged(object sender, EventArgs e)
