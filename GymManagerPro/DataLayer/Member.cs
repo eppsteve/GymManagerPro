@@ -489,23 +489,23 @@ namespace DataLayer
             return id;
         }
 
-        /// <summary>
-        /// checkin specified member
-        /// </summary>
-        /// <param name="id">member's id</param>
-        /// <returns>number of affected rows</returns>
-        public static int CheckInMember(int id)
-        {
-            string query = "INSERT INTO Checkin (Member, Time) VALUES (@memberID, @datetime)";
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
-            {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                cmd.Parameters.AddWithValue("@memberID", id);
-                cmd.Parameters.AddWithValue("@Datetime", DateTime.Now);
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected;
-            }
-        }
+        ///// <summary>
+        ///// checkin specified member
+        ///// </summary>
+        ///// <param name="id">member's id</param>
+        ///// <returns>number of affected rows</returns>
+        //public static int CheckInMember(int id)
+        //{
+        //    string query = "INSERT INTO Checkin (Member, Time) VALUES (@memberID, @datetime)";
+        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
+        //    {
+        //        SqlCeCommand cmd = new SqlCeCommand(query, con);
+        //        cmd.Parameters.AddWithValue("@memberID", id);
+        //        cmd.Parameters.AddWithValue("@Datetime", DateTime.Now);
+        //        int rowsAffected = cmd.ExecuteNonQuery();
+        //        return rowsAffected;
+        //    }
+        //}
 
         /// <summary>
         /// retrieves all members who have been assigned to the specified plan

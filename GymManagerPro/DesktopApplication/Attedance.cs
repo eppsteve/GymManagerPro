@@ -46,7 +46,7 @@ namespace GymManagerPro
         {
             if (txtSearch.Text.Length > 0)
             {
-                if (DataLayer.Members.CheckInMember(DataLayer.Members.GetMemberIdByName(txtSearch.Text.Trim())) > 0)
+                if (DataLayer.Members.MemberCheckin(DataLayer.Members.GetMemberIdByName(txtSearch.Text.Trim())) > 0)
                 {
                     MessageBox.Show("Member just Checked-In!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     textBox1.Clear();
