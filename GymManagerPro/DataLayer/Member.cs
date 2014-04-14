@@ -409,7 +409,7 @@ namespace DataLayer
             decimal price = 0;
 
             string query = "SELECT Price FROM Plans WHERE Name = @programmeName";
-            
+
             SqlCeDataReader reader;
 
             using (SqlCeConnection con = DB.GetSqlCeConnection())
@@ -424,7 +424,7 @@ namespace DataLayer
                     price = reader.GetDecimal(0);
                 }
                 return price;
-            } 
+            }
         }
 
         /// <summary>

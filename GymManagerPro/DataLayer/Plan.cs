@@ -165,5 +165,33 @@ namespace DataLayer
             }
             return duration;
         }
+
+        /// <summary>
+        /// retrieves price for the specified plan
+        /// </summary>
+        /// <param name="programme"></param>
+        /// <returns>plan's price</returns>
+        public static decimal GetPlanPrice(int plan_id)
+        {
+            decimal price = 0;
+
+            string query = "SELECT Price FROM Plans WHERE Id = @id";
+
+            SqlCeDataReader reader;
+
+            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            {
+                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                cmd.Parameters.AddWithValue("@id", plan_id);
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    price = reader.GetDecimal(0);
+                }
+                return price;
+            }
+        }
     }
 }

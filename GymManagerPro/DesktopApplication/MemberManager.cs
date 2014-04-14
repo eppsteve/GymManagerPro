@@ -388,7 +388,7 @@ namespace GymManagerPro
                  endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Plan.GetPlanDuration(plan_id)).AddDays(-1);
 
                 // dispay the price of the selected plan to priceTextBox
-                priceTextBox.Text = DataLayer.Members.GetProgrammePrice(programmeComboBox.Text).ToString();
+                 priceTextBox.Text = DataLayer.Plan.GetPlanPrice(plan_id).ToString();
             }
         }
 
