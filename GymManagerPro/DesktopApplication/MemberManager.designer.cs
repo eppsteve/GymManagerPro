@@ -134,9 +134,9 @@
             programmeLabel.AutoSize = true;
             programmeLabel.Location = new System.Drawing.Point(8, 196);
             programmeLabel.Name = "programmeLabel";
-            programmeLabel.Size = new System.Drawing.Size(82, 16);
+            programmeLabel.Size = new System.Drawing.Size(38, 16);
             programmeLabel.TabIndex = 15;
-            programmeLabel.Text = "Programme:";
+            programmeLabel.Text = "Plan:";
             // 
             // priceLabel
             // 

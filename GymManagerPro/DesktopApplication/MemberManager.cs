@@ -17,9 +17,11 @@ namespace GymManagerPro
     {
         SqlCeConnection con = DataLayer.DB.GetSqlCeConnection();
         
-        private int id;     // holds the id value of the current member
-        private int membershipId;  // the selected membership id
-        private int planId; // id of the selected plan
+        private int id;                     // holds the id value of the current member
+        private int membershipId;           // the selected membership id
+        private int planId;                 // stores the id of the selected plan in datagridview
+
+        bool plan_edit_mode = false;        // allows to edit the selected plan, we use this variable it is unlikely that text boxes will contain a valid integer immediately when the form is created
         
         public MemberManager()
         {
@@ -37,7 +39,7 @@ namespace GymManagerPro
             // load member data
             LoadMember(id);
 
-            //bind dictionary, which holds all plans, to combobox
+            // bind dictionary, which holds all plans, to combobox
             programmeComboBox.DataSource = new BindingSource(DataLayer.Plan.GetAllPlans(), null);
             programmeComboBox.DisplayMember = "Value";
             programmeComboBox.ValueMember = "Key";
@@ -283,9 +285,9 @@ namespace GymManagerPro
             if (btnEdit.Text == "Edit")
             {
                 programmeComboBox.Enabled = true;
-                startDateDateTimePicker.Enabled = true;
+                //startDateDateTimePicker.Enabled = true;
                 btnEdit.Text = "Cancel";
-                //btnSave.Enabled = true;
+                plan_edit_mode = true;
             }
             else if (btnEdit.Text == "Cancel")
             {
@@ -293,7 +295,7 @@ namespace GymManagerPro
                 startDateDateTimePicker.Enabled = false;
                 btnEdit.Text = "Edit";
                 resetTextBoxes();
-                //btnSave.Enabled = false;
+                plan_edit_mode = false;
             }
         }
 
@@ -361,19 +363,33 @@ namespace GymManagerPro
 
         private void startDateDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            // calculates the end date of the selected plan based on the start date
-            //endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Plan.GetPlanDuration(programmeComboBox.Text)).AddDays(-1);
-          
-            // we need to get Plan id!!!!!!!
-            endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Plan.GetPlanDuration(planId)).AddDays(-1);
+            if (plan_edit_mode)
+            {
+                // Get the id of the selected plan from combobox
+                int plan_id = Int32.Parse(programmeComboBox.SelectedValue.ToString());
+               
+                // calculate the end date of the selected plan based on the start date
+                endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Plan.GetPlanDuration(plan_id)).AddDays(-1);
+            }
         }
 
     
         private void programmeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Calculates the duration of the selected plan and dispays its price to priceTextBox
-            endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Plan.GetPlanDuration(programmeComboBox.Text)).AddDays(-1);
-            priceTextBox.Text = DataLayer.Members.GetProgrammePrice(programmeComboBox.Text).ToString();
+        {     
+            if (plan_edit_mode)
+            {
+                // enable startDateDateTimePicker
+                startDateDateTimePicker.Enabled = true;
+
+                // Get the id of the selected plan from combobox
+                int plan_id = Int32.Parse(programmeComboBox.SelectedValue.ToString());
+
+                // Calculate the duration of the selected plan 
+                 endDateDateTimePicker.Value = startDateDateTimePicker.Value.AddMonths(DataLayer.Plan.GetPlanDuration(plan_id)).AddDays(-1);
+
+                // dispay the price of the selected plan to priceTextBox
+                priceTextBox.Text = DataLayer.Members.GetProgrammePrice(programmeComboBox.Text).ToString();
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
