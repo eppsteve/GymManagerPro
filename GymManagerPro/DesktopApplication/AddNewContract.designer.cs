@@ -237,6 +237,7 @@
             this.ShowIcon = false;
             this.Text = "Add a New Contract";
             this.Load += new System.EventHandler(this.AddNewContract_Load);
+            this.Shown += new System.EventHandler(this.AddNewContract_Shown);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);

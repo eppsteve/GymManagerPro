@@ -372,61 +372,6 @@ namespace DataLayer
         }
 
 
-
-        ///// <summary>
-        ///// retrieves programme duration for the specified programme
-        ///// </summary>
-        ///// <param name="programme"></param>
-        ///// <returns>programme duration in months</returns>
-        //public static int GetProgrammeDuration(string programme)
-        //{
-        //    int duration = 0;
-
-        //    string query = "SELECT Duration FROM Plans WHERE Name = @programmeName";
-
-        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
-        //    {
-        //        SqlCeCommand cmd = new SqlCeCommand(query, con);
-        //        cmd.Parameters.AddWithValue("@programmeName", programme);
-
-        //        SqlCeDataReader reader = cmd.ExecuteReader();
-
-        //        while (reader.Read())
-        //        {
-        //            duration = reader.GetInt32(0);
-        //        }
-        //    }
-        //    return duration;
-        //}
-
-        /// <summary>
-        /// retrieves price for the specified programme
-        /// </summary>
-        /// <param name="programme"></param>
-        /// <returns>program's price</returns>
-        public static decimal GetProgrammePrice(string programme)
-        {
-            decimal price = 0;
-
-            string query = "SELECT Price FROM Plans WHERE Name = @programmeName";
-
-            SqlCeDataReader reader;
-
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
-            {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                cmd.Parameters.AddWithValue("@programmeName", programme);
-
-                reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    price = reader.GetDecimal(0);
-                }
-                return price;
-            }
-        }
-
         /// <summary>
         /// retrieves the last inserted member
         /// </summary>
