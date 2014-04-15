@@ -185,7 +185,7 @@
             this.txtNotes.Location = new System.Drawing.Point(489, 175);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(180, 78);
+            this.txtNotes.Size = new System.Drawing.Size(185, 78);
             this.txtNotes.TabIndex = 1;
             // 
             // txtEmail
@@ -362,7 +362,7 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(865, 183);
+            this.dataGridView1.Size = new System.Drawing.Size(882, 183);
             this.dataGridView1.TabIndex = 2;
             // 
             // groupBox2
@@ -420,7 +420,7 @@
             this.btnRefresh});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(958, 26);
+            this.toolStrip1.Size = new System.Drawing.Size(910, 26);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -479,12 +479,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 595);
+            this.ClientSize = new System.Drawing.Size(910, 595);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.MinimumSize = new System.Drawing.Size(926, 634);
             this.Name = "Trainers";
             this.ShowIcon = false;
             this.Text = "Trainers";

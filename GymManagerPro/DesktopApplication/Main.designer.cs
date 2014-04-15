@@ -42,8 +42,6 @@
             this.printSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.memberDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +68,6 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
-            this.reportsToolStripMenuItem,
             this.toolsMenu,
             this.windowsMenu,
             this.helpMenu});
@@ -106,7 +103,7 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
@@ -169,21 +166,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
-            // 
-            // reportsToolStripMenuItem
-            // 
-            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.memberDetailsToolStripMenuItem});
-            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.reportsToolStripMenuItem.Text = "&Reports";
-            // 
-            // memberDetailsToolStripMenuItem
-            // 
-            this.memberDetailsToolStripMenuItem.Name = "memberDetailsToolStripMenuItem";
-            this.memberDetailsToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.memberDetailsToolStripMenuItem.Text = "Members Detail";
-            this.memberDetailsToolStripMenuItem.Click += new System.EventHandler(this.memberDetailsToolStripMenuItem_Click);
             // 
             // toolsMenu
             // 
@@ -281,7 +263,7 @@
             this.btnTrainers});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1131, 26);
+            this.toolStrip1.Size = new System.Drawing.Size(1131, 42);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -290,8 +272,9 @@
             this.toolStripButton1.Image = global::GymManagerPro.Properties.Resources.new_user;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(110, 23);
+            this.toolStripButton1.Size = new System.Drawing.Size(94, 39);
             this.toolStripButton1.Text = "Add Member";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // btnMemberManager
@@ -299,8 +282,9 @@
             this.btnMemberManager.Image = global::GymManagerPro.Properties.Resources.member_manager;
             this.btnMemberManager.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMemberManager.Name = "btnMemberManager";
-            this.btnMemberManager.Size = new System.Drawing.Size(140, 23);
+            this.btnMemberManager.Size = new System.Drawing.Size(124, 39);
             this.btnMemberManager.Text = "Member Manager";
+            this.btnMemberManager.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMemberManager.Click += new System.EventHandler(this.btnMemberManager_Click);
             // 
             // toolStripButton2
@@ -308,8 +292,9 @@
             this.toolStripButton2.Image = global::GymManagerPro.Properties.Resources.find_members;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(117, 23);
+            this.toolStripButton2.Size = new System.Drawing.Size(101, 39);
             this.toolStripButton2.Text = "Find Members";
+            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripButton3
@@ -317,8 +302,9 @@
             this.toolStripButton3.Image = global::GymManagerPro.Properties.Resources.attedance;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(91, 23);
+            this.toolStripButton3.Size = new System.Drawing.Size(75, 39);
             this.toolStripButton3.Text = "Attedance";
+            this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton3.ToolTipText = "Attedance";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
@@ -327,8 +313,9 @@
             this.btnTrainers.Image = global::GymManagerPro.Properties.Resources.trainers;
             this.btnTrainers.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnTrainers.Name = "btnTrainers";
-            this.btnTrainers.Size = new System.Drawing.Size(77, 23);
+            this.btnTrainers.Size = new System.Drawing.Size(61, 39);
             this.btnTrainers.Text = "Trainers";
+            this.btnTrainers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnTrainers.Click += new System.EventHandler(this.btnTrainers_Click);
             // 
             // Main
@@ -385,14 +372,12 @@
         private System.Windows.Forms.ToolStripMenuItem arrangeIconsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpMenu;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton btnMemberManager;
         private System.Windows.Forms.ToolStripButton btnTrainers;
-        private System.Windows.Forms.ToolStripMenuItem memberDetailsToolStripMenuItem;
     }
 }
 

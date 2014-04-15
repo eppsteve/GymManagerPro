@@ -76,11 +76,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtSuburb = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnNewMember = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.bntRefresh = new System.Windows.Forms.ToolStripButton();
-            this.btnFindMembers = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCheckin = new System.Windows.Forms.ToolStripButton();
             this.btnNext = new System.Windows.Forms.ToolStripButton();
             this.btnPrev = new System.Windows.Forms.ToolStripButton();
@@ -114,7 +111,7 @@
             // startDateLabel
             // 
             startDateLabel.AutoSize = true;
-            startDateLabel.Location = new System.Drawing.Point(10, 234);
+            startDateLabel.Location = new System.Drawing.Point(10, 224);
             startDateLabel.Name = "startDateLabel";
             startDateLabel.Size = new System.Drawing.Size(70, 16);
             startDateLabel.TabIndex = 11;
@@ -123,7 +120,7 @@
             // endDateLabel
             // 
             endDateLabel.AutoSize = true;
-            endDateLabel.Location = new System.Drawing.Point(310, 234);
+            endDateLabel.Location = new System.Drawing.Point(310, 224);
             endDateLabel.Name = "endDateLabel";
             endDateLabel.Size = new System.Drawing.Size(67, 16);
             endDateLabel.TabIndex = 13;
@@ -132,7 +129,7 @@
             // programmeLabel
             // 
             programmeLabel.AutoSize = true;
-            programmeLabel.Location = new System.Drawing.Point(8, 196);
+            programmeLabel.Location = new System.Drawing.Point(8, 186);
             programmeLabel.Name = "programmeLabel";
             programmeLabel.Size = new System.Drawing.Size(38, 16);
             programmeLabel.TabIndex = 15;
@@ -141,7 +138,7 @@
             // priceLabel
             // 
             priceLabel.AutoSize = true;
-            priceLabel.Location = new System.Drawing.Point(310, 196);
+            priceLabel.Location = new System.Drawing.Point(310, 186);
             priceLabel.Name = "priceLabel";
             priceLabel.Size = new System.Drawing.Size(42, 16);
             priceLabel.TabIndex = 17;
@@ -259,9 +256,9 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.panel1.Location = new System.Drawing.Point(746, 26);
+            this.panel1.Location = new System.Drawing.Point(737, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(247, 517);
+            this.panel1.Size = new System.Drawing.Size(247, 515);
             this.panel1.TabIndex = 11;
             // 
             // txtCardNumber2
@@ -364,7 +361,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.groupBox2.Location = new System.Drawing.Point(14, 271);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(721, 262);
+            this.groupBox2.Size = new System.Drawing.Size(721, 252);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Membership";
@@ -382,14 +379,14 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(696, 126);
+            this.dataGridView1.Size = new System.Drawing.Size(696, 113);
             this.dataGridView1.TabIndex = 19;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // startDateDateTimePicker
             // 
             this.startDateDateTimePicker.Enabled = false;
-            this.startDateDateTimePicker.Location = new System.Drawing.Point(96, 229);
+            this.startDateDateTimePicker.Location = new System.Drawing.Point(96, 219);
             this.startDateDateTimePicker.Name = "startDateDateTimePicker";
             this.startDateDateTimePicker.Size = new System.Drawing.Size(199, 21);
             this.startDateDateTimePicker.TabIndex = 12;
@@ -398,7 +395,7 @@
             // endDateDateTimePicker
             // 
             this.endDateDateTimePicker.Enabled = false;
-            this.endDateDateTimePicker.Location = new System.Drawing.Point(383, 229);
+            this.endDateDateTimePicker.Location = new System.Drawing.Point(383, 219);
             this.endDateDateTimePicker.Name = "endDateDateTimePicker";
             this.endDateDateTimePicker.Size = new System.Drawing.Size(220, 21);
             this.endDateDateTimePicker.TabIndex = 14;
@@ -407,7 +404,7 @@
             // 
             this.programmeComboBox.Enabled = false;
             this.programmeComboBox.FormattingEnabled = true;
-            this.programmeComboBox.Location = new System.Drawing.Point(96, 193);
+            this.programmeComboBox.Location = new System.Drawing.Point(96, 183);
             this.programmeComboBox.Name = "programmeComboBox";
             this.programmeComboBox.Size = new System.Drawing.Size(199, 23);
             this.programmeComboBox.TabIndex = 16;
@@ -415,7 +412,7 @@
             // 
             // priceTextBox
             // 
-            this.priceTextBox.Location = new System.Drawing.Point(383, 193);
+            this.priceTextBox.Location = new System.Drawing.Point(383, 183);
             this.priceTextBox.Name = "priceTextBox";
             this.priceTextBox.ReadOnly = true;
             this.priceTextBox.Size = new System.Drawing.Size(220, 21);
@@ -597,27 +594,14 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Suburb";
             // 
-            // btnNewMember
-            // 
-            this.btnNewMember.Image = global::GymManagerPro.Properties.Resources.new_user;
-            this.btnNewMember.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNewMember.Name = "btnNewMember";
-            this.btnNewMember.Size = new System.Drawing.Size(121, 23);
-            this.btnNewMember.Text = "Add a Member";
-            this.btnNewMember.ToolTipText = "Add a new Member";
-            this.btnNewMember.Click += new System.EventHandler(this.btnNewMember_Click);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnNewMember,
             this.btnSave,
             this.btnDelete,
             this.bntRefresh,
             this.toolStripSeparator1,
-            this.btnFindMembers,
-            this.toolStripSeparator2,
             this.btnCheckin,
             this.btnNext,
             this.btnPrev,
@@ -626,7 +610,7 @@
             this.toolStripLabel1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(993, 26);
+            this.toolStrip1.Size = new System.Drawing.Size(984, 26);
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolbar";
             // 
@@ -639,21 +623,6 @@
             this.bntRefresh.Size = new System.Drawing.Size(74, 23);
             this.bntRefresh.Text = "Refresh";
             this.bntRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // btnFindMembers
-            // 
-            this.btnFindMembers.Image = global::GymManagerPro.Properties.Resources.find_members;
-            this.btnFindMembers.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFindMembers.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
-            this.btnFindMembers.Name = "btnFindMembers";
-            this.btnFindMembers.Size = new System.Drawing.Size(117, 23);
-            this.btnFindMembers.Text = "Find Members";
-            this.btnFindMembers.Click += new System.EventHandler(this.btnFindMembers_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 26);
             // 
             // btnCheckin
             // 
@@ -718,7 +687,7 @@
             this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(0, 1, 4, 2);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(88, 19);
+            this.toolStripLabel1.Size = new System.Drawing.Size(88, 23);
             this.toolStripLabel1.Text = "Quick Search";
             // 
             // txtStreet
@@ -783,7 +752,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(993, 543);
+            this.panel2.Size = new System.Drawing.Size(984, 541);
             this.panel2.TabIndex = 12;
             // 
             // groupBox1
@@ -847,10 +816,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 543);
+            this.ClientSize = new System.Drawing.Size(984, 541);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel2);
+            this.MinimumSize = new System.Drawing.Size(1000, 580);
             this.Name = "MemberManager";
             this.ShowIcon = false;
             this.Text = "Member Manager";
@@ -917,11 +887,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtSuburb;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ToolStripButton btnNewMember;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton bntRefresh;
-        private System.Windows.Forms.ToolStripButton btnFindMembers;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnCheckin;
         private System.Windows.Forms.ToolStripButton btnNext;
         private System.Windows.Forms.ToolStripButton btnPrev;

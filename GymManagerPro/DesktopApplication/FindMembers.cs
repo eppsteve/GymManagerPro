@@ -52,12 +52,7 @@ namespace GymManagerPro
             mm.Show();
         }
 
-        private void btnAddMember_Click(object sender, EventArgs e)
-        {
-            // show AddNewMember window
-            AddNewMember addmember = new AddNewMember();
-            addmember.Show();
-        }
+
 
         private void btnShowDetails_Click(object sender, EventArgs e)
         {

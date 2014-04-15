@@ -274,11 +274,6 @@ namespace GymManagerPro
             newContract.Show();
         }
 
-        private void btnNewMember_Click(object sender, EventArgs e)
-        {
-            AddNewMember addmember = new AddNewMember();
-            addmember.Show();
-        }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -418,9 +413,5 @@ namespace GymManagerPro
             }
         }
 
-        private void btnFindMembers_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

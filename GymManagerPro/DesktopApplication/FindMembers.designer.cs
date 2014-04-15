@@ -40,7 +40,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
-            this.btnAddMember = new System.Windows.Forms.ToolStripButton();
             this.btnCheckin = new System.Windows.Forms.ToolStripButton();
             this.btnShowDetails = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -56,7 +55,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 126);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(933, 395);
+            this.panel1.Size = new System.Drawing.Size(969, 395);
             this.panel1.TabIndex = 10;
             // 
             // membersDataGridView
@@ -82,14 +81,16 @@
             this.membersDataGridView.RowTemplate.ReadOnly = true;
             this.membersDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.membersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.membersDataGridView.Size = new System.Drawing.Size(933, 395);
+            this.membersDataGridView.Size = new System.Drawing.Size(969, 395);
             this.membersDataGridView.TabIndex = 5;
             this.membersDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.membersDataGridView_CellDoubleClick);
             // 
             // cbPersonalTrainer
             // 
+            this.cbPersonalTrainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.cbPersonalTrainer.FormattingEnabled = true;
-            this.cbPersonalTrainer.Location = new System.Drawing.Point(672, 59);
+            this.cbPersonalTrainer.Location = new System.Drawing.Point(643, 59);
             this.cbPersonalTrainer.Name = "cbPersonalTrainer";
             this.cbPersonalTrainer.Size = new System.Drawing.Size(241, 23);
             this.cbPersonalTrainer.TabIndex = 4;
@@ -97,8 +98,10 @@
             // 
             // cbPlan
             // 
+            this.cbPlan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.cbPlan.FormattingEnabled = true;
-            this.cbPlan.Location = new System.Drawing.Point(672, 28);
+            this.cbPlan.Location = new System.Drawing.Point(643, 28);
             this.cbPlan.Name = "cbPlan";
             this.cbPlan.Size = new System.Drawing.Size(241, 23);
             this.cbPlan.TabIndex = 3;
@@ -107,7 +110,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(560, 62);
+            this.label4.Location = new System.Drawing.Point(531, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 16);
             this.label4.TabIndex = 2;
@@ -116,7 +119,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(560, 30);
+            this.label3.Location = new System.Drawing.Point(531, 30);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 16);
             this.label3.TabIndex = 2;
@@ -124,7 +127,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(258, 62);
+            this.textBox2.Location = new System.Drawing.Point(229, 62);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(247, 21);
             this.textBox2.TabIndex = 0;
@@ -132,7 +135,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(78, 66);
+            this.label2.Location = new System.Drawing.Point(49, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(137, 16);
             this.label2.TabIndex = 1;
@@ -152,14 +155,14 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.groupBox1.Location = new System.Drawing.Point(0, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(933, 100);
+            this.groupBox1.Size = new System.Drawing.Size(969, 100);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Find a Member";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(258, 27);
+            this.textBox1.Location = new System.Drawing.Point(229, 27);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(247, 21);
             this.textBox1.TabIndex = 0;
@@ -167,7 +170,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(78, 28);
+            this.label1.Location = new System.Drawing.Point(49, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 16);
             this.label1.TabIndex = 1;
@@ -181,16 +184,6 @@
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(74, 23);
             this.btnRefresh.Text = "Refresh";
-            // 
-            // btnAddMember
-            // 
-            this.btnAddMember.Image = global::GymManagerPro.Properties.Resources.new_user;
-            this.btnAddMember.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddMember.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
-            this.btnAddMember.Name = "btnAddMember";
-            this.btnAddMember.Size = new System.Drawing.Size(141, 23);
-            this.btnAddMember.Text = "Add New Member";
-            this.btnAddMember.Click += new System.EventHandler(this.btnAddMember_Click);
             // 
             // btnCheckin
             // 
@@ -219,11 +212,10 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnShowDetails,
             this.btnCheckin,
-            this.btnAddMember,
             this.btnRefresh});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(933, 26);
+            this.toolStrip1.Size = new System.Drawing.Size(969, 26);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -231,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 521);
+            this.ClientSize = new System.Drawing.Size(969, 521);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
@@ -265,7 +257,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripButton btnRefresh;
-        private System.Windows.Forms.ToolStripButton btnAddMember;
         private System.Windows.Forms.ToolStripButton btnCheckin;
         private System.Windows.Forms.ToolStripButton btnShowDetails;
         private System.Windows.Forms.ToolStrip toolStrip1;
