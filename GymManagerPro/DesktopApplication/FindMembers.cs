@@ -13,6 +13,7 @@ namespace GymManagerPro
     public partial class FindMembers : Form
     {
         bool form_loaded = false;        // set to true when the form has been loaded using shown event. This is used to avoid errors with the initialization of combobox values
+        DataTable dataset;
 
         public FindMembers()
         {
@@ -23,7 +24,8 @@ namespace GymManagerPro
         {
             // get all members and bind them to the datagridview
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = DataLayer.Members.GetAllMembers();
+            dataset = DataLayer.Members.GetAllMembers();
+            bSource.DataSource = dataset;
             membersDataGridView.DataSource = bSource;
 
             // fill plan combobox with all plans
@@ -134,6 +136,27 @@ namespace GymManagerPro
                     membersDataGridView.DataSource = bSource;
                 }
             }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            // filter datagridview data
+            DataView dv = new DataView(dataset);
+            dv.RowFilter = string.Format("LastName LIKE '%{0}%'", textBox1.Text);
+            membersDataGridView.DataSource = dv;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            // filter datagridview data
+            DataView dv = new DataView(dataset);
+            dv.RowFilter = string.Format("FirstName LIKE '%{0}%'", textBox2.Text);
+            membersDataGridView.DataSource = dv;
         }
     }
 }

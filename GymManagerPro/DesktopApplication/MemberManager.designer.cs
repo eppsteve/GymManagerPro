@@ -681,6 +681,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(140, 26);
             this.txtSearch.ToolTipText = "Enter Surname and press Search";
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
             // 
             // toolStripLabel1
             // 

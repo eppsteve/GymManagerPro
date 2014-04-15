@@ -141,7 +141,26 @@ namespace DataLayer
             return member;
         }
 
+        //public static DataTable GetMembersByLastName(string last_name)
+        //{
+        //    DataTable dataset;
+        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
+        //    {
+        //        String sql = "SELECT Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.HomePhone, " +
+        //                     "Members.CellPhone, Members.Email, (Trainers.FirstName + ' ' + Trainers.LastName) AS PersonalTrainer " +
+        //                     "FROM Members LEFT OUTER JOIN Trainers ON Members.PersonalTrainer = Trainers.Id " +
+        //                     "WHERE (Members.LastName LIKE '@last_name'+'%') ";
+        //        SqlCeCommand cmd = new SqlCeCommand(sql, con);
 
+        //        SqlCeDataAdapter sda = new SqlCeDataAdapter();
+        //        sda.SelectCommand = cmd;
+
+        //        dataset = new DataTable();
+        //        sda.Fill(dataset);
+        //        sda.Update(dataset);
+        //        return dataset;
+        //    }
+        //}
 
         /// <summary>
         /// updates database with new data

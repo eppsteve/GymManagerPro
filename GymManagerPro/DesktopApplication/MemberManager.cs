@@ -413,5 +413,10 @@ namespace GymManagerPro
             }
         }
 
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
