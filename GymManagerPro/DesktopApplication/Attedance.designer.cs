@@ -70,7 +70,7 @@
             // 
             // toolStripButton1
             // 
-            this.toolStripButton1.Image = global::GymManagerPro.Properties.Resources._1385791252_3floppy_unmount;
+            this.toolStripButton1.Image = global::GymManagerPro.Properties.Resources.save;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(94, 23);
@@ -81,7 +81,7 @@
             // toolStripButton2
             // 
             this.toolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton2.Image = global::GymManagerPro.Properties.Resources.symbol_check;
+            this.toolStripButton2.Image = global::GymManagerPro.Properties.Resources.checkin;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(84, 23);
@@ -104,7 +104,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = global::GymManagerPro.Properties.Resources._1385791360_iSync;
+            this.btnRefresh.Image = global::GymManagerPro.Properties.Resources.refresh;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.btnRefresh.Name = "btnRefresh";

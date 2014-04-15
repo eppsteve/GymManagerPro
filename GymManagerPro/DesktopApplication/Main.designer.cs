@@ -287,7 +287,7 @@
             // 
             // toolStripButton1
             // 
-            this.toolStripButton1.Image = global::GymManagerPro.Properties.Resources._1385791136_user_group_new;
+            this.toolStripButton1.Image = global::GymManagerPro.Properties.Resources.new_user;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(110, 23);
@@ -296,7 +296,7 @@
             // 
             // btnMemberManager
             // 
-            this.btnMemberManager.Image = global::GymManagerPro.Properties.Resources._1385792996_human_folder_public;
+            this.btnMemberManager.Image = global::GymManagerPro.Properties.Resources.member_manager;
             this.btnMemberManager.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMemberManager.Name = "btnMemberManager";
             this.btnMemberManager.Size = new System.Drawing.Size(140, 23);
@@ -305,7 +305,7 @@
             // 
             // toolStripButton2
             // 
-            this.toolStripButton2.Image = global::GymManagerPro.Properties.Resources.findIcon;
+            this.toolStripButton2.Image = global::GymManagerPro.Properties.Resources.find_members;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(117, 23);
@@ -314,7 +314,7 @@
             // 
             // toolStripButton3
             // 
-            this.toolStripButton3.Image = global::GymManagerPro.Properties.Resources._1386059751_031;
+            this.toolStripButton3.Image = global::GymManagerPro.Properties.Resources.attedance;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(91, 23);
@@ -324,7 +324,7 @@
             // 
             // btnTrainers
             // 
-            this.btnTrainers.Image = global::GymManagerPro.Properties.Resources._1385797237_preferences_contact_list;
+            this.btnTrainers.Image = global::GymManagerPro.Properties.Resources.trainers;
             this.btnTrainers.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnTrainers.Name = "btnTrainers";
             this.btnTrainers.Size = new System.Drawing.Size(77, 23);

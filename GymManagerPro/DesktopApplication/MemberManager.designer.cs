@@ -503,7 +503,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Image = global::GymManagerPro.Properties.Resources._1385791252_3floppy_unmount;
+            this.btnSave.Image = global::GymManagerPro.Properties.Resources.save;
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.btnSave.Name = "btnSave";
@@ -599,7 +599,7 @@
             // 
             // btnNewMember
             // 
-            this.btnNewMember.Image = global::GymManagerPro.Properties.Resources._1385791136_user_group_new;
+            this.btnNewMember.Image = global::GymManagerPro.Properties.Resources.new_user;
             this.btnNewMember.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNewMember.Name = "btnNewMember";
             this.btnNewMember.Size = new System.Drawing.Size(121, 23);
@@ -632,7 +632,7 @@
             // 
             // bntRefresh
             // 
-            this.bntRefresh.Image = global::GymManagerPro.Properties.Resources._1385791360_iSync;
+            this.bntRefresh.Image = global::GymManagerPro.Properties.Resources.refresh;
             this.bntRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bntRefresh.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.bntRefresh.Name = "bntRefresh";
@@ -642,7 +642,7 @@
             // 
             // btnFindMembers
             // 
-            this.btnFindMembers.Image = global::GymManagerPro.Properties.Resources.findIcon;
+            this.btnFindMembers.Image = global::GymManagerPro.Properties.Resources.find_members;
             this.btnFindMembers.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFindMembers.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.btnFindMembers.Name = "btnFindMembers";
@@ -657,7 +657,7 @@
             // 
             // btnCheckin
             // 
-            this.btnCheckin.Image = global::GymManagerPro.Properties.Resources.symbol_check;
+            this.btnCheckin.Image = global::GymManagerPro.Properties.Resources.checkin;
             this.btnCheckin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCheckin.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.btnCheckin.Name = "btnCheckin";
@@ -670,7 +670,7 @@
             // 
             this.btnNext.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.btnNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnNext.Image = global::GymManagerPro.Properties.Resources._1385793693_Next;
+            this.btnNext.Image = global::GymManagerPro.Properties.Resources.Next;
             this.btnNext.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNext.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.btnNext.Name = "btnNext";
@@ -683,7 +683,7 @@
             // 
             this.btnPrev.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.btnPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnPrev.Image = global::GymManagerPro.Properties.Resources._1385793703_Previous;
+            this.btnPrev.Image = global::GymManagerPro.Properties.Resources.Previous;
             this.btnPrev.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPrev.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.btnPrev.Name = "btnPrev";

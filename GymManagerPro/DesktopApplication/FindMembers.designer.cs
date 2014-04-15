@@ -175,7 +175,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = global::GymManagerPro.Properties.Resources._1385791360_iSync;
+            this.btnRefresh.Image = global::GymManagerPro.Properties.Resources.refresh;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.btnRefresh.Name = "btnRefresh";
@@ -184,7 +184,7 @@
             // 
             // btnAddMember
             // 
-            this.btnAddMember.Image = global::GymManagerPro.Properties.Resources._1385791136_user_group_new;
+            this.btnAddMember.Image = global::GymManagerPro.Properties.Resources.new_user;
             this.btnAddMember.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddMember.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.btnAddMember.Name = "btnAddMember";
@@ -194,7 +194,7 @@
             // 
             // btnCheckin
             // 
-            this.btnCheckin.Image = global::GymManagerPro.Properties.Resources.symbol_check;
+            this.btnCheckin.Image = global::GymManagerPro.Properties.Resources.checkin;
             this.btnCheckin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCheckin.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.btnCheckin.Name = "btnCheckin";
@@ -204,7 +204,7 @@
             // 
             // btnShowDetails
             // 
-            this.btnShowDetails.Image = global::GymManagerPro.Properties.Resources._1385792996_human_folder_public;
+            this.btnShowDetails.Image = global::GymManagerPro.Properties.Resources.member_manager;
             this.btnShowDetails.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnShowDetails.Name = "btnShowDetails";
             this.btnShowDetails.Size = new System.Drawing.Size(107, 23);

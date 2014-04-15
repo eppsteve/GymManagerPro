@@ -426,7 +426,7 @@
             // 
             // btnNewTrainer
             // 
-            this.btnNewTrainer.Image = global::GymManagerPro.Properties.Resources._1385797237_preferences_contact_list;
+            this.btnNewTrainer.Image = global::GymManagerPro.Properties.Resources.trainers;
             this.btnNewTrainer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNewTrainer.Name = "btnNewTrainer";
             this.btnNewTrainer.Size = new System.Drawing.Size(102, 23);
@@ -435,7 +435,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Image = global::GymManagerPro.Properties.Resources._1385791252_3floppy_unmount;
+            this.btnSave.Image = global::GymManagerPro.Properties.Resources.save;
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(57, 23);
@@ -458,7 +458,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = global::GymManagerPro.Properties.Resources._1385791360_iSync;
+            this.btnRefresh.Image = global::GymManagerPro.Properties.Resources.refresh;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(74, 23);

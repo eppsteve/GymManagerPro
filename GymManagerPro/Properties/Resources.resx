@@ -121,7 +121,7 @@
   <data name="DeleteIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DeleteIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="findIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="find_members" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\findIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -130,40 +130,34 @@
   <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="symbol_check" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="checkin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\symbol_check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Untitled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Untitled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_1385791136_user_group_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="new_user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1385791136_user-group-new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_1385791252_3floppy_unmount" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1385791252_3floppy_unmount.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_1385791360_iSync" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1385791360_iSync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_1385792996_human_folder_public" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="member_manager" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1385792996_human-folder-public.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_1385793693_Next" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Next" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1385793693_Next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_1385793703_Previous" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Previous" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1385793703_Previous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_1385797237_preferences_contact_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="trainers" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1385797237_preferences-contact-list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_1386059751_031" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="attedance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1386059751_031.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_1386059953_104180" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1386059953_104180.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_1386060600_Run" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1386060600_Run.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
