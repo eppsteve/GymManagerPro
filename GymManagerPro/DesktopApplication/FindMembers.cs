@@ -117,5 +117,28 @@ namespace GymManagerPro
         {
             form_loaded = true;
         }
+
+        private void cbPersonalTrainer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (form_loaded)
+            {
+                // retrieve the members who are assigned to the the selected trainer and bind them to datagridview
+                int trainer_id = Int32.Parse(cbPersonalTrainer.SelectedValue.ToString());                         // get id of the selected trainer
+
+                if (trainer_id != 0)                                                           // if the selected trainer is not set to 'All'
+                {
+                    BindingSource bSource = new BindingSource();
+                    bSource.DataSource = DataLayer.Members.GetMembersByPersonalTrainer(trainer_id);
+                    membersDataGridView.DataSource = bSource;
+                }
+                else
+                {
+                    // get all members and bind them to the datagridview
+                    BindingSource bSource = new BindingSource();
+                    bSource.DataSource = DataLayer.Members.GetAllMembers();
+                    membersDataGridView.DataSource = bSource;
+                }
+            }
+        }
     }
 }

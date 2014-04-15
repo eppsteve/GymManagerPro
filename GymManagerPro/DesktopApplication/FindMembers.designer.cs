@@ -93,6 +93,7 @@
             this.cbPersonalTrainer.Name = "cbPersonalTrainer";
             this.cbPersonalTrainer.Size = new System.Drawing.Size(241, 23);
             this.cbPersonalTrainer.TabIndex = 4;
+            this.cbPersonalTrainer.SelectedIndexChanged += new System.EventHandler(this.cbPersonalTrainer_SelectedIndexChanged);
             // 
             // cbPlan
             // 

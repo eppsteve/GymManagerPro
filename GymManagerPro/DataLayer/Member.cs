@@ -489,24 +489,6 @@ namespace DataLayer
             return id;
         }
 
-        ///// <summary>
-        ///// checkin specified member
-        ///// </summary>
-        ///// <param name="id">member's id</param>
-        ///// <returns>number of affected rows</returns>
-        //public static int CheckInMember(int id)
-        //{
-        //    string query = "INSERT INTO Checkin (Member, Time) VALUES (@memberID, @datetime)";
-        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
-        //    {
-        //        SqlCeCommand cmd = new SqlCeCommand(query, con);
-        //        cmd.Parameters.AddWithValue("@memberID", id);
-        //        cmd.Parameters.AddWithValue("@Datetime", DateTime.Now);
-        //        int rowsAffected = cmd.ExecuteNonQuery();
-        //        return rowsAffected;
-        //    }
-        //}
-
         /// <summary>
         /// retrieves all members who have been assigned to the specified plan
         /// </summary>
@@ -527,6 +509,31 @@ namespace DataLayer
 
                 SqlCeCommand cmd = new SqlCeCommand(sql, con);
                 cmd.Parameters.AddWithValue("@plan_id", plan_id);
+
+                SqlCeDataAdapter sda = new SqlCeDataAdapter();
+                sda.SelectCommand = cmd;
+
+                dataset = new DataTable();
+                sda.Fill(dataset);
+
+                sda.Update(dataset);
+                return dataset;
+            }
+        }
+
+        public static DataTable GetMembersByPersonalTrainer(int trainer_id)
+        {
+            DataTable dataset;
+            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            {
+                String sql = "SELECT        Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.HomePhone, Members.CellPhone, Members.Email, " +
+                             "Trainers.FirstName + ' ' + Trainers.LastName AS PersonalTrainer " +
+                             "FROM            Members INNER JOIN " +
+                             "Trainers ON Members.PersonalTrainer = Trainers.Id " +
+                             "WHERE        (Trainers.Id = @trainer_id) ";
+
+                SqlCeCommand cmd = new SqlCeCommand(sql, con);
+                cmd.Parameters.AddWithValue("@trainer_id", trainer_id);
 
                 SqlCeDataAdapter sda = new SqlCeDataAdapter();
                 sda.SelectCommand = cmd;
