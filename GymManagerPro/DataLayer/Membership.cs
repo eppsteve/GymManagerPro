@@ -32,8 +32,8 @@ namespace DataLayer
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
                 cmd.Parameters.AddWithValue("@memberid", membership.Id);
                 cmd.Parameters.AddWithValue("@planid", membership.Plan);
-                cmd.Parameters.AddWithValue("@StartDate", membership.start);
-                cmd.Parameters.AddWithValue("@EndDate", membership.end);
+                cmd.Parameters.AddWithValue("@startDate", membership.start);
+                cmd.Parameters.AddWithValue("@endDate", membership.end);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
                 return rowsAffected;

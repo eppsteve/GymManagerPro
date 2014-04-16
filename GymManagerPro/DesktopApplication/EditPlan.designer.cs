@@ -115,6 +115,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(201, 171);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -140,6 +141,7 @@
             this.Name = "EditPlan";
             this.ShowIcon = false;
             this.Text = "Edit Plan";
+            this.Shown += new System.EventHandler(this.EditPlan_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

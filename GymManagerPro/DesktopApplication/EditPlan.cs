@@ -25,12 +25,16 @@ namespace GymManagerPro
 
         public EditPlan(DataLayer.Plan plan)
         {
+
             InitializeComponent();
+            plan = new DataLayer.Plan();
             this.plan = plan;
-            txtName.Text = plan.Name;
-            txtDuration.Text = plan.Duration.ToString();
-            txtPrice.Text = plan.Price.ToString();
-            this.Text = "Edit Plan '" + plan.Name + "'";
+
+                txtName.Text = plan.Name;
+                txtDuration.Text = plan.Duration.ToString();
+                txtPrice.Text = plan.Price.ToString();
+                this.Text = "Edit Plan '" + plan.Name + "'";
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -42,6 +46,7 @@ namespace GymManagerPro
         {
             if (edit_mode)
             {
+                // update plan
                 plan.Name = txtName.Text;
                 plan.Duration = Int32.Parse(txtDuration.Text);
                 plan.Price = Decimal.Parse(txtPrice.Text);
@@ -74,6 +79,11 @@ namespace GymManagerPro
                }  
             }
             this.Close();
+        }
+
+        private void EditPlan_Shown(object sender, EventArgs e)
+        {
+
         }
     }
 }

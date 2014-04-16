@@ -141,26 +141,6 @@ namespace DataLayer
             return member;
         }
 
-        //public static DataTable GetMembersByLastName(string last_name)
-        //{
-        //    DataTable dataset;
-        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
-        //    {
-        //        String sql = "SELECT Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.HomePhone, " +
-        //                     "Members.CellPhone, Members.Email, (Trainers.FirstName + ' ' + Trainers.LastName) AS PersonalTrainer " +
-        //                     "FROM Members LEFT OUTER JOIN Trainers ON Members.PersonalTrainer = Trainers.Id " +
-        //                     "WHERE (Members.LastName LIKE '@last_name'+'%') ";
-        //        SqlCeCommand cmd = new SqlCeCommand(sql, con);
-
-        //        SqlCeDataAdapter sda = new SqlCeDataAdapter();
-        //        sda.SelectCommand = cmd;
-
-        //        dataset = new DataTable();
-        //        sda.Fill(dataset);
-        //        sda.Update(dataset);
-        //        return dataset;
-        //    }
-        //}
 
         /// <summary>
         /// updates database with new data
@@ -469,8 +449,15 @@ namespace DataLayer
         public static StringBuilder GetAttedance()
         {
             StringBuilder data = new StringBuilder();
-            string query = "SELECT Members.FirstName, Members.LastName, Checkin.Time FROM Checkin " +
-                           "JOIN Members ON Checkin.MemberID = Members.Id";
+           // string query = "SELECT Members.FirstName, Members.LastName, Checkin.Time FROM Checkin " +
+           //                "JOIN Members ON Checkin.MemberID = Members.Id";
+
+            string query = "SELECT        Members.FirstName, Members.LastName, Checkin.Time, Plans.Name AS [Plan], Memberships.EndDate, Members.Id "+
+                            "FROM            Plans INNER JOIN "+
+                            "Memberships ON Plans.Id = Memberships.[Plan] RIGHT OUTER JOIN "+
+                            "Checkin INNER JOIN "+
+                            "Members ON Checkin.MemberID = Members.Id ON Memberships.Member = Members.Id " +
+                            "ORDER BY Checkin.Time";
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
@@ -478,7 +465,26 @@ namespace DataLayer
                 while (reader.Read())
                 {
                     data.Append(reader["Time"].ToString() +"\t");
-                    data.Append(reader["FirstName"].ToString() + " " + reader["LastName"].ToString());
+                    data.Append(reader["FirstName"].ToString() + " " + reader["LastName"].ToString() + "\t\t");
+                    data.Append(reader["Plan"].ToString() + "\t\t\t");
+                    if (!reader.IsDBNull(4))
+                    {
+                        if (reader.GetDateTime(4) >= DateTime.Now)
+                        {
+                            // membership is active
+                            data.Append("Active - Entrance allowed");
+                        }
+                        else
+                        {
+                            // membership has expired
+                            data.Append("Inactive - Entrance denied");
+                        }
+                    }
+                    else
+                    {
+                        // plan never assigned - member is inactive
+                        data.Append("Inactive - Entrance denied");
+                    }
                     data.Append(Environment.NewLine);
                 }
             }

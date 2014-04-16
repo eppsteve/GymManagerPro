@@ -19,16 +19,18 @@ namespace GymManagerPro
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            // save file as a txt document
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Text Files | *.txt";
             sfd.DefaultExt = "txt";
             sfd.Title = "Save as text file";
             if (sfd.ShowDialog() == DialogResult.OK)
-                System.IO.File.WriteAllText(sfd.FileName, textBox1.Text);
+                System.IO.File.WriteAllText(sfd.FileName, richTextBox1.Text);
         }
 
         private void SetUpSearch()
         {
+            // setup autocomplete search box
             txtSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
             AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
@@ -38,8 +40,19 @@ namespace GymManagerPro
 
         private void Attedance_Load(object sender, EventArgs e)
         {
-            textBox1.Text = DataLayer.Members.GetAttedance().ToString();
+            SetUpData();
             SetUpSearch();
+        }
+
+        private void SetUpData()
+        {
+            //get data
+            richTextBox1.Text = DataLayer.Members.GetAttedance().ToString();
+            // format textbox
+            string active = "Active - Entrance allowed";
+            string inactive = "Inactive - Entrance denied";
+            Utility.HighlightText(richTextBox1, active, Color.Green);
+            Utility.HighlightText(richTextBox1, inactive, Color.Red);
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -49,8 +62,9 @@ namespace GymManagerPro
                 if (DataLayer.Members.MemberCheckin(DataLayer.Members.GetMemberIdByName(txtSearch.Text.Trim())) > 0)
                 {
                     MessageBox.Show("Member just Checked-In!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    textBox1.Clear();
-                    textBox1.Text = DataLayer.Members.GetAttedance().ToString();
+                    richTextBox1.Clear();
+                    txtSearch.Clear();
+                    SetUpData();
                 }
                 else
                 {
@@ -61,8 +75,31 @@ namespace GymManagerPro
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            textBox1.Text = DataLayer.Members.GetAttedance().ToString();
+            richTextBox1.Clear();
+            SetUpData();
         }
     }
+
+    static class Utility{
+
+        // highlights specified text
+        // http://stackoverflow.com/questions/11851908/highlight-all-searched-word-in-richtextbox-c-sharp
+        //
+        public static void HighlightText(this RichTextBox myRtb, string word, Color color)
+        {
+            int s_start = myRtb.SelectionStart, startIndex = 0, index;
+
+            while ((index = myRtb.Text.IndexOf(word, startIndex)) != -1)
+            {
+                myRtb.Select(index, word.Length);
+                myRtb.SelectionColor = color;
+
+                startIndex = index + word.Length;
+            }
+            myRtb.SelectionStart = s_start;
+            myRtb.SelectionLength = 0;
+            myRtb.SelectionColor = Color.Black;
+        }
+    }
+
 }
