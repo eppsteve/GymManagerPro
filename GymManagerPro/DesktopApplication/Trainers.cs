@@ -66,6 +66,10 @@ namespace GymManagerPro
             txtHomePhone.Text = trainer.HomePhone;
             txtId.Text = id.ToString();
             txtNotes.Text = trainer.Notes;
+            if (trainer.Sex == "Male")
+                rbMale.Checked = true;
+            else if (trainer.Sex == "Female")
+                rbFemale.Checked = true;
             //txtPostalCode.Text = trainer.PostalCode.ToString();
             txtSalary.Text = trainer.Salary.ToString();
             txtSuburb.Text = trainer.Suburb;
@@ -177,11 +181,11 @@ namespace GymManagerPro
                 trainer.Suburb = txtSuburb.Text.Trim();
                 if (rbMale.Checked)
                 {
-                    trainer.Sex = "male";
+                    trainer.Sex = "Male";
                 }
                 else if (rbFemale.Checked)
                 {
-                    trainer.Sex = "female";
+                    trainer.Sex = "Female";
                 }
                 trainer.Notes = txtNotes.Text.Trim();
 
@@ -203,7 +207,6 @@ namespace GymManagerPro
                 if (DataLayer.Trainers.UpdateTrainer(trainer) > 0)
                 {
                     MessageBox.Show("Trainer Updated successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //LoadTrainers();
                     LoadAllTrainersNames();
                 }
                 else
@@ -223,7 +226,7 @@ namespace GymManagerPro
             //initialize new trainer
             trainer.FName = "New Trainer";
             trainer.LName = "New Trainer";
-            trainer.Sex = "male";
+            trainer.Sex = "Male";
             trainer.DateOfBirth = DateTime.Now;
             trainer.Street = String.Empty;
             trainer.Suburb = String.Empty;

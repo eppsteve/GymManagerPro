@@ -30,7 +30,7 @@ namespace DataLayer
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
-                cmd.Parameters.AddWithValue("@memberid", membership.Id);
+                cmd.Parameters.AddWithValue("@memberid", membership.MemberId);
                 cmd.Parameters.AddWithValue("@planid", membership.Plan);
                 cmd.Parameters.AddWithValue("@startDate", membership.start);
                 cmd.Parameters.AddWithValue("@endDate", membership.end);
