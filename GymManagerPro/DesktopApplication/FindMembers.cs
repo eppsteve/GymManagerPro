@@ -45,16 +45,14 @@ namespace GymManagerPro
 
         private void membersDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            int val = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value.ToString());         // get the value of the first cell, which is the member's id
+            // get member's id
+            int val = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value.ToString());         // the value of the first cell
             
             // open member's data in member manager
             MemberManager mm = new MemberManager(val);                                                     
             mm.MdiParent = this.MdiParent;
             mm.Show();
         }
-
-
 
         private void btnShowDetails_Click(object sender, EventArgs e)
         {
@@ -97,14 +95,16 @@ namespace GymManagerPro
                 if (plan_id != 0)                                                           // if the selected plan is not 'All'
                 {
                     BindingSource bSource = new BindingSource();
-                    bSource.DataSource = DataLayer.Members.GetMembersByPlan(plan_id);
+                    dataset = DataLayer.Members.GetMembersByPlan(plan_id);
+                    bSource.DataSource = dataset;
                     membersDataGridView.DataSource = bSource;
                 }
                 else 
                 {
                     // get all members and bind them to the datagridview
                     BindingSource bSource = new BindingSource();
-                    bSource.DataSource = DataLayer.Members.GetAllMembers();
+                    dataset = DataLayer.Members.GetAllMembers();
+                    bSource.DataSource = dataset;
                     membersDataGridView.DataSource = bSource;
                 }
             }
@@ -125,14 +125,16 @@ namespace GymManagerPro
                 if (trainer_id != 0)                                                           // if the selected trainer is not set to 'All'
                 {
                     BindingSource bSource = new BindingSource();
-                    bSource.DataSource = DataLayer.Members.GetMembersByPersonalTrainer(trainer_id);
+                    dataset = DataLayer.Members.GetMembersByPersonalTrainer(trainer_id);
+                    bSource.DataSource = dataset;
                     membersDataGridView.DataSource = bSource;
                 }
                 else
                 {
                     // get all members and bind them to the datagridview
                     BindingSource bSource = new BindingSource();
-                    bSource.DataSource = DataLayer.Members.GetAllMembers();
+                    dataset = DataLayer.Members.GetAllMembers();
+                    bSource.DataSource = dataset;
                     membersDataGridView.DataSource = bSource;
                 }
             }

@@ -41,10 +41,9 @@ namespace DataLayer
 
         }
 
-
+        // updates mrmbership with new data
         public static int UpdateMembership(Membership membership)
         {
-           //string query = "UPDATE Memberships SET [Plan] = @planid, StartDate = @startdate, EndDate = @enddate WHERE Member = @memberid AND Id = @membershipid";
             string query = "UPDATE Memberships SET [Plan] = @planid, StartDate = @startdate, EndDate = @enddate WHERE Id = @membership_id";
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
@@ -52,7 +51,6 @@ namespace DataLayer
                 cmd.Parameters.AddWithValue("@planid", membership.Plan);
                 cmd.Parameters.AddWithValue("@startdate", membership.start);
                 cmd.Parameters.AddWithValue("@enddate", membership.end);
-                //cmd.Parameters.AddWithValue("@memberid", membership.MemberId);
                 cmd.Parameters.AddWithValue("@membership_id", membership.Id);
                 int rowsAffected = cmd.ExecuteNonQuery();
                 return rowsAffected;

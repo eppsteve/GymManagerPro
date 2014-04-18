@@ -118,8 +118,8 @@ namespace GymManagerPro
             {
                 try
                 {
-                    //MessageBox.Show(dataGridView1.SelectedCells[0].Value.ToString());
-                    int memberToRemove = (int) dataGridView1.SelectedCells[0].Value; //the id of the member to be removed
+                    // get the id of the member to be removed
+                    int memberToRemove = (int) dataGridView1.SelectedCells[0].Value; //first cell of the selected row
                     
                     if (DataLayer.Trainers.RemoveMember(memberToRemove) > 0)
                     {

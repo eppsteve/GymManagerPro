@@ -43,7 +43,10 @@ namespace DataLayer
             LName = reader["LastName"].ToString();
             FName = reader["FirstName"].ToString();
             Sex = reader["Sex"].ToString();
-            DateOfBirth = reader.GetDateTime(4);
+            if (!reader.IsDBNull(4))
+            {
+                DateOfBirth = reader.GetDateTime(4);
+            }
             Street = reader["Street"].ToString();
             Suburb = reader["Suburb"].ToString();
             City = reader["City"].ToString();
@@ -464,9 +467,10 @@ namespace DataLayer
                 SqlCeDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    data.Append(reader["Time"].ToString() +"\t");
-                    data.Append(reader["FirstName"].ToString() + " " + reader["LastName"].ToString() + "\t\t");
-                    data.Append(reader["Plan"].ToString() + "\t\t\t");
+                    //append data to stringbuilder
+                    data.Append(reader["Time"].ToString() +"\t");                                                   // append time of checkin to stringbuilder
+                    data.Append(reader["FirstName"].ToString() + " " + reader["LastName"].ToString() + "\t\t");     // append name of member to stringbuilder
+                    data.Append(reader["Plan"].ToString() + "\t\t\t");                                              // append assigned plans to stringbuilder 
                     if (!reader.IsDBNull(4))
                     {
                         if (reader.GetDateTime(4) >= DateTime.Now)

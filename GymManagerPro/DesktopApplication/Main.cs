@@ -12,24 +12,17 @@ namespace GymManagerPro
 {
     public partial class Main : Form
     {
-        //private int childFormNumber = 0;
-        private FindMembers findMembers;
         private Plans plans;
-        //public CheckinMonitorOLD va;
-        //public MembershipPlansOLD mp;
-        //public TrainersOLD tr;
 
         public Main()
         {
             InitializeComponent();
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Form childForm = new Form();
-            //childForm.MdiParent = this;
-            //childForm.Text = "Window " + childFormNumber++;
-            //childForm.Show();
+            AddNewMember addmember = new AddNewMember();
+            addmember.Show();
         }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
@@ -65,25 +58,14 @@ namespace GymManagerPro
             }
         }
 
-        //creates only one instance of the viewMembers window
         private void findMemberToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (viewMembers == null)
-            //{
-            //    viewMembers = new FindMembersOLD();
-            //    viewMembers.MdiParent = this;
-            //    viewMembers.FormClosed += viewMembers_FormClosed;
-            //    viewMembers.Show();
-            //}
-            //else
-            //{
-            //    viewMembers.Activate();
-            //}
+
         }
 
         void viewMembers_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //viewMembers = null;
+
         }
 
         private void MDIParent_Load(object sender, EventArgs e)
@@ -93,8 +75,7 @@ namespace GymManagerPro
 
         private void addMemberToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //AddMemberOLD am = new AddMemberOLD();
-            //am.ShowDialog(this);
+
         }
 
         private void MDIParent_FormClosing(object sender, FormClosingEventArgs e)
@@ -104,22 +85,12 @@ namespace GymManagerPro
 
         private void viewAttedanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (va == null)
-            //{
-            //    va = new CheckinMonitorOLD();
-            //    va.MdiParent = this;
-            //    va.FormClosed += va_FormClosed;
-            //    va.Show();
-            //}
-            //else
-            //{
-            //    va.Activate();
-            //}
+
         }
 
         void va_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //va = null;
+
         }
 
         private void btnMemberManager_Click(object sender, EventArgs e)
@@ -129,66 +100,76 @@ namespace GymManagerPro
             mn.Show();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void btnAddMember_Click(object sender, EventArgs e)
         {
             AddNewMember addmember = new AddNewMember();
             addmember.Show();
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void btnFindMembers_Click(object sender, EventArgs e)
         {
-            if (findMembers == null)
+            if (System.Windows.Forms.Application.OpenForms["FindMembers"] as FindMembers == null)
             {
-                findMembers = new FindMembers();
-                findMembers.MdiParent = this;
-                findMembers.FormClosed += viewMembers_FormClosed;
-                findMembers.Show();
+                // the form does not exist, create a new one
+                FindMembers fm = new FindMembers();
+                fm.MdiParent = this;
+                fm.Show();
             }
             else
             {
-                findMembers.Activate();
+                // the form exists, show it up
+                FindMembers fm = (FindMembers)Application.OpenForms["FindMembers"];
+                if (fm.WindowState == FormWindowState.Minimized)
+                    fm.WindowState = FormWindowState.Normal;
+                fm.Focus();
             }
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void btnAttedance_Click(object sender, EventArgs e)
         {
-            Attedance at = new Attedance();
-            at.MdiParent = this;
-            at.Show();
-            //if (va == null)
-            //{
-            //    va = new CheckinMonitorOLD();
-            //    va.MdiParent = this;
-            //    va.FormClosed += va_FormClosed;
-            //    va.Show();
-            //}
-            //else
-            //{
-            //    va.Activate();
-            //}
+            if (System.Windows.Forms.Application.OpenForms["Attedance"] as Attedance == null)
+            {
+                // the form does not exist, create a new one
+                Attedance at = new Attedance();
+                at.MdiParent = this;
+                at.Show();
+            }
+            else
+            {
+                // the form exists, show it up
+                Attedance at = (Attedance)Application.OpenForms["Attedance"];
+                if (at.WindowState == FormWindowState.Minimized)
+                    at.WindowState = FormWindowState.Normal;
+                at.Focus();
+            }
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (plans == null)
-            //{
+
                 plans = new Plans();
                 plans.MdiParent = this;
-                //plans.FormClosed += plans_FormClosed;
                 plans.Show();
-            //}
-            //else
-            //{
-            //    plans.Activate();
-            //}
+
         }
 
         private void btnTrainers_Click(object sender, EventArgs e)
         {
-            Trainers trainers = new Trainers();
-            trainers.MdiParent = this;
-            trainers.Show();
-    
+            if (System.Windows.Forms.Application.OpenForms["Trainers"] as Trainers == null)
+            {
+                // the form does not exist, create a new one
+                Trainers tr = new Trainers();
+                tr.MdiParent = this;
+                tr.Show();
+            }
+            else
+            {
+                // the form exists, show it up
+                Trainers tr = (Trainers)Application.OpenForms["Trainers"];
+                if (tr.WindowState == FormWindowState.Minimized)
+                    tr.WindowState = FormWindowState.Normal;
+                tr.Focus();
+            }
         }
 
         private void exportToExcelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -209,9 +190,7 @@ namespace GymManagerPro
 
         private void memberDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Report report = new Report();
-            //report.MdiParent = this;
-            //report.Show();
+
         }
 
     }

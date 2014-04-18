@@ -38,6 +38,7 @@ namespace GymManagerPro
         {
             // load member data
             LoadMember(id);
+            this.Text = lblName.Text + " - Member Manager";
 
             // bind dictionary, which holds all plans, to combobox
             programmeComboBox.DataSource = new BindingSource(DataLayer.Plan.GetAllPlans(), null);

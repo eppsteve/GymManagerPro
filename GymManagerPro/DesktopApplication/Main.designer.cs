@@ -45,7 +45,6 @@
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileVerticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileHorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,10 +54,10 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnAddMember = new System.Windows.Forms.ToolStripButton();
             this.btnMemberManager = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.btnFindMembers = new System.Windows.Forms.ToolStripButton();
+            this.btnAttedance = new System.Windows.Forms.ToolStripButton();
             this.btnTrainers = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -103,9 +102,9 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.newToolStripMenuItem.Text = "&New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -185,7 +184,6 @@
             // windowsMenu
             // 
             this.windowsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newWindowToolStripMenuItem,
             this.cascadeToolStripMenuItem,
             this.tileVerticalToolStripMenuItem,
             this.tileHorizontalToolStripMenuItem,
@@ -195,45 +193,38 @@
             this.windowsMenu.Size = new System.Drawing.Size(68, 20);
             this.windowsMenu.Text = "&Windows";
             // 
-            // newWindowToolStripMenuItem
-            // 
-            this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.newWindowToolStripMenuItem.Text = "&New Window";
-            this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
-            // 
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cascadeToolStripMenuItem.Text = "&Cascade";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.CascadeToolStripMenuItem_Click);
             // 
             // tileVerticalToolStripMenuItem
             // 
             this.tileVerticalToolStripMenuItem.Name = "tileVerticalToolStripMenuItem";
-            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tileVerticalToolStripMenuItem.Text = "Tile &Vertical";
             this.tileVerticalToolStripMenuItem.Click += new System.EventHandler(this.TileVerticalToolStripMenuItem_Click);
             // 
             // tileHorizontalToolStripMenuItem
             // 
             this.tileHorizontalToolStripMenuItem.Name = "tileHorizontalToolStripMenuItem";
-            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tileHorizontalToolStripMenuItem.Text = "Tile &Horizontal";
             this.tileHorizontalToolStripMenuItem.Click += new System.EventHandler(this.TileHorizontalToolStripMenuItem_Click);
             // 
             // closeAllToolStripMenuItem
             // 
             this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
-            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeAllToolStripMenuItem.Text = "C&lose All";
             this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
             // 
             // arrangeIconsToolStripMenuItem
             // 
             this.arrangeIconsToolStripMenuItem.Name = "arrangeIconsToolStripMenuItem";
-            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.arrangeIconsToolStripMenuItem.Text = "&Arrange Icons";
             this.arrangeIconsToolStripMenuItem.Click += new System.EventHandler(this.ArrangeIconsToolStripMenuItem_Click);
             // 
@@ -248,7 +239,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -256,10 +247,10 @@
             // 
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
+            this.btnAddMember,
             this.btnMemberManager,
-            this.toolStripButton2,
-            this.toolStripButton3,
+            this.btnFindMembers,
+            this.btnAttedance,
             this.btnTrainers});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
@@ -267,15 +258,15 @@
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // btnAddMember
             // 
-            this.toolStripButton1.Image = global::GymManagerPro.Properties.Resources.new_user;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(94, 39);
-            this.toolStripButton1.Text = "Add Member";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.btnAddMember.Image = global::GymManagerPro.Properties.Resources.new_user;
+            this.btnAddMember.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddMember.Name = "btnAddMember";
+            this.btnAddMember.Size = new System.Drawing.Size(94, 39);
+            this.btnAddMember.Text = "Add Member";
+            this.btnAddMember.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddMember.Click += new System.EventHandler(this.btnAddMember_Click);
             // 
             // btnMemberManager
             // 
@@ -287,26 +278,26 @@
             this.btnMemberManager.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMemberManager.Click += new System.EventHandler(this.btnMemberManager_Click);
             // 
-            // toolStripButton2
+            // btnFindMembers
             // 
-            this.toolStripButton2.Image = global::GymManagerPro.Properties.Resources.find_members;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(101, 39);
-            this.toolStripButton2.Text = "Find Members";
-            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.btnFindMembers.Image = global::GymManagerPro.Properties.Resources.find_members;
+            this.btnFindMembers.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFindMembers.Name = "btnFindMembers";
+            this.btnFindMembers.Size = new System.Drawing.Size(101, 39);
+            this.btnFindMembers.Text = "Find Members";
+            this.btnFindMembers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnFindMembers.Click += new System.EventHandler(this.btnFindMembers_Click);
             // 
-            // toolStripButton3
+            // btnAttedance
             // 
-            this.toolStripButton3.Image = global::GymManagerPro.Properties.Resources.attedance;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(75, 39);
-            this.toolStripButton3.Text = "Attedance";
-            this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton3.ToolTipText = "Attedance";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.btnAttedance.Image = global::GymManagerPro.Properties.Resources.attedance;
+            this.btnAttedance.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAttedance.Name = "btnAttedance";
+            this.btnAttedance.Size = new System.Drawing.Size(75, 39);
+            this.btnAttedance.Text = "Attedance";
+            this.btnAttedance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAttedance.ToolTipText = "Attedance";
+            this.btnAttedance.Click += new System.EventHandler(this.btnAttedance_Click);
             // 
             // btnTrainers
             // 
@@ -365,7 +356,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolsMenu;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsMenu;
-        private System.Windows.Forms.ToolStripMenuItem newWindowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tileVerticalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeAllToolStripMenuItem;
@@ -373,9 +363,9 @@
         private System.Windows.Forms.ToolStripMenuItem helpMenu;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton btnAddMember;
+        private System.Windows.Forms.ToolStripButton btnFindMembers;
+        private System.Windows.Forms.ToolStripButton btnAttedance;
         private System.Windows.Forms.ToolStripButton btnMemberManager;
         private System.Windows.Forms.ToolStripButton btnTrainers;
     }
