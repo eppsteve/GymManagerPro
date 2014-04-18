@@ -35,8 +35,8 @@ namespace DataLayer
                 {
                     plan.Id = reader.GetInt32(0);
                     plan.Name = reader.GetString(1);
-                    plan.Price = reader.GetDecimal(2);
-                    plan.Duration = reader.GetInt32(3);
+                    plan.Duration = reader.GetInt32(2);
+                    plan.Price = reader.GetDecimal(3);
                 }
             }
             return plan;

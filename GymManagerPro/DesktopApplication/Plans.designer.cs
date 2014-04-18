@@ -154,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 464);
+            this.ClientSize = new System.Drawing.Size(539, 447);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDeletePlan);
             this.Controls.Add(this.btnNewPlan);
@@ -167,8 +167,8 @@
             this.Name = "Plans";
             this.ShowIcon = false;
             this.Text = "Plans";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Plans_FormClosed);
             this.Load += new System.EventHandler(this.Plans_Load);
+            this.Shown += new System.EventHandler(this.Plans_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

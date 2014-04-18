@@ -13,6 +13,7 @@ namespace GymManagerPro
     public partial class Plans : Form
     {
         DataLayer.Plan plan;
+        bool form_loaded = false;
         //int planId; // id of the selected plan
 
         public Plans()
@@ -22,6 +23,7 @@ namespace GymManagerPro
 
         private void Plans_Load(object sender, EventArgs e)
         {
+            // get all plans and bind them to listbox
             listBox1.DataSource = DataLayer.Plan.GetAllPlans().ToList();
             listBox1.ValueMember = "Key";
             listBox1.DisplayMember = "Value"; 
@@ -31,15 +33,16 @@ namespace GymManagerPro
         {
             if (listBox1.SelectedIndex != -1)
             {
-                try
+                if (form_loaded)
                 {
+                    // get selected plan
                     int planId = Convert.ToInt32(listBox1.SelectedValue.ToString());
                     plan = DataLayer.Plan.GetPlan(planId);
+                    //populate textboxes with plan's data
                     txtName.Text = plan.Name;
                     txtDuration.Text = plan.Duration.ToString();
                     txtPrice.Text = plan.Price.ToString();
                 }
-                catch { }
             }
         }
 
@@ -47,11 +50,6 @@ namespace GymManagerPro
         {
             EditPlan editplan = new EditPlan(plan);
             editplan.ShowDialog();
-        }
-
-        private void Plans_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
         }
 
         private void btnNewPlan_Click(object sender, EventArgs e)
@@ -71,6 +69,11 @@ namespace GymManagerPro
                 listBox1.ValueMember = "Id";
                 listBox1.DisplayMember = "Name"; 
             }
+        }
+
+        private void Plans_Shown(object sender, EventArgs e)
+        {
+            form_loaded = true;
         }
     }
 }

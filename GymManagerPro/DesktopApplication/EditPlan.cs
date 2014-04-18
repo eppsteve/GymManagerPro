@@ -23,18 +23,17 @@ namespace GymManagerPro
             this.Text = "Add a new Plan";
         }
 
-        public EditPlan(DataLayer.Plan plan)
+        public EditPlan(DataLayer.Plan myplan)
         {
-
             InitializeComponent();
+
             plan = new DataLayer.Plan();
-            this.plan = plan;
+            this.plan = myplan;
 
-                txtName.Text = plan.Name;
-                txtDuration.Text = plan.Duration.ToString();
-                txtPrice.Text = plan.Price.ToString();
-                this.Text = "Edit Plan '" + plan.Name + "'";
-
+            txtName.Text = plan.Name;
+            txtDuration.Text = plan.Duration.ToString();
+            txtPrice.Text = plan.Price.ToString();
+            this.Text = "Edit Plan '" + plan.Name + "'";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
