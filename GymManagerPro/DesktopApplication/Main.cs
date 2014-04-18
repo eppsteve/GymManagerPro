@@ -70,7 +70,17 @@ namespace GymManagerPro
 
         private void MDIParent_Load(object sender, EventArgs e)
         {
-
+            // set background image of MdiParent form
+            foreach (Control ctl in this.Controls)
+            {
+                if (ctl is MdiClient)
+                {
+                    ctl.BackgroundImageLayout = ImageLayout.Stretch;
+                    ctl.BackgroundImage = Properties.Resources.bg;
+                    
+                    break;
+                }
+            }
         }
 
         private void addMemberToolStripMenuItem_Click(object sender, EventArgs e)
@@ -95,7 +105,7 @@ namespace GymManagerPro
 
         private void btnMemberManager_Click(object sender, EventArgs e)
         {
-            MemberManager mn = new MemberManager(1);
+            MemberManager mn = new MemberManager(DataLayer.Members.GetFirstMemberId());
             mn.MdiParent = this;
             mn.Show();
         }

@@ -144,6 +144,27 @@ namespace DataLayer
             return member;
         }
 
+        //gets the id of the first member
+        public static int GetFirstMemberId()
+        {
+            int nextId = 0;
+            string query = "SELECT MIN(Id) FROM Members";
+            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            {
+                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCeDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0))
+                    {
+                        nextId = reader.GetInt32(0);
+                    }
+                }
+
+                return nextId;
+            }
+        }
 
         /// <summary>
         /// updates database with new data
