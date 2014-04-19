@@ -516,5 +516,102 @@ namespace GymManagerPro.RibbonUI
             }
         }
 
+        private void btnMembersSave_Click(object sender, EventArgs e)
+        {
+            // create a new member and save its details to the db
+            DataLayer.Members members = new DataLayer.Members();
+            DataLayer.Member member = new DataLayer.Member();
+
+            if (!String.IsNullOrEmpty(txtLastName.Text))
+            {
+                // fill the properties of member object based on textboxes text
+                member.MemberID = this.member_id;
+                member.CardNumber = Int32.Parse(txtCardNumber.Text);
+                member.LName = txtLastName.Text;
+                member.FName = txtFirstName.Text;
+                if (rbMale.Checked)
+                {
+                    member.Sex = "male";
+                }
+                else if (rbFemale.Checked)
+                {
+                    member.Sex = "female";
+                }
+                member.DateOfBirth = txtDateOfBirth.Value;
+                member.Street = txtStreet.Text;
+                member.Suburb = txtSuburb.Text;
+                member.City = txtCity.Text;
+                if (txtPostalCode.Text.Length > 0)
+                {
+                    member.PostalCode = Int32.Parse(txtPostalCode.Text);
+                }
+                else
+                {
+                    member.PostalCode = 0;
+                }
+                member.HomePhone = txtHomePhone.Text;
+                member.CellPhone = txtCellPhone.Text;
+                member.Email = txtEmail.Text;
+                member.Occupation = txtOccupation.Text;
+                member.Notes = txtNotes.Text;
+
+                // holds the member's picture
+                //byte[] imageBt = null;
+                if (pictureBox1.ImageLocation != null)
+                {
+                    FileStream fstream = new FileStream(pictureBox1.ImageLocation, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fstream);
+                    member.Image = br.ReadBytes((int)fstream.Length);
+                }
+                else
+                {
+                    byte[] empty_array = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
+                    member.Image = empty_array;
+                }
+
+
+                if (DataLayer.Members.UpdateMember(member) > 0)
+                {
+                    MessageBox.Show("Member Updated successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to Update Member!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                // set textboxes to readonly
+                txtLastName.ReadOnly = true;
+                txtFirstName.ReadOnly = true;
+                txtHomePhone.ReadOnly = true;
+                txtStreet.ReadOnly = true;
+                txtSuburb.ReadOnly = true;
+                txtCity.ReadOnly = true;
+                txtCellPhone.ReadOnly = true;
+                txtOccupation.ReadOnly = true;
+                txtEmail.ReadOnly = true;
+
+                btnMembersEdit.Text = "Edit";
+            }
+            else
+            {
+                MessageBox.Show("Last Name cannot be empty!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void btnMembersEdit_Click(object sender, EventArgs e)
+        {
+            txtLastName.ReadOnly = false;
+            txtFirstName.ReadOnly = false;
+            txtHomePhone.ReadOnly = false;
+            txtStreet.ReadOnly = false;
+            txtSuburb.ReadOnly = false;
+            txtCity.ReadOnly = false;
+            txtCellPhone.ReadOnly = false;
+            txtOccupation.ReadOnly = false;
+            txtEmail.ReadOnly = false;
+
+            btnMembersEdit.Text = "Cancel";
+        }
+
     }
 }
