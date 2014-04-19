@@ -15,6 +15,8 @@ namespace GymManagerPro.RibbonUI
         DataTable dataset;
         bool form_loaded;
 
+        DataLayer.Plan plan;
+
         public frmMain()
         {
             InitializeComponent();
@@ -159,11 +161,17 @@ namespace GymManagerPro.RibbonUI
             //load trainers
             LoadAllTrainerNames();
 
+            // get all plans and bind them to listbox
+            listBoxPlans.DataSource = DataLayer.Plan.GetAllPlans().ToList();
+            listBoxPlans.ValueMember = "Key";
+            listBoxPlans.DisplayMember = "Value"; 
+
             //hide all panels
             panelMemberManager.Visible = false;
             panelAllMembers.Visible = false;
             panelTrainers.Visible = false;
             panelTrainers.Visible = false;
+            panelPlans.Visible = false;
 
             //switch to Find ribbon tab
             ribbonTabFind.Select();
@@ -174,6 +182,7 @@ namespace GymManagerPro.RibbonUI
             panelAllMembers.Visible = true;
             panelMemberManager.Visible = false;
             panelTrainers.Visible = false;
+            panelPlans.Visible = false;
 
             //switch to ribbon tab Find
             ribbonTabFind.Select();
@@ -200,6 +209,7 @@ namespace GymManagerPro.RibbonUI
             panelTrainers.Visible = true;
             panelMemberManager.Visible = false;
             panelAllMembers.Visible = false;
+            panelPlans.Visible = false;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -208,6 +218,7 @@ namespace GymManagerPro.RibbonUI
             {
                 if (listBox1.SelectedIndex != -1)
                 {
+                    //get trainer's id and load trainer's data
                     int trainer_id = Convert.ToInt32(listBox1.SelectedValue.ToString());
                     LoadTrainer(trainer_id);
                 }
@@ -217,6 +228,31 @@ namespace GymManagerPro.RibbonUI
         private void frmMain_Shown(object sender, EventArgs e)
         {
             form_loaded = true;
+        }
+
+        private void listBoxPlans_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (form_loaded)
+            {
+                if (listBoxPlans.SelectedIndex != -1)
+                {
+                    // get selected plan
+                    int planId = Convert.ToInt32(listBoxPlans.SelectedValue.ToString());
+                    plan = DataLayer.Plan.GetPlan(planId);
+                    //populate textboxes with plan's data
+                    txtPlanName.Text = plan.Name;
+                    txtPlanDuration.Text = plan.Duration.ToString();
+                    txtPlanPrice.Text = plan.Price.ToString();
+                }
+            }
+        }
+
+        private void buttonItem27_Click(object sender, EventArgs e)
+        {
+            panelPlans.Visible = true;
+            panelAllMembers.Visible = false;
+            panelMemberManager.Visible = false;
+            panelTrainers.Visible = false;
         }
 
     }
