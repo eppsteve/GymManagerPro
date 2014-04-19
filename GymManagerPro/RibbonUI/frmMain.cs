@@ -174,13 +174,30 @@ namespace GymManagerPro.RibbonUI
             //load trainers
             LoadAllTrainerNames();
 
-            // get all plans and bind them to listbox
+            // get all plans and bind them to listbox, in Plans panel
             listBoxPlans.DataSource = DataLayer.Plan.GetAllPlans().ToList();
             listBoxPlans.ValueMember = "Key";
             listBoxPlans.DisplayMember = "Value"; 
 
             // get check ins
             SetUpAttedance();
+
+
+            // fill combobox with all plans, in ribbon find tab
+            SortedDictionary<int, string> plans = new SortedDictionary<int, string>(DataLayer.Plan.GetAllPlans());           // get all the plans and put them to a sorted dictionary
+            plans.Add(0, "All");                                                                                            // add 'All' entry to dictionary
+            cbFindPlan.DataSource = new BindingSource(plans, null);                                                             // bind dictionary to combobox
+            cbFindPlan.DisplayMember = "Value";                                                                                 // name of the plan
+            cbFindPlan.ValueMember = "Key";                                                                                 // id of the plan
+            
+            // fill personal trainer combobox with all trainers, in ribbon find tab
+            SortedDictionary<int, string> trainers = new SortedDictionary<int, string>(DataLayer.Trainers.GetAllTrainers());  // get id and name of all trainers and put them to a sorted dictionary
+            trainers.Add(0, "All");                                                                 // add 'All' entry
+            cbFindPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
+            cbFindPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
+            cbFindPersonalTrainer.ValueMember = "Key";                                                  // id of the trainer
+
+
 
             //hide all panels
             panelMemberManager.Visible = false;
@@ -193,7 +210,6 @@ namespace GymManagerPro.RibbonUI
             //switch to Find ribbon tab
             ribbonTabFind.Select();
         }
-
 
         private void membersDataGridViewX_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -309,6 +325,105 @@ namespace GymManagerPro.RibbonUI
         {
             // load again to refresh
             LoadAllTrainerNames();
+        }
+
+        private void txtFindLastName_KeyDown(object sender, KeyEventArgs e)
+        {
+            // filter datagridview data by last name
+            DataView dv = new DataView(dataset);
+            dv.RowFilter = string.Format("LastName LIKE '%{0}%'", txtFindLastName.Text);
+            membersDataGridViewX.DataSource = dv;
+        }
+
+        private void txtFindFirstName_KeyDown(object sender, KeyEventArgs e)
+        {
+            // filter datagridview data by first name
+            DataView dv = new DataView(dataset);
+            dv.RowFilter = string.Format("FirstName LIKE '%{0}%'", txtFindFirstName.Text);
+            membersDataGridViewX.DataSource = dv;
+        }
+
+        private void cbFindPlan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (form_loaded)
+            {
+                // retrieve the members who have the selected plan and bind them to datagridview
+                int plan_id = Int32.Parse(cbFindPlan.SelectedValue.ToString());                 // get id of the selected plan
+
+                if (plan_id != 0)                   // if the selected plan is not 'All'
+                {
+                    BindingSource bSource = new BindingSource();
+                    dataset = DataLayer.Members.GetMembersByPlan(plan_id);
+                    bSource.DataSource = dataset;
+                    membersDataGridViewX.DataSource = bSource;
+                }
+                else     // if the selected plan is 'ALL'
+                {
+                    // get all members and bind them to the datagridview
+                    BindingSource bSource = new BindingSource();
+                    dataset = DataLayer.Members.GetAllMembers();
+                    bSource.DataSource = dataset;
+                    membersDataGridViewX.DataSource = bSource;
+                }
+
+                // set personal trainer filter combobox to default value
+                cbFindPersonalTrainer.SelectedIndex = 0;
+
+                // show find members panel
+                panelAttedance.Visible = false;
+                panelAllMembers.Visible = true;
+                panelMemberManager.Visible = false;
+                panelTrainers.Visible = false;
+                panelPlans.Visible = false;
+            }
+        }
+
+        private void cbFindPersonalTrainer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (form_loaded)
+            {
+                // retrieve the members who are assigned to the the selected trainer and bind them to datagridview
+                int trainer_id = Int32.Parse(cbFindPersonalTrainer.SelectedValue.ToString());                         // get id of the selected trainer
+
+                if (trainer_id != 0)                                                           // if the selected trainer is not set to 'All'
+                {
+                    BindingSource bSource = new BindingSource();
+                    dataset = DataLayer.Members.GetMembersByPersonalTrainer(trainer_id);
+                    bSource.DataSource = dataset;
+                    membersDataGridViewX.DataSource = bSource;
+                }
+                else
+                {
+                    // get all members and bind them to the datagridview
+                    BindingSource bSource = new BindingSource();
+                    dataset = DataLayer.Members.GetAllMembers();
+                    bSource.DataSource = dataset;
+                    membersDataGridViewX.DataSource = bSource;
+                }
+
+                // set plan filter combobox to default value
+                cbFindPlan.SelectedIndex = 0;
+
+                // show find members panel
+                panelAttedance.Visible = false;
+                panelAllMembers.Visible = true;
+                panelMemberManager.Visible = false;
+                panelTrainers.Visible = false;
+                panelPlans.Visible = false;
+            }
+        }
+
+        private void btnFindRefresh_Click(object sender, EventArgs e)
+        {
+            // get all members and bind them to the members datagridview to reload
+            BindingSource bSource = new BindingSource();
+            dataset = DataLayer.Members.GetAllMembers();
+            bSource.DataSource = dataset;
+            membersDataGridViewX.DataSource = bSource;
+
+            //set comboboxes to default value
+            cbFindPersonalTrainer.SelectedIndex = 0;
+            cbFindPlan.SelectedIndex = 0;
         }
 
     }

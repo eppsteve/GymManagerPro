@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar12 = new DevComponents.DotNetBar.RibbonBar();
@@ -80,14 +80,11 @@
             this.buttonItem15 = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
             this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
-            this.comboBoxItem2 = new DevComponents.DotNetBar.ComboBoxItem();
-            this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
-            this.comboBoxItem1 = new DevComponents.DotNetBar.ComboBoxItem();
             this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
             this.labelItem3 = new DevComponents.DotNetBar.LabelItem();
-            this.textBoxItem1 = new DevComponents.DotNetBar.TextBoxItem();
+            this.txtFindLastName = new DevComponents.DotNetBar.TextBoxItem();
             this.labelItem4 = new DevComponents.DotNetBar.LabelItem();
-            this.textBoxItem2 = new DevComponents.DotNetBar.TextBoxItem();
+            this.txtFindFirstName = new DevComponents.DotNetBar.TextBoxItem();
             this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
             this.btnViewAllMembers = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel5 = new DevComponents.DotNetBar.RibbonPanel();
@@ -225,11 +222,18 @@
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.richTextBoxAttedance = new System.Windows.Forms.RichTextBox();
+            this.cbFindPlan = new System.Windows.Forms.ComboBox();
+            this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem10 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem11 = new DevComponents.DotNetBar.LabelItem();
+            this.cbFindPersonalTrainer = new System.Windows.Forms.ComboBox();
+            this.btnFindRefresh = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel4.SuspendLayout();
             this.ribbonPanel2.SuspendLayout();
             this.ribbonPanel3.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
+            this.ribbonBar2.SuspendLayout();
             this.ribbonPanel5.SuspendLayout();
             this.panelAllMembers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.membersDataGridViewX)).BeginInit();
@@ -263,10 +267,10 @@
             this.ribbonControl1.BackgroundStyle.Class = "";
             this.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonControl1.CaptionVisible = true;
+            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Controls.Add(this.ribbonPanel2);
             this.ribbonControl1.Controls.Add(this.ribbonPanel3);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Controls.Add(this.ribbonPanel5);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ribbonControl1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -317,6 +321,7 @@
             this.ribbonPanel4.StyleMouseOver.Class = "";
             this.ribbonPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel4.TabIndex = 4;
+            this.ribbonPanel4.Visible = false;
             // 
             // ribbonBar12
             // 
@@ -891,7 +896,6 @@
             this.ribbonPanel1.StyleMouseOver.Class = "";
             this.ribbonPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel1.TabIndex = 1;
-            this.ribbonPanel1.Visible = false;
             // 
             // ribbonBar4
             // 
@@ -913,7 +917,7 @@
             this.comboBoxItem3,
             this.textBoxItem3,
             this.buttonItem15});
-            this.ribbonBar4.Location = new System.Drawing.Point(799, 0);
+            this.ribbonBar4.Location = new System.Drawing.Point(862, 0);
             this.ribbonBar4.Name = "ribbonBar4";
             this.ribbonBar4.Size = new System.Drawing.Size(353, 93);
             this.ribbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -967,15 +971,17 @@
             this.ribbonBar2.BackgroundStyle.Class = "";
             this.ribbonBar2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonBar2.ContainerControlProcessDialogKey = true;
+            this.ribbonBar2.Controls.Add(this.cbFindPersonalTrainer);
+            this.ribbonBar2.Controls.Add(this.cbFindPlan);
             this.ribbonBar2.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.labelItem2,
-            this.comboBoxItem2,
             this.labelItem1,
-            this.comboBoxItem1});
-            this.ribbonBar2.Location = new System.Drawing.Point(430, 0);
+            this.labelItem10,
+            this.labelItem11});
+            this.ribbonBar2.Location = new System.Drawing.Point(477, 0);
             this.ribbonBar2.Name = "ribbonBar2";
-            this.ribbonBar2.Size = new System.Drawing.Size(369, 93);
+            this.ribbonBar2.Size = new System.Drawing.Size(385, 93);
             this.ribbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar2.TabIndex = 3;
             this.ribbonBar2.Text = "Filter by";
@@ -995,25 +1001,6 @@
             this.labelItem2.Name = "labelItem2";
             this.labelItem2.Text = "Plan";
             // 
-            // comboBoxItem2
-            // 
-            this.comboBoxItem2.ComboWidth = 120;
-            this.comboBoxItem2.DropDownHeight = 106;
-            this.comboBoxItem2.Name = "comboBoxItem2";
-            this.comboBoxItem2.Text = "comboBoxItem2";
-            // 
-            // labelItem1
-            // 
-            this.labelItem1.Name = "labelItem1";
-            this.labelItem1.Text = "Personal Trainer";
-            // 
-            // comboBoxItem1
-            // 
-            this.comboBoxItem1.ComboWidth = 120;
-            this.comboBoxItem1.DropDownHeight = 106;
-            this.comboBoxItem1.Name = "comboBoxItem1";
-            this.comboBoxItem1.Text = "comboBoxItem1";
-            // 
             // ribbonBar3
             // 
             this.ribbonBar3.AutoOverflowEnabled = true;
@@ -1031,10 +1018,10 @@
             this.ribbonBar3.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar3.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.labelItem3,
-            this.textBoxItem1,
+            this.txtFindLastName,
             this.labelItem4,
-            this.textBoxItem2});
-            this.ribbonBar3.Location = new System.Drawing.Point(58, 0);
+            this.txtFindFirstName});
+            this.ribbonBar3.Location = new System.Drawing.Point(105, 0);
             this.ribbonBar3.Name = "ribbonBar3";
             this.ribbonBar3.Size = new System.Drawing.Size(372, 93);
             this.ribbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1056,22 +1043,24 @@
             this.labelItem3.Name = "labelItem3";
             this.labelItem3.Text = "Last Name";
             // 
-            // textBoxItem1
+            // txtFindLastName
             // 
-            this.textBoxItem1.Name = "textBoxItem1";
-            this.textBoxItem1.TextBoxWidth = 120;
-            this.textBoxItem1.WatermarkColor = System.Drawing.SystemColors.GrayText;
+            this.txtFindLastName.Name = "txtFindLastName";
+            this.txtFindLastName.TextBoxWidth = 120;
+            this.txtFindLastName.WatermarkColor = System.Drawing.SystemColors.GrayText;
+            this.txtFindLastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFindLastName_KeyDown);
             // 
             // labelItem4
             // 
             this.labelItem4.Name = "labelItem4";
             this.labelItem4.Text = "First Name";
             // 
-            // textBoxItem2
+            // txtFindFirstName
             // 
-            this.textBoxItem2.Name = "textBoxItem2";
-            this.textBoxItem2.TextBoxWidth = 120;
-            this.textBoxItem2.WatermarkColor = System.Drawing.SystemColors.GrayText;
+            this.txtFindFirstName.Name = "txtFindFirstName";
+            this.txtFindFirstName.TextBoxWidth = 120;
+            this.txtFindFirstName.WatermarkColor = System.Drawing.SystemColors.GrayText;
+            this.txtFindFirstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFindFirstName_KeyDown);
             // 
             // ribbonBar1
             // 
@@ -1089,10 +1078,11 @@
             this.ribbonBar1.ContainerControlProcessDialogKey = true;
             this.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnViewAllMembers});
+            this.btnViewAllMembers,
+            this.btnFindRefresh});
             this.ribbonBar1.Location = new System.Drawing.Point(3, 0);
             this.ribbonBar1.Name = "ribbonBar1";
-            this.ribbonBar1.Size = new System.Drawing.Size(55, 93);
+            this.ribbonBar1.Size = new System.Drawing.Size(102, 93);
             this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar1.TabIndex = 0;
             this.ribbonBar1.Text = "Show";
@@ -1205,6 +1195,7 @@
             // 
             // ribbonTabFind
             // 
+            this.ribbonTabFind.Checked = true;
             this.ribbonTabFind.Name = "ribbonTabFind";
             this.ribbonTabFind.Panel = this.ribbonPanel1;
             this.ribbonTabFind.Text = "Find";
@@ -1223,7 +1214,6 @@
             // 
             // ribbonTabTrainers
             // 
-            this.ribbonTabTrainers.Checked = true;
             this.ribbonTabTrainers.Name = "ribbonTabTrainers";
             this.ribbonTabTrainers.Panel = this.ribbonPanel4;
             this.ribbonTabTrainers.Text = "Trainers";
@@ -1459,14 +1449,14 @@
             this.membersDataGridViewX.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.membersDataGridViewX.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.membersDataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.membersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.membersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle1;
             this.membersDataGridViewX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.membersDataGridViewX.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.membersDataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
@@ -1968,14 +1958,14 @@
             this.dataGridViewX1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewX1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
@@ -2164,8 +2154,8 @@
             this.superTabControl2.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl2.ControlBox.MenuBox,
             this.superTabControl2.ControlBox.CloseBox});
-            this.superTabControl2.Controls.Add(this.superTabControlPanel5);
             this.superTabControl2.Controls.Add(this.superTabControlPanel4);
+            this.superTabControl2.Controls.Add(this.superTabControlPanel5);
             this.superTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl2.Location = new System.Drawing.Point(214, 0);
             this.superTabControl2.Name = "superTabControl2";
@@ -2496,14 +2486,14 @@
             this.amTrainersDataGridViewX.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.amTrainersDataGridViewX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.amTrainersDataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.amTrainersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.amTrainersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle3;
             this.amTrainersDataGridViewX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.amTrainersDataGridViewX.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.amTrainersDataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
@@ -2715,16 +2705,56 @@
             this.richTextBoxAttedance.TabIndex = 6;
             this.richTextBoxAttedance.Text = "";
             // 
+            // cbFindPlan
+            // 
+            this.cbFindPlan.FormattingEnabled = true;
+            this.cbFindPlan.Location = new System.Drawing.Point(34, 28);
+            this.cbFindPlan.Name = "cbFindPlan";
+            this.cbFindPlan.Size = new System.Drawing.Size(121, 21);
+            this.cbFindPlan.TabIndex = 0;
+            this.cbFindPlan.SelectedIndexChanged += new System.EventHandler(this.cbFindPlan_SelectedIndexChanged);
+            // 
+            // labelItem1
+            // 
+            this.labelItem1.Name = "labelItem1";
+            this.labelItem1.Text = "                                           ";
+            // 
+            // labelItem10
+            // 
+            this.labelItem10.Name = "labelItem10";
+            this.labelItem10.Text = "Personal Trainer";
+            // 
+            // labelItem11
+            // 
+            this.labelItem11.Name = "labelItem11";
+            this.labelItem11.Text = "                                             ";
+            // 
+            // cbFindPersonalTrainer
+            // 
+            this.cbFindPersonalTrainer.FormattingEnabled = true;
+            this.cbFindPersonalTrainer.Location = new System.Drawing.Point(252, 28);
+            this.cbFindPersonalTrainer.Name = "cbFindPersonalTrainer";
+            this.cbFindPersonalTrainer.Size = new System.Drawing.Size(121, 21);
+            this.cbFindPersonalTrainer.TabIndex = 1;
+            this.cbFindPersonalTrainer.SelectedIndexChanged += new System.EventHandler(this.cbFindPersonalTrainer_SelectedIndexChanged);
+            // 
+            // btnFindRefresh
+            // 
+            this.btnFindRefresh.Name = "btnFindRefresh";
+            this.btnFindRefresh.SubItemsExpandWidth = 14;
+            this.btnFindRefresh.Text = "Refresh";
+            this.btnFindRefresh.Click += new System.EventHandler(this.btnFindRefresh_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 703);
+            this.Controls.Add(this.panelAllMembers);
             this.Controls.Add(this.panelTrainers);
             this.Controls.Add(this.panelAttedance);
             this.Controls.Add(this.panelPlans);
             this.Controls.Add(this.panelMemberManager);
-            this.Controls.Add(this.panelAllMembers);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "frmMain";
             this.Text = "Gym Manager Pro";
@@ -2736,6 +2766,7 @@
             this.ribbonPanel2.ResumeLayout(false);
             this.ribbonPanel3.ResumeLayout(false);
             this.ribbonPanel1.ResumeLayout(false);
+            this.ribbonBar2.ResumeLayout(false);
             this.ribbonPanel5.ResumeLayout(false);
             this.panelAllMembers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.membersDataGridViewX)).EndInit();
@@ -2801,14 +2832,11 @@
         private DevComponents.DotNetBar.ButtonItem btnViewAllMembers;
         private DevComponents.DotNetBar.RibbonBar ribbonBar2;
         private DevComponents.DotNetBar.LabelItem labelItem2;
-        private DevComponents.DotNetBar.ComboBoxItem comboBoxItem2;
-        private DevComponents.DotNetBar.LabelItem labelItem1;
-        private DevComponents.DotNetBar.ComboBoxItem comboBoxItem1;
         private DevComponents.DotNetBar.RibbonBar ribbonBar3;
         private DevComponents.DotNetBar.LabelItem labelItem3;
-        private DevComponents.DotNetBar.TextBoxItem textBoxItem1;
+        private DevComponents.DotNetBar.TextBoxItem txtFindLastName;
         private DevComponents.DotNetBar.LabelItem labelItem4;
-        private DevComponents.DotNetBar.TextBoxItem textBoxItem2;
+        private DevComponents.DotNetBar.TextBoxItem txtFindFirstName;
         private DevComponents.DotNetBar.RibbonBar ribbonBar4;
         private DevComponents.DotNetBar.LabelItem labelItem5;
         private DevComponents.DotNetBar.ComboBoxItem comboBoxItem3;
@@ -2963,5 +2991,11 @@
         private DevComponents.DotNetBar.RibbonBar ribbonBar12;
         private DevComponents.DotNetBar.ButtonItem btnTrainersAddMember;
         private DevComponents.DotNetBar.ButtonItem buttonItem23;
+        private System.Windows.Forms.ComboBox cbFindPersonalTrainer;
+        private System.Windows.Forms.ComboBox cbFindPlan;
+        private DevComponents.DotNetBar.LabelItem labelItem1;
+        private DevComponents.DotNetBar.LabelItem labelItem10;
+        private DevComponents.DotNetBar.LabelItem labelItem11;
+        private DevComponents.DotNetBar.ButtonItem btnFindRefresh;
     }
 }
