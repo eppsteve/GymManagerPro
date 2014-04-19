@@ -15,6 +15,7 @@ namespace GymManagerPro.RibbonUI
         DataTable dataset;
         bool form_loaded;
         int trainer_id;
+        int member_id = 0;
 
         DataLayer.Plan plan;
 
@@ -163,6 +164,16 @@ namespace GymManagerPro.RibbonUI
             Utility.HighlightText(richTextBoxAttedance, inactive, Color.Red);
         }
 
+        // sets up auto-complete search box
+        private void SetUpSearch()
+        {
+            txtMembersSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtMembersSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+            coll.AddRange(DataLayer.Members.AutoCompleteSearch().ToArray());
+            txtMembersSearch.AutoCompleteCustomSource = coll;
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
             // get all members and bind them to the members datagridview
@@ -182,6 +193,8 @@ namespace GymManagerPro.RibbonUI
             // get check ins
             SetUpAttedance();
 
+            // set up autocomplete members search box in ribbon
+            SetUpSearch();
 
             // fill combobox with all plans, in ribbon find tab
             SortedDictionary<int, string> plans = new SortedDictionary<int, string>(DataLayer.Plan.GetAllPlans());           // get all the plans and put them to a sorted dictionary
@@ -214,10 +227,10 @@ namespace GymManagerPro.RibbonUI
         private void membersDataGridViewX_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // get member's id from selected row
-            int id = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value.ToString());
+            member_id = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value.ToString());
 
             // load member
-            LoadMember(id);
+            LoadMember(member_id);
 
             // show member manager panel and hide all other panels
             panelAllMembers.Visible = false;
@@ -424,6 +437,83 @@ namespace GymManagerPro.RibbonUI
             //set comboboxes to default value
             cbFindPersonalTrainer.SelectedIndex = 0;
             cbFindPlan.SelectedIndex = 0;
+        }
+
+        private void btnMembersNext_Click(object sender, EventArgs e)
+        {
+            // Retrieves and displays the next member (if any)
+            if (DataLayer.Members.MemberHasNext(member_id))
+            {
+                member_id = DataLayer.Members.GetNextMember(member_id);
+                LoadMember(member_id);
+            }
+            else
+            {
+                MessageBox.Show("There are no more members!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnMembersPrev_Click(object sender, EventArgs e)
+        {
+            if (DataLayer.Members.MemberHasPrevious(member_id))
+            {
+                member_id = DataLayer.Members.GetPrevMember(member_id);
+                LoadMember(member_id);
+            }
+            else
+            {
+                MessageBox.Show("There are no more members!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnMembersSearch_Click(object sender, EventArgs e)
+        {
+            // Displays the selected member from the search box
+            LoadMember(DataLayer.Members.QuickSearch(txtMembersSearch.Text));
+        }
+
+        private void btnCheckIn_Click(object sender, EventArgs e)
+        {
+            if (member_id != 0)             // if a member has been selected
+            {
+                if (DataLayer.Members.MemberCheckin(member_id) > 0)
+                {
+                    MessageBox.Show(lblName.Text + " just Checked-in!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Console.Beep();
+                }
+                else
+                {
+                    MessageBox.Show("Couldnot check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a user first!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnAttedanceRefresh_Click(object sender, EventArgs e)
+        {
+            // get check ins again to refresh
+            SetUpAttedance();
+        }
+
+        private void btnMembersDelete_Click(object sender, EventArgs e)
+        {
+            if (panelMemberManager.Visible)
+            {
+                // Deletes the current member
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this member? All related data will be lost!!!", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    DataLayer.Members.DeleteMember(member_id);
+                    MessageBox.Show("Member deleted!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // display the previous member
+                    member_id = DataLayer.Members.GetPrevMember(member_id);
+                    LoadMember(member_id);
+                }
+            }
         }
 
     }
