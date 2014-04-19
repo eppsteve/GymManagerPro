@@ -14,6 +14,7 @@ namespace GymManagerPro.RibbonUI
     {
         DataTable dataset;
         bool form_loaded;
+        int trainer_id;
 
         DataLayer.Plan plan;
 
@@ -90,9 +91,9 @@ namespace GymManagerPro.RibbonUI
         // populates listbox with the names of all the trainers
         public void LoadAllTrainerNames()
         {
-            listBox1.DataSource = new BindingSource(DataLayer.Trainers.GetAllTrainers(), null);
-            listBox1.DisplayMember = "Value";
-            listBox1.ValueMember = "Key";
+            listBoxTrainers.DataSource = new BindingSource(DataLayer.Trainers.GetAllTrainers(), null);
+            listBoxTrainers.DisplayMember = "Value";
+            listBoxTrainers.ValueMember = "Key";
         }
 
         // loads data for the specified trainer
@@ -150,6 +151,18 @@ namespace GymManagerPro.RibbonUI
             //}
         }
 
+        // populates richTextBox Attedance with checkins data
+        public void SetUpAttedance()
+        {
+            //get data from db
+            richTextBoxAttedance.Text = DataLayer.Members.GetAttedance().ToString();
+            // format textbox
+            string active = "Active - Entrance allowed";
+            string inactive = "Inactive - Entrance denied";
+            Utility.HighlightText(richTextBoxAttedance, active, Color.Green);
+            Utility.HighlightText(richTextBoxAttedance, inactive, Color.Red);
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
             // get all members and bind them to the members datagridview
@@ -166,27 +179,21 @@ namespace GymManagerPro.RibbonUI
             listBoxPlans.ValueMember = "Key";
             listBoxPlans.DisplayMember = "Value"; 
 
+            // get check ins
+            SetUpAttedance();
+
             //hide all panels
             panelMemberManager.Visible = false;
             panelAllMembers.Visible = false;
             panelTrainers.Visible = false;
             panelTrainers.Visible = false;
             panelPlans.Visible = false;
+            panelAttedance.Visible = false;
 
             //switch to Find ribbon tab
             ribbonTabFind.Select();
         }
 
-        private void btnViewAllMembers_Click(object sender, EventArgs e)
-        {
-            panelAllMembers.Visible = true;
-            panelMemberManager.Visible = false;
-            panelTrainers.Visible = false;
-            panelPlans.Visible = false;
-
-            //switch to ribbon tab Find
-            ribbonTabFind.Select();
-        }
 
         private void membersDataGridViewX_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -204,22 +211,14 @@ namespace GymManagerPro.RibbonUI
             ribbonTabMembers.Select();
         }
 
-        private void ribbonTabTrainers_Click(object sender, EventArgs e)
-        {
-            panelTrainers.Visible = true;
-            panelMemberManager.Visible = false;
-            panelAllMembers.Visible = false;
-            panelPlans.Visible = false;
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxTrainers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (form_loaded)
             {
-                if (listBox1.SelectedIndex != -1)
+                if (listBoxTrainers.SelectedIndex != -1)
                 {
                     //get trainer's id and load trainer's data
-                    int trainer_id = Convert.ToInt32(listBox1.SelectedValue.ToString());
+                    trainer_id = Convert.ToInt32(listBoxTrainers.SelectedValue.ToString());
                     LoadTrainer(trainer_id);
                 }
             }
@@ -247,12 +246,69 @@ namespace GymManagerPro.RibbonUI
             }
         }
 
-        private void buttonItem27_Click(object sender, EventArgs e)
+        private void btnViewAllMembers_Click(object sender, EventArgs e)
+        {
+            panelAllMembers.Visible = true;
+            panelMemberManager.Visible = false;
+            panelTrainers.Visible = false;
+            panelPlans.Visible = false;
+            panelAttedance.Visible = false;
+        }
+
+        private void btnViewCheckins_Click(object sender, EventArgs e)
+        {
+            panelAttedance.Visible = true;
+            panelAllMembers.Visible = false;
+            panelMemberManager.Visible = false;
+            panelTrainers.Visible = false;
+            panelPlans.Visible = false;
+        }
+
+        private void btnViewTrainers_Click(object sender, EventArgs e)
+        {
+            panelTrainers.Visible = true;
+            panelPlans.Visible = false;
+            panelAllMembers.Visible = false;
+            panelMemberManager.Visible = false;
+            panelAttedance.Visible = false;
+        }
+
+        private void btnViewPlans_Click(object sender, EventArgs e)
         {
             panelPlans.Visible = true;
             panelAllMembers.Visible = false;
             panelMemberManager.Visible = false;
             panelTrainers.Visible = false;
+            panelAttedance.Visible = false;
+        }
+
+        private void btnTrainersAddMember_Click(object sender, EventArgs e)
+        {
+            if (form_loaded)
+            {
+                // show trainers panel
+                panelPlans.Visible = false;
+                panelAllMembers.Visible = false;
+                panelMemberManager.Visible = false;
+                panelTrainers.Visible = true;
+                panelAttedance.Visible = false;
+
+                if (listBoxTrainers.SelectedIndex != -1)
+                {
+                    TrainerAssignmentDialog tad = new TrainerAssignmentDialog(trainer_id);
+                    tad.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please select a trainer first!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void btnTrainersRefresh_Click(object sender, EventArgs e)
+        {
+            // load again to refresh
+            LoadAllTrainerNames();
         }
 
     }
