@@ -26,6 +26,14 @@ namespace GymManagerPro.RibbonUI
             this.id = id;
         }
 
+        private DataGridView mydg = null;
+
+        public AddNewContract(int id, DataGridView dg)
+        {
+            InitializeComponent();
+            this.id = id;
+            mydg = dg as DataGridView;
+        }
         private void AddNewContract_Load(object sender, EventArgs e)
         {
             // get all plans and fill the combobox with the data
@@ -50,6 +58,10 @@ namespace GymManagerPro.RibbonUI
                 if (DataLayer.Memberships.NewMembership(membership) >0 )
                 {
                     MessageBox.Show("Membership added successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //reload memberships datagridview in main form
+                    DataTable table = DataLayer.Memberships.GetMembershipByMemberId(id);
+                    this.mydg.DataSource = table;
                 }
                 else
                 {

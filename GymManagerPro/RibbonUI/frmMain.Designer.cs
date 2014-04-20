@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar4 = new DevComponents.DotNetBar.RibbonBar();
@@ -877,7 +877,7 @@
             this.ribbonPanel3.Location = new System.Drawing.Point(0, 56);
             this.ribbonPanel3.Name = "ribbonPanel3";
             this.ribbonPanel3.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel3.Size = new System.Drawing.Size(982, 96);
+            this.ribbonPanel3.Size = new System.Drawing.Size(984, 96);
             // 
             // 
             // 
@@ -1617,14 +1617,14 @@
             this.membersDataGridViewX.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.membersDataGridViewX.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.membersDataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.membersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.membersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle7;
             this.membersDataGridViewX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.membersDataGridViewX.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.membersDataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
@@ -1697,8 +1697,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Location = new System.Drawing.Point(240, 75);
             this.superTabControl1.Name = "superTabControl1";
@@ -2063,9 +2063,9 @@
             this.superTabControlPanel2.Controls.Add(this.groupPanel2);
             this.superTabControlPanel2.Controls.Add(this.groupPanel1);
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 0);
+            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 25);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(730, 369);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(730, 344);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItem2;
             this.superTabControlPanel2.ThemeAware = true;
@@ -2078,7 +2078,7 @@
             this.groupPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupPanel2.Location = new System.Drawing.Point(0, 50);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(730, 319);
+            this.groupPanel2.Size = new System.Drawing.Size(730, 294);
             // 
             // 
             // 
@@ -2122,14 +2122,14 @@
             this.dataGridViewMemberships.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewMemberships.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewMemberships.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMemberships.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMemberships.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewMemberships.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewMemberships.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewMemberships.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
@@ -2140,7 +2140,7 @@
             this.dataGridViewMemberships.RowHeadersVisible = false;
             this.dataGridViewMemberships.RowTemplate.Height = 30;
             this.dataGridViewMemberships.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMemberships.Size = new System.Drawing.Size(724, 313);
+            this.dataGridViewMemberships.Size = new System.Drawing.Size(724, 288);
             this.dataGridViewMemberships.TabIndex = 0;
             // 
             // groupPanel1
@@ -2668,14 +2668,14 @@
             this.amTrainersDataGridViewX.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.amTrainersDataGridViewX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.amTrainersDataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.amTrainersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.amTrainersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle9;
             this.amTrainersDataGridViewX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.amTrainersDataGridViewX.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.amTrainersDataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
@@ -3557,8 +3557,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 680);
-            this.Controls.Add(this.panelNewMemberWizard);
             this.Controls.Add(this.panelMemberManager);
+            this.Controls.Add(this.panelNewMemberWizard);
             this.Controls.Add(this.panelAllMembers);
             this.Controls.Add(this.panelTrainers);
             this.Controls.Add(this.panelAttedance);
@@ -3731,7 +3731,6 @@
         private System.Windows.Forms.Label lblSex;
         private DevComponents.Editors.IntegerInput txtCardNumber;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewMemberships;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.ButtonX buttonXDeleteMembership;
         private DevComponents.DotNetBar.ButtonX buttonXNewMembership;
@@ -3879,5 +3878,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cbWizardPlans;
         private System.Windows.Forms.Label label52;
+        public DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewMemberships;
     }
 }
