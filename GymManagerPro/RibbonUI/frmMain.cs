@@ -79,7 +79,7 @@ namespace GymManagerPro.RibbonUI
 
                 //load membership data
                 DataTable table = DataLayer.Memberships.GetMembershipByMemberId(id);
-                //dataGridView1.DataSource = table;
+                dataGridViewMemberships.DataSource = table;
                 //resetTextBoxes();
 
             }
@@ -164,7 +164,7 @@ namespace GymManagerPro.RibbonUI
             Utility.HighlightText(richTextBoxAttedance, inactive, Color.Red);
         }
 
-        // sets up auto-complete search box
+        // sets up auto-complete search boxes
         private void SetUpSearch()
         {
             txtMembersSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -172,6 +172,18 @@ namespace GymManagerPro.RibbonUI
             AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
             coll.AddRange(DataLayer.Members.AutoCompleteSearch().ToArray());
             txtMembersSearch.AutoCompleteCustomSource = coll;
+
+            txtAttedanceLastName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtAttedanceLastName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //AutoCompleteStringCollection coll2 = new AutoCompleteStringCollection();
+            //coll2.AddRange(DataLayer.Members.AutoCompleteSearch().ToArray());
+            txtAttedanceLastName.AutoCompleteCustomSource = coll;
+
+            txtAttedanceCardN.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtAttedanceCardN.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection coll2 = new AutoCompleteStringCollection();
+            coll2.AddRange(DataLayer.Members.AutoCompleteCNumberSearch().ToArray());
+            txtAttedanceCardN.AutoCompleteCustomSource = coll2;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -210,7 +222,12 @@ namespace GymManagerPro.RibbonUI
             cbFindPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
             cbFindPersonalTrainer.ValueMember = "Key";                                                  // id of the trainer
 
-
+            // fill combobox with all plans, in new member wizard
+            plans.Remove(0);                                                //remove 'All' option
+            plans.Add(0, "None");                                             // add 'None' option 
+            cbWizardPlans.DataSource = new BindingSource(plans, null);
+            cbWizardPlans.DisplayMember = "Value";
+            cbWizardPlans.ValueMember = "Key";
 
             //hide all panels
             panelMemberManager.Visible = false;
@@ -219,6 +236,7 @@ namespace GymManagerPro.RibbonUI
             panelTrainers.Visible = false;
             panelPlans.Visible = false;
             panelAttedance.Visible = false;
+            panelNewMemberWizard.Visible = false;
 
             //switch to Find ribbon tab
             ribbonTabFind.Select();
@@ -589,6 +607,8 @@ namespace GymManagerPro.RibbonUI
                 txtCellPhone.ReadOnly = true;
                 txtOccupation.ReadOnly = true;
                 txtEmail.ReadOnly = true;
+                txtDateOfBirth.Enabled = false;
+                txtCardNumber.IsInputReadOnly = true;
 
                 btnMembersEdit.Text = "Edit";
             }
@@ -609,9 +629,251 @@ namespace GymManagerPro.RibbonUI
             txtCellPhone.ReadOnly = false;
             txtOccupation.ReadOnly = false;
             txtEmail.ReadOnly = false;
+            txtDateOfBirth.Enabled = true;
+            txtCardNumber.Enabled = true;
 
             btnMembersEdit.Text = "Cancel";
         }
 
+        private void buttonXNewMembership_Click(object sender, EventArgs e)
+        {
+            AddNewContract newContract = new AddNewContract(member_id);
+            newContract.Show();
+        }
+
+        private void buttonXDeleteMembership_Click(object sender, EventArgs e)
+        {
+            // deletes/expires the selected membership
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this membership? The selected membership will expire and the operation cannot be undone!!!", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //get id of the selected membership
+                int delid = (int)dataGridViewMemberships.SelectedRows[0].Cells[0].Value;
+                // delete the membership
+                DataLayer.Memberships.DeleteMembership(delid);
+                MessageBox.Show("Membership removed!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnAttedanceCheckin_Click(object sender, EventArgs e)
+        {
+            //if (txtSearch.Text.Length > 0)
+            //{
+            //    if (DataLayer.Members.MemberCheckin(DataLayer.Members.GetMemberIdByName(txtSearch.Text.Trim())) > 0)
+            //    {
+            //        MessageBox.Show("Member just Checked-In!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        richTextBox1.Clear();
+            //        txtSearch.Clear();
+            //        SetUpData();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Failed to check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+        }
+
+        private void btnMembersNew_Click(object sender, EventArgs e)
+        {
+            panelAllMembers.Visible = false;
+            panelMemberManager.Visible = false;
+            panelTrainers.Visible = false;
+            panelPlans.Visible = false;
+            panelAttedance.Visible = false;
+            panelNewMemberWizard.Visible = true;
+        }
+
+        private void cbWizardPlans_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (form_loaded)
+            {
+                int plan_id = Int32.Parse(cbWizardPlans.SelectedValue.ToString());                                           // get id of the selected plan
+
+                txtWizardMembershipFee.Text = DataLayer.Plan.GetPlanPrice(plan_id).ToString();                                    // get membership's cost
+                dtpWizardEndPlan.Value = dtpWizardStartPlan.Value;                                                                // get membership's start date
+                dtpWizardEndPlan.Value = dtpWizardEndPlan.Value.AddMonths(DataLayer.Plan.GetPlanDuration(plan_id));               // calculate membership duration
+                dtpWizardEndPlan.Value = dtpWizardEndPlan.Value.AddDays(-1);                                                      // subtract one day
+            }
+        }
+
+        private void txtWizardInitiationFee_TextChanged(object sender, EventArgs e)
+        {
+            int plan_id = Int32.Parse(cbWizardPlans.SelectedValue.ToString());                                           // get id of the selected plan
+            decimal programmefee = DataLayer.Plan.GetPlanPrice(plan_id);                                                // get selected plan's price
+            try
+            {
+                if (txtWizardInitiationFee.Text.Trim().Length == 0)                                                           // if initationfee textbox is empty
+                    txtWizardInitiationFee.Text = "0";
+                else
+                {
+                    decimal totalfee = (decimal)Decimal.Parse(txtWizardInitiationFee.Text.ToString()) + programmefee;         // calculate the total fee by adding the initation fee to the plan's fee
+                    txtWizardTotalFees.Text = totalfee.ToString();                                                            // display total fee
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void wizard1_FinishButtonClick(object sender, CancelEventArgs e)
+        {
+            //////////////// CREATE A NEW MEMBER //////////////
+
+            // create a new member
+            DataLayer.Member member = new DataLayer.Member();
+
+            if (!String.IsNullOrEmpty(txtWizardLastName.Text) && !String.IsNullOrEmpty(txtWizardCardNumber.Text))
+            {
+                // fill member properties from textboxes
+                member.CardNumber = Int32.Parse(txtWizardCardNumber.Text);
+                member.LName = txtWizardLastName.Text;
+                member.FName = txtWizardFirstName.Text;
+                if (rbWizardMale.Checked)
+                {
+                    member.Sex = "male";
+                }
+                else if (rbWizardFemale.Checked)
+                {
+                    member.Sex = "female";
+                }
+                member.DateOfBirth = dtpWizardDOB.Value;
+                member.Street = txtWizardStreet.Text;
+                member.Suburb = txtWizardSuburb.Text;
+                member.City = txtWizardCity.Text;
+                if (txtPostalCode.Text.Length > 0)
+                {
+                    member.PostalCode = Int32.Parse(txtWizardPostalCode.Text);
+                }
+                member.HomePhone = txtWizardHomePhone.Text;
+                member.CellPhone = txtWizardCellPhone.Text;
+                member.Email = txtWizardEmail.Text;
+                member.Occupation = txtWizardOccupation.Text;
+                member.Notes = txtWizardNotes.Text;
+
+                // holds the member's picture
+                //byte[] imageBt = null;
+                if (picWizard.ImageLocation != null)
+                {
+                    FileStream fstream = new FileStream(picWizard.ImageLocation, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fstream);
+                    member.Image = br.ReadBytes((int)fstream.Length);
+                }
+                else
+                {
+                    byte[] empty_array = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
+                    member.Image = empty_array;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("The Last Name and Card Number cannot be empty!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+
+
+            ////////////// CREATE A NEW MEMBERSHIP FOR THE SAME MEMBER //////////////
+       
+            // create a new membership and fill with data
+            DataLayer.Membership membership = new DataLayer.Membership();
+
+            //to find member's id we get the last inserted id and increment by 1 because we haven't inserted the new member yet
+            membership.MemberId = DataLayer.Members.GetLastInsertedMember();        // member's id
+            membership.MemberId++;
+            membership.Plan = (int)cbWizardPlans.SelectedValue;                 // id of the selected plan
+            membership.start = dtpWizardStartPlan.Value;                           // when the membership starts
+            membership.end = dtpWizardEndPlan.Value;                               // when the membership expires
+
+            //add member
+            if (DataLayer.Members.AddNewMember(member) > 0)
+            {
+                //add membership
+                if (cbWizardPlans.Text != "None")
+                {
+                    if (DataLayer.Memberships.NewMembership(membership) > 0)
+                    {
+                        MessageBox.Show("A New Member has been added successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to add new membership. Please add manually from Member Manager", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    // a new member has been added without any membership
+                    MessageBox.Show("A New Member has been added. You can add a membership at any time from Member Manager", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Failed to add new member. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // hide new member wizard
+            panelNewMemberWizard.Visible = false;
+        }
+
+        private void dtpWizardStartPlan_ValueChanged(object sender, EventArgs e)
+        {
+            // set the expiration date of the membership based on the start date
+            dtpWizardEndPlan.Value = dtpWizardStartPlan.Value;                                                            // get membership's start date
+            int plan_id = Int32.Parse(cbWizardPlans.SelectedValue.ToString());                                      // get id of the selected plan
+            dtpWizardEndPlan.Value = dtpWizardEndPlan.Value.AddMonths(DataLayer.Plan.GetPlanDuration(plan_id));           // calculate membership duration
+            dtpWizardEndPlan.Value = dtpWizardEndPlan.Value.AddDays(-1); 
+        }
+
+        private void wizardPage2_NextButtonClick(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtWizardLastName.Text) && String.IsNullOrEmpty(txtWizardCardNumber.Text))
+            {
+                MessageBox.Show("The Last Name and Card Number cannot be empty!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                wizard1.NavigateBack();
+            }
+        }
+
+        private void wizardPage2_CancelButtonClick(object sender, CancelEventArgs e)
+        {
+            panelNewMemberWizard.Visible = false;
+            wizard1.NavigateBack();
+        }
+
+        private void wizard1_CancelButtonClick(object sender, CancelEventArgs e)
+        {
+           panelNewMemberWizard.Visible = false;
+        }
+
+        private void wizardPage3_CancelButtonClick(object sender, CancelEventArgs e)
+        {
+            panelNewMemberWizard.Visible = false;
+            wizard1.NavigateBack();
+        }
+
     }
+
+
+    static class Utility
+    {
+
+        // highlights specified text
+        // http://stackoverflow.com/questions/11851908/highlight-all-searched-word-in-richtextbox-c-sharp
+        //
+        public static void HighlightText(this RichTextBox myRtb, string word, Color color)
+        {
+            int s_start = myRtb.SelectionStart, startIndex = 0, index;
+
+            while ((index = myRtb.Text.IndexOf(word, startIndex)) != -1)
+            {
+                myRtb.Select(index, word.Length);
+                myRtb.SelectionColor = color;
+
+                startIndex = index + word.Length;
+            }
+            myRtb.SelectionStart = s_start;
+            myRtb.SelectionLength = 0;
+            myRtb.SelectionColor = Color.Black;
+        }
+    }
+
 }

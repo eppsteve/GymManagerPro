@@ -78,6 +78,11 @@ namespace GymManagerPro
             richTextBox1.Clear();
             SetUpData();
         }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     static class Utility{

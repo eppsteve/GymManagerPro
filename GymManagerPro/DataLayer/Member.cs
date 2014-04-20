@@ -442,6 +442,34 @@ namespace DataLayer
             }
         }
 
+
+        /// <summary>
+        /// sets up auto complete searchbox
+        /// </summary>
+        /// <returns>list with all possible card numbers</returns>
+        public static List<string> AutoCompleteCNumberSearch()
+        {
+            List<string> cnumbers = new List<string>();
+
+            string query = "SELECT CardNumber FROM Members";
+
+            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            {
+                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCeDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0))
+                    {
+                        string cnumber = reader.GetInt32(0).ToString();
+                        cnumbers.Add(cnumber);
+                    }
+                }
+                return cnumbers;
+            }
+        }
+
         /// <summary>
         /// finds the id for the corresponding lastname
         /// </summary>
