@@ -346,6 +346,10 @@
   <ItemGroup>
     <Content Include="Database.sdf" />
     <Content Include="icon.ico" />
+    <None Include="Resources\add-user-icon.png" />
+    <None Include="Resources\user-group-icon.png" />
+    <None Include="Resources\checklist-icon.png" />
+    <None Include="Resources\symbol-delete-icon.png" />
     <None Include="Resources\bg.png" />
   </ItemGroup>
   <ItemGroup />

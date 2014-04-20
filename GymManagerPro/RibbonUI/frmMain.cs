@@ -186,6 +186,19 @@ namespace GymManagerPro.RibbonUI
             txtAttedanceCardN.AutoCompleteCustomSource = coll2;
         }
 
+        // displays notifications in member manager
+        private void SetUpNotifications()
+        {
+            lblNotifications.Text = "";                                         // clear
+            foreach (DataGridViewRow row in dataGridViewMemberships.Rows)
+            {
+                DateTime exp_date = (DateTime) row.Cells["EndDate"].Value;      // get end date
+                String membership = row.Cells["Name"].Value.ToString();         // get membership name
+                double days = (exp_date - DateTime.Today).TotalDays;            // calculate the difference between today and end date
+                lblNotifications.Text += membership + " expires in "+ (int)days +" days" + Environment.NewLine;
+            }
+        }
+
         // reloads data to AllMembers datagridview to refresh
         private void RefreshAllMembersDataGrid()
         {
@@ -199,6 +212,9 @@ namespace GymManagerPro.RibbonUI
             cbFindPersonalTrainer.SelectedIndex = 0;
             cbFindPlan.SelectedIndex = 0;
         }
+
+
+
 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -494,6 +510,14 @@ namespace GymManagerPro.RibbonUI
         {
             // Displays the selected member from the search box
             LoadMember(DataLayer.Members.QuickSearch(txtMembersSearch.Text));
+            if (!panelMemberManager.Visible)
+            {
+                panelPlans.Visible = false;
+                panelAllMembers.Visible = false;
+                panelMemberManager.Visible = true;
+                panelTrainers.Visible = false;
+                panelAttedance.Visible = false;
+            }
         }
 
         private void btnCheckIn_Click(object sender, EventArgs e)
@@ -649,19 +673,45 @@ namespace GymManagerPro.RibbonUI
 
         private void btnMembersEdit_Click(object sender, EventArgs e)
         {
-            txtLastName.ReadOnly = false;
-            txtFirstName.ReadOnly = false;
-            txtHomePhone.ReadOnly = false;
-            txtStreet.ReadOnly = false;
-            txtSuburb.ReadOnly = false;
-            txtCity.ReadOnly = false;
-            txtCellPhone.ReadOnly = false;
-            txtOccupation.ReadOnly = false;
-            txtEmail.ReadOnly = false;
-            txtDateOfBirth.Enabled = true;
-            txtCardNumber.Enabled = true;
+            if (btnMembersEdit.Text == "Edit")
+            {
+                txtLastName.ReadOnly = false;
+                txtFirstName.ReadOnly = false;
+                txtHomePhone.ReadOnly = false;
+                txtStreet.ReadOnly = false;
+                txtSuburb.ReadOnly = false;
+                txtCity.ReadOnly = false;
+                txtCellPhone.ReadOnly = false;
+                txtOccupation.ReadOnly = false;
+                txtEmail.ReadOnly = false;
+                txtNotes.ReadOnly = false;
+                txtDateOfBirth.Enabled = true;
+                txtCardNumber.Enabled = true;
 
-            btnMembersEdit.Text = "Cancel";
+                btnMembersEdit.Text = "Cancel";
+                btnMembersEdit.Icon = null;
+                btnMembersEdit.Tooltip = "Cancel editing";
+            }
+            else if (btnMembersEdit.Text == "Cancel")
+            {
+                txtLastName.ReadOnly = true;
+                txtFirstName.ReadOnly = true;
+                txtHomePhone.ReadOnly = true;
+                txtStreet.ReadOnly = true;
+                txtSuburb.ReadOnly = true;
+                txtCity.ReadOnly = true;
+                txtCellPhone.ReadOnly = true;
+                txtOccupation.ReadOnly = true;
+                txtNotes.ReadOnly = true;
+                txtEmail.ReadOnly = true;
+                txtDateOfBirth.Enabled = false;
+                txtCardNumber.Enabled = false;
+ 
+                btnMembersEdit.Text = "Edit";
+                ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
+                btnMembersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersEdit.Icon")));
+               
+            }
         }
 
         private void buttonXNewMembership_Click(object sender, EventArgs e)
@@ -870,6 +920,38 @@ namespace GymManagerPro.RibbonUI
         {
             panelNewMemberWizard.Visible = false;
             wizard1.NavigateBack();
+        }
+
+        private void buttonItem13_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonItem1_Click(object sender, EventArgs e)
+        {
+            panelAllMembers.Visible = false;
+            panelMemberManager.Visible = false;
+            panelTrainers.Visible = false;
+            panelPlans.Visible = false;
+            panelAttedance.Visible = false;
+            panelNewMemberWizard.Visible = true;
+        }
+
+        private void btnAttedanceSaveTxt_Click(object sender, EventArgs e)
+        {
+            // save file as a txt document
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Text Files | *.txt";
+            sfd.DefaultExt = "txt";
+            sfd.Title = "Save as text file";
+            if (sfd.ShowDialog() == DialogResult.OK)
+                System.IO.File.WriteAllText(sfd.FileName, richTextBoxAttedance.Text);
+        }
+
+        private void dataGridViewMemberships_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            //set up membership expire notifications in member manager
+            SetUpNotifications();
         }
 
     }
