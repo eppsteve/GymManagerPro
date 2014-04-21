@@ -16,7 +16,6 @@ namespace GymManagerPro.RibbonUI
         bool form_loaded;
         int trainer_id;
         int member_id = 0;
-
         DataLayer.Plan plan;
 
         public frmMain()
@@ -192,10 +191,10 @@ namespace GymManagerPro.RibbonUI
             lblNotifications.Text = "";                                         // clear
             foreach (DataGridViewRow row in dataGridViewMemberships.Rows)
             {
-                DateTime exp_date = (DateTime) row.Cells["EndDate"].Value;      // get end date
+                DateTime exp_date = (DateTime)row.Cells["EndDate"].Value;      // get end date
                 String membership = row.Cells["Name"].Value.ToString();         // get membership name
                 double days = (exp_date - DateTime.Today).TotalDays;            // calculate the difference between today and end date
-                lblNotifications.Text += membership + " expires in "+ (int)days +" days" + Environment.NewLine;
+                lblNotifications.Text += membership + " expires in " + (int)days + " days" + Environment.NewLine;
             }
         }
 
@@ -213,6 +212,19 @@ namespace GymManagerPro.RibbonUI
             cbFindPlan.SelectedIndex = 0;
         }
 
+        // show the specified panel
+        private void SwitchToPanel(Panel panel)
+        {
+            // hide all panels
+            panelPlans.Visible = false;
+            panelAllMembers.Visible = false;
+            panelMemberManager.Visible = false;
+            panelTrainers.Visible = false;
+            panelAttedance.Visible = false;
+            panelNewMemberWizard.Visible = false;
+
+            panel.Visible = true;
+        }
 
 
 
@@ -272,6 +284,15 @@ namespace GymManagerPro.RibbonUI
             ribbonTabFind.Select();
         }
 
+        private void membersDataGridViewX_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // get member's id from selected row
+            member_id = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            // load member
+            LoadMember(member_id);
+        }
+
         private void membersDataGridViewX_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // get member's id from selected row
@@ -280,11 +301,8 @@ namespace GymManagerPro.RibbonUI
             // load member
             LoadMember(member_id);
 
-            // show member manager panel and hide all other panels
-            panelAllMembers.Visible = false;
-            panelMemberManager.Visible = true;
-
-            //switch to ribbon tab Members
+            // switch to member manager and ribbon tab Members
+            SwitchToPanel(panelMemberManager);
             ribbonTabMembers.Select();
         }
 
@@ -315,6 +333,7 @@ namespace GymManagerPro.RibbonUI
                     // get selected plan
                     int planId = Convert.ToInt32(listBoxPlans.SelectedValue.ToString());
                     plan = DataLayer.Plan.GetPlan(planId);
+
                     //populate textboxes with plan's data
                     txtPlanName.Text = plan.Name;
                     txtPlanDuration.Text = plan.Duration.ToString();
@@ -363,12 +382,7 @@ namespace GymManagerPro.RibbonUI
         {
             if (form_loaded)
             {
-                // show trainers panel
-                panelPlans.Visible = false;
-                panelAllMembers.Visible = false;
-                panelMemberManager.Visible = false;
-                panelTrainers.Visible = true;
-                panelAttedance.Visible = false;
+                SwitchToPanel(panelTrainers);
 
                 if (listBoxTrainers.SelectedIndex != -1)
                 {
@@ -390,6 +404,8 @@ namespace GymManagerPro.RibbonUI
 
         private void txtFindLastName_KeyDown(object sender, KeyEventArgs e)
         {
+            SwitchToPanel(panelAllMembers);
+
             // filter datagridview data by last name
             DataView dv = new DataView(dataset);
             dv.RowFilter = string.Format("LastName LIKE '%{0}%'", txtFindLastName.Text);
@@ -398,6 +414,8 @@ namespace GymManagerPro.RibbonUI
 
         private void txtFindFirstName_KeyDown(object sender, KeyEventArgs e)
         {
+            SwitchToPanel(panelAllMembers);
+
             // filter datagridview data by first name
             DataView dv = new DataView(dataset);
             dv.RowFilter = string.Format("FirstName LIKE '%{0}%'", txtFindFirstName.Text);
@@ -408,6 +426,8 @@ namespace GymManagerPro.RibbonUI
         {
             if (form_loaded)
             {
+                SwitchToPanel(panelAllMembers);
+
                 // retrieve the members who have the selected plan and bind them to datagridview
                 int plan_id = Int32.Parse(cbFindPlan.SelectedValue.ToString());                 // get id of the selected plan
 
@@ -429,13 +449,6 @@ namespace GymManagerPro.RibbonUI
 
                 // set personal trainer filter combobox to default value
                 cbFindPersonalTrainer.SelectedIndex = 0;
-
-                // show find members panel
-                panelAttedance.Visible = false;
-                panelAllMembers.Visible = true;
-                panelMemberManager.Visible = false;
-                panelTrainers.Visible = false;
-                panelPlans.Visible = false;
             }
         }
 
@@ -443,6 +456,8 @@ namespace GymManagerPro.RibbonUI
         {
             if (form_loaded)
             {
+                SwitchToPanel(panelAllMembers);
+
                 // retrieve the members who are assigned to the the selected trainer and bind them to datagridview
                 int trainer_id = Int32.Parse(cbFindPersonalTrainer.SelectedValue.ToString());                         // get id of the selected trainer
 
@@ -464,13 +479,6 @@ namespace GymManagerPro.RibbonUI
 
                 // set plan filter combobox to default value
                 cbFindPlan.SelectedIndex = 0;
-
-                // show find members panel
-                panelAttedance.Visible = false;
-                panelAllMembers.Visible = true;
-                panelMemberManager.Visible = false;
-                panelTrainers.Visible = false;
-                panelPlans.Visible = false;
             }
         }
 
@@ -481,6 +489,15 @@ namespace GymManagerPro.RibbonUI
 
         private void btnMembersNext_Click(object sender, EventArgs e)
         {
+            if (!panelMemberManager.Visible)
+            {
+                panelMemberManager.Visible = true;
+                panelAllMembers.Visible = false;
+                panelTrainers.Visible = false;
+                panelPlans.Visible = false;
+                panelAttedance.Visible = false;
+            }
+
             // Retrieves and displays the next member (if any)
             if (DataLayer.Members.MemberHasNext(member_id))
             {
@@ -495,6 +512,15 @@ namespace GymManagerPro.RibbonUI
 
         private void btnMembersPrev_Click(object sender, EventArgs e)
         {
+            if (!panelMemberManager.Visible)
+            {
+                panelMemberManager.Visible = true;
+                panelAllMembers.Visible = false;
+                panelTrainers.Visible = false;
+                panelPlans.Visible = false;
+                panelAttedance.Visible = false;
+            }
+
             if (DataLayer.Members.MemberHasPrevious(member_id))
             {
                 member_id = DataLayer.Members.GetPrevMember(member_id);
@@ -522,23 +548,30 @@ namespace GymManagerPro.RibbonUI
 
         private void btnCheckIn_Click(object sender, EventArgs e)
         {
-            if (member_id != 0)             // if a member has been selected
+            if (panelAllMembers.Visible || panelMemberManager.Visible)
             {
-                if (DataLayer.Members.MemberCheckin(member_id) > 0)
+                if (member_id != 0)             // if a member has been selected
                 {
-                    MessageBox.Show(lblName.Text + " just Checked-in!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Console.Beep();
-                    //refresh
-                    SetUpAttedance();
+                    if (DataLayer.Members.MemberCheckin(member_id) > 0)
+                    {
+                        MessageBox.Show(lblName.Text + " just Checked-in!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Console.Beep();
+                        //refresh
+                        SetUpAttedance();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Couldnot check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Couldnot check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select a user first!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
-                MessageBox.Show("Please select a user first!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a member first!");
             }
         }
 
@@ -584,6 +617,11 @@ namespace GymManagerPro.RibbonUI
                         }
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Please select a member first!");
+                SwitchToPanel(panelAllMembers);
             }
         }
 
@@ -673,44 +711,55 @@ namespace GymManagerPro.RibbonUI
 
         private void btnMembersEdit_Click(object sender, EventArgs e)
         {
-            if (btnMembersEdit.Text == "Edit")
-            {
-                txtLastName.ReadOnly = false;
-                txtFirstName.ReadOnly = false;
-                txtHomePhone.ReadOnly = false;
-                txtStreet.ReadOnly = false;
-                txtSuburb.ReadOnly = false;
-                txtCity.ReadOnly = false;
-                txtCellPhone.ReadOnly = false;
-                txtOccupation.ReadOnly = false;
-                txtEmail.ReadOnly = false;
-                txtNotes.ReadOnly = false;
-                txtDateOfBirth.Enabled = true;
-                txtCardNumber.Enabled = true;
+            if (panelAllMembers.Visible)
+                SwitchToPanel(panelMemberManager);
 
-                btnMembersEdit.Text = "Cancel";
-                btnMembersEdit.Icon = null;
-                btnMembersEdit.Tooltip = "Cancel editing";
-            }
-            else if (btnMembersEdit.Text == "Cancel")
+            if (panelMemberManager.Visible)
             {
-                txtLastName.ReadOnly = true;
-                txtFirstName.ReadOnly = true;
-                txtHomePhone.ReadOnly = true;
-                txtStreet.ReadOnly = true;
-                txtSuburb.ReadOnly = true;
-                txtCity.ReadOnly = true;
-                txtCellPhone.ReadOnly = true;
-                txtOccupation.ReadOnly = true;
-                txtNotes.ReadOnly = true;
-                txtEmail.ReadOnly = true;
-                txtDateOfBirth.Enabled = false;
-                txtCardNumber.Enabled = false;
- 
-                btnMembersEdit.Text = "Edit";
-                ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
-                btnMembersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersEdit.Icon")));
-               
+                if (btnMembersEdit.Text == "Edit")
+                {
+                    txtLastName.ReadOnly = false;
+                    txtFirstName.ReadOnly = false;
+                    txtHomePhone.ReadOnly = false;
+                    txtStreet.ReadOnly = false;
+                    txtSuburb.ReadOnly = false;
+                    txtCity.ReadOnly = false;
+                    txtCellPhone.ReadOnly = false;
+                    txtOccupation.ReadOnly = false;
+                    txtEmail.ReadOnly = false;
+                    txtNotes.ReadOnly = false;
+                    txtDateOfBirth.Enabled = true;
+                    txtCardNumber.Enabled = true;
+
+                    btnMembersEdit.Text = "Cancel";
+                    btnMembersEdit.Icon = null;
+                    btnMembersEdit.Tooltip = "Cancel editing";
+                }
+                else if (btnMembersEdit.Text == "Cancel")
+                {
+                    txtLastName.ReadOnly = true;
+                    txtFirstName.ReadOnly = true;
+                    txtHomePhone.ReadOnly = true;
+                    txtStreet.ReadOnly = true;
+                    txtSuburb.ReadOnly = true;
+                    txtCity.ReadOnly = true;
+                    txtCellPhone.ReadOnly = true;
+                    txtOccupation.ReadOnly = true;
+                    txtNotes.ReadOnly = true;
+                    txtEmail.ReadOnly = true;
+                    txtDateOfBirth.Enabled = false;
+                    txtCardNumber.Enabled = false;
+
+                    // change button text and icon
+                    btnMembersEdit.Text = "Edit";
+                    ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
+                    btnMembersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersEdit.Icon")));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pleaase select a member first!");
+                SwitchToPanel(panelAllMembers);
             }
         }
 
@@ -754,12 +803,7 @@ namespace GymManagerPro.RibbonUI
 
         private void btnMembersNew_Click(object sender, EventArgs e)
         {
-            panelAllMembers.Visible = false;
-            panelMemberManager.Visible = false;
-            panelTrainers.Visible = false;
-            panelPlans.Visible = false;
-            panelAttedance.Visible = false;
-            panelNewMemberWizard.Visible = true;
+            SwitchToPanel(panelNewMemberWizard);
         }
 
         private void cbWizardPlans_SelectedIndexChanged(object sender, EventArgs e)
@@ -884,7 +928,7 @@ namespace GymManagerPro.RibbonUI
             RefreshAllMembersDataGrid();            // refresh AllMembers datagridview
             panelNewMemberWizard.Visible = false;
             panelAllMembers.Visible = true;         // show all members datagrid view
-   
+
         }
 
         private void dtpWizardStartPlan_ValueChanged(object sender, EventArgs e)
@@ -954,7 +998,76 @@ namespace GymManagerPro.RibbonUI
             SetUpNotifications();
         }
 
+        private void btnPlansNew_Click(object sender, EventArgs e)
+        {
+            EditPlan ep = new EditPlan(listBoxPlans);
+            ep.ShowDialog();
+        }
+
+        private void btnPlansEdit_Click(object sender, EventArgs e)
+        {
+            if (form_loaded)
+            {
+                if (listBoxPlans.SelectedIndex != -1)
+                {
+                    // get selected plan
+                    int planId = Convert.ToInt32(listBoxPlans.SelectedValue.ToString());
+                    EditPlan ep = new EditPlan(plan, listBoxPlans);
+                    ep.ShowDialog();
+                }
+            }
+        }
+
+        private void btnPlansDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Warning! Deleting the selected plan will also expire (delete) all the associated memberships! Are you sure you want to continue?", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
+            {
+                DataLayer.Plan.DeletePlan(plan.Id);
+
+                // refresh the listbox
+                listBoxPlans.DataSource = DataLayer.Plan.GetAllPlans().ToList();
+                listBoxPlans.ValueMember = "Key";
+                listBoxPlans.DisplayMember = "Value";
+            }
+        }
+
+        private void btnTrainersRemoveMember_Click(object sender, EventArgs e)
+        {
+            if (panelTrainers.Visible)
+            {
+                if (amTrainersDataGridViewX.SelectedRows.Count != 0)
+                {
+                    // get the id of the member to be removed
+                    int memberToRemove = (int)amTrainersDataGridViewX.SelectedCells[0].Value; //first cell of the selected row
+
+                    if (DataLayer.Trainers.RemoveMember(memberToRemove) > 0)
+                    {
+                        MessageBox.Show("Member removed!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // reload associated members
+                        DataTable membersTable = DataLayer.Trainers.GetAssociatedMembers(trainer_id);
+                        amTrainersDataGridViewX.DataSource = membersTable;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to remove member. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Trainer first!");
+            }
+        }
+
+
+
+
+
     }
+
+}
 
 
     static class Utility
@@ -980,4 +1093,3 @@ namespace GymManagerPro.RibbonUI
         }
     }
 
-}

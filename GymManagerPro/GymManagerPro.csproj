@@ -181,6 +181,12 @@
     <Compile Include="RibbonUI\AddNewContract.designer.cs">
       <DependentUpon>AddNewContract.cs</DependentUpon>
     </Compile>
+    <Compile Include="RibbonUI\EditPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RibbonUI\EditPlan.designer.cs">
+      <DependentUpon>EditPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="RibbonUI\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +244,9 @@
     </Compile>
     <EmbeddedResource Include="RibbonUI\AddNewContract.resx">
       <DependentUpon>AddNewContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RibbonUI\EditPlan.resx">
+      <DependentUpon>EditPlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RibbonUI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
