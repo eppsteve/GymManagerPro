@@ -212,7 +212,7 @@ namespace GymManagerPro.RibbonUI
             cbFindPlan.SelectedIndex = 0;
         }
 
-        // show the specified panel
+        // shows the specified panel
         private void SwitchToPanel(Panel panel)
         {
             // hide all panels
@@ -227,6 +227,8 @@ namespace GymManagerPro.RibbonUI
         }
 
 
+        
+        // --------------------------------- EVENTS ------------------------------------ //
 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -338,6 +340,10 @@ namespace GymManagerPro.RibbonUI
                     txtPlanName.Text = plan.Name;
                     txtPlanDuration.Text = plan.Duration.ToString();
                     txtPlanPrice.Text = plan.Price.ToString();
+                    if (plan.Notes != null)
+                        txtPlanNotes.Text = plan.Notes.ToString();
+                    else
+                        txtPlanNotes.Text = null;
                 }
             }
         }
@@ -362,36 +368,35 @@ namespace GymManagerPro.RibbonUI
 
         private void btnViewTrainers_Click(object sender, EventArgs e)
         {
-            panelTrainers.Visible = true;
-            panelPlans.Visible = false;
-            panelAllMembers.Visible = false;
-            panelMemberManager.Visible = false;
-            panelAttedance.Visible = false;
+            SwitchToPanel(panelTrainers);
         }
 
         private void btnViewPlans_Click(object sender, EventArgs e)
         {
-            panelPlans.Visible = true;
-            panelAllMembers.Visible = false;
-            panelMemberManager.Visible = false;
-            panelTrainers.Visible = false;
-            panelAttedance.Visible = false;
+            SwitchToPanel(panelPlans);
         }
 
         private void btnTrainersAddMember_Click(object sender, EventArgs e)
         {
             if (form_loaded)
             {
-                SwitchToPanel(panelTrainers);
-
-                if (listBoxTrainers.SelectedIndex != -1)
+                if (panelTrainers.Visible)
                 {
-                    TrainerAssignmentDialog tad = new TrainerAssignmentDialog(trainer_id);
-                    tad.Show();
+
+                    if (listBoxTrainers.SelectedIndex != -1)
+                    {
+                        TrainerAssignmentDialog tad = new TrainerAssignmentDialog(trainer_id, amTrainersDataGridViewX);
+                        tad.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select a trainer first!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Please select a trainer first!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    SwitchToPanel(panelTrainers);
                 }
             }
         }
@@ -485,18 +490,13 @@ namespace GymManagerPro.RibbonUI
         private void btnFindRefresh_Click(object sender, EventArgs e)
         {
             RefreshAllMembersDataGrid();
+            txtFindFirstName.Text = null;
+            txtFindLastName.Text = null;
         }
 
         private void btnMembersNext_Click(object sender, EventArgs e)
         {
-            if (!panelMemberManager.Visible)
-            {
-                panelMemberManager.Visible = true;
-                panelAllMembers.Visible = false;
-                panelTrainers.Visible = false;
-                panelPlans.Visible = false;
-                panelAttedance.Visible = false;
-            }
+            SwitchToPanel(panelMemberManager);
 
             // Retrieves and displays the next member (if any)
             if (DataLayer.Members.MemberHasNext(member_id))
@@ -512,14 +512,7 @@ namespace GymManagerPro.RibbonUI
 
         private void btnMembersPrev_Click(object sender, EventArgs e)
         {
-            if (!panelMemberManager.Visible)
-            {
-                panelMemberManager.Visible = true;
-                panelAllMembers.Visible = false;
-                panelTrainers.Visible = false;
-                panelPlans.Visible = false;
-                panelAttedance.Visible = false;
-            }
+            SwitchToPanel(panelMemberManager);
 
             if (DataLayer.Members.MemberHasPrevious(member_id))
             {
@@ -534,16 +527,9 @@ namespace GymManagerPro.RibbonUI
 
         private void btnMembersSearch_Click(object sender, EventArgs e)
         {
-            // Displays the selected member from the search box
+            // loads specified member
             LoadMember(DataLayer.Members.QuickSearch(txtMembersSearch.Text));
-            if (!panelMemberManager.Visible)
-            {
-                panelPlans.Visible = false;
-                panelAllMembers.Visible = false;
-                panelMemberManager.Visible = true;
-                panelTrainers.Visible = false;
-                panelAttedance.Visible = false;
-            }
+            SwitchToPanel(panelMemberManager);
         }
 
         private void btnCheckIn_Click(object sender, EventArgs e)
@@ -572,6 +558,7 @@ namespace GymManagerPro.RibbonUI
             else
             {
                 MessageBox.Show("Please select a member first!");
+                SwitchToPanel(panelAllMembers);
             }
         }
 
@@ -983,6 +970,8 @@ namespace GymManagerPro.RibbonUI
 
         private void btnAttedanceSaveTxt_Click(object sender, EventArgs e)
         {
+            SwitchToPanel(panelAttedance);
+
             // save file as a txt document
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Text Files | *.txt";
@@ -1002,33 +991,50 @@ namespace GymManagerPro.RibbonUI
         {
             EditPlan ep = new EditPlan(listBoxPlans);
             ep.ShowDialog();
+            SwitchToPanel(panelPlans);
         }
 
         private void btnPlansEdit_Click(object sender, EventArgs e)
         {
             if (form_loaded)
             {
-                if (listBoxPlans.SelectedIndex != -1)
+                if (panelPlans.Visible)
                 {
-                    // get selected plan
-                    int planId = Convert.ToInt32(listBoxPlans.SelectedValue.ToString());
-                    EditPlan ep = new EditPlan(plan, listBoxPlans);
-                    ep.ShowDialog();
+                    if (listBoxPlans.SelectedIndex != -1)
+                    {
+                        // get selected plan
+                        int planId = Convert.ToInt32(listBoxPlans.SelectedValue.ToString());
+                        EditPlan ep = new EditPlan(plan, listBoxPlans);
+                        ep.ShowDialog();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a plan first");
+                    SwitchToPanel(panelPlans);
                 }
             }
         }
 
         private void btnPlansDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Warning! Deleting the selected plan will also expire (delete) all the associated memberships! Are you sure you want to continue?", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-            if (dialogResult == DialogResult.Yes)
+            if (panelPlans.Visible)
             {
-                DataLayer.Plan.DeletePlan(plan.Id);
+                DialogResult dialogResult = MessageBox.Show("Warning! Deleting the selected plan will also expire (delete) all the associated memberships! Are you sure you want to continue?", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    DataLayer.Plan.DeletePlan(plan.Id);
 
-                // refresh the listbox
-                listBoxPlans.DataSource = DataLayer.Plan.GetAllPlans().ToList();
-                listBoxPlans.ValueMember = "Key";
-                listBoxPlans.DisplayMember = "Value";
+                    // refresh the listbox
+                    listBoxPlans.DataSource = DataLayer.Plan.GetAllPlans().ToList();
+                    listBoxPlans.ValueMember = "Key";
+                    listBoxPlans.DisplayMember = "Value";
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a plan first!");
+                SwitchToPanel(panelPlans);
             }
         }
 
@@ -1058,12 +1064,178 @@ namespace GymManagerPro.RibbonUI
             else
             {
                 MessageBox.Show("Please Select a Trainer first!");
+                SwitchToPanel(panelTrainers);
             }
         }
 
+        private void txtWizardLastName_TextChanged(object sender, EventArgs e)
+        {
+            lblWizardName.Text = txtWizardFirstName.Text +" "+ txtWizardLastName.Text;
+        }
 
+        private void txtWizardFirstName_TextChanged(object sender, EventArgs e)
+        {
+            lblWizardName.Text = txtWizardFirstName.Text + " " + txtWizardLastName.Text;
+        }
 
+        private void btnTrainersEdit_Click(object sender, EventArgs e)
+        {
+            if (panelTrainers.Visible)
+            {
+                if (btnTrainersEdit.Text == "Edit")
+                {
+                    txtTrainerFName.ReadOnly = false;
+                    txtTrainerLName.ReadOnly = false;
+                    txtTrainerCellPhone.ReadOnly = false;
+                    txtTrainerCity.ReadOnly = false;
+                    txtTrainerEmail.ReadOnly = false;
+                    txtTrainerHomePhone.ReadOnly = false;
+                    txtTrainerNotes.ReadOnly = false;
+                    txtTrainerSalary.ReadOnly = false;
+                    txtTrainerStreet.ReadOnly = false;
+                    txtTrainerSuburb.ReadOnly = false;
 
+                    btnTrainersEdit.Text = "Cancel";
+                    btnTrainersEdit.Icon = null;
+                    btnTrainersEdit.Tooltip = "Cancel editing";
+                }
+                else if (btnTrainersEdit.Text == "Cancel")
+                {
+                    txtTrainerFName.ReadOnly = true;
+                    txtTrainerLName.ReadOnly = true;
+                    txtTrainerCellPhone.ReadOnly = true;
+                    txtTrainerCity.ReadOnly = true;
+                    txtTrainerEmail.ReadOnly = true;
+                    txtTrainerHomePhone.ReadOnly = true;
+                    txtTrainerNotes.ReadOnly = true;
+                    txtTrainerSalary.ReadOnly = true;
+                    txtTrainerStreet.ReadOnly = true;
+                    txtTrainerSuburb.ReadOnly = true;
+
+                    //change button text and icon
+                    btnTrainersEdit.Text = "Edit";
+                    ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
+                    btnTrainersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersEdit.Icon")));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a trainer first!");
+                SwitchToPanel(panelTrainers);
+            }
+
+        }
+
+        private void btnTrainersSave_Click(object sender, EventArgs e)
+        {
+            if (panelTrainers.Visible)
+            {
+                if (listBoxTrainers.SelectedIndex != 0)
+                {
+                    // create a new trainer object
+                    DataLayer.Trainer trainer = new DataLayer.Trainer();
+
+                    if (!String.IsNullOrEmpty(txtTrainerLName.Text))
+                    {
+                        trainer.TrainerID = this.trainer_id;
+                        trainer.FName = txtTrainerFName.Text.Trim();
+                        trainer.LName = txtTrainerLName.Text.Trim();
+                        trainer.CellPhone = txtTrainerCellPhone.Text.Trim();
+                        trainer.City = txtTrainerCity.Text.Trim();
+                        trainer.DateOfBirth = dtpTrainerDOB.Value;
+                        trainer.Email = txtTrainerEmail.Text.Trim();
+                        trainer.HomePhone = txtTrainerHomePhone.Text.Trim();
+                        if (txtTrainerSalary.Text.Length > 0)
+                        {
+                            trainer.Salary = Decimal.Parse(txtTrainerSalary.Text.ToString());
+                        }
+                        else
+                        {
+                            trainer.Salary = 0;
+                        }
+                        trainer.Street = txtTrainerStreet.Text.Trim();
+                        trainer.Suburb = txtTrainerSuburb.Text.Trim();
+                        if (rbTrainerMale.Checked)
+                        {
+                            trainer.Sex = "Male";
+                        }
+                        else if (rbTrainerFemale.Checked)
+                        {
+                            trainer.Sex = "Female";
+                        }
+                        trainer.Notes = txtTrainerNotes.Text.Trim();
+
+                        //save data to db
+                        if (DataLayer.Trainers.UpdateTrainer(trainer) > 0)
+                        {
+                            MessageBox.Show("Trainer Updated successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // refresh Trainers listbox
+                            LoadAllTrainerNames();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to Update Trainer!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Last Name cannot be empty!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+
+                    // set textboxes to read only
+                    txtTrainerFName.ReadOnly = true;
+                    txtTrainerLName.ReadOnly = true;
+                    txtTrainerCellPhone.ReadOnly = true;
+                    txtTrainerCity.ReadOnly = true;
+                    txtTrainerEmail.ReadOnly = true;
+                    txtTrainerHomePhone.ReadOnly = true;
+                    txtTrainerNotes.ReadOnly = true;
+                    txtTrainerSalary.ReadOnly = true;
+                    txtTrainerStreet.ReadOnly = true;
+                    txtTrainerSuburb.ReadOnly = true;
+
+                    //change button text and icon of btnTrainersEdit
+                    btnTrainersEdit.Text = "Edit";
+                    ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
+                    btnTrainersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersEdit.Icon")));
+                }
+            }
+        }
+
+        private void btnTrainersDelete_Click(object sender, EventArgs e)
+        {
+            if (panelTrainers.Visible)
+            {
+                if (listBoxTrainers.SelectedIndex != 0)
+                {
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this Trainer? This cannot be undone!", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        if (DataLayer.Trainers.DeleteTrainer(this.trainer_id) > 0)
+                        {
+                            MessageBox.Show("Trainer deleted!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // refresh trainers listbox
+                            LoadAllTrainerNames();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Could not delete. Please try again.", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a trainer first!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a trainer first!");
+                SwitchToPanel(panelTrainers);
+            }
+        }
 
     }
 

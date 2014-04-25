@@ -13,16 +13,18 @@ namespace GymManagerPro.RibbonUI
     public partial class TrainerAssignmentDialog : Form
     {
         int trainerID;
+        DataGridView datagridview;      // used to refresh datagridview in main window
 
         public TrainerAssignmentDialog()
         {
             InitializeComponent();
         }
 
-        public TrainerAssignmentDialog(int id)
+        public TrainerAssignmentDialog(int id, DataGridView mydgv)
         {
             InitializeComponent();
             trainerID = id;
+            datagridview = mydgv;
         }
 
         private void TrainerAssignmentDialog_Load(object sender, EventArgs e)
@@ -42,7 +44,11 @@ namespace GymManagerPro.RibbonUI
 
             if (DataLayer.Trainers.AssignTrainerToMember(this.trainerID, memberid) > 0)
             {
-                MessageBox.Show("Member has been added successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               // MessageBox.Show("Member has been added successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                //refresh datagridview
+                DataTable membersTable = DataLayer.Trainers.GetAssociatedMembers(trainerID);
+                datagridview.DataSource = membersTable;
                 this.Close();
             }
             else

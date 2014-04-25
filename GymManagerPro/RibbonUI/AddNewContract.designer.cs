@@ -236,6 +236,7 @@
             this.MinimizeBox = false;
             this.Name = "AddNewContract";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add a New Contract";
             this.Load += new System.EventHandler(this.AddNewContract_Load);
             this.Shown += new System.EventHandler(this.AddNewContract_Shown);

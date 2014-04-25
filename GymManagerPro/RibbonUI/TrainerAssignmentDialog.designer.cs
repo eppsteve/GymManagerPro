@@ -93,6 +93,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.Name = "TrainerAssignmentDialog";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add a Member";
             this.Load += new System.EventHandler(this.TrainerAssignmentDialog_Load);
             this.panel1.ResumeLayout(false);

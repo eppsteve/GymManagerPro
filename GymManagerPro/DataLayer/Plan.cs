@@ -15,6 +15,7 @@ namespace DataLayer
         public string Name { get; set; }
         public int Duration { get; set; }
         public decimal Price { get; set; }
+        public string Notes { get; set; }
 
 
         /// <summary>
@@ -37,11 +38,12 @@ namespace DataLayer
                     plan.Name = reader.GetString(1);
                     plan.Duration = reader.GetInt32(2);
                     plan.Price = reader.GetDecimal(3);
+                    if (!reader.IsDBNull(4))
+                        plan.Notes = reader.GetString(4);
                 }
             }
             return plan;
         }
-
 
         /// <summary>
         /// retrieves all programmes from the db
@@ -80,12 +82,13 @@ namespace DataLayer
         {
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
-                String query = "UPDATE Plans SET Name = @name, Price = @price, Duration = @duration WHERE Id = @id";
+                String query = "UPDATE Plans SET Name = @name, Price = @price, Duration = @duration, Notes = @notes WHERE Id = @id";
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", plan.Id);
                 cmd.Parameters.AddWithValue("@name", plan.Name);
                 cmd.Parameters.AddWithValue("@duration", plan.Duration);
                 cmd.Parameters.AddWithValue("@price", plan.Price);
+                cmd.Parameters.AddWithValue("@notes", plan.Notes);
                 int res = cmd.ExecuteNonQuery();
                 return res;
             }
@@ -107,16 +110,16 @@ namespace DataLayer
         {
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
-                String query = "INSERT INTO Plans (Name, Price, Duration) VALUES (@name, @price, @duration)";
+                String query = "INSERT INTO Plans (Name, Price, Duration, Notes) VALUES (@name, @price, @duration, @notes)";
                 SqlCeCommand cmd = new SqlCeCommand(query, con);
                 cmd.Parameters.AddWithValue("@name", plan.Name);
                 cmd.Parameters.AddWithValue("@price", plan.Price);
                 cmd.Parameters.AddWithValue("@duration", plan.Duration);
+                cmd.Parameters.AddWithValue("@notes", plan.Notes);
                 int res = cmd.ExecuteNonQuery();
                 return res;
             }
         }
-
 
         // retrieves plan duration (in months) for the specified plan
         public static int GetPlanDuration(int plan_id)

@@ -22,6 +22,7 @@ namespace GymManagerPro.RibbonUI
             InitializeComponent();
         }
 
+        //constructor for creating a new plan
         public EditPlan(ListBox lb)
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace GymManagerPro.RibbonUI
             mylistbox = lb as ListBox;
         }
 
+        //constructor for editing an existing plan
         public EditPlan(DataLayer.Plan myplan, ListBox lb)
         {
             InitializeComponent();
@@ -41,6 +43,7 @@ namespace GymManagerPro.RibbonUI
             txtName.Text = plan.Name;
             txtDuration.Text = plan.Duration.ToString();
             txtPrice.Text = plan.Price.ToString();
+            txtNotes.Text = plan.Notes.ToString();
             this.Text = "Edit Plan '" + plan.Name + "'";
 
             mylistbox = lb as ListBox;
@@ -59,6 +62,7 @@ namespace GymManagerPro.RibbonUI
                 plan.Name = txtName.Text;
                 plan.Duration = Int32.Parse(txtDuration.Text);
                 plan.Price = Decimal.Parse(txtPrice.Text);
+                plan.Notes = txtNotes.Text;
 
                 if (DataLayer.Plan.UpdatePlan(plan) > 0)
                 {
