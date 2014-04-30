@@ -226,6 +226,54 @@ namespace GymManagerPro.RibbonUI
             panel.Visible = true;
         }
 
+        // sets the textboxes as editables for editing trainer details
+        private void EditTrainer()
+        {
+            if (panelTrainers.Visible)
+            {
+                if (btnTrainersEdit.Text == "Edit")
+                {
+                    txtTrainerFName.ReadOnly = false;
+                    txtTrainerLName.ReadOnly = false;
+                    txtTrainerCellPhone.ReadOnly = false;
+                    txtTrainerCity.ReadOnly = false;
+                    txtTrainerEmail.ReadOnly = false;
+                    txtTrainerHomePhone.ReadOnly = false;
+                    txtTrainerNotes.ReadOnly = false;
+                    txtTrainerSalary.ReadOnly = false;
+                    txtTrainerStreet.ReadOnly = false;
+                    txtTrainerSuburb.ReadOnly = false;
+
+                    btnTrainersEdit.Text = "Cancel";
+                    btnTrainersEdit.Icon = null;
+                    btnTrainersEdit.Tooltip = "Cancel editing";
+                }
+                else if (btnTrainersEdit.Text == "Cancel")
+                {
+                    txtTrainerFName.ReadOnly = true;
+                    txtTrainerLName.ReadOnly = true;
+                    txtTrainerCellPhone.ReadOnly = true;
+                    txtTrainerCity.ReadOnly = true;
+                    txtTrainerEmail.ReadOnly = true;
+                    txtTrainerHomePhone.ReadOnly = true;
+                    txtTrainerNotes.ReadOnly = true;
+                    txtTrainerSalary.ReadOnly = true;
+                    txtTrainerStreet.ReadOnly = true;
+                    txtTrainerSuburb.ReadOnly = true;
+
+                    //change button text and icon
+                    btnTrainersEdit.Text = "Edit";
+                    ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
+                    btnTrainersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersEdit.Icon")));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a trainer first!");
+                SwitchToPanel(panelTrainers);
+            }
+        }
+
 
         
         // --------------------------------- EVENTS ------------------------------------ //
@@ -1080,50 +1128,7 @@ namespace GymManagerPro.RibbonUI
 
         private void btnTrainersEdit_Click(object sender, EventArgs e)
         {
-            if (panelTrainers.Visible)
-            {
-                if (btnTrainersEdit.Text == "Edit")
-                {
-                    txtTrainerFName.ReadOnly = false;
-                    txtTrainerLName.ReadOnly = false;
-                    txtTrainerCellPhone.ReadOnly = false;
-                    txtTrainerCity.ReadOnly = false;
-                    txtTrainerEmail.ReadOnly = false;
-                    txtTrainerHomePhone.ReadOnly = false;
-                    txtTrainerNotes.ReadOnly = false;
-                    txtTrainerSalary.ReadOnly = false;
-                    txtTrainerStreet.ReadOnly = false;
-                    txtTrainerSuburb.ReadOnly = false;
-
-                    btnTrainersEdit.Text = "Cancel";
-                    btnTrainersEdit.Icon = null;
-                    btnTrainersEdit.Tooltip = "Cancel editing";
-                }
-                else if (btnTrainersEdit.Text == "Cancel")
-                {
-                    txtTrainerFName.ReadOnly = true;
-                    txtTrainerLName.ReadOnly = true;
-                    txtTrainerCellPhone.ReadOnly = true;
-                    txtTrainerCity.ReadOnly = true;
-                    txtTrainerEmail.ReadOnly = true;
-                    txtTrainerHomePhone.ReadOnly = true;
-                    txtTrainerNotes.ReadOnly = true;
-                    txtTrainerSalary.ReadOnly = true;
-                    txtTrainerStreet.ReadOnly = true;
-                    txtTrainerSuburb.ReadOnly = true;
-
-                    //change button text and icon
-                    btnTrainersEdit.Text = "Edit";
-                    ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
-                    btnTrainersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersEdit.Icon")));
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a trainer first!");
-                SwitchToPanel(panelTrainers);
-            }
-
+            EditTrainer();
         }
 
         private void btnTrainersSave_Click(object sender, EventArgs e)
@@ -1235,6 +1240,45 @@ namespace GymManagerPro.RibbonUI
                 MessageBox.Show("Please select a trainer first!");
                 SwitchToPanel(panelTrainers);
             }
+        }
+
+        private void btnTrainersAdd_Click(object sender, EventArgs e)
+        {
+            // switch to trainers panel
+            if (!panelTrainers.Visible)
+                SwitchToPanel(panelTrainers);
+
+            // create a new trainer
+            DataLayer.Trainer trainer = new DataLayer.Trainer();
+            trainer.FName = "New Trainer";
+            trainer.LName = "New Trainer";
+            trainer.Sex = "Male";
+            trainer.DateOfBirth = DateTime.Now;
+            trainer.Street = String.Empty;
+            trainer.Suburb = String.Empty;
+            trainer.Salary = 0;
+            trainer.HomePhone = String.Empty;
+            trainer.CellPhone = String.Empty;
+            trainer.Notes = String.Empty;
+            trainer.City = String.Empty;
+            trainer.Email = String.Empty;
+
+            // add to db
+            if (DataLayer.Trainers.NewTrainer(trainer) > 0)
+            {
+                //MessageBox.Show("success");
+                trainer_id = DataLayer.Trainers.GetLastInsertedTrainer();
+                LoadAllTrainerNames();
+                this.listBoxTrainers.SelectedIndex = this.listBoxTrainers.Items.Count - 1;
+            }
+            else
+            {
+                MessageBox.Show("could not add");
+            }
+
+            // set textboxes editable
+            EditTrainer();
+            
         }
 
     }
