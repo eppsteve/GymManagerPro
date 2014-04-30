@@ -107,70 +107,70 @@
     <Compile Include="DataLayer\Membership.cs" />
     <Compile Include="DataLayer\Plan.cs" />
     <Compile Include="DataLayer\Trainer.cs" />
-    <Compile Include="DesktopApplication\AboutBox.cs">
+    <Compile Include="Old-GUI\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesktopApplication\AboutBox.designer.cs">
+    <Compile Include="Old-GUI\AboutBox.designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesktopApplication\AddNewContract.cs">
+    <Compile Include="Old-GUI\AddNewContract.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesktopApplication\AddNewContract.designer.cs">
+    <Compile Include="Old-GUI\AddNewContract.designer.cs">
       <DependentUpon>AddNewContract.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesktopApplication\AddNewMember.cs">
+    <Compile Include="Old-GUI\AddNewMember.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesktopApplication\AddNewMember.designer.cs">
+    <Compile Include="Old-GUI\AddNewMember.designer.cs">
       <DependentUpon>AddNewMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesktopApplication\Attedance.cs">
+    <Compile Include="Old-GUI\Attedance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesktopApplication\Attedance.designer.cs">
+    <Compile Include="Old-GUI\Attedance.designer.cs">
       <DependentUpon>Attedance.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesktopApplication\EditPlan.cs">
+    <Compile Include="Old-GUI\EditPlan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesktopApplication\EditPlan.designer.cs">
+    <Compile Include="Old-GUI\EditPlan.designer.cs">
       <DependentUpon>EditPlan.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesktopApplication\FindMembers.cs">
+    <Compile Include="Old-GUI\FindMembers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesktopApplication\FindMembers.designer.cs">
+    <Compile Include="Old-GUI\FindMembers.designer.cs">
       <DependentUpon>FindMembers.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesktopApplication\Main.cs">
+    <Compile Include="Old-GUI\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesktopApplication\Main.designer.cs">
+    <Compile Include="Old-GUI\Main.designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesktopApplication\MemberManager.cs">
+    <Compile Include="Old-GUI\MemberManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesktopApplication\MemberManager.designer.cs">
+    <Compile Include="Old-GUI\MemberManager.designer.cs">
       <DependentUpon>MemberManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesktopApplication\Plans.cs">
+    <Compile Include="Old-GUI\Plans.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesktopApplication\Plans.designer.cs">
+    <Compile Include="Old-GUI\Plans.designer.cs">
       <DependentUpon>Plans.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesktopApplication\TrainerAssignmentDialog.cs">
+    <Compile Include="Old-GUI\TrainerAssignmentDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesktopApplication\TrainerAssignmentDialog.designer.cs">
+    <Compile Include="Old-GUI\TrainerAssignmentDialog.designer.cs">
       <DependentUpon>TrainerAssignmentDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesktopApplication\Trainers.cs">
+    <Compile Include="Old-GUI\Trainers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesktopApplication\Trainers.designer.cs">
+    <Compile Include="Old-GUI\Trainers.designer.cs">
       <DependentUpon>Trainers.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -199,37 +199,37 @@
     <Compile Include="RibbonUI\TrainerAssignmentDialog.designer.cs">
       <DependentUpon>TrainerAssignmentDialog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DesktopApplication\AboutBox.resx">
+    <EmbeddedResource Include="Old-GUI\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesktopApplication\AddNewContract.resx">
+    <EmbeddedResource Include="Old-GUI\AddNewContract.resx">
       <DependentUpon>AddNewContract.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesktopApplication\AddNewMember.resx">
+    <EmbeddedResource Include="Old-GUI\AddNewMember.resx">
       <DependentUpon>AddNewMember.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesktopApplication\Attedance.resx">
+    <EmbeddedResource Include="Old-GUI\Attedance.resx">
       <DependentUpon>Attedance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesktopApplication\EditPlan.resx">
+    <EmbeddedResource Include="Old-GUI\EditPlan.resx">
       <DependentUpon>EditPlan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesktopApplication\FindMembers.resx">
+    <EmbeddedResource Include="Old-GUI\FindMembers.resx">
       <DependentUpon>FindMembers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesktopApplication\Main.resx">
+    <EmbeddedResource Include="Old-GUI\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesktopApplication\MemberManager.resx">
+    <EmbeddedResource Include="Old-GUI\MemberManager.resx">
       <DependentUpon>MemberManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesktopApplication\Plans.resx">
+    <EmbeddedResource Include="Old-GUI\Plans.resx">
       <DependentUpon>Plans.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesktopApplication\TrainerAssignmentDialog.resx">
+    <EmbeddedResource Include="Old-GUI\TrainerAssignmentDialog.resx">
       <DependentUpon>TrainerAssignmentDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesktopApplication\Trainers.resx">
+    <EmbeddedResource Include="Old-GUI\Trainers.resx">
       <DependentUpon>Trainers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

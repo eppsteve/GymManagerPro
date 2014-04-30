@@ -85,6 +85,7 @@ namespace GymManagerPro.RibbonUI
                 plan.Name = txtName.Text;
                 plan.Duration = Int32.Parse(txtDuration.Text);
                 plan.Price = Decimal.Parse(txtPrice.Text);
+                plan.Notes = txtNotes.Text;
 
                // insert new plan into database              
                if ( DataLayer.Plan.CreateNewPlan(plan) >0 )

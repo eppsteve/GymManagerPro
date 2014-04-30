@@ -87,7 +87,7 @@ namespace GymManagerPro
                 txtEmail.Text = member.Email;
                 txtOccupation.Text = member.Occupation;
                 txtNotes.Text = member.Notes;
-                txtPersonalTrainer.Text = member.PersonalTrainer;
+                //txtPersonalTrainer.Text = member.PersonalTrainer; // not working since update in ribbon UI version
                 lblName.Text = member.FName + " " + member.LName;
                 txtMemberId.Text = id.ToString();
 

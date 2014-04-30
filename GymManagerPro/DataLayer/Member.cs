@@ -26,7 +26,7 @@ namespace DataLayer
         public string CellPhone { get; set; }
         public string Email { get; set; }
         public string Occupation { get; set; }
-        public string PersonalTrainer { get; set; }
+        public int PersonalTrainer { get; set; }
         public string Notes { get; set; }
         public byte[] Image { get; set; }
 
@@ -58,11 +58,11 @@ namespace DataLayer
             CellPhone = reader["CellPhone"].ToString();
             Email = reader["email"].ToString();
             Occupation = reader["Occupation"].ToString();
-            //if (!reader.IsDBNull(14))
-            //{
-            //    PersonalTrainer = reader.GetInt32(14);
-            //}
-            PersonalTrainer = reader["PersonalTrainer"].ToString();
+            if (!reader.IsDBNull(16))
+            {
+                PersonalTrainer = reader.GetInt32(16);
+            }
+            //PersonalTrainer = reader["PersonalTrainer"].ToString();
             Notes = reader["Notes"].ToString();
             if (!reader.IsDBNull(15))
             {
@@ -124,7 +124,7 @@ namespace DataLayer
             {
                 String query = " SELECT Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.DOB, Members.Sex, Members.Street, Members.Suburb, " +
                                " Members.City, Members.PostalCode, Members.CellPhone, Members.HomePhone, Members.Email, Members.Occupation, Members.Image, Members.Notes, " +
-                               " Trainers.FirstName + ' ' + Trainers.LastName AS PersonalTrainer " +
+                               " PersonalTrainer " +
                                "FROM            Members LEFT OUTER JOIN " +
                                "  Trainers ON Members.PersonalTrainer = Trainers.Id "+
                                "WHERE        (Members.Id = @memberid)";
@@ -144,7 +144,10 @@ namespace DataLayer
             return member;
         }
 
-        //gets the id of the first member
+        /// <summary>
+        /// gets the id of the first member
+        /// </summary>
+        /// <returns></returns>
         public static int GetFirstMemberId()
         {
             int nextId = 0;
@@ -179,7 +182,7 @@ namespace DataLayer
                            "FirstName = @firstname, Sex = @Sex, DOB = @dateofbirth, Street = @street, " +
                            "Suburb = @suburb, City = @city, PostalCode = @postalcode, HomePhone = @homephone, " +
                            "CellPhone = @cellphone, Email = @email, Occupation = @occupation, Notes = @notes, " +
-                           "Image = @image "  +
+                           "Image = @image, PersonalTrainer = @ptrainer "  +
                            "WHERE Id = @id";
 
                 using (SqlCeCommand cmd = new SqlCeCommand(query, con))
@@ -200,6 +203,7 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@occupation", member.Occupation);
                     cmd.Parameters.AddWithValue("@notes", member.Notes);
                     cmd.Parameters.AddWithValue("@image", member.Image);
+                    cmd.Parameters.AddWithValue("@ptrainer", member.PersonalTrainer);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     return rowsAffected;  
@@ -394,7 +398,6 @@ namespace DataLayer
             return rowsAffected;
         }
 
-
         /// <summary>
         /// retrieves the last inserted member
         /// </summary>
@@ -441,7 +444,6 @@ namespace DataLayer
                 return names;
             }
         }
-
 
         /// <summary>
         /// sets up auto complete searchbox
@@ -599,6 +601,11 @@ namespace DataLayer
             }
         }
 
+        /// <summary>
+        /// Returns all the members assigned to the specified personal trainer
+        /// </summary>
+        /// <param name="trainer_id"></param>
+        /// <returns></returns>
         public static DataTable GetMembersByPersonalTrainer(int trainer_id)
         {
             DataTable dataset;

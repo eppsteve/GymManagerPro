@@ -59,7 +59,8 @@ namespace GymManagerPro.RibbonUI
                 txtEmail.Text = member.Email;
                 txtOccupation.Text = member.Occupation;
                 txtNotes.Text = member.Notes;
-                //txtPersonalTrainer.Text = member.PersonalTrainer;
+                //cbPersonalTrainer.Text = member.PersonalTrainer;
+                cbPersonalTrainer.SelectedValue = member.PersonalTrainer;
                 lblName.Text = member.FName + " " + member.LName;
                 txtMemberId.Text = id.ToString();
 
@@ -274,6 +275,30 @@ namespace GymManagerPro.RibbonUI
             }
         }
 
+        // sets controls in member manager as read only
+        private void DoNotAllowMemberEdit()
+        {
+            txtLastName.ReadOnly = true;
+            txtFirstName.ReadOnly = true;
+            txtHomePhone.ReadOnly = true;
+            txtStreet.ReadOnly = true;
+            txtSuburb.ReadOnly = true;
+            txtCity.ReadOnly = true;
+            txtCellPhone.ReadOnly = true;
+            txtOccupation.ReadOnly = true;
+            txtNotes.ReadOnly = true;
+            txtEmail.ReadOnly = true;
+            txtPostalCode.ReadOnly = true;
+            txtDateOfBirth.Enabled = false;
+            txtCardNumber.Enabled = false;
+            cbPersonalTrainer.Enabled = false;
+
+            // change button text and icon
+            btnMembersEdit.Text = "Edit";
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
+            btnMembersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersEdit.Icon")));
+        }
+
 
         
         // --------------------------------- EVENTS ------------------------------------ //
@@ -313,6 +338,12 @@ namespace GymManagerPro.RibbonUI
             cbFindPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
             cbFindPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
             cbFindPersonalTrainer.ValueMember = "Key";                                                  // id of the trainer
+
+            // fill personal trainer combobox with trainers in member manager
+            trainers.Remove(0);                                                                 // remove 'All' entry
+            cbPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
+            cbPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
+            cbPersonalTrainer.ValueMember = "Key";  
 
             // fill combobox with all plans, in new member wizard
             plans.Remove(0);                                                //remove 'All' option
@@ -398,11 +429,7 @@ namespace GymManagerPro.RibbonUI
 
         private void btnViewAllMembers_Click(object sender, EventArgs e)
         {
-            panelAllMembers.Visible = true;
-            panelMemberManager.Visible = false;
-            panelTrainers.Visible = false;
-            panelPlans.Visible = false;
-            panelAttedance.Visible = false;
+            SwitchToPanel(panelAllMembers);
         }
 
         private void btnViewCheckins_Click(object sender, EventArgs e)
@@ -698,6 +725,7 @@ namespace GymManagerPro.RibbonUI
                 member.Email = txtEmail.Text;
                 member.Occupation = txtOccupation.Text;
                 member.Notes = txtNotes.Text;
+                member.PersonalTrainer = int.Parse( cbPersonalTrainer.SelectedValue.ToString());
 
                 // holds the member's picture
                 //byte[] imageBt = null;
@@ -724,19 +752,7 @@ namespace GymManagerPro.RibbonUI
                 }
 
                 // set textboxes to readonly
-                txtLastName.ReadOnly = true;
-                txtFirstName.ReadOnly = true;
-                txtHomePhone.ReadOnly = true;
-                txtStreet.ReadOnly = true;
-                txtSuburb.ReadOnly = true;
-                txtCity.ReadOnly = true;
-                txtCellPhone.ReadOnly = true;
-                txtOccupation.ReadOnly = true;
-                txtEmail.ReadOnly = true;
-                txtDateOfBirth.Enabled = false;
-                txtCardNumber.IsInputReadOnly = true;
-
-                btnMembersEdit.Text = "Edit";
+                DoNotAllowMemberEdit();
             }
             else
             {
@@ -763,8 +779,10 @@ namespace GymManagerPro.RibbonUI
                     txtOccupation.ReadOnly = false;
                     txtEmail.ReadOnly = false;
                     txtNotes.ReadOnly = false;
+                    txtPostalCode.ReadOnly = false;
                     txtDateOfBirth.Enabled = true;
                     txtCardNumber.Enabled = true;
+                    cbPersonalTrainer.Enabled = true;
 
                     btnMembersEdit.Text = "Cancel";
                     btnMembersEdit.Icon = null;
@@ -772,23 +790,7 @@ namespace GymManagerPro.RibbonUI
                 }
                 else if (btnMembersEdit.Text == "Cancel")
                 {
-                    txtLastName.ReadOnly = true;
-                    txtFirstName.ReadOnly = true;
-                    txtHomePhone.ReadOnly = true;
-                    txtStreet.ReadOnly = true;
-                    txtSuburb.ReadOnly = true;
-                    txtCity.ReadOnly = true;
-                    txtCellPhone.ReadOnly = true;
-                    txtOccupation.ReadOnly = true;
-                    txtNotes.ReadOnly = true;
-                    txtEmail.ReadOnly = true;
-                    txtDateOfBirth.Enabled = false;
-                    txtCardNumber.Enabled = false;
-
-                    // change button text and icon
-                    btnMembersEdit.Text = "Edit";
-                    ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
-                    btnMembersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersEdit.Icon")));
+                    DoNotAllowMemberEdit();
                 }
             }
             else

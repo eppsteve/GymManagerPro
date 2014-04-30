@@ -116,34 +116,6 @@ namespace DataLayer
             }
         }
 
-
-
-        /// <summary>
-        /// Gets personal trainer's name by specified member id
-        /// </summary>
-        /// <param name="id">The member's id</param>
-        /// <returns>The trainer's id</returns>
-        //public static string GetTrainerNameById(int id)
-        //{
-        //    string name = null;
-        //    string query = "SELECT (Trainers.Name + ' ' + Trainers.Surname) AS PTrainer FROM Members " +
-        //                    "JOIN Trainers ON Members.PersonalTrainer = Trainers.Id " +
-        //                    "WHERE Members.Id = @id";
-
-        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
-        //    {
-        //        SqlCeCommand cmd = new SqlCeCommand(query, con);
-        //        cmd.Parameters.AddWithValue("@id", id);
-
-        //        SqlCeDataReader reader = cmd.ExecuteReader();
-        //        while (reader.Read())
-        //        {
-        //            name = reader["PTrainer"].ToString();
-        //        }
-        //        return name;
-        //    }
-        //}
-
         /// <summary>
         /// retrieves the members that are associated with the specified personal trainer
         /// </summary>
