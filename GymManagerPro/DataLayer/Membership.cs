@@ -21,7 +21,6 @@ namespace DataLayer
     class Memberships
     {
 
-
         // inserts a new membership in the db
         public static int NewMembership(Membership membership)
         {
@@ -56,7 +55,6 @@ namespace DataLayer
                 return rowsAffected;
             }
         }
-
 
         /// <summary>
         /// deletes the specified membership
@@ -102,8 +100,6 @@ namespace DataLayer
 
             return table;
         }
-
-
 
     }
 }
