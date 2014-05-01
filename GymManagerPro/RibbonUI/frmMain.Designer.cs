@@ -34,38 +34,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
-            this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonBar4 = new DevComponents.DotNetBar.RibbonBar();
-            this.labelItem5 = new DevComponents.DotNetBar.LabelItem();
-            this.cbFindSearchBy = new DevComponents.DotNetBar.ComboBoxItem();
-            this.Id = new DevComponents.Editors.ComboItem();
-            this.CardNumber = new DevComponents.Editors.ComboItem();
-            this.FirstName = new DevComponents.Editors.ComboItem();
-            this.txtFindSearch = new DevComponents.DotNetBar.TextBoxItem();
-            this.btnFindSearch = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
-            this.cbFindPersonalTrainer = new System.Windows.Forms.ComboBox();
-            this.cbFindPlan = new System.Windows.Forms.ComboBox();
-            this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
-            this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
-            this.labelItem10 = new DevComponents.DotNetBar.LabelItem();
-            this.labelItem11 = new DevComponents.DotNetBar.LabelItem();
-            this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
-            this.labelItem3 = new DevComponents.DotNetBar.LabelItem();
-            this.txtFindLastName = new DevComponents.DotNetBar.TextBoxItem();
-            this.labelItem4 = new DevComponents.DotNetBar.LabelItem();
-            this.txtFindFirstName = new DevComponents.DotNetBar.TextBoxItem();
-            this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnViewAllMembers = new DevComponents.DotNetBar.ButtonItem();
-            this.btnFindRefresh = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel3 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar9 = new DevComponents.DotNetBar.RibbonBar();
             this.txtAttedanceCardN = new System.Windows.Forms.TextBox();
-            this.txtAttedanceLastName = new System.Windows.Forms.TextBox();
-            this.labelItem7 = new DevComponents.DotNetBar.LabelItem();
-            this.textBoxItem5 = new DevComponents.DotNetBar.TextBoxItem();
             this.labelItem9 = new DevComponents.DotNetBar.LabelItem();
-            this.textBoxItem6 = new DevComponents.DotNetBar.TextBoxItem();
+            this.txtAttedance = new DevComponents.DotNetBar.TextBoxItem();
             this.btnAttedanceCheckin = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonBar8 = new DevComponents.DotNetBar.RibbonBar();
             this.btnAttedanceSaveTxt = new DevComponents.DotNetBar.ButtonItem();
@@ -88,6 +61,34 @@
             this.btnMembersSave = new DevComponents.DotNetBar.ButtonItem();
             this.btnMembersEdit = new DevComponents.DotNetBar.ButtonItem();
             this.btnMembersDelete = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
+            this.ribbonBar4 = new DevComponents.DotNetBar.RibbonBar();
+            this.labelItem5 = new DevComponents.DotNetBar.LabelItem();
+            this.cbFindSearchBy = new DevComponents.DotNetBar.ComboBoxItem();
+            this.Id = new DevComponents.Editors.ComboItem();
+            this.CardNumber = new DevComponents.Editors.ComboItem();
+            this.FirstName = new DevComponents.Editors.ComboItem();
+            this.LastName = new DevComponents.Editors.ComboItem();
+            this.CellPhone = new DevComponents.Editors.ComboItem();
+            this.HomePhone = new DevComponents.Editors.ComboItem();
+            this.Email = new DevComponents.Editors.ComboItem();
+            this.txtFindSearch = new DevComponents.DotNetBar.TextBoxItem();
+            this.btnFindSearch = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
+            this.cbFindPersonalTrainer = new System.Windows.Forms.ComboBox();
+            this.cbFindPlan = new System.Windows.Forms.ComboBox();
+            this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem10 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem11 = new DevComponents.DotNetBar.LabelItem();
+            this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
+            this.labelItem3 = new DevComponents.DotNetBar.LabelItem();
+            this.txtFindLastName = new DevComponents.DotNetBar.TextBoxItem();
+            this.labelItem4 = new DevComponents.DotNetBar.LabelItem();
+            this.txtFindFirstName = new DevComponents.DotNetBar.TextBoxItem();
+            this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnViewAllMembers = new DevComponents.DotNetBar.ButtonItem();
+            this.btnFindRefresh = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar12 = new DevComponents.DotNetBar.RibbonBar();
             this.btnTrainersAddMember = new DevComponents.DotNetBar.ButtonItem();
@@ -286,17 +287,13 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbWizardPlans = new System.Windows.Forms.ComboBox();
             this.label52 = new System.Windows.Forms.Label();
-            this.CellPhone = new DevComponents.Editors.ComboItem();
-            this.HomePhone = new DevComponents.Editors.ComboItem();
-            this.Email = new DevComponents.Editors.ComboItem();
-            this.LastName = new DevComponents.Editors.ComboItem();
             this.ribbonControl1.SuspendLayout();
-            this.ribbonPanel1.SuspendLayout();
-            this.ribbonBar2.SuspendLayout();
             this.ribbonPanel3.SuspendLayout();
             this.ribbonBar9.SuspendLayout();
             this.ribbonPanel2.SuspendLayout();
             this.ribbonBar7.SuspendLayout();
+            this.ribbonPanel1.SuspendLayout();
+            this.ribbonBar2.SuspendLayout();
             this.ribbonPanel4.SuspendLayout();
             this.ribbonPanel5.SuspendLayout();
             this.panelAllMembers.SuspendLayout();
@@ -343,9 +340,9 @@
             this.ribbonControl1.BackgroundStyle.Class = "";
             this.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonControl1.CaptionVisible = true;
-            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Controls.Add(this.ribbonPanel3);
             this.ribbonControl1.Controls.Add(this.ribbonPanel2);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Controls.Add(this.ribbonPanel5);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -369,307 +366,6 @@
             this.ribbonControl1.TabGroupHeight = 14;
             this.ribbonControl1.TabIndex = 0;
             this.ribbonControl1.Text = "ribbonControl1";
-            // 
-            // ribbonPanel1
-            // 
-            this.ribbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonPanel1.Controls.Add(this.ribbonBar4);
-            this.ribbonPanel1.Controls.Add(this.ribbonBar2);
-            this.ribbonPanel1.Controls.Add(this.ribbonBar3);
-            this.ribbonPanel1.Controls.Add(this.ribbonBar1);
-            this.ribbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel1.Location = new System.Drawing.Point(0, 56);
-            this.ribbonPanel1.Name = "ribbonPanel1";
-            this.ribbonPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel1.Size = new System.Drawing.Size(984, 96);
-            // 
-            // 
-            // 
-            this.ribbonPanel1.Style.Class = "";
-            this.ribbonPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel1.StyleMouseDown.Class = "";
-            this.ribbonPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel1.StyleMouseOver.Class = "";
-            this.ribbonPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonPanel1.TabIndex = 1;
-            // 
-            // ribbonBar4
-            // 
-            this.ribbonBar4.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar4.BackgroundMouseOverStyle.Class = "";
-            this.ribbonBar4.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar4.BackgroundStyle.Class = "";
-            this.ribbonBar4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar4.ContainerControlProcessDialogKey = true;
-            this.ribbonBar4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar4.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.labelItem5,
-            this.cbFindSearchBy,
-            this.txtFindSearch,
-            this.btnFindSearch});
-            this.ribbonBar4.Location = new System.Drawing.Point(886, 0);
-            this.ribbonBar4.Name = "ribbonBar4";
-            this.ribbonBar4.Size = new System.Drawing.Size(368, 93);
-            this.ribbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar4.TabIndex = 4;
-            this.ribbonBar4.Text = "Advanced Search";
-            // 
-            // 
-            // 
-            this.ribbonBar4.TitleStyle.Class = "";
-            this.ribbonBar4.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar4.TitleStyleMouseOver.Class = "";
-            this.ribbonBar4.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // labelItem5
-            // 
-            this.labelItem5.Name = "labelItem5";
-            this.labelItem5.Text = "Search by";
-            // 
-            // cbFindSearchBy
-            // 
-            this.cbFindSearchBy.ComboWidth = 120;
-            this.cbFindSearchBy.DropDownHeight = 106;
-            this.cbFindSearchBy.Items.AddRange(new object[] {
-            this.Id,
-            this.CardNumber,
-            this.FirstName,
-            this.LastName,
-            this.CellPhone,
-            this.HomePhone,
-            this.Email});
-            this.cbFindSearchBy.Name = "cbFindSearchBy";
-            // 
-            // Id
-            // 
-            this.Id.Text = "ID";
-            // 
-            // CardNumber
-            // 
-            this.CardNumber.Text = "CardNumber";
-            // 
-            // FirstName
-            // 
-            this.FirstName.Text = "FirstName";
-            // 
-            // txtFindSearch
-            // 
-            this.txtFindSearch.Name = "txtFindSearch";
-            this.txtFindSearch.TextBoxWidth = 120;
-            this.txtFindSearch.WatermarkColor = System.Drawing.SystemColors.GrayText;
-            // 
-            // btnFindSearch
-            // 
-            this.btnFindSearch.Icon = ((System.Drawing.Icon)(resources.GetObject("btnFindSearch.Icon")));
-            this.btnFindSearch.Name = "btnFindSearch";
-            this.btnFindSearch.SubItemsExpandWidth = 14;
-            this.btnFindSearch.Text = "Search";
-            this.btnFindSearch.Click += new System.EventHandler(this.btnFindSearch_Click);
-            // 
-            // ribbonBar2
-            // 
-            this.ribbonBar2.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar2.BackgroundMouseOverStyle.Class = "";
-            this.ribbonBar2.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar2.BackgroundStyle.Class = "";
-            this.ribbonBar2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar2.ContainerControlProcessDialogKey = true;
-            this.ribbonBar2.Controls.Add(this.cbFindPersonalTrainer);
-            this.ribbonBar2.Controls.Add(this.cbFindPlan);
-            this.ribbonBar2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.labelItem2,
-            this.labelItem1,
-            this.labelItem10,
-            this.labelItem11});
-            this.ribbonBar2.Location = new System.Drawing.Point(497, 0);
-            this.ribbonBar2.Name = "ribbonBar2";
-            this.ribbonBar2.Size = new System.Drawing.Size(389, 93);
-            this.ribbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar2.TabIndex = 3;
-            this.ribbonBar2.Text = "Filter by";
-            // 
-            // 
-            // 
-            this.ribbonBar2.TitleStyle.Class = "";
-            this.ribbonBar2.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar2.TitleStyleMouseOver.Class = "";
-            this.ribbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // cbFindPersonalTrainer
-            // 
-            this.cbFindPersonalTrainer.FormattingEnabled = true;
-            this.cbFindPersonalTrainer.Location = new System.Drawing.Point(252, 28);
-            this.cbFindPersonalTrainer.Name = "cbFindPersonalTrainer";
-            this.cbFindPersonalTrainer.Size = new System.Drawing.Size(121, 21);
-            this.cbFindPersonalTrainer.TabIndex = 1;
-            this.cbFindPersonalTrainer.SelectedIndexChanged += new System.EventHandler(this.cbFindPersonalTrainer_SelectedIndexChanged);
-            // 
-            // cbFindPlan
-            // 
-            this.cbFindPlan.FormattingEnabled = true;
-            this.cbFindPlan.Location = new System.Drawing.Point(34, 28);
-            this.cbFindPlan.Name = "cbFindPlan";
-            this.cbFindPlan.Size = new System.Drawing.Size(121, 21);
-            this.cbFindPlan.TabIndex = 0;
-            this.cbFindPlan.SelectedIndexChanged += new System.EventHandler(this.cbFindPlan_SelectedIndexChanged);
-            // 
-            // labelItem2
-            // 
-            this.labelItem2.Name = "labelItem2";
-            this.labelItem2.Text = "Plan";
-            // 
-            // labelItem1
-            // 
-            this.labelItem1.Name = "labelItem1";
-            this.labelItem1.Text = "                                           ";
-            // 
-            // labelItem10
-            // 
-            this.labelItem10.Name = "labelItem10";
-            this.labelItem10.Text = "Personal Trainer";
-            // 
-            // labelItem11
-            // 
-            this.labelItem11.Name = "labelItem11";
-            this.labelItem11.Text = "                                             ";
-            // 
-            // ribbonBar3
-            // 
-            this.ribbonBar3.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar3.BackgroundMouseOverStyle.Class = "";
-            this.ribbonBar3.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar3.BackgroundStyle.Class = "";
-            this.ribbonBar3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar3.ContainerControlProcessDialogKey = true;
-            this.ribbonBar3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar3.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.labelItem3,
-            this.txtFindLastName,
-            this.labelItem4,
-            this.txtFindFirstName});
-            this.ribbonBar3.Location = new System.Drawing.Point(125, 0);
-            this.ribbonBar3.Name = "ribbonBar3";
-            this.ribbonBar3.Size = new System.Drawing.Size(372, 93);
-            this.ribbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar3.TabIndex = 2;
-            this.ribbonBar3.Text = "Search";
-            // 
-            // 
-            // 
-            this.ribbonBar3.TitleStyle.Class = "";
-            this.ribbonBar3.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar3.TitleStyleMouseOver.Class = "";
-            this.ribbonBar3.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // labelItem3
-            // 
-            this.labelItem3.Name = "labelItem3";
-            this.labelItem3.Text = "Last Name";
-            // 
-            // txtFindLastName
-            // 
-            this.txtFindLastName.Name = "txtFindLastName";
-            this.txtFindLastName.TextBoxWidth = 120;
-            this.txtFindLastName.WatermarkColor = System.Drawing.SystemColors.GrayText;
-            this.txtFindLastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFindLastName_KeyDown);
-            // 
-            // labelItem4
-            // 
-            this.labelItem4.Name = "labelItem4";
-            this.labelItem4.Text = "First Name";
-            // 
-            // txtFindFirstName
-            // 
-            this.txtFindFirstName.Name = "txtFindFirstName";
-            this.txtFindFirstName.TextBoxWidth = 120;
-            this.txtFindFirstName.WatermarkColor = System.Drawing.SystemColors.GrayText;
-            this.txtFindFirstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFindFirstName_KeyDown);
-            // 
-            // ribbonBar1
-            // 
-            this.ribbonBar1.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar1.BackgroundMouseOverStyle.Class = "";
-            this.ribbonBar1.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar1.BackgroundStyle.Class = "";
-            this.ribbonBar1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar1.ContainerControlProcessDialogKey = true;
-            this.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnViewAllMembers,
-            this.btnFindRefresh});
-            this.ribbonBar1.Location = new System.Drawing.Point(3, 0);
-            this.ribbonBar1.Name = "ribbonBar1";
-            this.ribbonBar1.Size = new System.Drawing.Size(122, 93);
-            this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar1.TabIndex = 0;
-            this.ribbonBar1.Text = "Show";
-            // 
-            // 
-            // 
-            this.ribbonBar1.TitleStyle.Class = "";
-            this.ribbonBar1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar1.TitleStyleMouseOver.Class = "";
-            this.ribbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // btnViewAllMembers
-            // 
-            this.btnViewAllMembers.Icon = ((System.Drawing.Icon)(resources.GetObject("btnViewAllMembers.Icon")));
-            this.btnViewAllMembers.Name = "btnViewAllMembers";
-            this.btnViewAllMembers.SubItemsExpandWidth = 14;
-            this.btnViewAllMembers.Text = "View All";
-            this.btnViewAllMembers.Click += new System.EventHandler(this.btnViewAllMembers_Click);
-            // 
-            // btnFindRefresh
-            // 
-            this.btnFindRefresh.Icon = ((System.Drawing.Icon)(resources.GetObject("btnFindRefresh.Icon")));
-            this.btnFindRefresh.Name = "btnFindRefresh";
-            this.btnFindRefresh.SubItemsExpandWidth = 14;
-            this.btnFindRefresh.Text = "Refresh";
-            this.btnFindRefresh.Tooltip = "Refresh";
-            this.btnFindRefresh.Click += new System.EventHandler(this.btnFindRefresh_Click);
             // 
             // ribbonPanel3
             // 
@@ -698,7 +394,6 @@
             this.ribbonPanel3.StyleMouseOver.Class = "";
             this.ribbonPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel3.TabIndex = 3;
-            this.ribbonPanel3.Visible = false;
             // 
             // ribbonBar9
             // 
@@ -715,17 +410,14 @@
             this.ribbonBar9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonBar9.ContainerControlProcessDialogKey = true;
             this.ribbonBar9.Controls.Add(this.txtAttedanceCardN);
-            this.ribbonBar9.Controls.Add(this.txtAttedanceLastName);
             this.ribbonBar9.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar9.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.labelItem7,
-            this.textBoxItem5,
             this.labelItem9,
-            this.textBoxItem6,
+            this.txtAttedance,
             this.btnAttedanceCheckin});
             this.ribbonBar9.Location = new System.Drawing.Point(247, 0);
             this.ribbonBar9.Name = "ribbonBar9";
-            this.ribbonBar9.Size = new System.Drawing.Size(413, 93);
+            this.ribbonBar9.Size = new System.Drawing.Size(259, 93);
             this.ribbonBar9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar9.TabIndex = 6;
             this.ribbonBar9.Text = "CheckIn";
@@ -742,39 +434,22 @@
             // 
             // txtAttedanceCardN
             // 
-            this.txtAttedanceCardN.Location = new System.Drawing.Point(231, 29);
+            this.txtAttedanceCardN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.txtAttedanceCardN.Location = new System.Drawing.Point(66, 29);
             this.txtAttedanceCardN.Name = "txtAttedanceCardN";
-            this.txtAttedanceCardN.Size = new System.Drawing.Size(115, 20);
-            this.txtAttedanceCardN.TabIndex = 2;
-            // 
-            // txtAttedanceLastName
-            // 
-            this.txtAttedanceLastName.Location = new System.Drawing.Point(66, 28);
-            this.txtAttedanceLastName.Name = "txtAttedanceLastName";
-            this.txtAttedanceLastName.Size = new System.Drawing.Size(115, 20);
-            this.txtAttedanceLastName.TabIndex = 2;
-            // 
-            // labelItem7
-            // 
-            this.labelItem7.Name = "labelItem7";
-            this.labelItem7.Text = "Last Name";
-            // 
-            // textBoxItem5
-            // 
-            this.textBoxItem5.Name = "textBoxItem5";
-            this.textBoxItem5.TextBoxWidth = 120;
-            this.textBoxItem5.WatermarkColor = System.Drawing.SystemColors.GrayText;
+            this.txtAttedanceCardN.Size = new System.Drawing.Size(120, 21);
+            this.txtAttedanceCardN.TabIndex = 1;
             // 
             // labelItem9
             // 
             this.labelItem9.Name = "labelItem9";
-            this.labelItem9.Text = "Card N.";
+            this.labelItem9.Text = "Member ID";
             // 
-            // textBoxItem6
+            // txtAttedance
             // 
-            this.textBoxItem6.Name = "textBoxItem6";
-            this.textBoxItem6.TextBoxWidth = 120;
-            this.textBoxItem6.WatermarkColor = System.Drawing.SystemColors.GrayText;
+            this.txtAttedance.Name = "txtAttedance";
+            this.txtAttedance.TextBoxWidth = 120;
+            this.txtAttedance.WatermarkColor = System.Drawing.SystemColors.GrayText;
             // 
             // btnAttedanceCheckin
             // 
@@ -1121,6 +796,324 @@
             this.btnMembersDelete.Tooltip = "Delete Member";
             this.btnMembersDelete.Click += new System.EventHandler(this.btnMembersDelete_Click);
             // 
+            // ribbonPanel1
+            // 
+            this.ribbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel1.Controls.Add(this.ribbonBar4);
+            this.ribbonPanel1.Controls.Add(this.ribbonBar2);
+            this.ribbonPanel1.Controls.Add(this.ribbonBar3);
+            this.ribbonPanel1.Controls.Add(this.ribbonBar1);
+            this.ribbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel1.Location = new System.Drawing.Point(0, 56);
+            this.ribbonPanel1.Name = "ribbonPanel1";
+            this.ribbonPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ribbonPanel1.Size = new System.Drawing.Size(984, 96);
+            // 
+            // 
+            // 
+            this.ribbonPanel1.Style.Class = "";
+            this.ribbonPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel1.StyleMouseDown.Class = "";
+            this.ribbonPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel1.StyleMouseOver.Class = "";
+            this.ribbonPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonPanel1.TabIndex = 1;
+            this.ribbonPanel1.Visible = false;
+            // 
+            // ribbonBar4
+            // 
+            this.ribbonBar4.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar4.BackgroundMouseOverStyle.Class = "";
+            this.ribbonBar4.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar4.BackgroundStyle.Class = "";
+            this.ribbonBar4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar4.ContainerControlProcessDialogKey = true;
+            this.ribbonBar4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar4.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.labelItem5,
+            this.cbFindSearchBy,
+            this.txtFindSearch,
+            this.btnFindSearch});
+            this.ribbonBar4.Location = new System.Drawing.Point(886, 0);
+            this.ribbonBar4.Name = "ribbonBar4";
+            this.ribbonBar4.Size = new System.Drawing.Size(368, 93);
+            this.ribbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar4.TabIndex = 4;
+            this.ribbonBar4.Text = "Advanced Search";
+            // 
+            // 
+            // 
+            this.ribbonBar4.TitleStyle.Class = "";
+            this.ribbonBar4.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar4.TitleStyleMouseOver.Class = "";
+            this.ribbonBar4.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // labelItem5
+            // 
+            this.labelItem5.Name = "labelItem5";
+            this.labelItem5.Text = "Search by";
+            // 
+            // cbFindSearchBy
+            // 
+            this.cbFindSearchBy.ComboWidth = 120;
+            this.cbFindSearchBy.DropDownHeight = 106;
+            this.cbFindSearchBy.Items.AddRange(new object[] {
+            this.Id,
+            this.CardNumber,
+            this.FirstName,
+            this.LastName,
+            this.CellPhone,
+            this.HomePhone,
+            this.Email});
+            this.cbFindSearchBy.Name = "cbFindSearchBy";
+            // 
+            // Id
+            // 
+            this.Id.Text = "ID";
+            // 
+            // CardNumber
+            // 
+            this.CardNumber.Text = "CardNumber";
+            // 
+            // FirstName
+            // 
+            this.FirstName.Text = "FirstName";
+            // 
+            // LastName
+            // 
+            this.LastName.Text = "LastName";
+            // 
+            // CellPhone
+            // 
+            this.CellPhone.Text = "CellPhone";
+            // 
+            // HomePhone
+            // 
+            this.HomePhone.Text = "HomePhone";
+            // 
+            // Email
+            // 
+            this.Email.Text = "Email";
+            // 
+            // txtFindSearch
+            // 
+            this.txtFindSearch.Name = "txtFindSearch";
+            this.txtFindSearch.TextBoxWidth = 120;
+            this.txtFindSearch.WatermarkColor = System.Drawing.SystemColors.GrayText;
+            // 
+            // btnFindSearch
+            // 
+            this.btnFindSearch.Icon = ((System.Drawing.Icon)(resources.GetObject("btnFindSearch.Icon")));
+            this.btnFindSearch.Name = "btnFindSearch";
+            this.btnFindSearch.SubItemsExpandWidth = 14;
+            this.btnFindSearch.Text = "Search";
+            this.btnFindSearch.Click += new System.EventHandler(this.btnFindSearch_Click);
+            // 
+            // ribbonBar2
+            // 
+            this.ribbonBar2.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar2.BackgroundMouseOverStyle.Class = "";
+            this.ribbonBar2.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar2.BackgroundStyle.Class = "";
+            this.ribbonBar2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar2.ContainerControlProcessDialogKey = true;
+            this.ribbonBar2.Controls.Add(this.cbFindPersonalTrainer);
+            this.ribbonBar2.Controls.Add(this.cbFindPlan);
+            this.ribbonBar2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.labelItem2,
+            this.labelItem1,
+            this.labelItem10,
+            this.labelItem11});
+            this.ribbonBar2.Location = new System.Drawing.Point(497, 0);
+            this.ribbonBar2.Name = "ribbonBar2";
+            this.ribbonBar2.Size = new System.Drawing.Size(389, 93);
+            this.ribbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar2.TabIndex = 3;
+            this.ribbonBar2.Text = "Filter by";
+            // 
+            // 
+            // 
+            this.ribbonBar2.TitleStyle.Class = "";
+            this.ribbonBar2.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar2.TitleStyleMouseOver.Class = "";
+            this.ribbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // cbFindPersonalTrainer
+            // 
+            this.cbFindPersonalTrainer.FormattingEnabled = true;
+            this.cbFindPersonalTrainer.Location = new System.Drawing.Point(252, 28);
+            this.cbFindPersonalTrainer.Name = "cbFindPersonalTrainer";
+            this.cbFindPersonalTrainer.Size = new System.Drawing.Size(121, 21);
+            this.cbFindPersonalTrainer.TabIndex = 1;
+            this.cbFindPersonalTrainer.SelectedIndexChanged += new System.EventHandler(this.cbFindPersonalTrainer_SelectedIndexChanged);
+            // 
+            // cbFindPlan
+            // 
+            this.cbFindPlan.FormattingEnabled = true;
+            this.cbFindPlan.Location = new System.Drawing.Point(34, 28);
+            this.cbFindPlan.Name = "cbFindPlan";
+            this.cbFindPlan.Size = new System.Drawing.Size(121, 21);
+            this.cbFindPlan.TabIndex = 0;
+            this.cbFindPlan.SelectedIndexChanged += new System.EventHandler(this.cbFindPlan_SelectedIndexChanged);
+            // 
+            // labelItem2
+            // 
+            this.labelItem2.Name = "labelItem2";
+            this.labelItem2.Text = "Plan";
+            // 
+            // labelItem1
+            // 
+            this.labelItem1.Name = "labelItem1";
+            this.labelItem1.Text = "                                           ";
+            // 
+            // labelItem10
+            // 
+            this.labelItem10.Name = "labelItem10";
+            this.labelItem10.Text = "Personal Trainer";
+            // 
+            // labelItem11
+            // 
+            this.labelItem11.Name = "labelItem11";
+            this.labelItem11.Text = "                                             ";
+            // 
+            // ribbonBar3
+            // 
+            this.ribbonBar3.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar3.BackgroundMouseOverStyle.Class = "";
+            this.ribbonBar3.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar3.BackgroundStyle.Class = "";
+            this.ribbonBar3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar3.ContainerControlProcessDialogKey = true;
+            this.ribbonBar3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar3.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.labelItem3,
+            this.txtFindLastName,
+            this.labelItem4,
+            this.txtFindFirstName});
+            this.ribbonBar3.Location = new System.Drawing.Point(125, 0);
+            this.ribbonBar3.Name = "ribbonBar3";
+            this.ribbonBar3.Size = new System.Drawing.Size(372, 93);
+            this.ribbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar3.TabIndex = 2;
+            this.ribbonBar3.Text = "Search";
+            // 
+            // 
+            // 
+            this.ribbonBar3.TitleStyle.Class = "";
+            this.ribbonBar3.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar3.TitleStyleMouseOver.Class = "";
+            this.ribbonBar3.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // labelItem3
+            // 
+            this.labelItem3.Name = "labelItem3";
+            this.labelItem3.Text = "Last Name";
+            // 
+            // txtFindLastName
+            // 
+            this.txtFindLastName.Name = "txtFindLastName";
+            this.txtFindLastName.TextBoxWidth = 120;
+            this.txtFindLastName.WatermarkColor = System.Drawing.SystemColors.GrayText;
+            this.txtFindLastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFindLastName_KeyDown);
+            // 
+            // labelItem4
+            // 
+            this.labelItem4.Name = "labelItem4";
+            this.labelItem4.Text = "First Name";
+            // 
+            // txtFindFirstName
+            // 
+            this.txtFindFirstName.Name = "txtFindFirstName";
+            this.txtFindFirstName.TextBoxWidth = 120;
+            this.txtFindFirstName.WatermarkColor = System.Drawing.SystemColors.GrayText;
+            this.txtFindFirstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFindFirstName_KeyDown);
+            // 
+            // ribbonBar1
+            // 
+            this.ribbonBar1.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar1.BackgroundMouseOverStyle.Class = "";
+            this.ribbonBar1.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar1.BackgroundStyle.Class = "";
+            this.ribbonBar1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar1.ContainerControlProcessDialogKey = true;
+            this.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnViewAllMembers,
+            this.btnFindRefresh});
+            this.ribbonBar1.Location = new System.Drawing.Point(3, 0);
+            this.ribbonBar1.Name = "ribbonBar1";
+            this.ribbonBar1.Size = new System.Drawing.Size(122, 93);
+            this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar1.TabIndex = 0;
+            this.ribbonBar1.Text = "Show";
+            // 
+            // 
+            // 
+            this.ribbonBar1.TitleStyle.Class = "";
+            this.ribbonBar1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar1.TitleStyleMouseOver.Class = "";
+            this.ribbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // btnViewAllMembers
+            // 
+            this.btnViewAllMembers.Icon = ((System.Drawing.Icon)(resources.GetObject("btnViewAllMembers.Icon")));
+            this.btnViewAllMembers.Name = "btnViewAllMembers";
+            this.btnViewAllMembers.SubItemsExpandWidth = 14;
+            this.btnViewAllMembers.Text = "View All";
+            this.btnViewAllMembers.Click += new System.EventHandler(this.btnViewAllMembers_Click);
+            // 
+            // btnFindRefresh
+            // 
+            this.btnFindRefresh.Icon = ((System.Drawing.Icon)(resources.GetObject("btnFindRefresh.Icon")));
+            this.btnFindRefresh.Name = "btnFindRefresh";
+            this.btnFindRefresh.SubItemsExpandWidth = 14;
+            this.btnFindRefresh.Text = "Refresh";
+            this.btnFindRefresh.Tooltip = "Refresh";
+            this.btnFindRefresh.Click += new System.EventHandler(this.btnFindRefresh_Click);
+            // 
             // ribbonPanel4
             // 
             this.ribbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1429,7 +1422,6 @@
             // 
             // ribbonTabFind
             // 
-            this.ribbonTabFind.Checked = true;
             this.ribbonTabFind.Name = "ribbonTabFind";
             this.ribbonTabFind.Panel = this.ribbonPanel1;
             this.ribbonTabFind.Text = "Find";
@@ -1442,6 +1434,7 @@
             // 
             // ribbonTabItem1
             // 
+            this.ribbonTabItem1.Checked = true;
             this.ribbonTabItem1.Name = "ribbonTabItem1";
             this.ribbonTabItem1.Panel = this.ribbonPanel3;
             this.ribbonTabItem1.Text = "Attedance";
@@ -3765,22 +3758,6 @@
             this.label52.TabIndex = 0;
             this.label52.Text = "Plan";
             // 
-            // CellPhone
-            // 
-            this.CellPhone.Text = "CellPhone";
-            // 
-            // HomePhone
-            // 
-            this.HomePhone.Text = "HomePhone";
-            // 
-            // Email
-            // 
-            this.Email.Text = "Email";
-            // 
-            // LastName
-            // 
-            this.LastName.Text = "LastName";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3800,14 +3777,14 @@
             this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.ribbonControl1.ResumeLayout(false);
             this.ribbonControl1.PerformLayout();
-            this.ribbonPanel1.ResumeLayout(false);
-            this.ribbonBar2.ResumeLayout(false);
             this.ribbonPanel3.ResumeLayout(false);
             this.ribbonBar9.ResumeLayout(false);
             this.ribbonBar9.PerformLayout();
             this.ribbonPanel2.ResumeLayout(false);
             this.ribbonBar7.ResumeLayout(false);
             this.ribbonBar7.PerformLayout();
+            this.ribbonPanel1.ResumeLayout(false);
+            this.ribbonBar2.ResumeLayout(false);
             this.ribbonPanel4.ResumeLayout(false);
             this.ribbonPanel5.ResumeLayout(false);
             this.panelAllMembers.ResumeLayout(false);
@@ -4024,10 +4001,8 @@
         private DevComponents.DotNetBar.ButtonItem btnViewCheckins;
         private DevComponents.DotNetBar.ButtonItem btnAttedanceRefresh;
         private DevComponents.DotNetBar.RibbonBar ribbonBar9;
-        private DevComponents.DotNetBar.LabelItem labelItem7;
-        private DevComponents.DotNetBar.TextBoxItem textBoxItem5;
         private DevComponents.DotNetBar.LabelItem labelItem9;
-        private DevComponents.DotNetBar.TextBoxItem textBoxItem6;
+        private DevComponents.DotNetBar.TextBoxItem txtAttedance;
         private DevComponents.DotNetBar.ButtonItem btnAttedanceCheckin;
         private DevComponents.DotNetBar.RibbonBar ribbonBar8;
         private DevComponents.DotNetBar.ButtonItem btnAttedanceSaveTxt;
@@ -4079,8 +4054,6 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label48;
         private DevComponents.Editors.IntegerInput txtWizardCardNumber;
-        private System.Windows.Forms.TextBox txtAttedanceCardN;
-        private System.Windows.Forms.TextBox txtAttedanceLastName;
         private DevComponents.DotNetBar.WizardPage wizardPage3;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtWizardInitiationFee;
@@ -4116,5 +4089,6 @@
         private DevComponents.Editors.ComboItem HomePhone;
         private DevComponents.Editors.ComboItem Email;
         private DevComponents.Editors.ComboItem LastName;
+        private System.Windows.Forms.TextBox txtAttedanceCardN;
     }
 }

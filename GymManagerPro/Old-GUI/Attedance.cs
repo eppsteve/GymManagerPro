@@ -57,20 +57,21 @@ namespace GymManagerPro
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            if (txtSearch.Text.Length > 0)
-            {
-                if (DataLayer.Members.MemberCheckin(DataLayer.Members.GetMemberIdByName(txtSearch.Text.Trim())) > 0)
-                {
-                    MessageBox.Show("Member just Checked-In!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    richTextBox1.Clear();
-                    txtSearch.Clear();
-                    SetUpData();
-                }
-                else
-                {
-                    MessageBox.Show("Failed to check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            // NOT WORKING SINCE UPDATE IN RIBBON UI VERSION
+            //if (txtSearch.Text.Length > 0)
+            //{
+            //    if (DataLayer.Members.MemberCheckin(DataLayer.Members.GetMemberIdByName(txtSearch.Text.Trim())) > 0)
+            //    {
+            //        MessageBox.Show("Member just Checked-In!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        richTextBox1.Clear();
+            //        txtSearch.Clear();
+            //        SetUpData();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Failed to check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

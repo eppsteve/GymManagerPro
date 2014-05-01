@@ -412,8 +412,6 @@ namespace DataLayer
         /// <returns></returns>
         public static int MemberCheckin(int id)
         {
-            //DateTime datetime = DateTime.Now;
-            //String dt = datetime.ToString();
             int rowsAffected = 0;
             String query = "INSERT INTO Checkin(MemberID, Time) VALUES(@id, @time)";
 
@@ -477,12 +475,12 @@ namespace DataLayer
         /// <summary>
         /// sets up auto complete searchbox
         /// </summary>
-        /// <returns>list with all possible card numbers</returns>
-        public static List<string> AutoCompleteCNumberSearch()
+        /// <returns>list with all possible member ids</returns>
+        public static List<string> AutoCompleteMemberIdSearch()
         {
-            List<string> cnumbers = new List<string>();
+            List<string> ids = new List<string>();
 
-            string query = "SELECT CardNumber FROM Members";
+            string query = "SELECT Id FROM Members";
 
             using (SqlCeConnection con = DB.GetSqlCeConnection())
             {
@@ -493,11 +491,11 @@ namespace DataLayer
                 {
                     if (!reader.IsDBNull(0))
                     {
-                        string cnumber = reader.GetInt32(0).ToString();
-                        cnumbers.Add(cnumber);
+                        string id = reader.GetInt32(0).ToString();
+                        ids.Add(id);
                     }
                 }
-                return cnumbers;
+                return ids;
             }
         }
 
@@ -575,28 +573,28 @@ namespace DataLayer
             return data;
         }
 
-        /// <summary>
-        /// gets the member's name by specified id
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns>member name</returns>
-        public static int GetMemberIdByName(string name)
-        {
-            int id = 0;
-            string query = "SELECT Id FROM Members WHERE LastName = @lname";
+        ///// <summary>
+        ///// gets the member's name by specified id
+        ///// </summary>
+        ///// <param name="name"></param>
+        ///// <returns>member name</returns>
+        //public static int GetMemberIdByName(string name)
+        //{
+        //    int id = 0;
+        //    string query = "SELECT Id FROM Members WHERE LastName = @lname";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
-            {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                cmd.Parameters.AddWithValue("@lname", name);
-                SqlCeDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    id = reader.GetInt32(0);
-                }
-            }
-            return id;
-        }
+        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
+        //    {
+        //        SqlCeCommand cmd = new SqlCeCommand(query, con);
+        //        cmd.Parameters.AddWithValue("@lname", name);
+        //        SqlCeDataReader reader = cmd.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            id = reader.GetInt32(0);
+        //        }
+        //    }
+        //    return id;
+        //}
 
         /// <summary>
         /// retrieves all members who have been assigned to the specified plan

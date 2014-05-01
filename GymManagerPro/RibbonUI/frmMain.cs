@@ -173,16 +173,16 @@ namespace GymManagerPro.RibbonUI
             coll.AddRange(DataLayer.Members.AutoCompleteSearch().ToArray());
             txtMembersSearch.AutoCompleteCustomSource = coll;
 
-            txtAttedanceLastName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtAttedanceLastName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //txtAttedanceLastName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //txtAttedanceLastName.AutoCompleteSource = AutoCompleteSource.CustomSource;
             //AutoCompleteStringCollection coll2 = new AutoCompleteStringCollection();
             //coll2.AddRange(DataLayer.Members.AutoCompleteSearch().ToArray());
-            txtAttedanceLastName.AutoCompleteCustomSource = coll;
+            //txtAttedanceLastName.AutoCompleteCustomSource = coll;
 
             txtAttedanceCardN.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txtAttedanceCardN.AutoCompleteSource = AutoCompleteSource.CustomSource;
             AutoCompleteStringCollection coll2 = new AutoCompleteStringCollection();
-            coll2.AddRange(DataLayer.Members.AutoCompleteCNumberSearch().ToArray());
+            coll2.AddRange(DataLayer.Members.AutoCompleteMemberIdSearch().ToArray());
             txtAttedanceCardN.AutoCompleteCustomSource = coll2;
         }
 
@@ -822,20 +822,21 @@ namespace GymManagerPro.RibbonUI
 
         private void btnAttedanceCheckin_Click(object sender, EventArgs e)
         {
-            //if (txtSearch.Text.Length > 0)
-            //{
-            //    if (DataLayer.Members.MemberCheckin(DataLayer.Members.GetMemberIdByName(txtSearch.Text.Trim())) > 0)
-            //    {
-            //        MessageBox.Show("Member just Checked-In!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        richTextBox1.Clear();
-            //        txtSearch.Clear();
-            //        SetUpData();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Failed to check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
+            if (txtAttedanceCardN.Text.Length > 0)
+            {
+                if (DataLayer.Members.MemberCheckin(Int32.Parse(txtAttedanceCardN.Text)) > 0)
+                {
+                    MessageBox.Show("Member just Checked-In!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a member's card number first!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnMembersNew_Click(object sender, EventArgs e)
