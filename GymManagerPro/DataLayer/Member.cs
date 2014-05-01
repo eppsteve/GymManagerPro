@@ -267,6 +267,35 @@ namespace DataLayer
         }
 
         /// <summary>
+        /// Searches for members
+        /// </summary>
+        /// <param name="search_by">The db column where we search</param>
+        /// <param name="keyword">What we want to find</param>
+        /// <returns></returns>
+        public static DataTable AdvancedSearch(string search_by, string keyword)
+        {
+            DataTable dataset;
+            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            {
+                String sql = "SELECT Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.HomePhone, " +
+                             "Members.CellPhone, Members.Email, (Trainers.FirstName + ' ' + Trainers.LastName) AS PersonalTrainer " +
+                             "FROM Members LEFT OUTER JOIN Trainers ON Members.PersonalTrainer = Trainers.Id " +
+                             "WHERE Members."+search_by+" LIKE '%"+ @keyword +"%' ";
+
+                SqlCeCommand cmd = new SqlCeCommand(sql, con);
+                cmd.Parameters.AddWithValue("@keyword", keyword);
+
+                SqlCeDataAdapter sda = new SqlCeDataAdapter();
+                sda.SelectCommand = cmd;
+
+                dataset = new DataTable();
+                sda.Fill(dataset);
+                sda.Update(dataset);
+                return dataset;
+            }
+        }
+
+        /// <summary>
         /// checks if there are more members
         /// </summary>
         /// <param name="currentMemberID"></param>

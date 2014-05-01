@@ -15,7 +15,7 @@ namespace DataLayer
         {
             get
             {
-                return @"Data Source=|DataDirectory|\Database.sdf";
+                return @"Data Source=|DataDirectory|\..\..\Database.sdf";
                 //return ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             }
         }

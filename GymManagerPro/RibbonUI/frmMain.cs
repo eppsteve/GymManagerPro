@@ -1283,6 +1283,29 @@ namespace GymManagerPro.RibbonUI
             
         }
 
+        private void menuAbout_Click(object sender, EventArgs e)
+        {
+            new AboutBox().Show();
+        }
+
+        private void btnFindSearch_Click(object sender, EventArgs e)
+        {
+            if (!panelAllMembers.Visible)
+                SwitchToPanel(panelAllMembers);
+
+            if (txtFindSearch.Text != "")
+            {
+                BindingSource bSource = new BindingSource();
+                dataset = DataLayer.Members.AdvancedSearch(cbFindSearchBy.SelectedItem.ToString(), txtFindSearch.Text);
+                bSource.DataSource = dataset;
+                membersDataGridViewX.DataSource = bSource;
+            }
+            else
+            {
+                RefreshAllMembersDataGrid();
+            }
+        }
+
     }
 
 }
