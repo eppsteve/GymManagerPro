@@ -65,14 +65,14 @@ namespace GymManagerPro.RibbonUI
                 txtMemberId.Text = id.ToString();
 
                 //display the member's picture
-                pictureBox1.Image = null; // clears the picturebox
+                pictureBoxMemberManager.Image = null; // clears the picturebox
                 byte[] img = member.Image;
                 if (member.Image != null)
                 {
                     try
                     {
                         MemoryStream mstream = new MemoryStream(img);
-                        pictureBox1.Image = Image.FromStream(mstream);
+                        pictureBoxMemberManager.Image = Image.FromStream(mstream);
                     }
                     catch { }
                 }
@@ -244,6 +244,7 @@ namespace GymManagerPro.RibbonUI
                     txtTrainerSalary.ReadOnly = false;
                     txtTrainerStreet.ReadOnly = false;
                     txtTrainerSuburb.ReadOnly = false;
+                    dtpTrainerDOB.Enabled = true;
 
                     btnTrainersEdit.Text = "Cancel";
                     btnTrainersEdit.Icon = null;
@@ -261,6 +262,7 @@ namespace GymManagerPro.RibbonUI
                     txtTrainerSalary.ReadOnly = true;
                     txtTrainerStreet.ReadOnly = true;
                     txtTrainerSuburb.ReadOnly = true;
+                    dtpTrainerDOB.Enabled = false;
 
                     //change button text and icon
                     btnTrainersEdit.Text = "Edit";
@@ -346,23 +348,14 @@ namespace GymManagerPro.RibbonUI
             cbPersonalTrainer.ValueMember = "Key";  
 
             // fill combobox with all plans, in new member wizard
-            plans.Remove(0);                                                //remove 'All' option
-            plans.Add(0, "None");                                             // add 'None' option 
+            plans.Remove(0);                                                    //remove 'All' option
+            plans.Add(0, "None");                                               // add 'None' option 
             cbWizardPlans.DataSource = new BindingSource(plans, null);
             cbWizardPlans.DisplayMember = "Value";
             cbWizardPlans.ValueMember = "Key";
 
-            //hide all panels
-            panelMemberManager.Visible = false;
-            panelAllMembers.Visible = false;
-            panelTrainers.Visible = false;
-            panelTrainers.Visible = false;
-            panelPlans.Visible = false;
-            panelAttedance.Visible = false;
-            panelNewMemberWizard.Visible = false;
-
-            //switch to Find ribbon tab
-            ribbonTabFind.Select();
+            SwitchToPanel(panelAllMembers);
+            ribbonTabFind.Select();                                             //switch to Find ribbon tab
         }
 
         private void membersDataGridViewX_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -729,9 +722,9 @@ namespace GymManagerPro.RibbonUI
 
                 // holds the member's picture
                 //byte[] imageBt = null;
-                if (pictureBox1.ImageLocation != null)
+                if (pictureBoxMemberManager.ImageLocation != null)
                 {
-                    FileStream fstream = new FileStream(pictureBox1.ImageLocation, FileMode.Open, FileAccess.Read);
+                    FileStream fstream = new FileStream(pictureBoxMemberManager.ImageLocation, FileMode.Open, FileAccess.Read);
                     BinaryReader br = new BinaryReader(fstream);
                     member.Image = br.ReadBytes((int)fstream.Length);
                 }
@@ -1307,6 +1300,23 @@ namespace GymManagerPro.RibbonUI
             }
         }
 
+        private void menuNewMember_Click(object sender, EventArgs e)
+        {
+            SwitchToPanel(panelNewMemberWizard);
+        }
+
+        private void pictureBoxMemberManager_Click(object sender, EventArgs e)
+        {
+            //loads an image for the member
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Filter = "JPG Files(*.jpg)|*.jpg|PNG Files(*.png)|*.png|All Files(*.*)|*.*";
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                string picLoc = fd.FileName.ToString();
+                pictureBoxMemberManager.ImageLocation = picLoc;
+            }
+        }
+
     }
 
 }
@@ -1314,7 +1324,6 @@ namespace GymManagerPro.RibbonUI
 
     static class Utility
     {
-
         // highlights specified text
         // http://stackoverflow.com/questions/11851908/highlight-all-searched-word-in-richtextbox-c-sharp
         //
