@@ -361,7 +361,7 @@ namespace GymManagerPro.RibbonUI
         private void membersDataGridViewX_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // get member's id from selected row
-            member_id = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value.ToString());
+            member_id = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells["Id"].Value.ToString());
 
             // load member
             LoadMember(member_id);
