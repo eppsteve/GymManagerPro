@@ -47,7 +47,7 @@ namespace GymManagerPro.RibbonUI
             if (cbProgrammes.Text != "")
             {
                 
-                // create a new membership and fill with data
+                // create a new membership and fill it with data
                 DataLayer.Membership membership = new DataLayer.Membership();
                 membership.MemberId = this.id;                                      // member's id
                 membership.Plan = (int) cbProgrammes.SelectedValue;                 // id of the selected plan

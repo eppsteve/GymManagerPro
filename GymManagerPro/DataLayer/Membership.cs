@@ -83,7 +83,7 @@ namespace DataLayer
             DataTable table = new DataTable();
             SqlCeDataAdapter da = null;
             
-            string query = "SELECT        Plans.Name, Memberships.StartDate AS [Start Date], Memberships.EndDate AS [End Date], Plans.Price " +
+            string query = "SELECT        Memberships.Id AS [Membership Id], Plans.Name, Memberships.StartDate AS [Start Date], Memberships.EndDate AS [End Date], Plans.Price " +
                            "FROM          Plans INNER JOIN " +
                            "                 Memberships INNER JOIN " +
                            "                  Members ON Memberships.Member = Members.Id ON Plans.Id = Memberships.[Plan] " +

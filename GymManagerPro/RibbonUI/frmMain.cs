@@ -78,14 +78,43 @@ namespace GymManagerPro.RibbonUI
                 }
 
                 //load membership data
-                DataTable table = DataLayer.Memberships.GetMembershipByMemberId(id);
-                dataGridViewMemberships.DataSource = table;
+                LoadMembership(id);
+                
                 //resetTextBoxes();
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public void LoadMembership(int id)
+        {
+            //load membership data
+            DataTable table = DataLayer.Memberships.GetMembershipByMemberId(id);
+            dataGridViewMemberships.DataSource = table;
+
+            // add column to show if membership is active
+            table.Columns.Add(new DataColumn("Status", typeof(string)));
+
+            // loop through all rows to calculate and display if membership is active
+            foreach (DataGridViewRow row in dataGridViewMemberships.Rows)
+            {
+                DateTime end_date = Convert.ToDateTime(row.Cells["End Date"].Value).Date;
+                DateTime now = DateTime.Now.Date;
+                TimeSpan diff = now - end_date;
+                if (diff.TotalDays > 0)
+                {
+                    row.Cells["Status"].Value = "Inactive";
+                   // dataGridViewMemberships.Columns["Status"].DefaultCellStyle.ForeColor = Color.Red;
+                }
+
+                else
+                {
+                    row.Cells["Status"].Value = "Active";
+                }
+                    
             }
         }
 
@@ -806,10 +835,15 @@ namespace GymManagerPro.RibbonUI
             if (dialogResult == DialogResult.Yes)
             {
                 //get id of the selected membership
-                int delid = (int)dataGridViewMemberships.SelectedRows[0].Cells[0].Value;
+                int delid = (int)dataGridViewMemberships.SelectedRows[0].Cells["Membership Id"].Value;
+
                 // delete the membership
                 DataLayer.Memberships.DeleteMembership(delid);
                 MessageBox.Show("Membership removed!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // reload data
+                LoadMembership(member_id);
+
             }
         }
 
