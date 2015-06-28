@@ -192,7 +192,7 @@ namespace GymManagerPro.RibbonUI
             lblNotifications.Text = "";                                         // clear
             foreach (DataGridViewRow row in dataGridViewMemberships.Rows)
             {
-                DateTime exp_date = (DateTime)row.Cells["EndDate"].Value;      // get end date
+                DateTime exp_date = (DateTime)row.Cells["End Date"].Value;      // get end date
                 String membership = row.Cells["Name"].Value.ToString();         // get membership name
                 double days = (exp_date - DateTime.Today).TotalDays;            // calculate the difference between today and end date
                 lblNotifications.Text += membership + " expires in " + (int)days + " days" + Environment.NewLine;
