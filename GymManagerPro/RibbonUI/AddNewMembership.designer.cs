@@ -1,6 +1,6 @@
 ﻿namespace GymManagerPro.RibbonUI
 {
-    partial class AddNewContract
+    partial class AddNewMembership
     {
         /// <summary>
         /// Required designer variable.
@@ -161,11 +161,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 77);
+            this.label3.Location = new System.Drawing.Point(18, 74);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 16);
+            this.label3.Size = new System.Drawing.Size(64, 16);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Contract End Date";
+            this.label3.Text = "End Date";
             // 
             // groupBox2
             // 
@@ -179,16 +179,16 @@
             this.groupBox2.Size = new System.Drawing.Size(387, 120);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Contract Duration";
+            this.groupBox2.Text = "Membership Duration";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 43);
+            this.label2.Location = new System.Drawing.Point(18, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 16);
+            this.label2.Size = new System.Drawing.Size(67, 16);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Contract Begin Date";
+            this.label2.Text = "Start Date";
             // 
             // cbProgrammes
             // 
@@ -220,7 +220,7 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select a plan";
             // 
-            // AddNewContract
+            // AddNewMembership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -234,10 +234,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddNewContract";
+            this.Name = "AddNewMembership";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add a New Contract";
+            this.Text = "Add a New Membership";
             this.Load += new System.EventHandler(this.AddNewContract_Load);
             this.Shown += new System.EventHandler(this.AddNewContract_Shown);
             this.groupBox3.ResumeLayout(false);

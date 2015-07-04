@@ -89,6 +89,7 @@ namespace GymManagerPro.RibbonUI
             }
         }
 
+        // loads membership data for the specified member
         public void LoadMembership(int id)
         {
             //load membership data
@@ -202,17 +203,11 @@ namespace GymManagerPro.RibbonUI
             coll.AddRange(DataLayer.Members.AutoCompleteSearch().ToArray());
             txtMembersSearch.AutoCompleteCustomSource = coll;
 
-            //txtAttedanceLastName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            //txtAttedanceLastName.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            //AutoCompleteStringCollection coll2 = new AutoCompleteStringCollection();
-            //coll2.AddRange(DataLayer.Members.AutoCompleteSearch().ToArray());
-            //txtAttedanceLastName.AutoCompleteCustomSource = coll;
-
-            txtAttedanceCardN.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtAttedanceCardN.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtAttedanceSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtAttedanceSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
             AutoCompleteStringCollection coll2 = new AutoCompleteStringCollection();
             coll2.AddRange(DataLayer.Members.AutoCompleteMemberIdSearch().ToArray());
-            txtAttedanceCardN.AutoCompleteCustomSource = coll2;
+            txtAttedanceSearch.AutoCompleteCustomSource = coll2;
         }
 
         // displays notifications in member manager
@@ -224,7 +219,12 @@ namespace GymManagerPro.RibbonUI
                 DateTime exp_date = (DateTime)row.Cells["End Date"].Value;      // get end date
                 String membership = row.Cells["Name"].Value.ToString();         // get membership name
                 double days = (exp_date - DateTime.Today).TotalDays;            // calculate the difference between today and end date
-                lblNotifications.Text += membership + " expires in " + (int)days + " days" + Environment.NewLine;
+                if (days > 0)
+                    // membership is active
+                    lblNotifications.Text += membership + " expires in " + (int)days + " days" + Environment.NewLine;
+                else
+                    // membership has expired
+                    lblNotifications.Text += membership + " has expired!" + Environment.NewLine;
             }
         }
 
@@ -252,6 +252,7 @@ namespace GymManagerPro.RibbonUI
             panelTrainers.Visible = false;
             panelAttedance.Visible = false;
             panelNewMemberWizard.Visible = false;
+            panelReports.Visible = false;
 
             panel.Visible = true;
         }
@@ -456,11 +457,7 @@ namespace GymManagerPro.RibbonUI
 
         private void btnViewCheckins_Click(object sender, EventArgs e)
         {
-            panelAttedance.Visible = true;
-            panelAllMembers.Visible = false;
-            panelMemberManager.Visible = false;
-            panelTrainers.Visible = false;
-            panelPlans.Visible = false;
+            SwitchToPanel(panelAttedance);
         }
 
         private void btnViewTrainers_Click(object sender, EventArgs e)
@@ -824,7 +821,7 @@ namespace GymManagerPro.RibbonUI
 
         private void buttonXNewMembership_Click(object sender, EventArgs e)
         {
-            AddNewContract newContract = new AddNewContract(member_id, dataGridViewMemberships);
+            AddNewMembership newContract = new AddNewMembership(member_id, dataGridViewMemberships);
             newContract.Show();
         }
 
@@ -849,15 +846,22 @@ namespace GymManagerPro.RibbonUI
 
         private void btnAttedanceCheckin_Click(object sender, EventArgs e)
         {
-            if (txtAttedanceCardN.Text.Length > 0)
+            if (txtAttedanceSearch.Text.Length > 0)
             {
-                if (DataLayer.Members.MemberCheckin(Int32.Parse(txtAttedanceCardN.Text)) > 0)
+                if ( DataLayer.Members.CheckIfIdExists(Int32.Parse(txtAttedanceSearch.Text)) >0 )
                 {
-                    MessageBox.Show("Member just Checked-In!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (DataLayer.Members.MemberCheckin(Int32.Parse(txtAttedanceSearch.Text)) > 0)
+                    {
+                        MessageBox.Show("Member just Checked-In!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Failed to check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("This user does not exist.");
                 }
             }
             else
@@ -1351,6 +1355,25 @@ namespace GymManagerPro.RibbonUI
             }
         }
 
+        private void btnReportsOverview_Click(object sender, EventArgs e)
+        {
+            SwitchToPanel(panelReports);
+        }
+
+        private void btnFindExport_Click(object sender, EventArgs e)
+        {
+            
+            saveFileDialog1.InitialDirectory = "C:";
+            saveFileDialog1.Title = "Save as Excel File";
+            saveFileDialog1.FileName = "data";
+            saveFileDialog1.Filter = "Excel Files(2003)|*.xls";
+            if (saveFileDialog1.ShowDialog() != DialogResult.Cancel)
+            {
+                Utility.ToCsV(membersDataGridViewX, saveFileDialog1.FileName);
+                MessageBox.Show("Data exported successfully.");
+            }
+        }
+      
     }
 
 }
@@ -1376,5 +1399,38 @@ namespace GymManagerPro.RibbonUI
             myRtb.SelectionLength = 0;
             myRtb.SelectionColor = Color.Black;
         }
-    }
+
+        /// <summary>
+        /// exports data to xls file 
+        /// (http://www.codeproject.com/Tips/545456/Exporting-DataGridview-To-Excel)
+        /// </summary>
+        /// <param name="dGV">datagridview</param>
+        /// <param name="filename">filename</param>
+        public static void ToCsV(DataGridView dGV, string filename)
+        {
+            string stOutput = "";
+            // Export titles:
+            string sHeaders = "";
+
+            for (int j = 0; j < dGV.Columns.Count; j++)
+                sHeaders = sHeaders.ToString() + Convert.ToString(dGV.Columns[j].HeaderText) + "\t";
+            stOutput += sHeaders + "\r\n";
+            // Export data.
+            for (int i = 0; i < dGV.RowCount - 1; i++)
+            {
+                string stLine = "";
+                for (int j = 0; j < dGV.Rows[i].Cells.Count; j++)
+                    stLine = stLine.ToString() + Convert.ToString(dGV.Rows[i].Cells[j].Value) + "\t";
+                stOutput += stLine + "\r\n";
+            }
+            Encoding utf16 = Encoding.GetEncoding(1254);
+            byte[] output = utf16.GetBytes(stOutput);
+            FileStream fs = new FileStream(filename, FileMode.Create);
+            BinaryWriter bw = new BinaryWriter(fs);
+            bw.Write(output, 0, output.Length); //write the encoded file
+            bw.Flush();
+            bw.Close();
+            fs.Close();
+        }
+}
 

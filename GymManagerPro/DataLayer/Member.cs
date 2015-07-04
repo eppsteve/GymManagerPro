@@ -405,6 +405,21 @@ namespace DataLayer
             }
         }
 
+        //MMMMMMMMMMMMMMMMM
+        public static int CheckIfIdExists(int id)
+        {
+            int rowsAffected = 0;
+            String query = "SELECT Members.Id FROM Members WHERE Members.Id = @id";
+
+            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            {
+                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                cmd.Parameters.AddWithValue("@id", id);
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            return rowsAffected;
+        }
+
         /// <summary>
         /// checks-in a member and returns the check-in time
         /// </summary>

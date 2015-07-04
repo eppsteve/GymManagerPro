@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace GymManagerPro.RibbonUI
 {
-    public partial class AddNewContract : Form
+    public partial class AddNewMembership : Form
     {
         private int id;                 // member's id
         bool has_loaded = false;        // set to true when the form has been loaded using shown event. This is used to avoid errors with the initialization of textboxes values
 
-        public AddNewContract()
+        public AddNewMembership()
         {
             InitializeComponent();
         }
 
-        public AddNewContract(int id)
+        public AddNewMembership(int id)
         {
             InitializeComponent();
             this.id = id;
@@ -28,7 +28,7 @@ namespace GymManagerPro.RibbonUI
 
         private DataGridView mydg = null;
 
-        public AddNewContract(int id, DataGridView dg)
+        public AddNewMembership(int id, DataGridView dg)
         {
             InitializeComponent();
             this.id = id;
