@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GymManagerPro.RibbonUI
@@ -43,7 +37,8 @@ namespace GymManagerPro.RibbonUI
             txtName.Text = plan.Name;
             txtDuration.Text = plan.Duration.ToString();
             txtPrice.Text = plan.Price.ToString();
-            txtNotes.Text = plan.Notes.ToString();
+            if (plan.Notes != null)
+                txtNotes.Text = plan.Notes.ToString();
             this.Text = "Edit Plan '" + plan.Name + "'";
 
             mylistbox = lb as ListBox;
@@ -56,53 +51,61 @@ namespace GymManagerPro.RibbonUI
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (edit_mode)
+            // name, price and duration cannot be empty
+            if (txtName.Text.Trim() != "" && txtPrice.Text.Trim() != "" && txtDuration.Text.Trim() != "")
             {
-                // update plan
-                plan.Name = txtName.Text;
-                plan.Duration = Int32.Parse(txtDuration.Text);
-                plan.Price = Decimal.Parse(txtPrice.Text);
-                plan.Notes = txtNotes.Text;
-
-                if (DataLayer.Plan.UpdatePlan(plan) > 0)
+                if (edit_mode)
                 {
-                    MessageBox.Show("Plan updated!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // update plan
+                    plan.Name = txtName.Text;
+                    plan.Duration = Int32.Parse(txtDuration.Text);
+                    plan.Price = Decimal.Parse(txtPrice.Text);
+                    plan.Notes = txtNotes.Text;
 
-                    // refresh the listbox
-                    this.mylistbox.DataSource = DataLayer.Plan.GetAllPlans().ToList();
-                    this.mylistbox.ValueMember = "Key";
-                    this.mylistbox.DisplayMember = "Value";
+                    if (DataLayer.Plan.UpdatePlan(plan) > 0)
+                    {
+                        MessageBox.Show("Plan updated!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // refresh the listbox
+                        this.mylistbox.DataSource = DataLayer.Plan.GetAllPlans().ToList();
+                        this.mylistbox.ValueMember = "Key";
+                        this.mylistbox.DisplayMember = "Value";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
+                else if (!edit_mode)
                 {
-                    MessageBox.Show("Failed to update. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // create a new plan
+                    plan = new DataLayer.Plan();
+                    plan.Name = txtName.Text;
+                    plan.Duration = Int32.Parse(txtDuration.Text);
+                    plan.Price = Decimal.Parse(txtPrice.Text);
+                    plan.Notes = txtNotes.Text;
+
+                    // insert new plan into database              
+                    if (DataLayer.Plan.CreateNewPlan(plan) > 0)
+                    {
+                        MessageBox.Show("Plan created!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // refresh the listbox
+                        this.mylistbox.DataSource = DataLayer.Plan.GetAllPlans().ToList();
+                        this.mylistbox.ValueMember = "Key";
+                        this.mylistbox.DisplayMember = "Value";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed create a new plan. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+                this.Close();
             }
-            else if (!edit_mode)
+            else
             {
-                // create a new plan
-                plan = new DataLayer.Plan();
-                plan.Name = txtName.Text;
-                plan.Duration = Int32.Parse(txtDuration.Text);
-                plan.Price = Decimal.Parse(txtPrice.Text);
-                plan.Notes = txtNotes.Text;
-
-               // insert new plan into database              
-               if ( DataLayer.Plan.CreateNewPlan(plan) >0 )
-               {
-                   MessageBox.Show("Plan created!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                   // refresh the listbox
-                   this.mylistbox.DataSource = DataLayer.Plan.GetAllPlans().ToList();
-                   this.mylistbox.ValueMember = "Key";
-                   this.mylistbox.DisplayMember = "Value";
-               }
-               else
-               {
-                   MessageBox.Show("Failed create a new plan. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               }  
+                MessageBox.Show("Name, price and duration cannot be empty!", "Gym Manager Pro", MessageBoxButtons.OK);
             }
-            this.Close();
         }
 
         private void EditPlan_Shown(object sender, EventArgs e)
