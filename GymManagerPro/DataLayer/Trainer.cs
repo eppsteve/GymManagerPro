@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 
 namespace DataLayer
 {
@@ -23,7 +23,7 @@ namespace DataLayer
         public string Notes { get; set; }
         //public byte[] Image { get; set; }
 
-        public void LoadTrainer(SqlCeDataReader reader)
+        public void LoadTrainer(SqlDataReader reader)
         {
             TrainerID = reader.GetInt32(0);
             FName = reader["FirstName"].ToString();
@@ -55,10 +55,10 @@ namespace DataLayer
         /// <returns></returns>
         //public static DataTable GetAllTrainers()
         //{
-        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
+        //    using (SqlConnection con = DB.GetSqlConnection())
         //    {
         //        string query = "SELECT Id, (FirstName + LastName) AS Name FROM Trainers";
-        //        SqlCeCommand cmd = new SqlCeCommand(query, con);
+        //        SqlCommand cmd = new SqlCommand(query, con);
         //        SqlCeDataAdapter sda = new SqlCeDataAdapter();
         //        sda.SelectCommand = cmd;
         //        DataTable dataset = new DataTable();
@@ -71,12 +71,12 @@ namespace DataLayer
         public static Dictionary<int, string> GetAllTrainers()
         {
             Dictionary<int, string> trainers = new Dictionary<int,string>();
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 string query = "SELECT Id, (FirstName + ' ' + LastName) AS Name FROM Trainers";
-                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    SqlCeDataReader reader = cmd.ExecuteReader();
+                    SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         trainers.Add(reader.GetInt32(0), reader.GetString(1));
@@ -95,14 +95,14 @@ namespace DataLayer
         public static Trainer GetTrainer(int id)
         {
             Trainer trainer = new Trainer();
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String query = "SELECT * FROM Trainers WHERE Id = @memberID";
 
-                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@memberid", id);
-                    SqlCeDataReader reader = cmd.ExecuteReader();
+                    SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         trainer.LoadTrainer(reader);
@@ -119,14 +119,14 @@ namespace DataLayer
         /// <returns></returns>
         public static DataTable GetAssociatedMembers(int id)
         {
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 string query = "SELECT Members.Id, Members.FirstName, Members.LastName, Members.CardNumber, Members.CellPhone FROM Members " +
                                "JOIN Trainers ON Members.PersonalTrainer = Trainers.Id " +
                                "WHERE Trainers.Id = @id";
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", id);
-                SqlCeDataAdapter sda = new SqlCeDataAdapter();
+                SqlDataAdapter sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
                 DataTable dataset = new DataTable();
                 sda.Fill(dataset);
@@ -145,10 +145,10 @@ namespace DataLayer
             //string query = "SELECT Id FROM Trainers WHERE ID = IDENT_CURRENT('Trainers')";
             string query = "SELECT MAX(Id) FROM Trainers";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -164,11 +164,11 @@ namespace DataLayer
         /// <param name="trainer"></param>
         public static int NewTrainer(Trainer trainer)
         {
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 string query = "INSERT INTO Trainers (FirstName, LAstName, Sex, DOB, Street, Suburb, City, HomePhone, CellPhone, Email, Salary, Notes) " +
                                "VALUES (@fname, @lname, @sex, @dob, @street, @suburb, @city, @homephone, @cellphone, @email, @salary, @notes)";
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@fname", trainer.FName);
                 cmd.Parameters.AddWithValue("@lname", trainer.LName);
                 cmd.Parameters.AddWithValue("@sex", trainer.Sex);
@@ -195,7 +195,7 @@ namespace DataLayer
         /// <returns></returns>
         public static int UpdateTrainer(Trainer trainer)
         {
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String query = "UPDATE Trainers " +
                            "SET LastName = @lastname, salary = @salary, " +
@@ -203,7 +203,7 @@ namespace DataLayer
                            "Suburb = @suburb, City = @city, HomePhone = @homephone, " +
                            "CellPhone = @cellphone, email = @email, Notes = @notes " +
                            "WHERE Id = @id";
-                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@id", trainer.TrainerID);
                     cmd.Parameters.AddWithValue("@salary", trainer.Salary);
@@ -235,8 +235,8 @@ namespace DataLayer
         public static int DeleteTrainer(int id)
         {
             String query = "DELETE FROM Trainers WHERE Id = @id";
-            using (SqlCeConnection con = DB.GetSqlCeConnection()){
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+            using (SqlConnection con = DB.GetSqlConnection()){
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", id);
                 int res = cmd.ExecuteNonQuery();
                 return res;
@@ -252,10 +252,10 @@ namespace DataLayer
         public static int RemoveMember(int id)
         {
             int affected_rows = 0;
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 string query = "UPDATE Members SET PersonalTrainer = NULL Where Id = @id";
-                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
                     affected_rows = cmd.ExecuteNonQuery();
@@ -272,10 +272,10 @@ namespace DataLayer
         /// <returns></returns>
         public static int AssignTrainerToMember(int trainerid, int memberid)
         {
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 string query = "UPDATE Members SET PersonalTrainer = @trainerid WHERE Id = @memberid";
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@trainerid", trainerid);
                 cmd.Parameters.AddWithValue("@memberid", memberid);
                 int rows_affected = cmd.ExecuteNonQuery();

@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Data.SqlServerCe;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DataLayer
 {
@@ -23,9 +23,9 @@ namespace DataLayer
         {
             string query = "INSERT INTO Memberships (Member, [Plan], StartDate, EndDate) VALUES (@memberid, @planid, @startDate, @endDate)";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@memberid", membership.MemberId);
                 cmd.Parameters.AddWithValue("@planid", membership.Plan);
                 cmd.Parameters.AddWithValue("@startDate", membership.start);
@@ -41,9 +41,9 @@ namespace DataLayer
         public static int UpdateMembership(Membership membership)
         {
             string query = "UPDATE Memberships SET [Plan] = @planid, StartDate = @startdate, EndDate = @enddate WHERE Id = @membership_id";
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@planid", membership.Plan);
                 cmd.Parameters.AddWithValue("@startdate", membership.start);
                 cmd.Parameters.AddWithValue("@enddate", membership.end);
@@ -61,9 +61,9 @@ namespace DataLayer
         public static int DeleteMembership(int id)
         {
             string query = "DELETE FROM Memberships WHERE Id = @id";
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", id);
                 int rowsAffected = cmd.ExecuteNonQuery();
                 return rowsAffected;
@@ -78,7 +78,7 @@ namespace DataLayer
         public static DataTable GetMembershipByMemberId(int memberID)
         {
             DataTable table = new DataTable();
-            SqlCeDataAdapter da = null;
+            SqlDataAdapter da = null;
             
             string query = "SELECT        Memberships.Id AS [Membership Id], Plans.Name, Memberships.StartDate AS [Start Date], Memberships.EndDate AS [End Date], Plans.Price " +
                            "FROM          Plans INNER JOIN " +
@@ -86,12 +86,12 @@ namespace DataLayer
                            "                  Members ON Memberships.Member = Members.Id ON Plans.Id = Memberships.[Plan] " +
                            "WHERE        (Members.Id = @memberId)";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@memberId", memberID);
 
-                da = new SqlCeDataAdapter(cmd);
+                da = new SqlDataAdapter(cmd);
                 da.Fill(table);
             }
 

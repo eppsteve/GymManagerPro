@@ -1,4 +1,4 @@
-﻿using System.Data.SqlServerCe;
+﻿using System.Data.SqlClient;
 
 namespace DataLayer
 {
@@ -8,8 +8,9 @@ namespace DataLayer
         {
             get
             {
-                return @"Data Source=|DataDirectory|\..\..\Database.sdf";
+                //return @"Data Source=|DataDirectory|\..\..\Database.sdf";
                 //return ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+                return @"Server=localhost;Database=GymManager;User Id=sa;Password=123;";
             }
         }
 
@@ -17,9 +18,9 @@ namespace DataLayer
         /// returns an open connection
         /// </summary>
         /// <returns></returns>
-        public static SqlCeConnection GetSqlCeConnection()
+        public static SqlConnection GetSqlConnection()
         {
-            SqlCeConnection con = new SqlCeConnection(connectionString);
+            SqlConnection con = new SqlConnection(connectionString);
             con.Open();
             return con;
         }

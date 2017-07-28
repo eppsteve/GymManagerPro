@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 
 namespace DataLayer
 {
@@ -29,7 +29,7 @@ namespace DataLayer
 
 
         // Loads member data
-        public void LoadMember(SqlCeDataReader reader)
+        public void LoadMember(SqlDataReader reader)
         {
             //MemberID = Int32.Parse(reader["Id"].ToString());
             MemberID = reader.GetInt32(0);
@@ -68,7 +68,7 @@ namespace DataLayer
         }
 
         //// checks the db columns for null string values
-        //private string SafeGetString(SqlCeDataReader reader, int colIndex)
+        //private string SafeGetString(SqlDataReader reader, int colIndex)
         //{
         //    if (!reader.IsDBNull(colIndex))
         //        return reader.GetString(colIndex);
@@ -88,14 +88,14 @@ namespace DataLayer
         public static DataTable GetAllMembers()
         {
             DataTable dataset;
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String sql = "SELECT Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.HomePhone, " +
                              "Members.CellPhone, Members.Email, (Trainers.FirstName + ' ' + Trainers.LastName) AS PersonalTrainer " +
                              "FROM Members LEFT OUTER JOIN Trainers ON Members.PersonalTrainer = Trainers.Id ";
-                SqlCeCommand cmd = new SqlCeCommand(sql, con);
+                SqlCommand cmd = new SqlCommand(sql, con);
 
-                SqlCeDataAdapter sda = new SqlCeDataAdapter();
+                SqlDataAdapter sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
 
                 dataset = new DataTable();
@@ -117,7 +117,7 @@ namespace DataLayer
         {
             Member member = new Member();
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String query = " SELECT Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.DOB, Members.Sex, Members.Street, Members.Suburb, " +
                                " Members.City, Members.PostalCode, Members.CellPhone, Members.HomePhone, Members.Email, Members.Occupation, Members.Image, Members.Notes, " +
@@ -126,11 +126,11 @@ namespace DataLayer
                                "  Trainers ON Members.PersonalTrainer = Trainers.Id "+
                                "WHERE        (Members.Id = @memberid)";
 
-                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@memberid", memberID);
 
-                    SqlCeDataReader reader = cmd.ExecuteReader();
+                    SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         member.LoadMember(reader);
@@ -149,10 +149,10 @@ namespace DataLayer
         {
             int nextId = 0;
             string query = "SELECT MIN(Id) FROM Members";
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -172,7 +172,7 @@ namespace DataLayer
         /// <param name="member"></param>
         public static int UpdateMember(Member member)
         {
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String query = "UPDATE Members " +
                            "SET CardNumber= @cardnumber, LastName= @lastname, " +
@@ -182,7 +182,7 @@ namespace DataLayer
                            "Image = @image, PersonalTrainer = @ptrainer "  +
                            "WHERE Id = @id";
 
-                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@id", member.MemberID);
                     cmd.Parameters.AddWithValue("@cardnumber", member.CardNumber);
@@ -215,12 +215,12 @@ namespace DataLayer
         /// <returns>number of affected rows</returns>
         public static int AddNewMember(Member member)
         {
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String query = "INSERT INTO Members (CardNumber, LastName, FirstName, Sex, DOB, Street, Suburb, City, PostalCode, HomePhone, CellPhone, Email, Occupation, Notes, Image) " +
                                "VALUES(@cardnumber, @lastname, @firstname, @sex, @dateofbirth, @street, @suburb, @city, @postalcode, @homephone, @cellphone, @email, @occupation, @notes, @image)";
 
-                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                    // cmd.Parameters.AddWithValue("@id", member.MemberID);
                     cmd.Parameters.AddWithValue("@cardnumber", member.CardNumber);
@@ -254,9 +254,9 @@ namespace DataLayer
         public static int DeleteMember(int id)
         {
             string query = "DELETE FROM Members WHERE Id = @id";
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", id);
                 int rowsAffected = cmd.ExecuteNonQuery();
                 return rowsAffected;
@@ -272,17 +272,17 @@ namespace DataLayer
         public static DataTable AdvancedSearch(string search_by, string keyword)
         {
             DataTable dataset;
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String sql = "SELECT Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.HomePhone, " +
                              "Members.CellPhone, Members.Email, (Trainers.FirstName + ' ' + Trainers.LastName) AS PersonalTrainer " +
                              "FROM Members LEFT OUTER JOIN Trainers ON Members.PersonalTrainer = Trainers.Id " +
                              "WHERE Members."+search_by+" LIKE '%"+ @keyword +"%' ";
 
-                SqlCeCommand cmd = new SqlCeCommand(sql, con);
+                SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@keyword", keyword);
 
-                SqlCeDataAdapter sda = new SqlCeDataAdapter();
+                SqlDataAdapter sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
 
                 dataset = new DataTable();
@@ -301,11 +301,11 @@ namespace DataLayer
         {
             bool hasnext = false;
             string query = "SELECT MIN(Id) FROM Members WHERE Id>@currentId";
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@currentId", currentMemberID);
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -325,11 +325,11 @@ namespace DataLayer
         {
             bool hasprev = false;
             string query = "SELECT MAX(Id) FROM Members WHERE Id<@currentId";
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@currentId", currentMemberID);
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -355,12 +355,12 @@ namespace DataLayer
         {
             int nextId = 0;
             string query = "SELECT MIN(Id) FROM Members WHERE Id>@currentId";
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@currentId", currentMemberID);
 
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -383,12 +383,12 @@ namespace DataLayer
         {
             int prevId = 0;
             string query = "SELECT MAX(Id) FROM Members WHERE Id<@currentId";
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@currentId", currentMemberID);
 
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -408,9 +408,9 @@ namespace DataLayer
             int rowsAffected = 0;
             String query = "SELECT Members.Id FROM Members WHERE Members.Id = @id";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", id);
                 rowsAffected = cmd.ExecuteNonQuery();
             }
@@ -427,9 +427,9 @@ namespace DataLayer
             int rowsAffected = 0;
             String query = "INSERT INTO Checkin(MemberID, Time) VALUES(@id, @time)";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.Parameters.AddWithValue("@time", DateTime.Now);
                 rowsAffected = cmd.ExecuteNonQuery();
@@ -447,10 +447,10 @@ namespace DataLayer
             //string query = "SELECT Id FROM Members WHERE  ID = IDENT_CURRENT('Members')";
             string query = "SELECT MAX(Id) FROM Members";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -470,10 +470,10 @@ namespace DataLayer
 
             string query = "SELECT LastName FROM Members";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -494,10 +494,10 @@ namespace DataLayer
 
             string query = "SELECT Id FROM Members";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -521,11 +521,11 @@ namespace DataLayer
             string query = "SELECT Id FROM Members WHERE LastName = @lastname";
             int searchId = 0;
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@lastname", name);
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -551,10 +551,10 @@ namespace DataLayer
                             "Checkin INNER JOIN "+
                             "Members ON Checkin.MemberID = Members.Id ON Memberships.Member = Members.Id " +
                             "ORDER BY Checkin.Time";
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     //append data to stringbuilder
@@ -595,11 +595,11 @@ namespace DataLayer
         //    int id = 0;
         //    string query = "SELECT Id FROM Members WHERE LastName = @lname";
 
-        //    using (SqlCeConnection con = DB.GetSqlCeConnection())
+        //    using (SqlConnection con = DB.GetSqlConnection())
         //    {
-        //        SqlCeCommand cmd = new SqlCeCommand(query, con);
+        //        SqlCommand cmd = new SqlCommand(query, con);
         //        cmd.Parameters.AddWithValue("@lname", name);
-        //        SqlCeDataReader reader = cmd.ExecuteReader();
+        //        SqlDataReader reader = cmd.ExecuteReader();
         //        while (reader.Read())
         //        {
         //            id = reader.GetInt32(0);
@@ -615,7 +615,7 @@ namespace DataLayer
         public static DataTable GetMembersByPlan( int plan_id )
         {
             DataTable dataset;
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String sql = "SELECT DISTINCT " +
                              "Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.HomePhone, Members.CellPhone, Members.Email, " +
@@ -626,10 +626,10 @@ namespace DataLayer
                              "Trainers ON Members.PersonalTrainer = Trainers.Id " +
                              "WHERE        (Memberships.[Plan] = @plan_id) ";
 
-                SqlCeCommand cmd = new SqlCeCommand(sql, con);
+                SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@plan_id", plan_id);
 
-                SqlCeDataAdapter sda = new SqlCeDataAdapter();
+                SqlDataAdapter sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
 
                 dataset = new DataTable();
@@ -648,7 +648,7 @@ namespace DataLayer
         public static DataTable GetMembersByPersonalTrainer(int trainer_id)
         {
             DataTable dataset;
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String sql = "SELECT        Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.HomePhone, Members.CellPhone, Members.Email, " +
                              "Trainers.FirstName + ' ' + Trainers.LastName AS PersonalTrainer " +
@@ -656,10 +656,10 @@ namespace DataLayer
                              "Trainers ON Members.PersonalTrainer = Trainers.Id " +
                              "WHERE        (Trainers.Id = @trainer_id) ";
 
-                SqlCeCommand cmd = new SqlCeCommand(sql, con);
+                SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@trainer_id", trainer_id);
 
-                SqlCeDataAdapter sda = new SqlCeDataAdapter();
+                SqlDataAdapter sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
 
                 dataset = new DataTable();

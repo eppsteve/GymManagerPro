@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 
 namespace DataLayer
 {
@@ -21,12 +21,12 @@ namespace DataLayer
         {
             Plan plan = new Plan();
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String query = "SELECT * FROM Plans WHERE Id = @id";
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", id);
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     plan.Id = reader.GetInt32(0);
@@ -50,11 +50,11 @@ namespace DataLayer
 
             string query = "SELECT Id, Name FROM Plans";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
 
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -75,10 +75,10 @@ namespace DataLayer
         /// <returns></returns>
         public static int UpdatePlan(Plan plan)
         {
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String query = "UPDATE Plans SET Name = @name, Price = @price, Duration = @duration, Notes = @notes WHERE Id = @id";
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", plan.Id);
                 cmd.Parameters.AddWithValue("@name", plan.Name);
                 cmd.Parameters.AddWithValue("@duration", plan.Duration);
@@ -91,10 +91,10 @@ namespace DataLayer
 
         public static int DeletePlan(int id)
         {
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String query = "DELETE FROM Plans Where Id = @id";
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", id);
                 int res = cmd.ExecuteNonQuery();
                 return res;
@@ -103,10 +103,10 @@ namespace DataLayer
 
         public static int CreateNewPlan(Plan plan)
         {
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
                 String query = "INSERT INTO Plans (Name, Price, Duration, Notes) VALUES (@name, @price, @duration, @notes)";
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@name", plan.Name);
                 cmd.Parameters.AddWithValue("@price", plan.Price);
                 cmd.Parameters.AddWithValue("@duration", plan.Duration);
@@ -123,12 +123,12 @@ namespace DataLayer
 
             string query = "SELECT Duration FROM Plans WHERE Id = @plan";
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@plan", plan_id);
 
-                SqlCeDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -149,11 +149,11 @@ namespace DataLayer
 
             string query = "SELECT Price FROM Plans WHERE Id = @id";
 
-            SqlCeDataReader reader;
+            SqlDataReader reader;
 
-            using (SqlCeConnection con = DB.GetSqlCeConnection())
+            using (SqlConnection con = DB.GetSqlConnection())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", plan_id);
 
                 reader = cmd.ExecuteReader();
