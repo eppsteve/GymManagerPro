@@ -109,7 +109,7 @@
     <Compile Include="DataLayer\Membership.cs" />
     <Compile Include="DataLayer\Plan.cs" />
     <Compile Include="DataLayer\Trainer.cs" />
-    <Compile Include="Presenter\FindPresenter.cs" />
+    <Compile Include="Presenter\MemberPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\AboutBox.cs">
@@ -136,7 +136,7 @@
     <Compile Include="View\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\IFind.cs" />
+    <Compile Include="View\IMember.cs" />
     <Compile Include="View\TrainerAssignmentDialog.cs">
       <SubType>Form</SubType>
     </Compile>

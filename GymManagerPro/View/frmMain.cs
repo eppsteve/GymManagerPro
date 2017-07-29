@@ -10,7 +10,7 @@ using GymManagerPro.Presenter;
 
 namespace GymManagerPro.View
 {
-    public partial class frmMain : Form, IFind
+    public partial class frmMain : Form, IMember
     {
         DataTable dataset;
         bool form_loaded;
@@ -18,16 +18,16 @@ namespace GymManagerPro.View
         int member_id = 0;
         DataLayer.Plan plan;
 
-        public FindPresenter Presenter { get; set; }
+        public MemberPresenter Presenter { get; set; }
 
-        // FindPanel properties
-        string IFind.FirstName
+        #region MemberPresenter properties
+        string IMember.FFirstName
         {
             get { return txtFindFirstName.Text; }
             set { txtFindFirstName.Text = value; }
         }
 
-        string IFind.LastName
+        string IMember.FLastName
         {
             get { return txtFindLastName.Text; }
             set { txtFindLastName.Text = value; }
@@ -53,7 +53,7 @@ namespace GymManagerPro.View
 
         public string SearchBy
         {
-            get {return cbFindSearchBy.SelectedItem.ToString(); }
+            get { return cbFindSearchBy.SelectedItem.ToString(); }
         }
 
         public string Keyword
@@ -62,13 +62,13 @@ namespace GymManagerPro.View
             set { txtFindSearch.Text = value; }
         }
 
-        object IFind.MembersGridDataSource
+        object IMember.MembersGridDataSource
         {
             get { return membersDataGridViewX.DataSource; }
             set { membersDataGridViewX.DataSource = value; }
         }
 
-        SaveFileDialog IFind.ExportFileDialog
+        SaveFileDialog IMember.ExportFileDialog
         {
             get { return saveFileDialog1; }
         }
@@ -85,106 +85,161 @@ namespace GymManagerPro.View
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public int SelectedMember
+        {
+            get { return int.Parse(membersDataGridViewX.SelectedRows[0].Cells["id"].Value.ToString()); }
+            set
+            {   //select the row which has the specified member id
+                membersDataGridViewX.Rows.OfType<DataGridViewRow>()
+                    .Where(x => (int)x.Cells["Id"].Value == value)
+                    .ToArray<DataGridViewRow>()[0].Selected = true;
+            }
+        }
+        int IMember.MemberId
+        {
+            get { return Int32.Parse(txtMemberId.Text); }
+            set { txtMemberId.Text = value.ToString(); }
+        }
+        string IMember.FirstName
+        {
+            get { return txtFirstName.Text; }
+            set
+            {
+                txtFirstName.Text = value;
+                lblName.Text = value + " " + LastName;
+            }
+        }
+        string IMember.LastName
+        {
+            get { return txtLastName.Text; }
+            set
+            {
+                txtLastName.Text = value;
+                lblName.Text = FirstName + " " + value;
+            }
+        }
+        int IMember.CardNumber
+        {
+            get { return Int32.Parse(txtCardNumber.Text); }
+            set { txtCardNumber.Text = value.ToString(); }
+        }
+        public bool Male_IsSelected
+        {
+            get { return rbMale.Checked; }
+            set { rbMale.Checked = value; }
+        }
+        public bool Female_IsSelected
+        {
+            get { return rbFemale.Checked; }
+            set { rbFemale.Checked = value; }
+        }
+        public DateTime DateOfBirth
+        {
+            get { return txtDateOfBirth.Value; }
+            set { txtDateOfBirth.Value = value; }
+        }
+        public string Street
+        {
+            get { return txtStreet.Text; }
+            set { txtStreet.Text = value; }
+        }
+        public string Suburb
+        {
+            get { return txtSuburb.Text; }
+            set { txtSuburb.Text = value; }
+        }
+        public string City
+        {
+            get { return txtCity.Text; }
+            set { txtCity.Text = value; }
+        }
+        public int PostalCode
+        {
+            get { return Int32.Parse(txtPostalCode.Text); }
+            set { txtPostalCode.Text = value.ToString(); }
+        }
+        string IMember.HomePhone
+        {
+            get { return txtHomePhone.Text; }
+            set { txtHomePhone.Text = value; }
+        }
+        string IMember.CellPhone
+        {
+            get { return txtCellPhone.Text; }
+            set { txtCellPhone.Text = value; }
+        }
+        string IMember.Email
+        {
+            get { return txtEmail.Text; }
+            set { txtEmail.Text = value; }
+        }
+        public string Occupation
+        {
+            get { return txtOccupation.Text; }
+            set { txtOccupation.Text = value; }
+        }
+        public string Notes
+        {
+            get { return txtNotes.Text; }
+            set { txtNotes.Text = value; }
+        }
+        object IMember.MembershipsGridDataSource
+        {
+            get { return dataGridViewMemberships.DataSource; }
+            set { dataGridViewMemberships.DataSource = value; }
+        }
+        DataGridViewRowCollection IMember.MDGVRows
+        {
+            get { return dataGridViewMemberships.Rows; }
+        }
+
+        public int PersonalTrainer
+        {
+            get { return Int32.Parse(cbPersonalTrainer.SelectedValue.ToString()); }
+            set { cbPersonalTrainer.SelectedValue = value; }
+        }
+
+        public Image MemberImage
+        {
+            get { return pictureBoxMemberManager.Image; }
+            set { pictureBoxMemberManager.Image = value; }
+        }
+
+        public string MemberImageLocation
+        {
+            get { return pictureBoxMemberManager.ImageLocation; }
+            set { pictureBoxMemberManager.ImageLocation = value; }
+        }
+
+        public bool IsMemberPanelVisible
+        {
+            get { return panelMemberManager.Visible; }
+            set { panelMemberManager.Visible = value; }
+        }
+        public bool IsAllMembersPanelVisible
+        {
+            get { return panelAllMembers.Visible; }
+            set { panelAllMembers.Visible = value; }
+        }
+
+        public int SelectedRowsCount
+        {
+            get { return membersDataGridViewX.SelectedRows.Count; }
+        }
+
+        public int SelectedMembership
+        {
+            get { return (int)dataGridViewMemberships.SelectedRows[0].Cells["Membership Id"].Value; }
+        }
+        #endregion
+
         public frmMain()
         {
             InitializeComponent();
-            Presenter = new FindPresenter(this);
-        }
-
-        // loads data for the specified member
-        public void LoadMember(int id)
-        {
-            DataLayer.Members members = new DataLayer.Members();
-            DataLayer.Member member = new DataLayer.Member();
-
-            try
-            {
-                // retrieves member data from db
-                member = members.GetMember(id);
-
-                // populate controls with the data  
-                txtCardNumber.Text = member.CardNumber.ToString();
-                txtCardNumber2.Text = member.CardNumber.ToString();
-                txtLastName.Text = member.LName;
-                txtFirstName.Text = member.FName;
-
-                if (member.Sex == "male")
-                {
-                    rbMale.Checked = true;
-                }
-                else if (member.Sex == "female")
-                {
-                    rbFemale.Checked = true;
-                }
-
-                txtDateOfBirth.Value = member.DateOfBirth;
-                txtStreet.Text = member.Street;
-                txtSuburb.Text = member.Suburb;
-                txtCity.Text = member.City;
-                txtPostalCode.Text = member.PostalCode.ToString();
-                txtHomePhone.Text = member.HomePhone;
-                txtCellPhone.Text = member.CellPhone;
-                txtEmail.Text = member.Email;
-                txtOccupation.Text = member.Occupation;
-                txtNotes.Text = member.Notes;
-                //cbPersonalTrainer.Text = member.PersonalTrainer;
-                cbPersonalTrainer.SelectedValue = member.PersonalTrainer;
-                lblName.Text = member.FName + " " + member.LName;
-                txtMemberId.Text = id.ToString();
-
-                //display the member's picture
-                pictureBoxMemberManager.Image = null; // clears the picturebox
-                byte[] img = member.Image;
-                if (member.Image != null)
-                {
-                    try
-                    {
-                        MemoryStream mstream = new MemoryStream(img);
-                        pictureBoxMemberManager.Image = Image.FromStream(mstream);
-                    }
-                    catch { }
-                }
-
-                //load membership data
-                LoadMembership(id);
-                
-                //resetTextBoxes();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        // loads membership data for the specified member
-        public void LoadMembership(int id)
-        {
-            //load membership data
-            DataTable table = DataLayer.Memberships.GetMembershipByMemberId(id);
-            dataGridViewMemberships.DataSource = table;
-
-            // add column to show if membership is active
-            table.Columns.Add(new DataColumn("Status", typeof(string)));
-
-            // loop through all rows to calculate and display if membership is active
-            foreach (DataGridViewRow row in dataGridViewMemberships.Rows)
-            {
-                DateTime end_date = Convert.ToDateTime(row.Cells["End Date"].Value).Date;
-                DateTime now = DateTime.Now.Date;
-                TimeSpan diff = now - end_date;
-                if (diff.TotalDays > 0)
-                {
-                    row.Cells["Status"].Value = "Inactive";
-                   // dataGridViewMemberships.Columns["Status"].DefaultCellStyle.ForeColor = Color.Red;
-                }
-
-                else
-                {
-                    row.Cells["Status"].Value = "Active";
-                }
-                    
-            }
+            Presenter = new MemberPresenter(this);
         }
 
         // populates listbox with the names of all the trainers
@@ -457,25 +512,12 @@ namespace GymManagerPro.View
 
         private void membersDataGridViewX_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                // get member's id from selected row
-                member_id = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells["Id"].Value.ToString());
-
-                // load member
-                LoadMember(member_id);
-            }
-            catch { }
-            
+            Presenter.LoadMember();
         }
 
         private void membersDataGridViewX_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // get member's id from selected row
-            member_id = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value.ToString());
-
-            // load member
-            LoadMember(member_id);
+            Presenter.LoadMember();
 
             // switch to member manager and ribbon tab Members
             SwitchToPanel(panelMemberManager);
@@ -599,38 +641,20 @@ namespace GymManagerPro.View
         private void btnMembersNext_Click(object sender, EventArgs e)
         {
             SwitchToPanel(panelMemberManager);
-
-            // Retrieves and displays the next member (if any)
-            if (DataLayer.Members.MemberHasNext(member_id))
-            {
-                member_id = DataLayer.Members.GetNextMember(member_id);
-                LoadMember(member_id);
-            }
-            else
-            {
-                MessageBox.Show("There are no more members!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            Presenter.NextMember();
         }
 
         private void btnMembersPrev_Click(object sender, EventArgs e)
         {
             SwitchToPanel(panelMemberManager);
-
-            if (DataLayer.Members.MemberHasPrevious(member_id))
-            {
-                member_id = DataLayer.Members.GetPrevMember(member_id);
-                LoadMember(member_id);
-            }
-            else
-            {
-                MessageBox.Show("There are no more members!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            Presenter.PrevMember();
         }
 
         private void btnMembersSearch_Click(object sender, EventArgs e)
         {
             // loads specified member
-            LoadMember(DataLayer.Members.QuickSearch(txtMembersSearch.Text));
+            SelectedMember = DataLayer.Members.QuickSearch(txtMembersSearch.Text);
+            Presenter.LoadMember();
             SwitchToPanel(panelMemberManager);
         }
 
@@ -672,114 +696,15 @@ namespace GymManagerPro.View
 
         private void btnMembersDelete_Click(object sender, EventArgs e)
         {
-            if (panelMemberManager.Visible)
-            {
-                // Deletes the current member
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this member? All related data will be lost!!!", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    DataLayer.Members.DeleteMember(member_id);
-                    MessageBox.Show("Member deleted!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // display the previous member
-                    member_id = DataLayer.Members.GetPrevMember(member_id);
-                    LoadMember(member_id);
-                }
-            }
-            else if (panelAllMembers.Visible)
-            {
-                if (membersDataGridViewX.SelectedRows.Count > 0)
-                {
-                    //if a row is selected
-                    //display confirmation dialog
-                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this member? All related data will be lost!!!", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        // get member's id from selected row
-                        member_id = int.Parse(membersDataGridViewX.SelectedRows[0].Cells[0].Value.ToString());
-
-                        // delete selected member
-                        if (DataLayer.Members.DeleteMember(member_id) > 0)
-                        {
-                            MessageBox.Show("Member deleted!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            RefreshAllMembersDataGrid();
-                        }
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a member first!");
-                SwitchToPanel(panelAllMembers);
-            }
+            Presenter.DeleteMember();
         }
 
         private void btnMembersSave_Click(object sender, EventArgs e)
         {
-            // create a new member and save its details to the db
-            DataLayer.Members members = new DataLayer.Members();
-            DataLayer.Member member = new DataLayer.Member();
-
             if (!String.IsNullOrEmpty(txtLastName.Text))
             {
-                // fill the properties of member object based on textboxes text
-                member.MemberID = this.member_id;
-                member.CardNumber = Int32.Parse(txtCardNumber.Text);
-                member.LName = txtLastName.Text;
-                member.FName = txtFirstName.Text;
-                if (rbMale.Checked)
-                {
-                    member.Sex = "male";
-                }
-                else if (rbFemale.Checked)
-                {
-                    member.Sex = "female";
-                }
-                member.DateOfBirth = txtDateOfBirth.Value;
-                member.Street = txtStreet.Text;
-                member.Suburb = txtSuburb.Text;
-                member.City = txtCity.Text;
-                if (txtPostalCode.Text.Length > 0)
-                {
-                    member.PostalCode = Int32.Parse(txtPostalCode.Text);
-                }
-                else
-                {
-                    member.PostalCode = 0;
-                }
-                member.HomePhone = txtHomePhone.Text;
-                member.CellPhone = txtCellPhone.Text;
-                member.Email = txtEmail.Text;
-                member.Occupation = txtOccupation.Text;
-                member.Notes = txtNotes.Text;
-                member.PersonalTrainer = int.Parse( cbPersonalTrainer.SelectedValue.ToString());
-
-                // holds the member's picture
-                //byte[] imageBt = null;
-                if (pictureBoxMemberManager.ImageLocation != null)
-                {
-                    FileStream fstream = new FileStream(pictureBoxMemberManager.ImageLocation, FileMode.Open, FileAccess.Read);
-                    BinaryReader br = new BinaryReader(fstream);
-                    member.Image = br.ReadBytes((int)fstream.Length);
-                }
-                else
-                {
-                    byte[] empty_array = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
-                    member.Image = empty_array;
-                }
-
-
-                if (DataLayer.Members.UpdateMember(member) > 0)
-                {
-                    MessageBox.Show("Member Updated successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Failed to Update Member!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                // set textboxes to readonly
-                DoNotAllowMemberEdit();
+                Presenter.SaveMember();                
+                DoNotAllowMemberEdit(); // set textboxes to readonly
             }
             else
             {
@@ -835,21 +760,7 @@ namespace GymManagerPro.View
 
         private void buttonXDeleteMembership_Click(object sender, EventArgs e)
         {
-            // deletes/expires the selected membership
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this membership? The selected membership will expire and the operation cannot be undone!!!", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
-            {
-                //get id of the selected membership
-                int delid = (int)dataGridViewMemberships.SelectedRows[0].Cells["Membership Id"].Value;
-
-                // delete the membership
-                DataLayer.Memberships.DeleteMembership(delid);
-                MessageBox.Show("Membership removed!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // reload data
-                LoadMembership(member_id);
-
-            }
+            Presenter.DeleteMembership();
         }
 
         private void btnAttedanceCheckin_Click(object sender, EventArgs e)
