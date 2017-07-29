@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GymManagerPro.RibbonUI
+namespace GymManagerPro.View
 {
     partial class AboutBox : Form
     {

@@ -4,13 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using GymManagerPro.Presenter;
 
-namespace GymManagerPro.RibbonUI
+namespace GymManagerPro.View
 {
-    public partial class frmMain : Form
+    public partial class frmMain : Form, IFind
     {
         DataTable dataset;
         bool form_loaded;
@@ -18,9 +18,77 @@ namespace GymManagerPro.RibbonUI
         int member_id = 0;
         DataLayer.Plan plan;
 
+        public FindPresenter Presenter { get; set; }
+
+        // FindPanel properties
+        string IFind.FirstName
+        {
+            get { return txtFindFirstName.Text; }
+            set { txtFindFirstName.Text = value; }
+        }
+
+        string IFind.LastName
+        {
+            get { return txtFindLastName.Text; }
+            set { txtFindLastName.Text = value; }
+        }
+
+        public int SelectedPlanIndex
+        {
+            get { return cbFindPlan.SelectedIndex; }
+            set { cbFindPlan.SelectedIndex = value; }
+        }
+
+        public int SelectedPersonalTrainerIndex
+        {
+            get { return cbFindPersonalTrainer.SelectedIndex; }
+            set { cbFindPersonalTrainer.SelectedIndex = value; }
+        }
+
+        public int SelectedSearchByIndex
+        {
+            get { return cbFindSearchBy.SelectedIndex; }
+            set { cbFindSearchBy.SelectedIndex = value; }
+        }
+
+        public string SearchBy
+        {
+            get {return cbFindSearchBy.SelectedItem.ToString(); }
+        }
+
+        public string Keyword
+        {
+            get { return txtFindSearch.Text; }
+            set { txtFindSearch.Text = value; }
+        }
+
+        object IFind.MembersGridDataSource
+        {
+            get { return membersDataGridViewX.DataSource; }
+            set { membersDataGridViewX.DataSource = value; }
+        }
+
+        SaveFileDialog IFind.ExportFileDialog
+        {
+            get { return saveFileDialog1; }
+        }
+
+
+        public DataGridViewColumnCollection MembersGridColumns
+        {
+            get { return membersDataGridViewX.Columns; }
+        }
+
+        public DataGridViewRowCollection MembersGridRows
+        {
+            get { return membersDataGridViewX.Rows; }
+        }
+
+
         public frmMain()
         {
             InitializeComponent();
+            Presenter = new FindPresenter(this);
         }
 
         // loads data for the specified member
@@ -190,8 +258,8 @@ namespace GymManagerPro.RibbonUI
             // format textbox
             string active = "Active - Entrance allowed";
             string inactive = "Inactive - Entrance denied";
-            Utility.HighlightText(richTextBoxAttedance, active, Color.Green);
-            Utility.HighlightText(richTextBoxAttedance, inactive, Color.Red);
+            Util.Common.HighlightText(richTextBoxAttedance, active, Color.Green);
+            Util.Common.HighlightText(richTextBoxAttedance, inactive, Color.Red);
         }
 
         // sets up auto-complete search boxes
@@ -208,6 +276,36 @@ namespace GymManagerPro.RibbonUI
             AutoCompleteStringCollection coll2 = new AutoCompleteStringCollection();
             coll2.AddRange(DataLayer.Members.AutoCompleteMemberIdSearch().ToArray());
             txtAttedanceSearch.AutoCompleteCustomSource = coll2;
+        }
+
+        private void SetUpComboboxes()
+        {
+            // fill combobox with all plans, in ribbon find tab
+            SortedDictionary<int, string> plans = new SortedDictionary<int, string>(DataLayer.Plan.GetAllPlans());           // get all the plans and put them to a sorted dictionary
+            plans.Add(0, "All");                                                                                            // add 'All' entry to dictionary
+            cbFindPlan.DataSource = new BindingSource(plans, null);                                                             // bind dictionary to combobox
+            cbFindPlan.DisplayMember = "Value";                                                                                 // name of the plan
+            cbFindPlan.ValueMember = "Key";                                                                                 // id of the plan
+
+            // fill personal trainer combobox with all trainers, in ribbon find tab
+            SortedDictionary<int, string> trainers = new SortedDictionary<int, string>(DataLayer.Trainers.GetAllTrainers());  // get id and name of all trainers and put them to a sorted dictionary
+            trainers.Add(0, "All");                                                                 // add 'All' entry
+            cbFindPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
+            cbFindPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
+            cbFindPersonalTrainer.ValueMember = "Key";                                                  // id of the trainer
+
+            // fill personal trainer combobox with trainers in member manager
+            trainers.Remove(0);                                                                 // remove 'All' entry
+            cbPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
+            cbPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
+            cbPersonalTrainer.ValueMember = "Key";
+
+            // fill combobox with all plans, in new member wizard
+            plans.Remove(0);                                                    //remove 'All' option
+            plans.Add(0, "None");                                               // add 'None' option 
+            cbWizardPlans.DataSource = new BindingSource(plans, null);
+            cbWizardPlans.DisplayMember = "Value";
+            cbWizardPlans.ValueMember = "Key";
         }
 
         // displays notifications in member manager
@@ -337,12 +435,6 @@ namespace GymManagerPro.RibbonUI
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            // get all members and bind them to the members datagridview
-            BindingSource bSource = new BindingSource();
-            dataset = DataLayer.Members.GetAllMembers();
-            bSource.DataSource = dataset;
-            membersDataGridViewX.DataSource = bSource;
-
             //load trainers
             LoadAllTrainerNames();
 
@@ -357,32 +449,7 @@ namespace GymManagerPro.RibbonUI
             // set up autocomplete members search box in ribbon
             SetUpSearch();
 
-            // fill combobox with all plans, in ribbon find tab
-            SortedDictionary<int, string> plans = new SortedDictionary<int, string>(DataLayer.Plan.GetAllPlans());           // get all the plans and put them to a sorted dictionary
-            plans.Add(0, "All");                                                                                            // add 'All' entry to dictionary
-            cbFindPlan.DataSource = new BindingSource(plans, null);                                                             // bind dictionary to combobox
-            cbFindPlan.DisplayMember = "Value";                                                                                 // name of the plan
-            cbFindPlan.ValueMember = "Key";                                                                                 // id of the plan
-
-            // fill personal trainer combobox with all trainers, in ribbon find tab
-            SortedDictionary<int, string> trainers = new SortedDictionary<int, string>(DataLayer.Trainers.GetAllTrainers());  // get id and name of all trainers and put them to a sorted dictionary
-            trainers.Add(0, "All");                                                                 // add 'All' entry
-            cbFindPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
-            cbFindPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
-            cbFindPersonalTrainer.ValueMember = "Key";                                                  // id of the trainer
-
-            // fill personal trainer combobox with trainers in member manager
-            trainers.Remove(0);                                                                 // remove 'All' entry
-            cbPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
-            cbPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
-            cbPersonalTrainer.ValueMember = "Key";  
-
-            // fill combobox with all plans, in new member wizard
-            plans.Remove(0);                                                    //remove 'All' option
-            plans.Add(0, "None");                                               // add 'None' option 
-            cbWizardPlans.DataSource = new BindingSource(plans, null);
-            cbWizardPlans.DisplayMember = "Value";
-            cbWizardPlans.ValueMember = "Key";
+            SetUpComboboxes();
 
             SwitchToPanel(panelAllMembers);
             ribbonTabFind.Select();                                             //switch to Find ribbon tab
@@ -390,11 +457,16 @@ namespace GymManagerPro.RibbonUI
 
         private void membersDataGridViewX_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // get member's id from selected row
-            member_id = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells["Id"].Value.ToString());
+            try
+            {
+                // get member's id from selected row
+                member_id = int.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells["Id"].Value.ToString());
 
-            // load member
-            LoadMember(member_id);
+                // load member
+                LoadMember(member_id);
+            }
+            catch { }
+            
         }
 
         private void membersDataGridViewX_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -501,53 +573,12 @@ namespace GymManagerPro.RibbonUI
             LoadAllTrainerNames();
         }
 
-        private void txtFindLastName_KeyDown(object sender, KeyEventArgs e)
-        {
-            SwitchToPanel(panelAllMembers);
-
-            // filter datagridview data by last name
-            DataView dv = new DataView(dataset);
-            dv.RowFilter = string.Format("LastName LIKE '%{0}%'", txtFindLastName.Text);
-            membersDataGridViewX.DataSource = dv;
-        }
-
-        private void txtFindFirstName_KeyDown(object sender, KeyEventArgs e)
-        {
-            SwitchToPanel(panelAllMembers);
-
-            // filter datagridview data by first name
-            DataView dv = new DataView(dataset);
-            dv.RowFilter = string.Format("FirstName LIKE '%{0}%'", txtFindFirstName.Text);
-            membersDataGridViewX.DataSource = dv;
-        }
-
         private void cbFindPlan_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (form_loaded)
             {
                 SwitchToPanel(panelAllMembers);
-
-                // retrieve the members who have the selected plan and bind them to datagridview
-                int plan_id = Int32.Parse(cbFindPlan.SelectedValue.ToString());                 // get id of the selected plan
-
-                if (plan_id != 0)                   // if the selected plan is not 'All'
-                {
-                    BindingSource bSource = new BindingSource();
-                    dataset = DataLayer.Members.GetMembersByPlan(plan_id);
-                    bSource.DataSource = dataset;
-                    membersDataGridViewX.DataSource = bSource;
-                }
-                else     // if the selected plan is 'ALL'
-                {
-                    // get all members and bind them to the datagridview
-                    BindingSource bSource = new BindingSource();
-                    dataset = DataLayer.Members.GetAllMembers();
-                    bSource.DataSource = dataset;
-                    membersDataGridViewX.DataSource = bSource;
-                }
-
-                // set personal trainer filter combobox to default value
-                cbFindPersonalTrainer.SelectedIndex = 0;
+                Presenter.FilterByPlan();
             }
         }
 
@@ -556,36 +587,13 @@ namespace GymManagerPro.RibbonUI
             if (form_loaded)
             {
                 SwitchToPanel(panelAllMembers);
-
-                // retrieve the members who are assigned to the the selected trainer and bind them to datagridview
-                int trainer_id = Int32.Parse(cbFindPersonalTrainer.SelectedValue.ToString());                         // get id of the selected trainer
-
-                if (trainer_id != 0)                                                           // if the selected trainer is not set to 'All'
-                {
-                    BindingSource bSource = new BindingSource();
-                    dataset = DataLayer.Members.GetMembersByPersonalTrainer(trainer_id);
-                    bSource.DataSource = dataset;
-                    membersDataGridViewX.DataSource = bSource;
-                }
-                else
-                {
-                    // get all members and bind them to the datagridview
-                    BindingSource bSource = new BindingSource();
-                    dataset = DataLayer.Members.GetAllMembers();
-                    bSource.DataSource = dataset;
-                    membersDataGridViewX.DataSource = bSource;
-                }
-
-                // set plan filter combobox to default value
-                cbFindPlan.SelectedIndex = 0;
+                Presenter.FilterByPersonalTrainer();
             }
         }
 
         private void btnFindRefresh_Click(object sender, EventArgs e)
         {
-            RefreshAllMembersDataGrid();
-            txtFindFirstName.Text = null;
-            txtFindLastName.Text = null;
+            Presenter.Refresh();
         }
 
         private void btnMembersNext_Click(object sender, EventArgs e)
@@ -1325,17 +1333,7 @@ namespace GymManagerPro.RibbonUI
             if (!panelAllMembers.Visible)
                 SwitchToPanel(panelAllMembers);
 
-            if (txtFindSearch.Text != "")
-            {
-                BindingSource bSource = new BindingSource();
-                dataset = DataLayer.Members.AdvancedSearch(cbFindSearchBy.SelectedItem.ToString(), txtFindSearch.Text);
-                bSource.DataSource = dataset;
-                membersDataGridViewX.DataSource = bSource;
-            }
-            else
-            {
-                RefreshAllMembersDataGrid();
-            }
+            Presenter.SearchAction();
         }
 
         private void menuNewMember_Click(object sender, EventArgs e)
@@ -1362,75 +1360,26 @@ namespace GymManagerPro.RibbonUI
 
         private void btnFindExport_Click(object sender, EventArgs e)
         {
-            
-            saveFileDialog1.InitialDirectory = "C:";
-            saveFileDialog1.Title = "Save as Excel File";
-            saveFileDialog1.FileName = "data";
-            saveFileDialog1.Filter = "Excel Files(2003)|*.xls";
-            if (saveFileDialog1.ShowDialog() != DialogResult.Cancel)
-            {
-                Utility.ToCsV(membersDataGridViewX, saveFileDialog1.FileName);
-                MessageBox.Show("Data exported successfully.");
-            }
+            Presenter.Export();
         }
-      
+
+        private void txtFindLastName_InputTextChanged(object sender)
+        {
+            if (!panelAllMembers.Visible)
+                SwitchToPanel(panelAllMembers);
+
+            Presenter.FilterByLastName();
+        }
+
+        private void txtFindFirstName_InputTextChanged(object sender)
+        {
+            if (!panelAllMembers.Visible)
+                SwitchToPanel(panelAllMembers);
+
+            Presenter.FilterByFirstName();
+        }
     }
 
 }
 
-
-    static class Utility
-    {
-        // highlights specified text
-        // http://stackoverflow.com/questions/11851908/highlight-all-searched-word-in-richtextbox-c-sharp
-        //
-        public static void HighlightText(this RichTextBox myRtb, string word, Color color)
-        {
-            int s_start = myRtb.SelectionStart, startIndex = 0, index;
-
-            while ((index = myRtb.Text.IndexOf(word, startIndex)) != -1)
-            {
-                myRtb.Select(index, word.Length);
-                myRtb.SelectionColor = color;
-
-                startIndex = index + word.Length;
-            }
-            myRtb.SelectionStart = s_start;
-            myRtb.SelectionLength = 0;
-            myRtb.SelectionColor = Color.Black;
-        }
-
-        /// <summary>
-        /// exports data to xls file 
-        /// (http://www.codeproject.com/Tips/545456/Exporting-DataGridview-To-Excel)
-        /// </summary>
-        /// <param name="dGV">datagridview</param>
-        /// <param name="filename">filename</param>
-        public static void ToCsV(DataGridView dGV, string filename)
-        {
-            string stOutput = "";
-            // Export titles:
-            string sHeaders = "";
-
-            for (int j = 0; j < dGV.Columns.Count; j++)
-                sHeaders = sHeaders.ToString() + Convert.ToString(dGV.Columns[j].HeaderText) + "\t";
-            stOutput += sHeaders + "\r\n";
-            // Export data.
-            for (int i = 0; i < dGV.RowCount - 1; i++)
-            {
-                string stLine = "";
-                for (int j = 0; j < dGV.Rows[i].Cells.Count; j++)
-                    stLine = stLine.ToString() + Convert.ToString(dGV.Rows[i].Cells[j].Value) + "\t";
-                stOutput += stLine + "\r\n";
-            }
-            Encoding utf16 = Encoding.GetEncoding(1254);
-            byte[] output = utf16.GetBytes(stOutput);
-            FileStream fs = new FileStream(filename, FileMode.Create);
-            BinaryWriter bw = new BinaryWriter(fs);
-            bw.Write(output, 0, output.Length); //write the encoded file
-            bw.Flush();
-            bw.Close();
-            fs.Close();
-        }
-}
 

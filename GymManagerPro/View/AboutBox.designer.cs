@@ -1,4 +1,4 @@
-﻿namespace GymManagerPro.RibbonUI
+﻿namespace GymManagerPro.View
 {
     partial class AboutBox
     {

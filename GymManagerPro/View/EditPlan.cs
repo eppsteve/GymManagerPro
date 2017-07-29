@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 
-namespace GymManagerPro.RibbonUI
+namespace GymManagerPro.View
 {
     //This class is used for editing an existing plan or adding a new one
     public partial class EditPlan : Form

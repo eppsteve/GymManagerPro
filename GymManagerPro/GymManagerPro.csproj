@@ -109,38 +109,41 @@
     <Compile Include="DataLayer\Membership.cs" />
     <Compile Include="DataLayer\Plan.cs" />
     <Compile Include="DataLayer\Trainer.cs" />
+    <Compile Include="Presenter\FindPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RibbonUI\AboutBox.cs">
+    <Compile Include="View\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RibbonUI\AboutBox.designer.cs">
+    <Compile Include="View\AboutBox.designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="RibbonUI\AddNewMembership.cs">
+    <Compile Include="View\AddNewMembership.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RibbonUI\AddNewMembership.designer.cs">
+    <Compile Include="View\AddNewMembership.designer.cs">
       <DependentUpon>AddNewMembership.cs</DependentUpon>
     </Compile>
-    <Compile Include="RibbonUI\EditPlan.cs">
+    <Compile Include="View\EditPlan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RibbonUI\EditPlan.designer.cs">
+    <Compile Include="View\EditPlan.designer.cs">
       <DependentUpon>EditPlan.cs</DependentUpon>
     </Compile>
-    <Compile Include="RibbonUI\frmMain.cs">
+    <Compile Include="View\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RibbonUI\frmMain.Designer.cs">
+    <Compile Include="View\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="RibbonUI\TrainerAssignmentDialog.cs">
+    <Compile Include="View\IFind.cs" />
+    <Compile Include="View\TrainerAssignmentDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RibbonUI\TrainerAssignmentDialog.designer.cs">
+    <Compile Include="View\TrainerAssignmentDialog.designer.cs">
       <DependentUpon>TrainerAssignmentDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\Common.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -151,19 +154,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RibbonUI\AboutBox.resx">
+    <EmbeddedResource Include="View\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RibbonUI\AddNewMembership.resx">
+    <EmbeddedResource Include="View\AddNewMembership.resx">
       <DependentUpon>AddNewMembership.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RibbonUI\EditPlan.resx">
+    <EmbeddedResource Include="View\EditPlan.resx">
       <DependentUpon>EditPlan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RibbonUI\frmMain.resx">
+    <EmbeddedResource Include="View\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RibbonUI\TrainerAssignmentDialog.resx">
+    <EmbeddedResource Include="View\TrainerAssignmentDialog.resx">
       <DependentUpon>TrainerAssignmentDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.Config" />

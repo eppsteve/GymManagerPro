@@ -15,7 +15,7 @@ namespace GymManagerPro
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GymManagerPro.RibbonUI.frmMain());
+            Application.Run(new GymManagerPro.View.frmMain());
         }
     }
 }
