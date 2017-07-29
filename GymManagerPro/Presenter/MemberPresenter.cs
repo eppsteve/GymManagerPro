@@ -13,9 +13,9 @@ namespace GymManagerPro.Presenter
         DataTable dataset;
         int SelectedMember;
 
-        public MemberPresenter(IMember findView)
+        public MemberPresenter(IMember View)
         {
-            view = findView;
+            this.view = View;
             InitDataGrid();
         }
 
@@ -330,6 +330,36 @@ namespace GymManagerPro.Presenter
             else
             {
                 MessageBox.Show("There are no more members!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public void CheckInMember()
+        {
+            if (view.IsAllMembersPanelVisible || view.IsMemberPanelVisible) 
+            {
+                if (view.SelectedMember != 0)             // if a member has been selected
+                {
+                    if (DataLayer.Members.MemberCheckin(view.SelectedMember) > 0)
+                    {
+                        MessageBox.Show(view.FirstName +" "+view.LastName + " just Checked-in!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Console.Beep();
+                        //refresh
+                        //SetUpAttedance();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Couldnot check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a user first!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a member first!");
+                //SwitchToPanel(panelAllMembers);
             }
         }
 

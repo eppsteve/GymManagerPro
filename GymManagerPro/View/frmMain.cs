@@ -7,10 +7,11 @@ using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 using GymManagerPro.Presenter;
+using DevComponents.DotNetBar.Controls;
 
 namespace GymManagerPro.View
 {
-    public partial class frmMain : Form, IMember
+    public partial class frmMain : Form, IMember, ITrainer
     {
         DataTable dataset;
         bool form_loaded;
@@ -19,74 +20,66 @@ namespace GymManagerPro.View
         DataLayer.Plan plan;
 
         public MemberPresenter Presenter { get; set; }
+        public TrainerPresenter TPresenter { get; set; }
 
         #region MemberPresenter properties
+        /// <summary>
+        /// FindMember Properties
+        /// </summary>
         string IMember.FFirstName
         {
             get { return txtFindFirstName.Text; }
             set { txtFindFirstName.Text = value; }
         }
-
         string IMember.FLastName
         {
             get { return txtFindLastName.Text; }
             set { txtFindLastName.Text = value; }
         }
-
         public int SelectedPlanIndex
         {
             get { return cbFindPlan.SelectedIndex; }
             set { cbFindPlan.SelectedIndex = value; }
         }
-
         public int SelectedPersonalTrainerIndex
         {
             get { return cbFindPersonalTrainer.SelectedIndex; }
             set { cbFindPersonalTrainer.SelectedIndex = value; }
         }
-
         public int SelectedSearchByIndex
         {
             get { return cbFindSearchBy.SelectedIndex; }
             set { cbFindSearchBy.SelectedIndex = value; }
         }
-
         public string SearchBy
         {
             get { return cbFindSearchBy.SelectedItem.ToString(); }
         }
-
         public string Keyword
         {
             get { return txtFindSearch.Text; }
             set { txtFindSearch.Text = value; }
         }
-
         object IMember.MembersGridDataSource
         {
             get { return membersDataGridViewX.DataSource; }
             set { membersDataGridViewX.DataSource = value; }
         }
-
         SaveFileDialog IMember.ExportFileDialog
         {
             get { return saveFileDialog1; }
         }
-
-
         public DataGridViewColumnCollection MembersGridColumns
         {
             get { return membersDataGridViewX.Columns; }
         }
-
         public DataGridViewRowCollection MembersGridRows
         {
             get { return membersDataGridViewX.Rows; }
         }
 
-
         /// <summary>
-        /// 
+        /// MemberManager Properties
         /// </summary>
         public int SelectedMember
         {
@@ -195,25 +188,21 @@ namespace GymManagerPro.View
         {
             get { return dataGridViewMemberships.Rows; }
         }
-
         public int PersonalTrainer
         {
             get { return Int32.Parse(cbPersonalTrainer.SelectedValue.ToString()); }
             set { cbPersonalTrainer.SelectedValue = value; }
         }
-
         public Image MemberImage
         {
             get { return pictureBoxMemberManager.Image; }
             set { pictureBoxMemberManager.Image = value; }
         }
-
         public string MemberImageLocation
         {
             get { return pictureBoxMemberManager.ImageLocation; }
             set { pictureBoxMemberManager.ImageLocation = value; }
         }
-
         public bool IsMemberPanelVisible
         {
             get { return panelMemberManager.Visible; }
@@ -224,15 +213,67 @@ namespace GymManagerPro.View
             get { return panelAllMembers.Visible; }
             set { panelAllMembers.Visible = value; }
         }
-
         public int SelectedRowsCount
         {
             get { return membersDataGridViewX.SelectedRows.Count; }
         }
-
         public int SelectedMembership
         {
             get { return (int)dataGridViewMemberships.SelectedRows[0].Cells["Membership Id"].Value; }
+        }
+
+        /// <summary>
+        /// Trainer Properties
+        /// </summary>
+        public int TrainerID
+        {
+            get { return Int32.Parse(txtTrainerId.Text); }
+            set { txtTrainerId.Text = value.ToString(); }
+        }
+        string ITrainer.FirstName
+        {
+            get { return txtTrainerFName.Text; }
+            set { txtTrainerFName.Text = value; }
+        }
+        string ITrainer.LastName
+        {
+            get { return txtTrainerLName.Text; }
+            set { txtTrainerFName.Text = value; }
+        }        
+        string ITrainer.HomePhone
+        {
+            get { return txtHomePhone.Text; }
+            set { txtHomePhone.Text = value; }
+        }
+        string ITrainer.CellPhone
+        {
+            get { return txtCellPhone.Text; }
+            set { txtCellPhone.Text = value; }
+        }
+        string ITrainer.Email
+        {
+            get { return txtEmail.Text; }
+            set { txtEmail.Text = value; }
+        }
+        public decimal Salary
+        {
+            get { return Decimal.Parse(txtTrainerSalary.Text.ToString()); }
+            set { txtTrainerSalary.Text = value.ToString(); }
+        }
+        public ListBox lbTrainers
+        {
+            get { return listBoxTrainers; }
+            set { listBoxTrainers = value; }
+        }
+        public DataGridViewX dgLinkedMembers
+        {
+            get { return amTrainersDataGridViewX; }
+            set { amTrainersDataGridViewX = value;}
+        }
+        public bool IsPanelVisible
+        {
+            get { return panelTrainers.Visible; }
+            set { panelTrainers.Visible = value; }
         }
         #endregion
 
@@ -240,70 +281,10 @@ namespace GymManagerPro.View
         {
             InitializeComponent();
             Presenter = new MemberPresenter(this);
+            TPresenter = new TrainerPresenter(this);
         }
 
-        // populates listbox with the names of all the trainers
-        public void LoadAllTrainerNames()
-        {
-            listBoxTrainers.DataSource = new BindingSource(DataLayer.Trainers.GetAllTrainers(), null);
-            listBoxTrainers.DisplayMember = "Value";
-            listBoxTrainers.ValueMember = "Key";
-        }
 
-        // loads data for the specified trainer
-        public void LoadTrainer(int id)
-        {
-            DataLayer.Trainer trainer = new DataLayer.Trainer();
-            try
-            {
-                // display trainer details
-                trainer = DataLayer.Trainers.GetTrainer(id);
-                SetUpTrainerTextBoxes(trainer);
-
-                // display associated members
-                DataTable membersTable = DataLayer.Trainers.GetAssociatedMembers(id);
-                amTrainersDataGridViewX.DataSource = membersTable;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        // populates textboxes with trainer's data
-        public void SetUpTrainerTextBoxes(DataLayer.Trainer trainer)
-        {
-            txtTrainerFName.Text = trainer.FName;
-            txtTrainerLName.Text = trainer.LName;
-            txtTrainerCellPhone.Text = trainer.CellPhone;
-            txtTrainerCity.Text = trainer.City;
-            dtpTrainerDOB.Value = trainer.DateOfBirth.Date;
-            txtTrainerEmail.Text = trainer.Email;
-            txtTrainerHomePhone.Text = trainer.HomePhone;
-            //txtId.Text = id.ToString();
-            txtTrainerNotes.Text = trainer.Notes;
-            if (trainer.Sex == "Male")
-                rbTrainerMale.Checked = true;
-            else if (trainer.Sex == "Female")
-                rbTrainerFemale.Checked = true;
-            //txtPostalCode.Text = trainer.PostalCode.ToString();
-            txtTrainerSalary.Text = trainer.Salary.ToString();
-            txtTrainerSuburb.Text = trainer.Suburb;
-            //label15.Text = txtTrainerFName.Text + " " + txtTrainerLName.Text + " is set as a Personal Trainer for the following members.";
-
-            //display the trainer's picture
-            //pictureBox1.Image = null; // clears the picturebox
-            //byte[] img = trainer.Image;
-            //if (trainer.Image != null)
-            //{
-            //    try
-            //    {
-            //        MemoryStream mstream = new MemoryStream(img);
-            //        pictureBox1.Image = Image.FromStream(mstream);
-            //    }
-            //    catch { }
-            //}
-        }
 
         // populates richTextBox Attedance with checkins data
         public void SetUpAttedance()
@@ -491,7 +472,7 @@ namespace GymManagerPro.View
         private void frmMain_Load(object sender, EventArgs e)
         {
             //load trainers
-            LoadAllTrainerNames();
+            TPresenter.LoadTrainers();
 
             // get all plans and bind them to listbox, in Plans panel
             listBoxPlans.DataSource = DataLayer.Plan.GetAllPlans().ToList();
@@ -527,14 +508,7 @@ namespace GymManagerPro.View
         private void listBoxTrainers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (form_loaded)
-            {
-                if (listBoxTrainers.SelectedIndex != -1)
-                {
-                    //get trainer's id and load trainer's data
-                    trainer_id = Convert.ToInt32(listBoxTrainers.SelectedValue.ToString());
-                    LoadTrainer(trainer_id);
-                }
-            }
+                TPresenter.ChangeSelectedTrainer();
         }
 
         private void frmMain_Shown(object sender, EventArgs e)
@@ -588,31 +562,13 @@ namespace GymManagerPro.View
         {
             if (form_loaded)
             {
-                if (panelTrainers.Visible)
-                {
-
-                    if (listBoxTrainers.SelectedIndex != -1)
-                    {
-                        TrainerAssignmentDialog tad = new TrainerAssignmentDialog(trainer_id, amTrainersDataGridViewX);
-                        tad.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please select a trainer first!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please select a trainer first!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    SwitchToPanel(panelTrainers);
-                }
+                TPresenter.LinkMember();
             }
         }
 
         private void btnTrainersRefresh_Click(object sender, EventArgs e)
         {
-            // load again to refresh
-            LoadAllTrainerNames();
+            TPresenter.LoadTrainers();
         }
 
         private void cbFindPlan_SelectedIndexChanged(object sender, EventArgs e)
@@ -660,32 +616,7 @@ namespace GymManagerPro.View
 
         private void btnCheckIn_Click(object sender, EventArgs e)
         {
-            if (panelAllMembers.Visible || panelMemberManager.Visible)
-            {
-                if (member_id != 0)             // if a member has been selected
-                {
-                    if (DataLayer.Members.MemberCheckin(member_id) > 0)
-                    {
-                        MessageBox.Show(lblName.Text + " just Checked-in!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Console.Beep();
-                        //refresh
-                        SetUpAttedance();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Couldnot check-in. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please select a user first!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a member first!");
-                SwitchToPanel(panelAllMembers);
-            }
+            Presenter.CheckInMember();
         }
 
         private void btnAttedanceRefresh_Click(object sender, EventArgs e)
@@ -1041,32 +972,7 @@ namespace GymManagerPro.View
 
         private void btnTrainersRemoveMember_Click(object sender, EventArgs e)
         {
-            if (panelTrainers.Visible)
-            {
-                if (amTrainersDataGridViewX.SelectedRows.Count != 0)
-                {
-                    // get the id of the member to be removed
-                    int memberToRemove = (int)amTrainersDataGridViewX.SelectedCells[0].Value; //first cell of the selected row
-
-                    if (DataLayer.Trainers.RemoveMember(memberToRemove) > 0)
-                    {
-                        MessageBox.Show("Member removed!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // reload associated members
-                        DataTable membersTable = DataLayer.Trainers.GetAssociatedMembers(trainer_id);
-                        amTrainersDataGridViewX.DataSource = membersTable;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to remove member. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please Select a Trainer first!");
-                SwitchToPanel(panelTrainers);
-            }
+            TPresenter.UnlinkMember();
         }
 
         private void txtWizardLastName_TextChanged(object sender, EventArgs e)
@@ -1086,113 +992,12 @@ namespace GymManagerPro.View
 
         private void btnTrainersSave_Click(object sender, EventArgs e)
         {
-            if (panelTrainers.Visible)
-            {
-                if (listBoxTrainers.SelectedIndex != 0)
-                {
-                    // create a new trainer object
-                    DataLayer.Trainer trainer = new DataLayer.Trainer();
-
-                    if (!String.IsNullOrEmpty(txtTrainerLName.Text))
-                    {
-                        trainer.TrainerID = this.trainer_id;
-                        trainer.FName = txtTrainerFName.Text.Trim();
-                        trainer.LName = txtTrainerLName.Text.Trim();
-                        trainer.CellPhone = txtTrainerCellPhone.Text.Trim();
-                        trainer.City = txtTrainerCity.Text.Trim();
-                        trainer.DateOfBirth = dtpTrainerDOB.Value;
-                        trainer.Email = txtTrainerEmail.Text.Trim();
-                        trainer.HomePhone = txtTrainerHomePhone.Text.Trim();
-                        if (txtTrainerSalary.Text.Length > 0)
-                        {
-                            trainer.Salary = Decimal.Parse(txtTrainerSalary.Text.ToString());
-                        }
-                        else
-                        {
-                            trainer.Salary = 0;
-                        }
-                        trainer.Street = txtTrainerStreet.Text.Trim();
-                        trainer.Suburb = txtTrainerSuburb.Text.Trim();
-                        if (rbTrainerMale.Checked)
-                        {
-                            trainer.Sex = "Male";
-                        }
-                        else if (rbTrainerFemale.Checked)
-                        {
-                            trainer.Sex = "Female";
-                        }
-                        trainer.Notes = txtTrainerNotes.Text.Trim();
-
-                        //save data to db
-                        if (DataLayer.Trainers.UpdateTrainer(trainer) > 0)
-                        {
-                            MessageBox.Show("Trainer Updated successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            // refresh Trainers listbox
-                            LoadAllTrainerNames();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to Update Trainer!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Last Name cannot be empty!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-
-                    // set textboxes to read only
-                    txtTrainerFName.ReadOnly = true;
-                    txtTrainerLName.ReadOnly = true;
-                    txtTrainerCellPhone.ReadOnly = true;
-                    txtTrainerCity.ReadOnly = true;
-                    txtTrainerEmail.ReadOnly = true;
-                    txtTrainerHomePhone.ReadOnly = true;
-                    txtTrainerNotes.ReadOnly = true;
-                    txtTrainerSalary.ReadOnly = true;
-                    txtTrainerStreet.ReadOnly = true;
-                    txtTrainerSuburb.ReadOnly = true;
-
-                    //change button text and icon of btnTrainersEdit
-                    btnTrainersEdit.Text = "Edit";
-                    ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
-                    btnTrainersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersEdit.Icon")));
-                }
-            }
+            TPresenter.SaveTrainer();
         }
 
         private void btnTrainersDelete_Click(object sender, EventArgs e)
         {
-            if (panelTrainers.Visible)
-            {
-                if (listBoxTrainers.SelectedIndex != 0)
-                {
-                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this Trainer? This cannot be undone!", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        if (DataLayer.Trainers.DeleteTrainer(this.trainer_id) > 0)
-                        {
-                            MessageBox.Show("Trainer deleted!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            // refresh trainers listbox
-                            LoadAllTrainerNames();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Could not delete. Please try again.", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please select a trainer first!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a trainer first!");
-                SwitchToPanel(panelTrainers);
-            }
+            TPresenter.DeleteMember();
         }
 
         private void btnTrainersAdd_Click(object sender, EventArgs e)
@@ -1201,37 +1006,8 @@ namespace GymManagerPro.View
             if (!panelTrainers.Visible)
                 SwitchToPanel(panelTrainers);
 
-            // create a new trainer
-            DataLayer.Trainer trainer = new DataLayer.Trainer();
-            trainer.FName = "New Trainer";
-            trainer.LName = "New Trainer";
-            trainer.Sex = "Male";
-            trainer.DateOfBirth = DateTime.Now;
-            trainer.Street = String.Empty;
-            trainer.Suburb = String.Empty;
-            trainer.Salary = 0;
-            trainer.HomePhone = String.Empty;
-            trainer.CellPhone = String.Empty;
-            trainer.Notes = String.Empty;
-            trainer.City = String.Empty;
-            trainer.Email = String.Empty;
-
-            // add to db
-            if (DataLayer.Trainers.NewTrainer(trainer) > 0)
-            {
-                //MessageBox.Show("success");
-                trainer_id = DataLayer.Trainers.GetLastInsertedTrainer();
-                LoadAllTrainerNames();
-                this.listBoxTrainers.SelectedIndex = this.listBoxTrainers.Items.Count - 1;
-            }
-            else
-            {
-                MessageBox.Show("could not add");
-            }
-
-            // set textboxes editable
-            EditTrainer();
-            
+            TPresenter.AddTrainer();
+            EditTrainer();  // set textboxes editable
         }
 
         private void menuAbout_Click(object sender, EventArgs e)
