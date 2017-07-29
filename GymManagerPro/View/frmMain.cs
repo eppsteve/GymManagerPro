@@ -11,16 +11,17 @@ using DevComponents.DotNetBar.Controls;
 
 namespace GymManagerPro.View
 {
-    public partial class frmMain : Form, IMember, ITrainer
+    public partial class frmMain : Form, IMember, ITrainer, IPlan
     {
         DataTable dataset;
         bool form_loaded;
-        int trainer_id;
+        //int trainer_id;
         int member_id = 0;
         DataLayer.Plan plan;
 
         public MemberPresenter Presenter { get; set; }
         public TrainerPresenter TPresenter { get; set; }
+        public PlanPresenter PPresenter { get; set; }
 
         #region MemberPresenter properties
         /// <summary>
@@ -275,6 +276,35 @@ namespace GymManagerPro.View
             get { return panelTrainers.Visible; }
             set { panelTrainers.Visible = value; }
         }
+
+        /// <summary>
+        /// Plan Properties
+        /// </summary>       
+        public int Duration
+        {
+            get { return Int32.Parse(txtPlanDuration.Text); }
+            set { txtPlanDuration.Text = value.ToString(); }
+        }
+        public decimal Price
+        {
+            get { return Decimal.Parse(txtPlanPrice.Text); }
+            set { txtPlanPrice.Text = value.ToString(); }
+        }
+        public string PlanName
+        {
+            get { return txtPlanName.Text; }
+            set { txtPlanName.Text = value; }
+        }
+        public bool IsPlansPanelVisible
+        {
+            get { return panelPlans.Visible; }
+            set { panelPlans.Visible = value; }
+        }
+        public ListBox lbPlans
+        {
+            get { return listBoxPlans; }
+            set { listBoxPlans = value; }
+        }
         #endregion
 
         public frmMain()
@@ -282,6 +312,7 @@ namespace GymManagerPro.View
             InitializeComponent();
             Presenter = new MemberPresenter(this);
             TPresenter = new TrainerPresenter(this);
+            PPresenter = new PlanPresenter(this);
         }
 
 
@@ -520,21 +551,22 @@ namespace GymManagerPro.View
         {
             if (form_loaded)
             {
-                if (listBoxPlans.SelectedIndex != -1)
-                {
-                    // get selected plan
-                    int planId = Convert.ToInt32(listBoxPlans.SelectedValue.ToString());
-                    plan = DataLayer.Plan.GetPlan(planId);
+                //if (listBoxPlans.SelectedIndex != -1)
+                //{
+                //    // get selected plan
+                //    int planId = Convert.ToInt32(listBoxPlans.SelectedValue.ToString());
+                //    plan = DataLayer.Plan.GetPlan(planId);
 
-                    //populate textboxes with plan's data
-                    txtPlanName.Text = plan.Name;
-                    txtPlanDuration.Text = plan.Duration.ToString();
-                    txtPlanPrice.Text = plan.Price.ToString();
-                    if (plan.Notes != null)
-                        txtPlanNotes.Text = plan.Notes.ToString();
-                    else
-                        txtPlanNotes.Text = null;
-                }
+                //    //populate textboxes with plan's data
+                //    txtPlanName.Text = plan.Name;
+                //    txtPlanDuration.Text = plan.Duration.ToString();
+                //    txtPlanPrice.Text = plan.Price.ToString();
+                //    if (plan.Notes != null)
+                //        txtPlanNotes.Text = plan.Notes.ToString();
+                //    else
+                //        txtPlanNotes.Text = null;
+                //}
+                PPresenter.ChangeSelectedPlan();
             }
         }
 
@@ -921,53 +953,20 @@ namespace GymManagerPro.View
 
         private void btnPlansNew_Click(object sender, EventArgs e)
         {
-            EditPlan ep = new EditPlan(listBoxPlans);
-            ep.ShowDialog();
-            SwitchToPanel(panelPlans);
+            PPresenter.NewPlan();
         }
 
         private void btnPlansEdit_Click(object sender, EventArgs e)
         {
             if (form_loaded)
             {
-                if (panelPlans.Visible)
-                {
-                    if (listBoxPlans.SelectedIndex != -1)
-                    {
-                        // get selected plan
-                        int planId = Convert.ToInt32(listBoxPlans.SelectedValue.ToString());
-                        EditPlan ep = new EditPlan(plan, listBoxPlans);
-                        ep.ShowDialog();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please select a plan first");
-                    SwitchToPanel(panelPlans);
-                }
+                PPresenter.EditPlan();
             }
         }
 
         private void btnPlansDelete_Click(object sender, EventArgs e)
         {
-            if (panelPlans.Visible)
-            {
-                DialogResult dialogResult = MessageBox.Show("Warning! Deleting the selected plan will also expire (delete) all the associated memberships! Are you sure you want to continue?", "Gym Manager Pro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    DataLayer.Plan.DeletePlan(plan.Id);
-
-                    // refresh the listbox
-                    listBoxPlans.DataSource = DataLayer.Plan.GetAllPlans().ToList();
-                    listBoxPlans.ValueMember = "Key";
-                    listBoxPlans.DisplayMember = "Value";
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a plan first!");
-                SwitchToPanel(panelPlans);
-            }
+            PPresenter.DeletePlan();
         }
 
         private void btnTrainersRemoveMember_Click(object sender, EventArgs e)

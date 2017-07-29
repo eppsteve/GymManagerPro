@@ -1,8 +1,5 @@
 ﻿using GymManagerPro.View;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace GymManagerPro.Presenter
@@ -110,9 +107,6 @@ namespace GymManagerPro.Presenter
             {
                 if (view.lbTrainers.SelectedIndex != 0)
                 {
-                    // create a new trainer object
-                    //DataLayer.Trainer trainer = new DataLayer.Trainer();
-
                     if (!String.IsNullOrEmpty(view.LastName))
                     {
                         var trainer = new DataLayer.Trainer()

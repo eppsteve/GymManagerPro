@@ -110,6 +110,7 @@
     <Compile Include="DataLayer\Plan.cs" />
     <Compile Include="DataLayer\Trainer.cs" />
     <Compile Include="Presenter\MemberPresenter.cs" />
+    <Compile Include="Presenter\PlanPresenter.cs" />
     <Compile Include="Presenter\TrainerPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,6 +139,7 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="View\IMember.cs" />
+    <Compile Include="View\IPlan.cs" />
     <Compile Include="View\ITrainer.cs" />
     <Compile Include="View\TrainerAssignmentDialog.cs">
       <SubType>Form</SubType>
