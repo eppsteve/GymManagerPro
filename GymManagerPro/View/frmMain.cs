@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.IO;
 using GymManagerPro.Presenter;
 using DevComponents.DotNetBar.Controls;
 
@@ -13,17 +11,13 @@ namespace GymManagerPro.View
 {
     public partial class frmMain : Form, IMember, ITrainer, IPlan, IWizard
     {
-        DataTable dataset;
         bool form_loaded;
-        //int trainer_id;
-        int member_id = 0;
-        //DataLayer.Plan plan;
 
         public MemberPresenter Presenter { get; set; }
         public TrainerPresenter TPresenter { get; set; }
         public PlanPresenter PPresenter { get; set; }
         public WizardPresenter WPresenter { get; set; }
-
+        
         #region Presenter properties
         /// <summary>
         /// FindMember Properties
@@ -37,6 +31,8 @@ namespace GymManagerPro.View
         public string Keyword { get => txtFindSearch.Text; set => txtFindSearch.Text = value; }
         SaveFileDialog IMember.ExportFileDialog => saveFileDialog1; 
         DataGridViewX IMember.MembersGrid { get =>  membersDataGridViewX; set => membersDataGridViewX = value; }
+        ComboBox IMember.cbFindPlan { get => cbFindPlan; set => cbFindPlan = value; }
+        ComboBox IMember.cbFindPersonalTrainer { get => cbFindPersonalTrainer; set => cbFindPersonalTrainer = value; }
 
         /// <summary>
         /// MemberManager Properties
@@ -184,6 +180,8 @@ namespace GymManagerPro.View
         {
             get { return (int)dataGridViewMemberships.SelectedRows[0].Cells["Membership Id"].Value; }
         }
+        public string MembershipsNotifications { get => lblNotifications.Text; set => lblNotifications.Text = value; }
+        ComboBoxEx IMember.cbPersonalTrainer { get => cbPersonalTrainer; set => cbPersonalTrainer = value; }
 
         /// <summary>
         /// Trainer Properties
@@ -232,6 +230,7 @@ namespace GymManagerPro.View
         bool IWizard.IsPanelVisible { get => panelNewMemberWizard.Visible; set => panelNewMemberWizard.Visible = value; }
         public decimal InitializationFee { get => Decimal.Parse(txtWizardInitiationFee.Text); set => txtWizardInitiationFee.Text = value.ToString(); }
         public decimal TotalFee { get => Decimal.Parse(txtWizardTotalFees.Text); set => txtWizardTotalFees.Text = value.ToString(); }
+        ComboBox IWizard.cbWizardPlans { get => cbWizardPlans; set => cbWizardPlans = value; }
         #endregion
 
         public frmMain()
@@ -272,68 +271,6 @@ namespace GymManagerPro.View
             txtAttedanceSearch.AutoCompleteCustomSource = coll2;
         }
 
-        private void SetUpComboboxes()
-        {
-            // fill combobox with all plans, in ribbon find tab
-            SortedDictionary<int, string> plans = new SortedDictionary<int, string>(DataLayer.Plan.GetAllPlans());           // get all the plans and put them to a sorted dictionary
-            plans.Add(0, "All");                                                                                            // add 'All' entry to dictionary
-            cbFindPlan.DataSource = new BindingSource(plans, null);                                                             // bind dictionary to combobox
-            cbFindPlan.DisplayMember = "Value";                                                                                 // name of the plan
-            cbFindPlan.ValueMember = "Key";                                                                                 // id of the plan
-
-            // fill personal trainer combobox with all trainers, in ribbon find tab
-            SortedDictionary<int, string> trainers = new SortedDictionary<int, string>(DataLayer.Trainers.GetAllTrainers());  // get id and name of all trainers and put them to a sorted dictionary
-            trainers.Add(0, "All");                                                                 // add 'All' entry
-            cbFindPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
-            cbFindPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
-            cbFindPersonalTrainer.ValueMember = "Key";                                                  // id of the trainer
-
-            // fill personal trainer combobox with trainers in member manager
-            trainers.Remove(0);                                                                 // remove 'All' entry
-            cbPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
-            cbPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
-            cbPersonalTrainer.ValueMember = "Key";
-
-            // fill combobox with all plans, in new member wizard
-            plans.Remove(0);                                                    //remove 'All' option
-            plans.Add(0, "None");                                               // add 'None' option 
-            cbWizardPlans.DataSource = new BindingSource(plans, null);
-            cbWizardPlans.DisplayMember = "Value";
-            cbWizardPlans.ValueMember = "Key";
-        }
-
-        // displays notifications in member manager
-        private void SetUpNotifications()
-        {
-            lblNotifications.Text = "";                                         // clear
-            foreach (DataGridViewRow row in dataGridViewMemberships.Rows)
-            {
-                DateTime exp_date = (DateTime)row.Cells["End Date"].Value;      // get end date
-                String membership = row.Cells["Name"].Value.ToString();         // get membership name
-                double days = (exp_date - DateTime.Today).TotalDays;            // calculate the difference between today and end date
-                if (days > 0)
-                    // membership is active
-                    lblNotifications.Text += membership + " expires in " + (int)days + " days" + Environment.NewLine;
-                else
-                    // membership has expired
-                    lblNotifications.Text += membership + " has expired!" + Environment.NewLine;
-            }
-        }
-
-        //// reloads data to AllMembers datagridview to refresh
-        //private void RefreshAllMembersDataGrid()
-        //{
-        //    // get all members and bind them to the members datagridview to reload
-        //    BindingSource bSource = new BindingSource();
-        //    dataset = DataLayer.Members.GetAllMembers();
-        //    bSource.DataSource = dataset;
-        //    membersDataGridViewX.DataSource = bSource;
-
-        //    //set comboboxes to default value
-        //    cbFindPersonalTrainer.SelectedIndex = 0;
-        //    cbFindPlan.SelectedIndex = 0;
-        //}
-
         // shows the specified panel
         private void SwitchToPanel(Panel panel)
         {
@@ -345,7 +282,6 @@ namespace GymManagerPro.View
             panelAttedance.Visible = false;
             panelNewMemberWizard.Visible = false;
             panelReports.Visible = false;
-
             panel.Visible = true;
         }
 
@@ -423,7 +359,6 @@ namespace GymManagerPro.View
             btnMembersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersEdit.Icon")));
         }
 
-
         
         // --------------------------------- EVENTS ------------------------------------ //
 
@@ -434,8 +369,6 @@ namespace GymManagerPro.View
 
             // set up autocomplete members search box in ribbon
             SetUpSearch();
-
-            SetUpComboboxes();
 
             SwitchToPanel(panelAllMembers);
             ribbonTabFind.Select();       //switch to Find ribbon tab
@@ -621,7 +554,7 @@ namespace GymManagerPro.View
 
         private void buttonXNewMembership_Click(object sender, EventArgs e)
         {
-            AddNewMembership newContract = new AddNewMembership(member_id, dataGridViewMemberships);
+            AddNewMembership newContract = new AddNewMembership(SelectedMember, dataGridViewMemberships);
             newContract.Show();
         }
 
@@ -704,8 +637,8 @@ namespace GymManagerPro.View
 
         private void wizardPage2_CancelButtonClick(object sender, CancelEventArgs e)
         {
-            panelNewMemberWizard.Visible = false;
-            wizard1.NavigateBack();
+            SwitchToPanel(panelAllMembers);
+            wizard1.NavigateCancel();
         }
 
         private void wizard1_CancelButtonClick(object sender, CancelEventArgs e)
@@ -749,8 +682,7 @@ namespace GymManagerPro.View
 
         private void dataGridViewMemberships_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            //set up membership expire notifications in member manager
-            SetUpNotifications();
+            Presenter.SetUpNotifications();
         }
 
         private void btnPlansNew_Click(object sender, EventArgs e)

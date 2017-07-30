@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace GymManagerPro.View
 {
@@ -33,5 +34,7 @@ namespace GymManagerPro.View
         bool IsPanelVisible { get; set; }
         decimal InitializationFee { get; set; }
         decimal TotalFee { get; set; }
+
+        ComboBox cbWizardPlans { get; set; }
     }
 }

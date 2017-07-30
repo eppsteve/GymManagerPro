@@ -1,5 +1,6 @@
 ﻿using GymManagerPro.View;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -17,6 +18,7 @@ namespace GymManagerPro.Presenter
         {
             this.view = View;
             InitDataGrid();
+            SetUpComboBoxes();
         }
 
         private void InitDataGrid()
@@ -26,6 +28,30 @@ namespace GymManagerPro.Presenter
             dataset = DataLayer.Members.GetAllMembers();
             bSource.DataSource = dataset;
             view.MembersGrid.DataSource = bSource;
+        }
+
+        private void SetUpComboBoxes()
+        {
+            // fill combobox with all plans, in ribbon find tab
+            SortedDictionary<int, string> plans = new SortedDictionary<int, string>(DataLayer.Plan.GetAllPlans());           // get all the plans and put them to a sorted dictionary
+            plans.Add(0, "All");                                                                                            // add 'All' entry to dictionary
+            view.cbFindPlan.DataSource = new BindingSource(plans, null);                                                             // bind dictionary to combobox
+            view.cbFindPlan.DisplayMember = "Value";                                                                                 // name of the plan
+            view.cbFindPlan.ValueMember = "Key";
+
+            // fill personal trainer combobox with all trainers, in ribbon find tab
+            SortedDictionary<int, string> trainers = new SortedDictionary<int, string>(DataLayer.Trainers.GetAllTrainers());  // get id and name of all trainers and put them to a sorted dictionary
+            trainers.Add(0, "All");                                                                 // add 'All' entry
+            view.cbFindPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
+            view.cbFindPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
+            view.cbFindPersonalTrainer.ValueMember = "Key";                                                  // id of the trainer
+
+            // fill personal trainer combobox with trainers in member manager
+            trainers.Remove(0);                                                                 // remove 'All' entry
+            view.cbPersonalTrainer.DataSource = new BindingSource(trainers, null);                       // bind dictionary to combobox
+            view.cbPersonalTrainer.DisplayMember = "Value";                                              // name of the trainer
+            view.cbPersonalTrainer.ValueMember = "Key";
+
         }
 
         public void FilterByLastName()
@@ -102,7 +128,7 @@ namespace GymManagerPro.Presenter
         }
 
         // reloads data to AllMembers datagridview to refresh
-        public void RefreshAllMembersDataGrid()
+        private void RefreshAllMembersDataGrid()
         {
             // get all members and bind them to the members datagridview to reload
             BindingSource bSource = new BindingSource();
@@ -209,7 +235,6 @@ namespace GymManagerPro.Presenter
                     row.Cells["Status"].Value = "Inactive";
                     // dataGridViewMemberships.Columns["Status"].DefaultCellStyle.ForeColor = Color.Red;
                 }
-
                 else
                 {
                     row.Cells["Status"].Value = "Active";
@@ -256,6 +281,8 @@ namespace GymManagerPro.Presenter
                 MessageBox.Show("Member Updated successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("Failed to Update Member!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            RefreshAllMembersDataGrid();
         }
 
         public void DeleteMember()
@@ -270,9 +297,7 @@ namespace GymManagerPro.Presenter
                     MessageBox.Show("Member deleted!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // display the previous member
-                    //var member_id = DataLayer.Members.GetPrevMember(view.SelectedMember);
                     SelectedMember = DataLayer.Members.GetPrevMember(view.SelectedMember);
-                    //LoadMember(member_id);
                     LoadMember();
                 }
             }
@@ -373,6 +398,24 @@ namespace GymManagerPro.Presenter
 
                 // reload data
                 LoadMemberships(view.SelectedMember);
+            }
+        }
+
+        // displays notifications in member manager
+        public void SetUpNotifications()
+        {
+            view.MembershipsNotifications = "";                                         // clear
+            foreach (DataGridViewRow row in view.MDGVRows)
+            {
+                DateTime exp_date = (DateTime)row.Cells["End Date"].Value;      // get end date
+                String membership = row.Cells["Name"].Value.ToString();         // get membership name
+                double days = (exp_date - DateTime.Today).TotalDays;            // calculate the difference between today and end date
+                if (days > 0)
+                    // membership is active
+                    view.MembershipsNotifications += membership + " expires in " + (int)days + " days" + Environment.NewLine;
+                else
+                    // membership has expired
+                    view.MembershipsNotifications += membership + " has expired!" + Environment.NewLine;
             }
         }
     }

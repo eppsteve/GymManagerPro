@@ -1,4 +1,5 @@
 ﻿using GymManagerPro.View;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -11,6 +12,17 @@ namespace GymManagerPro.Presenter
         public WizardPresenter(IWizard View)
         {
             this.view = View;
+        }
+
+        private void SetUpComboBoxes()
+        {
+            // fill combobox with all plans, in new member wizard
+            SortedDictionary<int, string> plans = new SortedDictionary<int, string>(DataLayer.Plan.GetAllPlans());           // get all the plans and put them to a sorted dictionary
+            plans.Remove(0);                                                    //remove 'All' option
+            plans.Add(0, "None");                                               // add 'None' option 
+            view.cbWizardPlans.DataSource = new BindingSource(plans, null);
+            view.cbWizardPlans.DisplayMember = "Value";
+            view.cbWizardPlans.ValueMember = "Key";
         }
 
         public void AddNewMember()
@@ -76,7 +88,7 @@ namespace GymManagerPro.Presenter
 
             //RefreshAllMembersDataGrid();            // refresh AllMembers datagridview
             view.IsPanelVisible = false;
-            //panelAllMembers.Visible = true;         // show all members datagrid view
+            //panelAllMembers.Visible = true;         // show all members datagrid view            
         }
 
         public void AddInitializationFee()

@@ -11,11 +11,13 @@ namespace GymManagerPro.View
         string FLastName { get; set; }
         int SelectedPlanIndex { get; set; }
         int SelectedPersonalTrainerIndex { get; set; }
+        ComboBox cbFindPersonalTrainer { get; set; }
         int SelectedSearchByIndex { get; set; }
         string SearchBy { get; }
         string Keyword { get; set; }       
         DataGridViewX MembersGrid { get; set; }
         SaveFileDialog ExportFileDialog { get; }
+        ComboBox cbFindPlan { get; set; }
 
         int SelectedMember { get; set; }
         int SelectedMembership { get; }
@@ -35,13 +37,16 @@ namespace GymManagerPro.View
         string Email { get; set; }
         string Occupation { get; set; }
         int PersonalTrainer { get; set; }
+        ComboBoxEx cbPersonalTrainer { get; set; }
         string Notes { get; set; }
         Image MemberImage { get; set; }
         string MemberImageLocation { get; set; }
         //public byte[] Image { get; set; }
+
         object MembershipsGridDataSource { get; set; }
         DataGridViewRowCollection MDGVRows { get; }
         int SelectedRowsCount { get; }
+        string MembershipsNotifications { get; set; }
 
         bool IsMemberPanelVisible { get; set; }
         bool IsAllMembersPanelVisible { get; set; }
