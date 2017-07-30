@@ -2,10 +2,10 @@ GymManagerPro
 =============
 
 Membership management application for fitness club/gym business witten in C#,.NET, SQL Server.
-UI design
-Database manipulation (Add records, Delete, Update, Search with SQL Queries) with ADO.NET.
 
-The application manages every aspect of a gym business including client, employee, and membership management. A data layer has been implemented which handles the data exchange between the application and the database.
+- MVP Arcitecture
+- UI design with Windows Forms. Modern Ribbon interface.
+- CRUD and Search operations with ADO.NET.
+- Fat-client architecture. Created with portabillity and easy deployment in mind.
 
-
-Please note that this application has been developed for educational purposes. The requirements of a real gym/fitness business may be different.
+The application manages every aspect of a gym business including client, employee, and membership management.
