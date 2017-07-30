@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevComponents.DotNetBar.Controls;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -33,21 +34,21 @@ namespace GymManagerPro.Util
         /// </summary>
         /// <param name="dGV">datagridview</param>
         /// <param name="filename">filename</param>
-        public static void ToCsV(DataGridViewRowCollection rows, DataGridViewColumnCollection columns, string filename)
+        public static void ToCsV(DataGridViewX dgv, string filename)
         {
             string stOutput = "";
             // Export titles:
             string sHeaders = "";
 
-            for (int j = 0; j < columns.Count; j++)
-                sHeaders = sHeaders.ToString() + Convert.ToString(columns[j].HeaderText) + "\t";
+            for (int j = 0; j < dgv.Columns.Count; j++)
+                sHeaders = sHeaders.ToString() + Convert.ToString(dgv.Columns[j].HeaderText) + "\t";
             stOutput += sHeaders + "\r\n";
             // Export data.
-            for (int i = 0; i < rows.Count - 1; i++)
+            for (int i = 0; i < dgv.Rows.Count - 1; i++)
             {
                 string stLine = "";
-                for (int j = 0; j < rows[i].Cells.Count; j++)
-                    stLine = stLine.ToString() + Convert.ToString(rows[i].Cells[j].Value) + "\t";
+                for (int j = 0; j < dgv.Rows[i].Cells.Count; j++)
+                    stLine = stLine.ToString() + Convert.ToString(dgv.Rows[i].Cells[j].Value) + "\t";
                 stOutput += stLine + "\r\n";
             }
             Encoding utf16 = Encoding.GetEncoding(1254);

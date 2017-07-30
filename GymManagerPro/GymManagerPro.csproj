@@ -112,6 +112,7 @@
     <Compile Include="Presenter\MemberPresenter.cs" />
     <Compile Include="Presenter\PlanPresenter.cs" />
     <Compile Include="Presenter\TrainerPresenter.cs" />
+    <Compile Include="Presenter\WizardPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\AboutBox.cs">
@@ -141,6 +142,7 @@
     <Compile Include="View\IMember.cs" />
     <Compile Include="View\IPlan.cs" />
     <Compile Include="View\ITrainer.cs" />
+    <Compile Include="View\IWizard.cs" />
     <Compile Include="View\TrainerAssignmentDialog.cs">
       <SubType>Form</SubType>
     </Compile>

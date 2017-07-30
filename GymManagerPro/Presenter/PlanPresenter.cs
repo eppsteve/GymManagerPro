@@ -14,6 +14,14 @@ namespace GymManagerPro.Presenter
         public PlanPresenter(IPlan View)
         {
             this.view = View;
+            LoadPlans();
+        }
+
+        private void LoadPlans()
+        {
+            view.lbPlans.DataSource = DataLayer.Plan.GetAllPlans().ToList();
+            view.lbPlans.ValueMember = "Key";
+            view.lbPlans.DisplayMember = "Value";
         }
 
         public void ChangeSelectedPlan()
@@ -66,9 +74,7 @@ namespace GymManagerPro.Presenter
                     DataLayer.Plan.DeletePlan(selectedPlan.Id);
 
                     // refresh the listbox
-                    view.lbPlans.DataSource = DataLayer.Plan.GetAllPlans().ToList();
-                    view.lbPlans.ValueMember = "Key";
-                    view.lbPlans.DisplayMember = "Value";
+                    LoadPlans();
                 }
             }
             else

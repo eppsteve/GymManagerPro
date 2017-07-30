@@ -11,73 +11,32 @@ using DevComponents.DotNetBar.Controls;
 
 namespace GymManagerPro.View
 {
-    public partial class frmMain : Form, IMember, ITrainer, IPlan
+    public partial class frmMain : Form, IMember, ITrainer, IPlan, IWizard
     {
         DataTable dataset;
         bool form_loaded;
         //int trainer_id;
         int member_id = 0;
-        DataLayer.Plan plan;
+        //DataLayer.Plan plan;
 
         public MemberPresenter Presenter { get; set; }
         public TrainerPresenter TPresenter { get; set; }
         public PlanPresenter PPresenter { get; set; }
+        public WizardPresenter WPresenter { get; set; }
 
-        #region MemberPresenter properties
+        #region Presenter properties
         /// <summary>
         /// FindMember Properties
         /// </summary>
-        string IMember.FFirstName
-        {
-            get { return txtFindFirstName.Text; }
-            set { txtFindFirstName.Text = value; }
-        }
-        string IMember.FLastName
-        {
-            get { return txtFindLastName.Text; }
-            set { txtFindLastName.Text = value; }
-        }
-        public int SelectedPlanIndex
-        {
-            get { return cbFindPlan.SelectedIndex; }
-            set { cbFindPlan.SelectedIndex = value; }
-        }
-        public int SelectedPersonalTrainerIndex
-        {
-            get { return cbFindPersonalTrainer.SelectedIndex; }
-            set { cbFindPersonalTrainer.SelectedIndex = value; }
-        }
-        public int SelectedSearchByIndex
-        {
-            get { return cbFindSearchBy.SelectedIndex; }
-            set { cbFindSearchBy.SelectedIndex = value; }
-        }
-        public string SearchBy
-        {
-            get { return cbFindSearchBy.SelectedItem.ToString(); }
-        }
-        public string Keyword
-        {
-            get { return txtFindSearch.Text; }
-            set { txtFindSearch.Text = value; }
-        }
-        object IMember.MembersGridDataSource
-        {
-            get { return membersDataGridViewX.DataSource; }
-            set { membersDataGridViewX.DataSource = value; }
-        }
-        SaveFileDialog IMember.ExportFileDialog
-        {
-            get { return saveFileDialog1; }
-        }
-        public DataGridViewColumnCollection MembersGridColumns
-        {
-            get { return membersDataGridViewX.Columns; }
-        }
-        public DataGridViewRowCollection MembersGridRows
-        {
-            get { return membersDataGridViewX.Rows; }
-        }
+        string IMember.FFirstName { get => txtFindFirstName.Text; set => txtFindFirstName.Text = value; }
+        string IMember.FLastName { get => txtFindLastName.Text; set => txtFindLastName.Text = value; }
+        public int SelectedPlanIndex { get => cbFindPlan.SelectedIndex; set => cbFindPlan.SelectedIndex = value; }
+        public int SelectedPersonalTrainerIndex{ get => cbFindPersonalTrainer.SelectedIndex; set => cbFindPersonalTrainer.SelectedIndex = value;}
+        public int SelectedSearchByIndex { get => cbFindSearchBy.SelectedIndex; set => cbFindSearchBy.SelectedIndex = value;}
+        public string SearchBy => cbFindSearchBy.SelectedItem.ToString(); 
+        public string Keyword { get => txtFindSearch.Text; set => txtFindSearch.Text = value; }
+        SaveFileDialog IMember.ExportFileDialog => saveFileDialog1; 
+        DataGridViewX IMember.MembersGrid { get =>  membersDataGridViewX; set => membersDataGridViewX = value; }
 
         /// <summary>
         /// MemberManager Properties
@@ -152,7 +111,7 @@ namespace GymManagerPro.View
         }
         public int PostalCode
         {
-            get { return Int32.Parse(txtPostalCode.Text); }
+            get { return txtPostalCode.TextLength == 0 ? 0 : Int32.Parse(txtPostalCode.Text); }
             set { txtPostalCode.Text = value.ToString(); }
         }
         string IMember.HomePhone
@@ -185,13 +144,16 @@ namespace GymManagerPro.View
             get { return dataGridViewMemberships.DataSource; }
             set { dataGridViewMemberships.DataSource = value; }
         }
-        DataGridViewRowCollection IMember.MDGVRows
-        {
-            get { return dataGridViewMemberships.Rows; }
-        }
+        DataGridViewRowCollection IMember.MDGVRows => dataGridViewMemberships.Rows; 
         public int PersonalTrainer
         {
-            get { return Int32.Parse(cbPersonalTrainer.SelectedValue.ToString()); }
+            get
+            {
+                if (cbPersonalTrainer.SelectedValue != null)
+                    return Int32.Parse(cbPersonalTrainer.SelectedValue.ToString());
+                else
+                    return 0;
+            }
             set { cbPersonalTrainer.SelectedValue = value; }
         }
         public Image MemberImage
@@ -226,85 +188,50 @@ namespace GymManagerPro.View
         /// <summary>
         /// Trainer Properties
         /// </summary>
-        public int TrainerID
-        {
-            get { return Int32.Parse(txtTrainerId.Text); }
-            set { txtTrainerId.Text = value.ToString(); }
-        }
-        string ITrainer.FirstName
-        {
-            get { return txtTrainerFName.Text; }
-            set { txtTrainerFName.Text = value; }
-        }
-        string ITrainer.LastName
-        {
-            get { return txtTrainerLName.Text; }
-            set { txtTrainerFName.Text = value; }
-        }        
-        string ITrainer.HomePhone
-        {
-            get { return txtHomePhone.Text; }
-            set { txtHomePhone.Text = value; }
-        }
-        string ITrainer.CellPhone
-        {
-            get { return txtCellPhone.Text; }
-            set { txtCellPhone.Text = value; }
-        }
-        string ITrainer.Email
-        {
-            get { return txtEmail.Text; }
-            set { txtEmail.Text = value; }
-        }
+        public int TrainerID { get => Int32.Parse(txtTrainerId.Text); set => txtTrainerId.Text = value.ToString(); }
+        string ITrainer.FirstName { get => txtTrainerFName.Text; set => txtTrainerFName.Text = value; }
+        string ITrainer.LastName { get => txtTrainerLName.Text; set => txtTrainerFName.Text = value; }    
+        string ITrainer.HomePhone { get=>txtHomePhone.Text; set =>  txtHomePhone.Text = value; }
+        string ITrainer.CellPhone {get => txtCellPhone.Text; set => txtCellPhone.Text = value; }
+        string ITrainer.Email { get => txtEmail.Text; set => txtEmail.Text = value; }
         public decimal Salary
         {
             get { return Decimal.Parse(txtTrainerSalary.Text.ToString()); }
             set { txtTrainerSalary.Text = value.ToString(); }
         }
-        public ListBox lbTrainers
-        {
-            get { return listBoxTrainers; }
-            set { listBoxTrainers = value; }
-        }
-        public DataGridViewX dgLinkedMembers
-        {
-            get { return amTrainersDataGridViewX; }
-            set { amTrainersDataGridViewX = value;}
-        }
-        public bool IsPanelVisible
-        {
-            get { return panelTrainers.Visible; }
-            set { panelTrainers.Visible = value; }
-        }
+        public ListBox lbTrainers { get => listBoxTrainers; set => listBoxTrainers = value; }
+        public DataGridViewX dgLinkedMembers { get => amTrainersDataGridViewX; set => amTrainersDataGridViewX = value; }
+        bool ITrainer.IsPanelVisible { get => panelTrainers.Visible; set => panelTrainers.Visible = value; }
 
         /// <summary>
         /// Plan Properties
         /// </summary>       
-        public int Duration
-        {
-            get { return Int32.Parse(txtPlanDuration.Text); }
-            set { txtPlanDuration.Text = value.ToString(); }
-        }
-        public decimal Price
-        {
-            get { return Decimal.Parse(txtPlanPrice.Text); }
-            set { txtPlanPrice.Text = value.ToString(); }
-        }
-        public string PlanName
-        {
-            get { return txtPlanName.Text; }
-            set { txtPlanName.Text = value; }
-        }
-        public bool IsPlansPanelVisible
-        {
-            get { return panelPlans.Visible; }
-            set { panelPlans.Visible = value; }
-        }
-        public ListBox lbPlans
-        {
-            get { return listBoxPlans; }
-            set { listBoxPlans = value; }
-        }
+        public int Duration { get =>Int32.Parse(txtPlanDuration.Text); set => txtPlanDuration.Text = value.ToString(); }  
+        public decimal Price { get => Decimal.Parse(txtPlanPrice.Text); set => txtPlanPrice.Text = value.ToString(); }
+        public string PlanName { get => txtPlanName.Text; set => txtPlanName.Text = value; }
+        public bool IsPlansPanelVisible { get => panelPlans.Visible; set => panelPlans.Visible = value; }
+        public ListBox lbPlans { get => listBoxPlans; set => listBoxPlans = value; }
+
+
+        /// <summary>
+        /// New Member Wizard Properties
+        /// </summary>
+        string IWizard.FirstName => txtWizardFirstName.Text; 
+        string IWizard.LastName => txtLastName.Text;
+        int IWizard.CardNumber => Int32.Parse(txtWizardCardNumber.Text);
+        string IWizard.HomePhone => txtWizardHomePhone.Text;
+        string IWizard.CellPhone => txtWizardCellPhone.Text;
+        string IWizard.Email => txtWizardEmail.Text;
+        public bool IsMaleChecked => rbWizardMale.Checked;
+        public bool IsFemaleChecked => rbWizardFemale.Checked;
+        public string ImageLocation => picWizard.ImageLocation;
+        public DateTime MembershipStart => dtpWizardStartPlan.Value;
+        public DateTime MembershipEnd => dtpWizardEndPlan.Value;
+        public int PlanId => (int)cbWizardPlans.SelectedValue;
+        public string SelectedPlanName => cbWizardPlans.Text;
+        bool IWizard.IsPanelVisible { get => panelNewMemberWizard.Visible; set => panelNewMemberWizard.Visible = value; }
+        public decimal InitializationFee { get => Decimal.Parse(txtWizardInitiationFee.Text); set => txtWizardInitiationFee.Text = value.ToString(); }
+        public decimal TotalFee { get => Decimal.Parse(txtWizardTotalFees.Text); set => txtWizardTotalFees.Text = value.ToString(); }
         #endregion
 
         public frmMain()
@@ -313,8 +240,8 @@ namespace GymManagerPro.View
             Presenter = new MemberPresenter(this);
             TPresenter = new TrainerPresenter(this);
             PPresenter = new PlanPresenter(this);
+            WPresenter = new WizardPresenter(this);
         }
-
 
 
         // populates richTextBox Attedance with checkins data
@@ -393,19 +320,19 @@ namespace GymManagerPro.View
             }
         }
 
-        // reloads data to AllMembers datagridview to refresh
-        private void RefreshAllMembersDataGrid()
-        {
-            // get all members and bind them to the members datagridview to reload
-            BindingSource bSource = new BindingSource();
-            dataset = DataLayer.Members.GetAllMembers();
-            bSource.DataSource = dataset;
-            membersDataGridViewX.DataSource = bSource;
+        //// reloads data to AllMembers datagridview to refresh
+        //private void RefreshAllMembersDataGrid()
+        //{
+        //    // get all members and bind them to the members datagridview to reload
+        //    BindingSource bSource = new BindingSource();
+        //    dataset = DataLayer.Members.GetAllMembers();
+        //    bSource.DataSource = dataset;
+        //    membersDataGridViewX.DataSource = bSource;
 
-            //set comboboxes to default value
-            cbFindPersonalTrainer.SelectedIndex = 0;
-            cbFindPlan.SelectedIndex = 0;
-        }
+        //    //set comboboxes to default value
+        //    cbFindPersonalTrainer.SelectedIndex = 0;
+        //    cbFindPlan.SelectedIndex = 0;
+        //}
 
         // shows the specified panel
         private void SwitchToPanel(Panel panel)
@@ -502,14 +429,6 @@ namespace GymManagerPro.View
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //load trainers
-            TPresenter.LoadTrainers();
-
-            // get all plans and bind them to listbox, in Plans panel
-            listBoxPlans.DataSource = DataLayer.Plan.GetAllPlans().ToList();
-            listBoxPlans.ValueMember = "Key";
-            listBoxPlans.DisplayMember = "Value";
-
             // load check ins
             SetUpAttedance();
 
@@ -519,7 +438,7 @@ namespace GymManagerPro.View
             SetUpComboboxes();
 
             SwitchToPanel(panelAllMembers);
-            ribbonTabFind.Select();                                             //switch to Find ribbon tab
+            ribbonTabFind.Select();       //switch to Find ribbon tab
         }
 
         private void membersDataGridViewX_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -551,21 +470,6 @@ namespace GymManagerPro.View
         {
             if (form_loaded)
             {
-                //if (listBoxPlans.SelectedIndex != -1)
-                //{
-                //    // get selected plan
-                //    int planId = Convert.ToInt32(listBoxPlans.SelectedValue.ToString());
-                //    plan = DataLayer.Plan.GetPlan(planId);
-
-                //    //populate textboxes with plan's data
-                //    txtPlanName.Text = plan.Name;
-                //    txtPlanDuration.Text = plan.Duration.ToString();
-                //    txtPlanPrice.Text = plan.Price.ToString();
-                //    if (plan.Notes != null)
-                //        txtPlanNotes.Text = plan.Notes.ToString();
-                //    else
-                //        txtPlanNotes.Text = null;
-                //}
                 PPresenter.ChangeSelectedPlan();
             }
         }
@@ -772,114 +676,12 @@ namespace GymManagerPro.View
 
         private void txtWizardInitiationFee_TextChanged(object sender, EventArgs e)
         {
-            int plan_id = Int32.Parse(cbWizardPlans.SelectedValue.ToString());                                           // get id of the selected plan
-            decimal programmefee = DataLayer.Plan.GetPlanPrice(plan_id);                                                // get selected plan's price
-            try
-            {
-                if (txtWizardInitiationFee.Text.Trim().Length == 0)                                                           // if initationfee textbox is empty
-                    txtWizardInitiationFee.Text = "0";
-                else
-                {
-                    decimal totalfee = (decimal)Decimal.Parse(txtWizardInitiationFee.Text.ToString()) + programmefee;         // calculate the total fee by adding the initation fee to the plan's fee
-                    txtWizardTotalFees.Text = totalfee.ToString();                                                            // display total fee
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            WPresenter.AddInitializationFee();
         }
 
         private void wizard1_FinishButtonClick(object sender, CancelEventArgs e)
         {
-            //////////////// CREATE A NEW MEMBER //////////////
-
-            // create a new member
-            DataLayer.Member member = new DataLayer.Member();
-
-            // fill member properties from textboxes
-            member.CardNumber = Int32.Parse(txtWizardCardNumber.Text);
-            member.LName = txtWizardLastName.Text;
-            member.FName = txtWizardFirstName.Text;
-            if (rbWizardMale.Checked)
-            {
-                member.Sex = "male";
-            }
-            else if (rbWizardFemale.Checked)
-            {
-                member.Sex = "female";
-            }
-            member.DateOfBirth = dtpWizardDOB.Value;
-            member.Street = txtWizardStreet.Text;
-            member.Suburb = txtWizardSuburb.Text;
-            member.City = txtWizardCity.Text;
-            if (txtPostalCode.Text.Length > 0)
-            {
-                member.PostalCode = Int32.Parse(txtWizardPostalCode.Text);
-            }
-            member.HomePhone = txtWizardHomePhone.Text;
-            member.CellPhone = txtWizardCellPhone.Text;
-            member.Email = txtWizardEmail.Text;
-            member.Occupation = txtWizardOccupation.Text;
-            member.Notes = txtWizardNotes.Text;
-
-            // holds the member's picture
-            //byte[] imageBt = null;
-            if (picWizard.ImageLocation != null)
-            {
-                FileStream fstream = new FileStream(picWizard.ImageLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fstream);
-                member.Image = br.ReadBytes((int)fstream.Length);
-            }
-            else
-            {
-                byte[] empty_array = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
-                member.Image = empty_array;
-            }
-
-
-            //add member to db
-            if (DataLayer.Members.AddNewMember(member) > 0)
-            {
-                //a new member has been added without any membership
-                //MessageBox.Show("A New Member has been added. You can add a membership at any time from Member Manager", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Failed to add new member. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-
-            ////////////// CREATE A NEW MEMBERSHIP FOR THE SAME MEMBER //////////////
-
-            if (cbWizardPlans.Text != "None")
-            {
-                // create a new membership and fill with data
-                DataLayer.Membership membership = new DataLayer.Membership();
-
-                //to find member's id we get the last inserted id and increment by 1 because we haven't inserted the new member yet
-                membership.MemberId = DataLayer.Members.GetLastInsertedMember();        // member's id
-                //membership.MemberId++;
-                membership.Plan = (int)cbWizardPlans.SelectedValue;                 // id of the selected plan
-                membership.start = dtpWizardStartPlan.Value;                           // when the membership starts
-                membership.end = dtpWizardEndPlan.Value;                               // when the membership expires
-
-                if (DataLayer.Memberships.NewMembership(membership) > 0)
-                {
-                    MessageBox.Show("A New Member has been added successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Failed to add new membership. Please add manually from Member Manager", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-
-            RefreshAllMembersDataGrid();            // refresh AllMembers datagridview
-            panelNewMemberWizard.Visible = false;
-            panelAllMembers.Visible = true;         // show all members datagrid view
-
+            WPresenter.AddNewMember();
         }
 
         private void dtpWizardStartPlan_ValueChanged(object sender, EventArgs e)
@@ -1065,7 +867,6 @@ namespace GymManagerPro.View
             Presenter.FilterByFirstName();
         }
     }
-
 }
 
 

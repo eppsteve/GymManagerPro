@@ -25,7 +25,7 @@ namespace GymManagerPro.Presenter
             BindingSource bSource = new BindingSource();
             dataset = DataLayer.Members.GetAllMembers();
             bSource.DataSource = dataset;
-            view.MembersGridDataSource = bSource;
+            view.MembersGrid.DataSource = bSource;
         }
 
         public void FilterByLastName()
@@ -33,14 +33,14 @@ namespace GymManagerPro.Presenter
             // filter datagridview data by last name
             DataView dv = new DataView(dataset);
             dv.RowFilter = string.Format("LastName LIKE '%{0}%'", view.FLastName);
-            view.MembersGridDataSource = dv;
+            view.MembersGrid.DataSource = dv;
         }
 
         public void FilterByFirstName()
         {
             DataView dv = new DataView(dataset);
             dv.RowFilter = string.Format("FirstName LIKE '%{0}%'", view.FFirstName);
-            view.MembersGridDataSource = dv;
+            view.MembersGrid.DataSource = dv;
         }
 
         public void FilterByPlan()
@@ -54,7 +54,7 @@ namespace GymManagerPro.Presenter
             else                            // if the selected plan is 'ALL'
                 dataset = DataLayer.Members.GetMembersByPlan(plan_id);
             bSource.DataSource = dataset;
-            view.MembersGridDataSource = bSource;
+            view.MembersGrid.DataSource = bSource;
 
             // set personal trainer filter combobox to default value
             view.SelectedPersonalTrainerIndex = 0;
@@ -72,7 +72,7 @@ namespace GymManagerPro.Presenter
             else
                 dataset = DataLayer.Members.GetAllMembers();
             bSource.DataSource = dataset;
-            view.MembersGridDataSource = bSource;
+            view.MembersGrid.DataSource = bSource;
 
             // set plan filter combobox to default value
             view.SelectedPlanIndex = 0;
@@ -86,7 +86,7 @@ namespace GymManagerPro.Presenter
                 BindingSource bSource = new BindingSource();
                 dataset = DataLayer.Members.AdvancedSearch(view.SearchBy, view.Keyword);
                 bSource.DataSource = dataset;
-                view.MembersGridDataSource = bSource;
+                view.MembersGrid.DataSource = bSource;
             }
             else
             {
@@ -108,7 +108,7 @@ namespace GymManagerPro.Presenter
             BindingSource bSource = new BindingSource();
             dataset = DataLayer.Members.GetAllMembers();
             bSource.DataSource = dataset;
-            view.MembersGridDataSource = bSource;
+            view.MembersGrid.DataSource = bSource;
 
             //set comboboxes to default value
             view.SelectedSearchByIndex = 0;
@@ -123,7 +123,7 @@ namespace GymManagerPro.Presenter
             view.ExportFileDialog.Filter = "Excel Files(2003)|*.xls";
             if (view.ExportFileDialog.ShowDialog() != DialogResult.Cancel)
             {
-                Util.Common.ToCsV(view.MembersGridRows, view.MembersGridColumns, view.ExportFileDialog.FileName);
+                Util.Common.ToCsV(view.MembersGrid, view.ExportFileDialog.FileName);
                 MessageBox.Show("Data exported successfully.");
             }
         }
@@ -131,15 +131,14 @@ namespace GymManagerPro.Presenter
         public void LoadMember()
         {
             
-            var member_id = view.SelectedMember;    // get member's id from selected row
+            var id = view.SelectedMember;    // get member's id from selected row
 
             DataLayer.Members members = new DataLayer.Members();
             DataLayer.Member member = new DataLayer.Member();
 
             try
             {
-                
-                member = members.GetMember(member_id);     // retrieves member data from db
+                member = members.GetMember(id);     // retrieves member data from db
 
                 // populate controls with the data  
                 view.CardNumber = member.CardNumber;
@@ -163,7 +162,7 @@ namespace GymManagerPro.Presenter
                 view.Occupation = member.Occupation;
                 view.Notes = member.Notes;
                 view.PersonalTrainer = member.PersonalTrainer;
-                view.MemberId = member_id;
+                view.MemberId = id;
 
                 //display the member's picture
                 view.MemberImage = null; // clears the picturebox
@@ -179,7 +178,7 @@ namespace GymManagerPro.Presenter
                 }
 
                 //load membership data
-                LoadMembership(member_id);
+                LoadMemberships(id);
 
                 //resetTextBoxes();
 
@@ -190,7 +189,7 @@ namespace GymManagerPro.Presenter
             }
         }
 
-        private void LoadMembership(int id)
+        private void LoadMemberships(int id)
         {
             //load membership data
             DataTable table = DataLayer.Memberships.GetMembershipByMemberId(id);
@@ -215,7 +214,6 @@ namespace GymManagerPro.Presenter
                 {
                     row.Cells["Status"].Value = "Active";
                 }
-
             }
         }
 
@@ -374,7 +372,7 @@ namespace GymManagerPro.Presenter
                 MessageBox.Show("Membership removed!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // reload data
-                LoadMembership(view.SelectedMember);
+                LoadMemberships(view.SelectedMember);
             }
         }
     }

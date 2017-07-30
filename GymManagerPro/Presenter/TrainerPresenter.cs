@@ -12,6 +12,7 @@ namespace GymManagerPro.Presenter
         public TrainerPresenter(ITrainer View)
         {
             this.view = View;
+            LoadTrainers();
         }
 
         public void LoadTrainers()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevComponents.DotNetBar.Controls;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,9 +14,7 @@ namespace GymManagerPro.View
         int SelectedSearchByIndex { get; set; }
         string SearchBy { get; }
         string Keyword { get; set; }       
-        object MembersGridDataSource { get; set; }
-        DataGridViewRowCollection MembersGridRows { get; }
-        DataGridViewColumnCollection MembersGridColumns { get; }
+        DataGridViewX MembersGrid { get; set; }
         SaveFileDialog ExportFileDialog { get; }
 
         int SelectedMember { get; set; }
