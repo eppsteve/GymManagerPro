@@ -30,20 +30,38 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
+            this.ribbonPanel5 = new DevComponents.DotNetBar.RibbonPanel();
+            this.ribbonBar10 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnViewPlans = new DevComponents.DotNetBar.ButtonItem();
+            this.btnPlansNew = new DevComponents.DotNetBar.ButtonItem();
+            this.btnPlansEdit = new DevComponents.DotNetBar.ButtonItem();
+            this.btnPlansDelete = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
+            this.ribbonBar12 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnTrainersAddMember = new DevComponents.DotNetBar.ButtonItem();
+            this.btnTrainersRemoveMember = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonBar11 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnTrainersAdd = new DevComponents.DotNetBar.ButtonItem();
+            this.btnTrainersSave = new DevComponents.DotNetBar.ButtonItem();
+            this.btnTrainersEdit = new DevComponents.DotNetBar.ButtonItem();
+            this.btnTrainersDelete = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonBar14 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnViewTrainers = new DevComponents.DotNetBar.ButtonItem();
+            this.btnTrainersRefresh = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar16 = new DevComponents.DotNetBar.RibbonBar();
             this.btnFindExport = new DevComponents.DotNetBar.ButtonItem();
@@ -78,35 +96,6 @@
             this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
             this.btnViewAllMembers = new DevComponents.DotNetBar.ButtonItem();
             this.btnFindRefresh = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonPanel3 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonBar9 = new DevComponents.DotNetBar.RibbonBar();
-            this.txtAttedanceSearch = new System.Windows.Forms.TextBox();
-            this.labelItem9 = new DevComponents.DotNetBar.LabelItem();
-            this.btnAttedanceCheckin = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonBar8 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnAttedanceSaveTxt = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem25 = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonBar13 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnViewCheckins = new DevComponents.DotNetBar.ButtonItem();
-            this.btnAttedanceRefresh = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonPanel5 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonBar10 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnViewPlans = new DevComponents.DotNetBar.ButtonItem();
-            this.btnPlansNew = new DevComponents.DotNetBar.ButtonItem();
-            this.btnPlansEdit = new DevComponents.DotNetBar.ButtonItem();
-            this.btnPlansDelete = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonBar12 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnTrainersAddMember = new DevComponents.DotNetBar.ButtonItem();
-            this.btnTrainersRemoveMember = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonBar11 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnTrainersAdd = new DevComponents.DotNetBar.ButtonItem();
-            this.btnTrainersSave = new DevComponents.DotNetBar.ButtonItem();
-            this.btnTrainersEdit = new DevComponents.DotNetBar.ButtonItem();
-            this.btnTrainersDelete = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonBar14 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnViewTrainers = new DevComponents.DotNetBar.ButtonItem();
-            this.btnTrainersRefresh = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel2 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar7 = new DevComponents.DotNetBar.RibbonBar();
             this.txtMembersSearch = new System.Windows.Forms.TextBox();
@@ -121,6 +110,17 @@
             this.btnMembersSave = new DevComponents.DotNetBar.ButtonItem();
             this.btnMembersEdit = new DevComponents.DotNetBar.ButtonItem();
             this.btnMembersDelete = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonPanel3 = new DevComponents.DotNetBar.RibbonPanel();
+            this.ribbonBar9 = new DevComponents.DotNetBar.RibbonBar();
+            this.txtAttedanceSearch = new System.Windows.Forms.TextBox();
+            this.labelItem9 = new DevComponents.DotNetBar.LabelItem();
+            this.btnAttedanceCheckin = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonBar8 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnAttedanceSaveTxt = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem25 = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonBar13 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnViewCheckins = new DevComponents.DotNetBar.ButtonItem();
+            this.btnAttedanceRefresh = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel6 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar15 = new DevComponents.DotNetBar.RibbonBar();
             this.btnReportsOverview = new DevComponents.DotNetBar.ButtonItem();
@@ -164,7 +164,7 @@
             this.lblLastName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
+            this.lblFName = new System.Windows.Forms.Label();
             this.txtPostalCode = new System.Windows.Forms.MaskedTextBox();
             this.pictureBoxMemberManager = new System.Windows.Forms.PictureBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
@@ -299,15 +299,16 @@
             this.panelReports = new DevComponents.DotNetBar.PanelEx();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.lblLName = new System.Windows.Forms.Label();
             this.ribbonControl1.SuspendLayout();
-            this.ribbonPanel1.SuspendLayout();
-            this.ribbonBar2.SuspendLayout();
-            this.ribbonPanel3.SuspendLayout();
-            this.ribbonBar9.SuspendLayout();
             this.ribbonPanel5.SuspendLayout();
             this.ribbonPanel4.SuspendLayout();
+            this.ribbonPanel1.SuspendLayout();
+            this.ribbonBar2.SuspendLayout();
             this.ribbonPanel2.SuspendLayout();
             this.ribbonBar7.SuspendLayout();
+            this.ribbonPanel3.SuspendLayout();
+            this.ribbonBar9.SuspendLayout();
             this.ribbonPanel6.SuspendLayout();
             this.panelAllMembers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.membersDataGridViewX)).BeginInit();
@@ -350,11 +351,11 @@
             this.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonControl1.CaptionVisible = true;
             this.ribbonControl1.Controls.Add(this.ribbonPanel5);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel4);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel2);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel3);
             this.ribbonControl1.Controls.Add(this.ribbonPanel6);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel4);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel3);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel2);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ribbonControl1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.office2007StartButton1,
@@ -391,6 +392,310 @@
             this.ribbonControl1.TabGroupHeight = 14;
             this.ribbonControl1.TabIndex = 0;
             this.ribbonControl1.Text = "ribbonControl1";
+            // 
+            // ribbonPanel5
+            // 
+            this.ribbonPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel5.Controls.Add(this.ribbonBar10);
+            this.ribbonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel5.Location = new System.Drawing.Point(0, 53);
+            this.ribbonPanel5.Name = "ribbonPanel5";
+            this.ribbonPanel5.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ribbonPanel5.Size = new System.Drawing.Size(1222, 98);
+            // 
+            // 
+            // 
+            this.ribbonPanel5.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel5.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel5.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonPanel5.TabIndex = 5;
+            // 
+            // ribbonBar10
+            // 
+            this.ribbonBar10.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar10.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar10.ContainerControlProcessDialogKey = true;
+            this.ribbonBar10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar10.DragDropSupport = true;
+            this.ribbonBar10.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnViewPlans,
+            this.btnPlansNew,
+            this.btnPlansEdit,
+            this.btnPlansDelete});
+            this.ribbonBar10.Location = new System.Drawing.Point(3, 0);
+            this.ribbonBar10.Name = "ribbonBar10";
+            this.ribbonBar10.Size = new System.Drawing.Size(236, 95);
+            this.ribbonBar10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar10.TabIndex = 2;
+            this.ribbonBar10.Text = "Manage";
+            // 
+            // 
+            // 
+            this.ribbonBar10.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar10.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar10.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
+            // 
+            // btnViewPlans
+            // 
+            this.btnViewPlans.Icon = ((System.Drawing.Icon)(resources.GetObject("btnViewPlans.Icon")));
+            this.btnViewPlans.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnViewPlans.Name = "btnViewPlans";
+            this.btnViewPlans.SubItemsExpandWidth = 14;
+            this.btnViewPlans.Text = "View";
+            this.btnViewPlans.Tooltip = "View All Plans";
+            this.btnViewPlans.Click += new System.EventHandler(this.btnViewPlans_Click);
+            // 
+            // btnPlansNew
+            // 
+            this.btnPlansNew.Icon = ((System.Drawing.Icon)(resources.GetObject("btnPlansNew.Icon")));
+            this.btnPlansNew.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnPlansNew.Name = "btnPlansNew";
+            this.btnPlansNew.SubItemsExpandWidth = 14;
+            this.btnPlansNew.Text = "New";
+            this.btnPlansNew.Tooltip = "Add a New Plan";
+            this.btnPlansNew.Click += new System.EventHandler(this.btnPlansNew_Click);
+            // 
+            // btnPlansEdit
+            // 
+            this.btnPlansEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnPlansEdit.Icon")));
+            this.btnPlansEdit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnPlansEdit.Name = "btnPlansEdit";
+            this.btnPlansEdit.SubItemsExpandWidth = 14;
+            this.btnPlansEdit.Text = "Edit";
+            this.btnPlansEdit.Tooltip = "Edit Plan";
+            this.btnPlansEdit.Click += new System.EventHandler(this.btnPlansEdit_Click);
+            // 
+            // btnPlansDelete
+            // 
+            this.btnPlansDelete.Icon = ((System.Drawing.Icon)(resources.GetObject("btnPlansDelete.Icon")));
+            this.btnPlansDelete.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnPlansDelete.Name = "btnPlansDelete";
+            this.btnPlansDelete.SubItemsExpandWidth = 14;
+            this.btnPlansDelete.Text = "Delete";
+            this.btnPlansDelete.Tooltip = "Delete Plan";
+            this.btnPlansDelete.Click += new System.EventHandler(this.btnPlansDelete_Click);
+            // 
+            // ribbonPanel4
+            // 
+            this.ribbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel4.Controls.Add(this.ribbonBar12);
+            this.ribbonPanel4.Controls.Add(this.ribbonBar11);
+            this.ribbonPanel4.Controls.Add(this.ribbonBar14);
+            this.ribbonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel4.Location = new System.Drawing.Point(0, 53);
+            this.ribbonPanel4.Name = "ribbonPanel4";
+            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ribbonPanel4.Size = new System.Drawing.Size(1222, 98);
+            // 
+            // 
+            // 
+            this.ribbonPanel4.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel4.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonPanel4.TabIndex = 4;
+            this.ribbonPanel4.Visible = false;
+            // 
+            // ribbonBar12
+            // 
+            this.ribbonBar12.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar12.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar12.ContainerControlProcessDialogKey = true;
+            this.ribbonBar12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar12.DragDropSupport = true;
+            this.ribbonBar12.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnTrainersAddMember,
+            this.btnTrainersRemoveMember});
+            this.ribbonBar12.Location = new System.Drawing.Point(361, 0);
+            this.ribbonBar12.Name = "ribbonBar12";
+            this.ribbonBar12.Size = new System.Drawing.Size(119, 95);
+            this.ribbonBar12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar12.TabIndex = 4;
+            this.ribbonBar12.Text = "Associated Members";
+            // 
+            // 
+            // 
+            this.ribbonBar12.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar12.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // btnTrainersAddMember
+            // 
+            this.btnTrainersAddMember.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersAddMember.Icon")));
+            this.btnTrainersAddMember.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnTrainersAddMember.Name = "btnTrainersAddMember";
+            this.btnTrainersAddMember.SubItemsExpandWidth = 14;
+            this.btnTrainersAddMember.Text = "Add";
+            this.btnTrainersAddMember.Click += new System.EventHandler(this.btnTrainersAddMember_Click);
+            // 
+            // btnTrainersRemoveMember
+            // 
+            this.btnTrainersRemoveMember.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersRemoveMember.Icon")));
+            this.btnTrainersRemoveMember.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnTrainersRemoveMember.Name = "btnTrainersRemoveMember";
+            this.btnTrainersRemoveMember.SubItemsExpandWidth = 14;
+            this.btnTrainersRemoveMember.Text = "Remove";
+            this.btnTrainersRemoveMember.Tooltip = "Remove Selected Associated Member";
+            this.btnTrainersRemoveMember.Click += new System.EventHandler(this.btnTrainersRemoveMember_Click);
+            // 
+            // ribbonBar11
+            // 
+            this.ribbonBar11.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar11.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar11.ContainerControlProcessDialogKey = true;
+            this.ribbonBar11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar11.DragDropSupport = true;
+            this.ribbonBar11.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnTrainersAdd,
+            this.btnTrainersSave,
+            this.btnTrainersEdit,
+            this.btnTrainersDelete});
+            this.ribbonBar11.Location = new System.Drawing.Point(125, 0);
+            this.ribbonBar11.Name = "ribbonBar11";
+            this.ribbonBar11.Size = new System.Drawing.Size(236, 95);
+            this.ribbonBar11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar11.TabIndex = 3;
+            this.ribbonBar11.Text = "Manage";
+            // 
+            // 
+            // 
+            this.ribbonBar11.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar11.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar11.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
+            // 
+            // btnTrainersAdd
+            // 
+            this.btnTrainersAdd.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersAdd.Icon")));
+            this.btnTrainersAdd.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnTrainersAdd.Name = "btnTrainersAdd";
+            this.btnTrainersAdd.SubItemsExpandWidth = 14;
+            this.btnTrainersAdd.Text = "Add New";
+            this.btnTrainersAdd.Tooltip = "Add a New Trainer";
+            this.btnTrainersAdd.Click += new System.EventHandler(this.btnTrainersAdd_Click);
+            // 
+            // btnTrainersSave
+            // 
+            this.btnTrainersSave.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersSave.Icon")));
+            this.btnTrainersSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnTrainersSave.Name = "btnTrainersSave";
+            this.btnTrainersSave.SubItemsExpandWidth = 14;
+            this.btnTrainersSave.Text = "Save";
+            this.btnTrainersSave.Tooltip = "Save Changes";
+            this.btnTrainersSave.Click += new System.EventHandler(this.btnTrainersSave_Click);
+            // 
+            // btnTrainersEdit
+            // 
+            this.btnTrainersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersEdit.Icon")));
+            this.btnTrainersEdit.Image = global::GymManagerPro.Properties.Resources.symbol_delete_icon;
+            this.btnTrainersEdit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnTrainersEdit.Name = "btnTrainersEdit";
+            this.btnTrainersEdit.SubItemsExpandWidth = 14;
+            this.btnTrainersEdit.Text = "Edit";
+            this.btnTrainersEdit.Tooltip = "Edit Trainer";
+            this.btnTrainersEdit.Click += new System.EventHandler(this.btnTrainersEdit_Click);
+            // 
+            // btnTrainersDelete
+            // 
+            this.btnTrainersDelete.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersDelete.Icon")));
+            this.btnTrainersDelete.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnTrainersDelete.Name = "btnTrainersDelete";
+            this.btnTrainersDelete.SubItemsExpandWidth = 14;
+            this.btnTrainersDelete.Text = "Delete";
+            this.btnTrainersDelete.Tooltip = "Delete Trainer";
+            this.btnTrainersDelete.Click += new System.EventHandler(this.btnTrainersDelete_Click);
+            // 
+            // ribbonBar14
+            // 
+            this.ribbonBar14.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar14.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar14.ContainerControlProcessDialogKey = true;
+            this.ribbonBar14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar14.DragDropSupport = true;
+            this.ribbonBar14.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnViewTrainers,
+            this.btnTrainersRefresh});
+            this.ribbonBar14.Location = new System.Drawing.Point(3, 0);
+            this.ribbonBar14.Name = "ribbonBar14";
+            this.ribbonBar14.Size = new System.Drawing.Size(122, 95);
+            this.ribbonBar14.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar14.TabIndex = 2;
+            this.ribbonBar14.Text = "View";
+            // 
+            // 
+            // 
+            this.ribbonBar14.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar14.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar14.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
+            // 
+            // btnViewTrainers
+            // 
+            this.btnViewTrainers.Image = global::GymManagerPro.Properties.Resources.user_group_icon;
+            this.btnViewTrainers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnViewTrainers.Name = "btnViewTrainers";
+            this.btnViewTrainers.SubItemsExpandWidth = 14;
+            this.btnViewTrainers.Text = "View Trainers";
+            this.btnViewTrainers.Tooltip = "View All Trainers";
+            this.btnViewTrainers.Click += new System.EventHandler(this.btnViewTrainers_Click);
+            // 
+            // btnTrainersRefresh
+            // 
+            this.btnTrainersRefresh.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersRefresh.Icon")));
+            this.btnTrainersRefresh.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnTrainersRefresh.Name = "btnTrainersRefresh";
+            this.btnTrainersRefresh.SubItemsExpandWidth = 14;
+            this.btnTrainersRefresh.Text = "Refresh";
+            this.btnTrainersRefresh.Tooltip = "Refresh";
+            this.btnTrainersRefresh.Click += new System.EventHandler(this.btnTrainersRefresh_Click);
             // 
             // ribbonPanel1
             // 
@@ -836,496 +1141,6 @@
             this.btnFindRefresh.Tooltip = "Refresh";
             this.btnFindRefresh.Click += new System.EventHandler(this.btnFindRefresh_Click);
             // 
-            // ribbonPanel3
-            // 
-            this.ribbonPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonPanel3.Controls.Add(this.ribbonBar9);
-            this.ribbonPanel3.Controls.Add(this.ribbonBar8);
-            this.ribbonPanel3.Controls.Add(this.ribbonBar13);
-            this.ribbonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel3.Location = new System.Drawing.Point(0, 53);
-            this.ribbonPanel3.Name = "ribbonPanel3";
-            this.ribbonPanel3.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel3.Size = new System.Drawing.Size(1222, 98);
-            // 
-            // 
-            // 
-            this.ribbonPanel3.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel3.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonPanel3.TabIndex = 3;
-            this.ribbonPanel3.Visible = false;
-            // 
-            // ribbonBar9
-            // 
-            this.ribbonBar9.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar9.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar9.ContainerControlProcessDialogKey = true;
-            this.ribbonBar9.Controls.Add(this.txtAttedanceSearch);
-            this.ribbonBar9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar9.DragDropSupport = true;
-            this.ribbonBar9.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.labelItem9,
-            this.btnAttedanceCheckin});
-            this.ribbonBar9.Location = new System.Drawing.Point(247, 0);
-            this.ribbonBar9.Name = "ribbonBar9";
-            this.ribbonBar9.Size = new System.Drawing.Size(275, 95);
-            this.ribbonBar9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar9.TabIndex = 6;
-            this.ribbonBar9.Text = "CheckIn";
-            // 
-            // 
-            // 
-            this.ribbonBar9.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar9.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar9.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
-            // 
-            // txtAttedanceSearch
-            // 
-            this.txtAttedanceSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtAttedanceSearch.Location = new System.Drawing.Point(70, 29);
-            this.txtAttedanceSearch.Name = "txtAttedanceSearch";
-            this.txtAttedanceSearch.Size = new System.Drawing.Size(130, 21);
-            this.txtAttedanceSearch.TabIndex = 1;
-            // 
-            // labelItem9
-            // 
-            this.labelItem9.Name = "labelItem9";
-            this.labelItem9.PaddingLeft = 5;
-            this.labelItem9.PaddingRight = 150;
-            this.labelItem9.Text = "Member ID";
-            // 
-            // btnAttedanceCheckin
-            // 
-            this.btnAttedanceCheckin.Icon = ((System.Drawing.Icon)(resources.GetObject("btnAttedanceCheckin.Icon")));
-            this.btnAttedanceCheckin.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnAttedanceCheckin.Name = "btnAttedanceCheckin";
-            this.btnAttedanceCheckin.SubItemsExpandWidth = 14;
-            this.btnAttedanceCheckin.Text = "CheckIn";
-            this.btnAttedanceCheckin.Tooltip = "CheckIn";
-            this.btnAttedanceCheckin.Click += new System.EventHandler(this.btnAttedanceCheckin_Click);
-            // 
-            // ribbonBar8
-            // 
-            this.ribbonBar8.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar8.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar8.ContainerControlProcessDialogKey = true;
-            this.ribbonBar8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar8.DragDropSupport = true;
-            this.ribbonBar8.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnAttedanceSaveTxt,
-            this.buttonItem25});
-            this.ribbonBar8.Location = new System.Drawing.Point(125, 0);
-            this.ribbonBar8.Name = "ribbonBar8";
-            this.ribbonBar8.Size = new System.Drawing.Size(122, 95);
-            this.ribbonBar8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar8.TabIndex = 5;
-            this.ribbonBar8.Text = "File";
-            // 
-            // 
-            // 
-            this.ribbonBar8.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar8.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar8.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
-            // 
-            // btnAttedanceSaveTxt
-            // 
-            this.btnAttedanceSaveTxt.Icon = ((System.Drawing.Icon)(resources.GetObject("btnAttedanceSaveTxt.Icon")));
-            this.btnAttedanceSaveTxt.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnAttedanceSaveTxt.Name = "btnAttedanceSaveTxt";
-            this.btnAttedanceSaveTxt.SubItemsExpandWidth = 14;
-            this.btnAttedanceSaveTxt.Text = "Save";
-            this.btnAttedanceSaveTxt.Tooltip = "Save as txt";
-            this.btnAttedanceSaveTxt.Click += new System.EventHandler(this.btnAttedanceSaveTxt_Click);
-            // 
-            // buttonItem25
-            // 
-            this.buttonItem25.Icon = ((System.Drawing.Icon)(resources.GetObject("buttonItem25.Icon")));
-            this.buttonItem25.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem25.Name = "buttonItem25";
-            this.buttonItem25.SubItemsExpandWidth = 14;
-            this.buttonItem25.Text = "Export";
-            this.buttonItem25.Tooltip = "Export to Excel";
-            // 
-            // ribbonBar13
-            // 
-            this.ribbonBar13.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar13.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar13.ContainerControlProcessDialogKey = true;
-            this.ribbonBar13.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar13.DragDropSupport = true;
-            this.ribbonBar13.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnViewCheckins,
-            this.btnAttedanceRefresh});
-            this.ribbonBar13.Location = new System.Drawing.Point(3, 0);
-            this.ribbonBar13.Name = "ribbonBar13";
-            this.ribbonBar13.Size = new System.Drawing.Size(122, 95);
-            this.ribbonBar13.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar13.TabIndex = 3;
-            this.ribbonBar13.Text = "View";
-            // 
-            // 
-            // 
-            this.ribbonBar13.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar13.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar13.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
-            // 
-            // btnViewCheckins
-            // 
-            this.btnViewCheckins.Image = global::GymManagerPro.Properties.Resources.checklist_icon;
-            this.btnViewCheckins.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnViewCheckins.Name = "btnViewCheckins";
-            this.btnViewCheckins.SubItemsExpandWidth = 14;
-            this.btnViewCheckins.Text = "View Checkins";
-            this.btnViewCheckins.Tooltip = "View All Checkins";
-            this.btnViewCheckins.Click += new System.EventHandler(this.btnViewCheckins_Click);
-            // 
-            // btnAttedanceRefresh
-            // 
-            this.btnAttedanceRefresh.Icon = ((System.Drawing.Icon)(resources.GetObject("btnAttedanceRefresh.Icon")));
-            this.btnAttedanceRefresh.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnAttedanceRefresh.Name = "btnAttedanceRefresh";
-            this.btnAttedanceRefresh.SubItemsExpandWidth = 14;
-            this.btnAttedanceRefresh.Text = "Refresh";
-            this.btnAttedanceRefresh.Tooltip = "Refresh";
-            this.btnAttedanceRefresh.Click += new System.EventHandler(this.btnAttedanceRefresh_Click);
-            // 
-            // ribbonPanel5
-            // 
-            this.ribbonPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonPanel5.Controls.Add(this.ribbonBar10);
-            this.ribbonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel5.Location = new System.Drawing.Point(0, 53);
-            this.ribbonPanel5.Name = "ribbonPanel5";
-            this.ribbonPanel5.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel5.Size = new System.Drawing.Size(1222, 98);
-            // 
-            // 
-            // 
-            this.ribbonPanel5.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel5.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel5.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonPanel5.TabIndex = 5;
-            // 
-            // ribbonBar10
-            // 
-            this.ribbonBar10.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar10.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar10.ContainerControlProcessDialogKey = true;
-            this.ribbonBar10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar10.DragDropSupport = true;
-            this.ribbonBar10.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnViewPlans,
-            this.btnPlansNew,
-            this.btnPlansEdit,
-            this.btnPlansDelete});
-            this.ribbonBar10.Location = new System.Drawing.Point(3, 0);
-            this.ribbonBar10.Name = "ribbonBar10";
-            this.ribbonBar10.Size = new System.Drawing.Size(236, 95);
-            this.ribbonBar10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar10.TabIndex = 2;
-            this.ribbonBar10.Text = "Manage";
-            // 
-            // 
-            // 
-            this.ribbonBar10.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar10.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar10.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
-            // 
-            // btnViewPlans
-            // 
-            this.btnViewPlans.Icon = ((System.Drawing.Icon)(resources.GetObject("btnViewPlans.Icon")));
-            this.btnViewPlans.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnViewPlans.Name = "btnViewPlans";
-            this.btnViewPlans.SubItemsExpandWidth = 14;
-            this.btnViewPlans.Text = "View";
-            this.btnViewPlans.Tooltip = "View All Plans";
-            this.btnViewPlans.Click += new System.EventHandler(this.btnViewPlans_Click);
-            // 
-            // btnPlansNew
-            // 
-            this.btnPlansNew.Icon = ((System.Drawing.Icon)(resources.GetObject("btnPlansNew.Icon")));
-            this.btnPlansNew.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnPlansNew.Name = "btnPlansNew";
-            this.btnPlansNew.SubItemsExpandWidth = 14;
-            this.btnPlansNew.Text = "New";
-            this.btnPlansNew.Tooltip = "Add a New Plan";
-            this.btnPlansNew.Click += new System.EventHandler(this.btnPlansNew_Click);
-            // 
-            // btnPlansEdit
-            // 
-            this.btnPlansEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnPlansEdit.Icon")));
-            this.btnPlansEdit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnPlansEdit.Name = "btnPlansEdit";
-            this.btnPlansEdit.SubItemsExpandWidth = 14;
-            this.btnPlansEdit.Text = "Edit";
-            this.btnPlansEdit.Tooltip = "Edit Plan";
-            this.btnPlansEdit.Click += new System.EventHandler(this.btnPlansEdit_Click);
-            // 
-            // btnPlansDelete
-            // 
-            this.btnPlansDelete.Icon = ((System.Drawing.Icon)(resources.GetObject("btnPlansDelete.Icon")));
-            this.btnPlansDelete.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnPlansDelete.Name = "btnPlansDelete";
-            this.btnPlansDelete.SubItemsExpandWidth = 14;
-            this.btnPlansDelete.Text = "Delete";
-            this.btnPlansDelete.Tooltip = "Delete Plan";
-            this.btnPlansDelete.Click += new System.EventHandler(this.btnPlansDelete_Click);
-            // 
-            // ribbonPanel4
-            // 
-            this.ribbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonPanel4.Controls.Add(this.ribbonBar12);
-            this.ribbonPanel4.Controls.Add(this.ribbonBar11);
-            this.ribbonPanel4.Controls.Add(this.ribbonBar14);
-            this.ribbonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel4.Location = new System.Drawing.Point(0, 53);
-            this.ribbonPanel4.Name = "ribbonPanel4";
-            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel4.Size = new System.Drawing.Size(1222, 98);
-            // 
-            // 
-            // 
-            this.ribbonPanel4.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel4.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonPanel4.TabIndex = 4;
-            this.ribbonPanel4.Visible = false;
-            // 
-            // ribbonBar12
-            // 
-            this.ribbonBar12.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar12.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar12.ContainerControlProcessDialogKey = true;
-            this.ribbonBar12.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar12.DragDropSupport = true;
-            this.ribbonBar12.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnTrainersAddMember,
-            this.btnTrainersRemoveMember});
-            this.ribbonBar12.Location = new System.Drawing.Point(361, 0);
-            this.ribbonBar12.Name = "ribbonBar12";
-            this.ribbonBar12.Size = new System.Drawing.Size(83, 95);
-            this.ribbonBar12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar12.TabIndex = 4;
-            this.ribbonBar12.Text = "Associated Members";
-            // 
-            // 
-            // 
-            this.ribbonBar12.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar12.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // btnTrainersAddMember
-            // 
-            this.btnTrainersAddMember.Name = "btnTrainersAddMember";
-            this.btnTrainersAddMember.SubItemsExpandWidth = 14;
-            this.btnTrainersAddMember.Text = "Add";
-            this.btnTrainersAddMember.Click += new System.EventHandler(this.btnTrainersAddMember_Click);
-            // 
-            // btnTrainersRemoveMember
-            // 
-            this.btnTrainersRemoveMember.Name = "btnTrainersRemoveMember";
-            this.btnTrainersRemoveMember.SubItemsExpandWidth = 14;
-            this.btnTrainersRemoveMember.Text = "Remove";
-            this.btnTrainersRemoveMember.Tooltip = "Remove Selected Associated Member";
-            this.btnTrainersRemoveMember.Click += new System.EventHandler(this.btnTrainersRemoveMember_Click);
-            // 
-            // ribbonBar11
-            // 
-            this.ribbonBar11.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar11.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar11.ContainerControlProcessDialogKey = true;
-            this.ribbonBar11.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar11.DragDropSupport = true;
-            this.ribbonBar11.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnTrainersAdd,
-            this.btnTrainersSave,
-            this.btnTrainersEdit,
-            this.btnTrainersDelete});
-            this.ribbonBar11.Location = new System.Drawing.Point(125, 0);
-            this.ribbonBar11.Name = "ribbonBar11";
-            this.ribbonBar11.Size = new System.Drawing.Size(236, 95);
-            this.ribbonBar11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar11.TabIndex = 3;
-            this.ribbonBar11.Text = "Manage";
-            // 
-            // 
-            // 
-            this.ribbonBar11.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar11.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar11.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
-            // 
-            // btnTrainersAdd
-            // 
-            this.btnTrainersAdd.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersAdd.Icon")));
-            this.btnTrainersAdd.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnTrainersAdd.Name = "btnTrainersAdd";
-            this.btnTrainersAdd.SubItemsExpandWidth = 14;
-            this.btnTrainersAdd.Text = "Add New";
-            this.btnTrainersAdd.Tooltip = "Add a New Trainer";
-            this.btnTrainersAdd.Click += new System.EventHandler(this.btnTrainersAdd_Click);
-            // 
-            // btnTrainersSave
-            // 
-            this.btnTrainersSave.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersSave.Icon")));
-            this.btnTrainersSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnTrainersSave.Name = "btnTrainersSave";
-            this.btnTrainersSave.SubItemsExpandWidth = 14;
-            this.btnTrainersSave.Text = "Save";
-            this.btnTrainersSave.Tooltip = "Save Changes";
-            this.btnTrainersSave.Click += new System.EventHandler(this.btnTrainersSave_Click);
-            // 
-            // btnTrainersEdit
-            // 
-            this.btnTrainersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersEdit.Icon")));
-            this.btnTrainersEdit.Image = global::GymManagerPro.Properties.Resources.symbol_delete_icon;
-            this.btnTrainersEdit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnTrainersEdit.Name = "btnTrainersEdit";
-            this.btnTrainersEdit.SubItemsExpandWidth = 14;
-            this.btnTrainersEdit.Text = "Edit";
-            this.btnTrainersEdit.Tooltip = "Edit Trainer";
-            this.btnTrainersEdit.Click += new System.EventHandler(this.btnTrainersEdit_Click);
-            // 
-            // btnTrainersDelete
-            // 
-            this.btnTrainersDelete.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersDelete.Icon")));
-            this.btnTrainersDelete.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnTrainersDelete.Name = "btnTrainersDelete";
-            this.btnTrainersDelete.SubItemsExpandWidth = 14;
-            this.btnTrainersDelete.Text = "Delete";
-            this.btnTrainersDelete.Tooltip = "Delete Trainer";
-            this.btnTrainersDelete.Click += new System.EventHandler(this.btnTrainersDelete_Click);
-            // 
-            // ribbonBar14
-            // 
-            this.ribbonBar14.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar14.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar14.ContainerControlProcessDialogKey = true;
-            this.ribbonBar14.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar14.DragDropSupport = true;
-            this.ribbonBar14.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnViewTrainers,
-            this.btnTrainersRefresh});
-            this.ribbonBar14.Location = new System.Drawing.Point(3, 0);
-            this.ribbonBar14.Name = "ribbonBar14";
-            this.ribbonBar14.Size = new System.Drawing.Size(122, 95);
-            this.ribbonBar14.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar14.TabIndex = 2;
-            this.ribbonBar14.Text = "View";
-            // 
-            // 
-            // 
-            this.ribbonBar14.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar14.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar14.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
-            // 
-            // btnViewTrainers
-            // 
-            this.btnViewTrainers.Image = global::GymManagerPro.Properties.Resources.user_group_icon;
-            this.btnViewTrainers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnViewTrainers.Name = "btnViewTrainers";
-            this.btnViewTrainers.SubItemsExpandWidth = 14;
-            this.btnViewTrainers.Text = "View Trainers";
-            this.btnViewTrainers.Tooltip = "View All Trainers";
-            this.btnViewTrainers.Click += new System.EventHandler(this.btnViewTrainers_Click);
-            // 
-            // btnTrainersRefresh
-            // 
-            this.btnTrainersRefresh.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersRefresh.Icon")));
-            this.btnTrainersRefresh.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnTrainersRefresh.Name = "btnTrainersRefresh";
-            this.btnTrainersRefresh.SubItemsExpandWidth = 14;
-            this.btnTrainersRefresh.Text = "Refresh";
-            this.btnTrainersRefresh.Tooltip = "Refresh";
-            this.btnTrainersRefresh.Click += new System.EventHandler(this.btnTrainersRefresh_Click);
-            // 
             // ribbonPanel2
             // 
             this.ribbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1551,6 +1366,196 @@
             this.btnMembersDelete.Text = "Delete";
             this.btnMembersDelete.Tooltip = "Delete Member";
             this.btnMembersDelete.Click += new System.EventHandler(this.btnMembersDelete_Click);
+            // 
+            // ribbonPanel3
+            // 
+            this.ribbonPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel3.Controls.Add(this.ribbonBar9);
+            this.ribbonPanel3.Controls.Add(this.ribbonBar8);
+            this.ribbonPanel3.Controls.Add(this.ribbonBar13);
+            this.ribbonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel3.Location = new System.Drawing.Point(0, 53);
+            this.ribbonPanel3.Name = "ribbonPanel3";
+            this.ribbonPanel3.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ribbonPanel3.Size = new System.Drawing.Size(1222, 98);
+            // 
+            // 
+            // 
+            this.ribbonPanel3.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel3.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonPanel3.TabIndex = 3;
+            this.ribbonPanel3.Visible = false;
+            // 
+            // ribbonBar9
+            // 
+            this.ribbonBar9.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar9.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar9.ContainerControlProcessDialogKey = true;
+            this.ribbonBar9.Controls.Add(this.txtAttedanceSearch);
+            this.ribbonBar9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar9.DragDropSupport = true;
+            this.ribbonBar9.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.labelItem9,
+            this.btnAttedanceCheckin});
+            this.ribbonBar9.Location = new System.Drawing.Point(247, 0);
+            this.ribbonBar9.Name = "ribbonBar9";
+            this.ribbonBar9.Size = new System.Drawing.Size(275, 95);
+            this.ribbonBar9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar9.TabIndex = 6;
+            this.ribbonBar9.Text = "CheckIn";
+            // 
+            // 
+            // 
+            this.ribbonBar9.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar9.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar9.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
+            // 
+            // txtAttedanceSearch
+            // 
+            this.txtAttedanceSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.txtAttedanceSearch.Location = new System.Drawing.Point(70, 29);
+            this.txtAttedanceSearch.Name = "txtAttedanceSearch";
+            this.txtAttedanceSearch.Size = new System.Drawing.Size(130, 21);
+            this.txtAttedanceSearch.TabIndex = 1;
+            // 
+            // labelItem9
+            // 
+            this.labelItem9.Name = "labelItem9";
+            this.labelItem9.PaddingLeft = 5;
+            this.labelItem9.PaddingRight = 150;
+            this.labelItem9.Text = "Member ID";
+            // 
+            // btnAttedanceCheckin
+            // 
+            this.btnAttedanceCheckin.Icon = ((System.Drawing.Icon)(resources.GetObject("btnAttedanceCheckin.Icon")));
+            this.btnAttedanceCheckin.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnAttedanceCheckin.Name = "btnAttedanceCheckin";
+            this.btnAttedanceCheckin.SubItemsExpandWidth = 14;
+            this.btnAttedanceCheckin.Text = "CheckIn";
+            this.btnAttedanceCheckin.Tooltip = "CheckIn";
+            this.btnAttedanceCheckin.Click += new System.EventHandler(this.btnAttedanceCheckin_Click);
+            // 
+            // ribbonBar8
+            // 
+            this.ribbonBar8.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar8.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar8.ContainerControlProcessDialogKey = true;
+            this.ribbonBar8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar8.DragDropSupport = true;
+            this.ribbonBar8.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnAttedanceSaveTxt,
+            this.buttonItem25});
+            this.ribbonBar8.Location = new System.Drawing.Point(125, 0);
+            this.ribbonBar8.Name = "ribbonBar8";
+            this.ribbonBar8.Size = new System.Drawing.Size(122, 95);
+            this.ribbonBar8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar8.TabIndex = 5;
+            this.ribbonBar8.Text = "File";
+            // 
+            // 
+            // 
+            this.ribbonBar8.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar8.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar8.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
+            // 
+            // btnAttedanceSaveTxt
+            // 
+            this.btnAttedanceSaveTxt.Icon = ((System.Drawing.Icon)(resources.GetObject("btnAttedanceSaveTxt.Icon")));
+            this.btnAttedanceSaveTxt.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnAttedanceSaveTxt.Name = "btnAttedanceSaveTxt";
+            this.btnAttedanceSaveTxt.SubItemsExpandWidth = 14;
+            this.btnAttedanceSaveTxt.Text = "Save";
+            this.btnAttedanceSaveTxt.Tooltip = "Save as txt";
+            this.btnAttedanceSaveTxt.Click += new System.EventHandler(this.btnAttedanceSaveTxt_Click);
+            // 
+            // buttonItem25
+            // 
+            this.buttonItem25.Icon = ((System.Drawing.Icon)(resources.GetObject("buttonItem25.Icon")));
+            this.buttonItem25.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.buttonItem25.Name = "buttonItem25";
+            this.buttonItem25.SubItemsExpandWidth = 14;
+            this.buttonItem25.Text = "Export";
+            this.buttonItem25.Tooltip = "Export to Excel";
+            // 
+            // ribbonBar13
+            // 
+            this.ribbonBar13.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar13.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar13.ContainerControlProcessDialogKey = true;
+            this.ribbonBar13.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar13.DragDropSupport = true;
+            this.ribbonBar13.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnViewCheckins,
+            this.btnAttedanceRefresh});
+            this.ribbonBar13.Location = new System.Drawing.Point(3, 0);
+            this.ribbonBar13.Name = "ribbonBar13";
+            this.ribbonBar13.Size = new System.Drawing.Size(122, 95);
+            this.ribbonBar13.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar13.TabIndex = 3;
+            this.ribbonBar13.Text = "View";
+            // 
+            // 
+            // 
+            this.ribbonBar13.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar13.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar13.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
+            // 
+            // btnViewCheckins
+            // 
+            this.btnViewCheckins.Image = global::GymManagerPro.Properties.Resources.checklist_icon;
+            this.btnViewCheckins.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnViewCheckins.Name = "btnViewCheckins";
+            this.btnViewCheckins.SubItemsExpandWidth = 14;
+            this.btnViewCheckins.Text = "View Checkins";
+            this.btnViewCheckins.Tooltip = "View All Checkins";
+            this.btnViewCheckins.Click += new System.EventHandler(this.btnViewCheckins_Click);
+            // 
+            // btnAttedanceRefresh
+            // 
+            this.btnAttedanceRefresh.Icon = ((System.Drawing.Icon)(resources.GetObject("btnAttedanceRefresh.Icon")));
+            this.btnAttedanceRefresh.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnAttedanceRefresh.Name = "btnAttedanceRefresh";
+            this.btnAttedanceRefresh.SubItemsExpandWidth = 14;
+            this.btnAttedanceRefresh.Text = "Refresh";
+            this.btnAttedanceRefresh.Tooltip = "Refresh";
+            this.btnAttedanceRefresh.Click += new System.EventHandler(this.btnAttedanceRefresh_Click);
             // 
             // ribbonPanel6
             // 
@@ -1836,23 +1841,23 @@
             this.membersDataGridViewX.AllowUserToResizeRows = false;
             this.membersDataGridViewX.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.membersDataGridViewX.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.membersDataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.membersDataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.membersDataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.membersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.membersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle20;
             this.membersDataGridViewX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.membersDataGridViewX.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.membersDataGridViewX.EnableHeadersVisualStyles = false;
@@ -1861,14 +1866,14 @@
             this.membersDataGridViewX.MultiSelect = false;
             this.membersDataGridViewX.Name = "membersDataGridViewX";
             this.membersDataGridViewX.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.membersDataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.membersDataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.membersDataGridViewX.RowHeadersVisible = false;
             this.membersDataGridViewX.RowTemplate.Height = 30;
             this.membersDataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1882,6 +1887,7 @@
             // 
             this.panelMemberManager.CanvasColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelMemberManager.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelMemberManager.Controls.Add(this.lblLName);
             this.panelMemberManager.Controls.Add(this.groupPanel2);
             this.panelMemberManager.Controls.Add(this.buttonXDeleteMembership);
             this.panelMemberManager.Controls.Add(this.txtCardNumber);
@@ -1897,7 +1903,7 @@
             this.panelMemberManager.Controls.Add(this.lblLastName);
             this.panelMemberManager.Controls.Add(this.label2);
             this.panelMemberManager.Controls.Add(this.label14);
-            this.panelMemberManager.Controls.Add(this.lblName);
+            this.panelMemberManager.Controls.Add(this.lblFName);
             this.panelMemberManager.Controls.Add(this.txtPostalCode);
             this.panelMemberManager.Controls.Add(this.pictureBoxMemberManager);
             this.panelMemberManager.Controls.Add(this.txtLastName);
@@ -1985,23 +1991,23 @@
             this.dataGridViewMemberships.AllowUserToResizeRows = false;
             this.dataGridViewMemberships.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewMemberships.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMemberships.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMemberships.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewMemberships.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMemberships.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMemberships.DefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridViewMemberships.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewMemberships.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewMemberships.EnableHeadersVisualStyles = false;
@@ -2010,14 +2016,14 @@
             this.dataGridViewMemberships.MultiSelect = false;
             this.dataGridViewMemberships.Name = "dataGridViewMemberships";
             this.dataGridViewMemberships.ReadOnly = true;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMemberships.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMemberships.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridViewMemberships.RowHeadersVisible = false;
             this.dataGridViewMemberships.RowTemplate.Height = 30;
             this.dataGridViewMemberships.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -2083,7 +2089,7 @@
             // 
             this.txtNotes.Border.Class = "TextBoxBorder";
             this.txtNotes.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtNotes.DisabledBackColor = System.Drawing.Color.Transparent;
+            this.txtNotes.DisabledBackColor = System.Drawing.Color.White;
             this.txtNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.txtNotes.Location = new System.Drawing.Point(512, 209);
             this.txtNotes.MaxLength = 200;
@@ -2216,15 +2222,15 @@
             this.label14.TabIndex = 21;
             this.label14.Text = "Notes";
             // 
-            // lblName
+            // lblFName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblName.Location = new System.Drawing.Point(976, 18);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(132, 26);
-            this.lblName.TabIndex = 16;
-            this.lblName.Text = " name here";
+            this.lblFName.AutoSize = true;
+            this.lblFName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblFName.Location = new System.Drawing.Point(990, 31);
+            this.lblFName.Name = "lblFName";
+            this.lblFName.Size = new System.Drawing.Size(111, 26);
+            this.lblFName.TabIndex = 16;
+            this.lblFName.Text = "firstname";
             // 
             // txtPostalCode
             // 
@@ -2867,23 +2873,23 @@
             this.amTrainersDataGridViewX.AllowUserToOrderColumns = true;
             this.amTrainersDataGridViewX.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.amTrainersDataGridViewX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.amTrainersDataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.amTrainersDataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.amTrainersDataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.amTrainersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.amTrainersDataGridViewX.DefaultCellStyle = dataGridViewCellStyle26;
             this.amTrainersDataGridViewX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.amTrainersDataGridViewX.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.amTrainersDataGridViewX.EnableHeadersVisualStyles = false;
@@ -2892,14 +2898,14 @@
             this.amTrainersDataGridViewX.MultiSelect = false;
             this.amTrainersDataGridViewX.Name = "amTrainersDataGridViewX";
             this.amTrainersDataGridViewX.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.amTrainersDataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.amTrainersDataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.amTrainersDataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.amTrainersDataGridViewX.Size = new System.Drawing.Size(1008, 525);
             this.amTrainersDataGridViewX.TabIndex = 0;
@@ -3339,6 +3345,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wizardPage2.AntiAlias = false;
+            this.wizardPage2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.wizardPage2.Controls.Add(this.lblWizardName);
             this.wizardPage2.Controls.Add(this.txtWizardCardNumber);
             this.wizardPage2.Controls.Add(this.picWizard);
@@ -3372,6 +3379,8 @@
             this.wizardPage2.Controls.Add(this.label48);
             this.wizardPage2.Location = new System.Drawing.Point(7, 72);
             this.wizardPage2.Name = "wizardPage2";
+            this.wizardPage2.PageDescription = "Add new Member\'s presonal details.";
+            this.wizardPage2.PageTitle = "Member Details";
             this.wizardPage2.Size = new System.Drawing.Size(1208, 420);
             // 
             // 
@@ -3719,8 +3728,8 @@
             this.wizardPage3.Controls.Add(this.groupBox4);
             this.wizardPage3.Location = new System.Drawing.Point(7, 72);
             this.wizardPage3.Name = "wizardPage3";
-            this.wizardPage3.PageDescription = "< Wizard step description >";
-            this.wizardPage3.PageTitle = "< Wizard step title >";
+            this.wizardPage3.PageDescription = "Add a Membership for the new Member.";
+            this.wizardPage3.PageTitle = "Add a Membership";
             this.wizardPage3.Size = new System.Drawing.Size(1208, 420);
             // 
             // 
@@ -3908,24 +3917,38 @@
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(55, 45);
             this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Active Members";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "New Members";
-            this.chart1.Series.Add(series3);
-            this.chart1.Series.Add(series4);
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series5.BackImageTransparentColor = System.Drawing.Color.Transparent;
+            series5.BackSecondaryColor = System.Drawing.Color.Transparent;
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Active Members";
+            series6.BackImageTransparentColor = System.Drawing.Color.Transparent;
+            series6.BackSecondaryColor = System.Drawing.Color.Transparent;
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "New Members";
+            this.chart1.Series.Add(series5);
+            this.chart1.Series.Add(series6);
             this.chart1.Size = new System.Drawing.Size(412, 300);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
+            // 
+            // lblLName
+            // 
+            this.lblLName.AutoSize = true;
+            this.lblLName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblLName.Location = new System.Drawing.Point(990, 69);
+            this.lblLName.Name = "lblLName";
+            this.lblLName.Size = new System.Drawing.Size(109, 26);
+            this.lblLName.TabIndex = 50;
+            this.lblLName.Text = "lastname";
             // 
             // frmMain
             // 
@@ -3933,13 +3956,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1222, 704);
+            this.Controls.Add(this.panelMemberManager);
+            this.Controls.Add(this.panelNewMemberWizard);
+            this.Controls.Add(this.panelReports);
             this.Controls.Add(this.panelAllMembers);
             this.Controls.Add(this.panelAttedance);
             this.Controls.Add(this.panelPlans);
             this.Controls.Add(this.panelTrainers);
-            this.Controls.Add(this.panelMemberManager);
-            this.Controls.Add(this.panelReports);
-            this.Controls.Add(this.panelNewMemberWizard);
             this.Controls.Add(this.ribbonControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -3950,16 +3973,16 @@
             this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.ribbonControl1.ResumeLayout(false);
             this.ribbonControl1.PerformLayout();
-            this.ribbonPanel1.ResumeLayout(false);
-            this.ribbonBar2.ResumeLayout(false);
-            this.ribbonPanel3.ResumeLayout(false);
-            this.ribbonBar9.ResumeLayout(false);
-            this.ribbonBar9.PerformLayout();
             this.ribbonPanel5.ResumeLayout(false);
             this.ribbonPanel4.ResumeLayout(false);
+            this.ribbonPanel1.ResumeLayout(false);
+            this.ribbonBar2.ResumeLayout(false);
             this.ribbonPanel2.ResumeLayout(false);
             this.ribbonBar7.ResumeLayout(false);
             this.ribbonBar7.PerformLayout();
+            this.ribbonPanel3.ResumeLayout(false);
+            this.ribbonBar9.ResumeLayout(false);
+            this.ribbonBar9.PerformLayout();
             this.ribbonPanel6.ResumeLayout(false);
             this.panelAllMembers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.membersDataGridViewX)).EndInit();
@@ -4059,7 +4082,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblFName;
         private System.Windows.Forms.PictureBox pictureBoxMemberManager;
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.DateTimePicker txtDateOfBirth;
@@ -4262,5 +4285,6 @@
         private DevComponents.DotNetBar.RibbonBar ribbonBar16;
         private DevComponents.DotNetBar.ButtonItem btnFindExport;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Label lblLName;
     }
 }

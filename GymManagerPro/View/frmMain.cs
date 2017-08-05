@@ -58,7 +58,7 @@ namespace GymManagerPro.View
             set
             {
                 txtFirstName.Text = value;
-                lblName.Text = value + " " + LastName;
+                lblFName.Text = value;
             }
         }
         string IMember.LastName
@@ -67,13 +67,17 @@ namespace GymManagerPro.View
             set
             {
                 txtLastName.Text = value;
-                lblName.Text = FirstName + " " + value;
+                lblLName.Text = value;
             }
         }
         int IMember.CardNumber
         {
             get { return Int32.Parse(txtCardNumber.Text); }
-            set { txtCardNumber.Text = value.ToString(); }
+            set
+            {
+                txtCardNumber.Text = value.ToString();
+                txtCardNumber2.Text = value.ToString();
+            }
         }
         public bool Male_IsSelected
         {

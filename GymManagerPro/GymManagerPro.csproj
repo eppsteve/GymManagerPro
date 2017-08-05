@@ -283,6 +283,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="icon.ico" />
+    <Content Include="Resources\remove-user-icon.png" />
     <None Include="Resources\add-user-icon.png" />
     <None Include="Resources\user-group-icon.png" />
     <None Include="Resources\checklist-icon.png" />
