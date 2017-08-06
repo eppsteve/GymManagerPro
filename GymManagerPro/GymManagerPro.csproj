@@ -75,6 +75,7 @@
     <Reference Include="DevComponents.DotNetBar.Design">
       <HintPath>..\..\..\..\..\Desktop\ribbon\DevComponents.DotNetBar.Design.dll</HintPath>
     </Reference>
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2">
       <HintPath>..\..\..\..\..\Desktop\ribbon\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
@@ -105,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayer\DB.cs" />
+    <Compile Include="DataLayer\Measurement.cs" />
     <Compile Include="DataLayer\Member.cs" />
     <Compile Include="DataLayer\Membership.cs" />
     <Compile Include="DataLayer\Plan.cs" />
@@ -143,6 +145,12 @@
     <Compile Include="View\IPlan.cs" />
     <Compile Include="View\ITrainer.cs" />
     <Compile Include="View\IWizard.cs" />
+    <Compile Include="View\frmMeasurement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmMeasurement.Designer.cs">
+      <DependentUpon>frmMeasurement.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TrainerAssignmentDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmMeasurement.resx">
+      <DependentUpon>frmMeasurement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TrainerAssignmentDialog.resx">
       <DependentUpon>TrainerAssignmentDialog.cs</DependentUpon>

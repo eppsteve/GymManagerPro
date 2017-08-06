@@ -4,7 +4,7 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 
-namespace DataLayer
+namespace GymManagerPro.DataLayer
 {
     // Class for creating and handling the members
     public class Member

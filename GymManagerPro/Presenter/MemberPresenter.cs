@@ -155,16 +155,15 @@ namespace GymManagerPro.Presenter
         }
 
         public void LoadMember()
-        {
-            
-            var id = view.SelectedMember;    // get member's id from selected row
+        {            
+            SelectedMember = view.SelectedMember;
 
             DataLayer.Members members = new DataLayer.Members();
             DataLayer.Member member = new DataLayer.Member();
 
             try
             {
-                member = members.GetMember(id);     // retrieves member data from db
+                member = members.GetMember(SelectedMember);     // retrieves member data from db
 
                 // populate controls with the data  
                 view.CardNumber = member.CardNumber;
@@ -188,7 +187,7 @@ namespace GymManagerPro.Presenter
                 view.Occupation = member.Occupation;
                 view.Notes = member.Notes;
                 view.PersonalTrainer = member.PersonalTrainer;
-                view.MemberId = id;
+                view.MemberId = SelectedMember;
 
                 //display the member's picture
                 view.MemberImage = null; // clears the picturebox
@@ -204,7 +203,11 @@ namespace GymManagerPro.Presenter
                 }
 
                 //load membership data
-                LoadMemberships(id);
+                LoadMemberships(SelectedMember);
+
+                //load measurements data
+                view.MeasurementsGrid.DataSource = DataLayer.Measurement.GetAllMeasurements(SelectedMember); 
+                view.MeasurementsGrid.AutoResizeColumns();
 
                 //resetTextBoxes();
 
@@ -417,6 +420,11 @@ namespace GymManagerPro.Presenter
                     // membership has expired
                     view.MembershipsNotifications += membership + " has expired!" + Environment.NewLine;
             }
+        }
+
+        internal void NewMeasurement()
+        {
+            new frmMeasurement(SelectedMember).Show();
         }
     }
 }

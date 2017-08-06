@@ -186,6 +186,7 @@ namespace GymManagerPro.View
         }
         public string MembershipsNotifications { get => lblNotifications.Text; set => lblNotifications.Text = value; }
         ComboBoxEx IMember.cbPersonalTrainer { get => cbPersonalTrainer; set => cbPersonalTrainer = value; }
+        DataGridViewX IMember.MeasurementsGrid { get => dgvMeasurements; set => dgvMeasurements = value; }
 
         /// <summary>
         /// Trainer Properties
@@ -801,6 +802,17 @@ namespace GymManagerPro.View
                 SwitchToPanel(panelAllMembers);
 
             Presenter.FilterByFirstName();
+        }
+
+        private void btnMembersNewMeasurement_Click(object sender, EventArgs e)
+        {
+            Presenter.NewMeasurement();
+        }
+
+        private void dgvMeasurements_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = (int)dgvMeasurements.Rows[e.RowIndex].Cells[0].Value;
+            new frmMeasurement(SelectedMember, id).Show();
         }
     }
 }

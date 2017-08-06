@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace DataLayer
+namespace GymManagerPro.DataLayer
 {
     public class DB
     {

@@ -1,4 +1,4 @@
-﻿using DataLayer;
+﻿using GymManagerPro.DataLayer;
 using GymManagerPro.View;
 using System;
 using System.Linq;
