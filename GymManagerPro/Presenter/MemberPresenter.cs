@@ -13,6 +13,7 @@ namespace GymManagerPro.Presenter
         private IMember view;
         DataTable dataset;
         int SelectedMember;
+        int SelectedMeasurement;
 
         public MemberPresenter(IMember View)
         {
@@ -425,6 +426,34 @@ namespace GymManagerPro.Presenter
         internal void NewMeasurement()
         {
             new frmMeasurement(SelectedMember).Show();
+        }
+
+        public void MeasurementsGrid_Click(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = view.MeasurementsGrid.HitTest(e.X, e.Y).RowIndex;
+                if (currentMouseOverRow > 0)
+                    view.MeasurementsGrid.Rows[currentMouseOverRow].Selected = true;
+
+                if (currentMouseOverRow >= 0)
+                    SelectedMeasurement = (int)view.MeasurementsGrid.Rows[currentMouseOverRow].Cells[0].Value;
+                else
+                    SelectedMeasurement = 0;
+
+                view.MeasurementsContextMenu.Show(view.MeasurementsGrid, new Point(e.X, e.Y));
+            }
+        }
+
+        internal void DeleteMeasurement()
+        {
+            DataLayer.Measurement.DeleteMeasurement(SelectedMeasurement);
+        }
+
+        internal void EditMeasurement()
+        {
+            if (SelectedMeasurement != 0)
+                new frmMeasurement(SelectedMember, SelectedMeasurement).Show();
         }
     }
 }

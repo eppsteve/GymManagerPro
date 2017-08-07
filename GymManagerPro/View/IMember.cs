@@ -52,5 +52,6 @@ namespace GymManagerPro.View
         bool IsAllMembersPanelVisible { get; set; }
 
         DataGridViewX MeasurementsGrid { get; set; }
+        ContextMenuStrip MeasurementsContextMenu { get; set; }
     }
 }

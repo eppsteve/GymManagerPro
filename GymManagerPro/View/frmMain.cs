@@ -12,6 +12,7 @@ namespace GymManagerPro.View
     public partial class frmMain : Form, IMember, ITrainer, IPlan, IWizard
     {
         bool form_loaded;
+        int SelectedMeasurement;
 
         public MemberPresenter Presenter { get; set; }
         public TrainerPresenter TPresenter { get; set; }
@@ -187,6 +188,7 @@ namespace GymManagerPro.View
         public string MembershipsNotifications { get => lblNotifications.Text; set => lblNotifications.Text = value; }
         ComboBoxEx IMember.cbPersonalTrainer { get => cbPersonalTrainer; set => cbPersonalTrainer = value; }
         DataGridViewX IMember.MeasurementsGrid { get => dgvMeasurements; set => dgvMeasurements = value; }
+        public ContextMenuStrip MeasurementsContextMenu { get => contextMenuMeasurements; set => ContextMenuStrip = value; }
 
         /// <summary>
         /// Trainer Properties
@@ -813,6 +815,26 @@ namespace GymManagerPro.View
         {
             int id = (int)dgvMeasurements.Rows[e.RowIndex].Cells[0].Value;
             new frmMeasurement(SelectedMember, id).Show();
+        }
+
+        private void dgvMeasurements_MouseClick(object sender, MouseEventArgs e)
+        {
+            Presenter.MeasurementsGrid_Click(e);
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Presenter.EditMeasurement();          
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Presenter.NewMeasurement();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Presenter.DeleteMeasurement();
         }
     }
 }

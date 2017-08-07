@@ -88,7 +88,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 45);
+            this.label2.Location = new System.Drawing.Point(10, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 1;
@@ -97,7 +97,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(198, 45);
+            this.label3.Location = new System.Drawing.Point(185, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 2;
@@ -106,7 +106,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(381, 45);
+            this.label4.Location = new System.Drawing.Point(368, 45);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 3;
@@ -114,7 +114,7 @@
             // 
             // dtpDateCreated
             // 
-            this.dtpDateCreated.Location = new System.Drawing.Point(175, 5);
+            this.dtpDateCreated.Location = new System.Drawing.Point(162, 5);
             this.dtpDateCreated.Name = "dtpDateCreated";
             this.dtpDateCreated.Size = new System.Drawing.Size(213, 20);
             this.dtpDateCreated.TabIndex = 5;
@@ -128,7 +128,7 @@
             this.txtHeight.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtHeight.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtHeight.Increment = 1D;
-            this.txtHeight.Location = new System.Drawing.Point(91, 41);
+            this.txtHeight.Location = new System.Drawing.Point(78, 41);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.ShowUpDown = true;
             this.txtHeight.Size = new System.Drawing.Size(80, 20);
@@ -144,7 +144,7 @@
             this.txtWeight.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtWeight.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtWeight.Increment = 1D;
-            this.txtWeight.Location = new System.Drawing.Point(273, 41);
+            this.txtWeight.Location = new System.Drawing.Point(260, 41);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.ShowUpDown = true;
             this.txtWeight.Size = new System.Drawing.Size(80, 20);
@@ -160,7 +160,7 @@
             this.txtBodyfat.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtBodyfat.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtBodyfat.Increment = 1D;
-            this.txtBodyfat.Location = new System.Drawing.Point(452, 41);
+            this.txtBodyfat.Location = new System.Drawing.Point(439, 41);
             this.txtBodyfat.Name = "txtBodyfat";
             this.txtBodyfat.ShowUpDown = true;
             this.txtBodyfat.Size = new System.Drawing.Size(80, 20);
@@ -169,7 +169,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 90);
+            this.label5.Location = new System.Drawing.Point(10, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 9;
@@ -178,7 +178,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 120);
+            this.label6.Location = new System.Drawing.Point(10, 120);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 10;
@@ -187,7 +187,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 150);
+            this.label7.Location = new System.Drawing.Point(10, 150);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 11;
@@ -196,7 +196,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 180);
+            this.label8.Location = new System.Drawing.Point(10, 180);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 12;
@@ -205,7 +205,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(198, 90);
+            this.label9.Location = new System.Drawing.Point(185, 90);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 13;
@@ -214,7 +214,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(198, 116);
+            this.label10.Location = new System.Drawing.Point(185, 116);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(28, 13);
             this.label10.TabIndex = 14;
@@ -223,7 +223,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(198, 147);
+            this.label11.Location = new System.Drawing.Point(185, 147);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(55, 13);
             this.label11.TabIndex = 15;
@@ -238,7 +238,7 @@
             this.txtChest.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtChest.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtChest.Increment = 1D;
-            this.txtChest.Location = new System.Drawing.Point(91, 86);
+            this.txtChest.Location = new System.Drawing.Point(78, 86);
             this.txtChest.Name = "txtChest";
             this.txtChest.ShowUpDown = true;
             this.txtChest.Size = new System.Drawing.Size(80, 20);
@@ -253,7 +253,7 @@
             this.txtLArm.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtLArm.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLArm.Increment = 1D;
-            this.txtLArm.Location = new System.Drawing.Point(91, 116);
+            this.txtLArm.Location = new System.Drawing.Point(78, 116);
             this.txtLArm.Name = "txtLArm";
             this.txtLArm.ShowUpDown = true;
             this.txtLArm.Size = new System.Drawing.Size(80, 20);
@@ -268,7 +268,7 @@
             this.txtRArm.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtRArm.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtRArm.Increment = 1D;
-            this.txtRArm.Location = new System.Drawing.Point(91, 146);
+            this.txtRArm.Location = new System.Drawing.Point(78, 146);
             this.txtRArm.Name = "txtRArm";
             this.txtRArm.ShowUpDown = true;
             this.txtRArm.Size = new System.Drawing.Size(80, 20);
@@ -283,7 +283,7 @@
             this.txtWaist.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtWaist.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtWaist.Increment = 1D;
-            this.txtWaist.Location = new System.Drawing.Point(91, 176);
+            this.txtWaist.Location = new System.Drawing.Point(78, 176);
             this.txtWaist.Name = "txtWaist";
             this.txtWaist.ShowUpDown = true;
             this.txtWaist.Size = new System.Drawing.Size(80, 20);
@@ -298,7 +298,7 @@
             this.txtAbdomen.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtAbdomen.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtAbdomen.Increment = 1D;
-            this.txtAbdomen.Location = new System.Drawing.Point(273, 86);
+            this.txtAbdomen.Location = new System.Drawing.Point(260, 86);
             this.txtAbdomen.Name = "txtAbdomen";
             this.txtAbdomen.ShowUpDown = true;
             this.txtAbdomen.Size = new System.Drawing.Size(80, 20);
@@ -313,7 +313,7 @@
             this.txtHips.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtHips.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtHips.Increment = 1D;
-            this.txtHips.Location = new System.Drawing.Point(273, 114);
+            this.txtHips.Location = new System.Drawing.Point(260, 114);
             this.txtHips.Name = "txtHips";
             this.txtHips.ShowUpDown = true;
             this.txtHips.Size = new System.Drawing.Size(80, 20);
@@ -322,7 +322,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(198, 178);
+            this.label12.Location = new System.Drawing.Point(185, 178);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(62, 13);
             this.label12.TabIndex = 22;
@@ -331,7 +331,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(381, 90);
+            this.label13.Location = new System.Drawing.Point(368, 90);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(46, 13);
             this.label13.TabIndex = 23;
@@ -340,7 +340,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(374, 116);
+            this.label14.Location = new System.Drawing.Point(361, 116);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(53, 13);
             this.label14.TabIndex = 24;
@@ -355,7 +355,7 @@
             this.txtLThigh.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtLThigh.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLThigh.Increment = 1D;
-            this.txtLThigh.Location = new System.Drawing.Point(273, 142);
+            this.txtLThigh.Location = new System.Drawing.Point(260, 142);
             this.txtLThigh.Name = "txtLThigh";
             this.txtLThigh.ShowUpDown = true;
             this.txtLThigh.Size = new System.Drawing.Size(80, 20);
@@ -370,7 +370,7 @@
             this.txtRThigh.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtRThigh.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtRThigh.Increment = 1D;
-            this.txtRThigh.Location = new System.Drawing.Point(273, 170);
+            this.txtRThigh.Location = new System.Drawing.Point(260, 170);
             this.txtRThigh.Name = "txtRThigh";
             this.txtRThigh.ShowUpDown = true;
             this.txtRThigh.Size = new System.Drawing.Size(80, 20);
@@ -385,7 +385,7 @@
             this.txtLCalf.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtLCalf.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLCalf.Increment = 1D;
-            this.txtLCalf.Location = new System.Drawing.Point(452, 86);
+            this.txtLCalf.Location = new System.Drawing.Point(439, 86);
             this.txtLCalf.Name = "txtLCalf";
             this.txtLCalf.ShowUpDown = true;
             this.txtLCalf.Size = new System.Drawing.Size(80, 20);
@@ -400,7 +400,7 @@
             this.txtRCalf.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtRCalf.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtRCalf.Increment = 1D;
-            this.txtRCalf.Location = new System.Drawing.Point(452, 114);
+            this.txtRCalf.Location = new System.Drawing.Point(439, 114);
             this.txtRCalf.Name = "txtRCalf";
             this.txtRCalf.ShowUpDown = true;
             this.txtRCalf.Size = new System.Drawing.Size(80, 20);
@@ -410,7 +410,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label15.Location = new System.Drawing.Point(381, 159);
+            this.label15.Location = new System.Drawing.Point(368, 159);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(34, 17);
             this.label15.TabIndex = 30;
@@ -420,14 +420,14 @@
             // 
             this.lblBMI.AutoSize = true;
             this.lblBMI.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblBMI.Location = new System.Drawing.Point(421, 159);
+            this.lblBMI.Location = new System.Drawing.Point(408, 159);
             this.lblBMI.Name = "lblBMI";
             this.lblBMI.Size = new System.Drawing.Size(0, 17);
             this.lblBMI.TabIndex = 31;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(189, 222);
+            this.btnOK.Location = new System.Drawing.Point(181, 222);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 32;
@@ -438,7 +438,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(291, 222);
+            this.btnCancel.Location = new System.Drawing.Point(283, 222);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 33;
@@ -452,7 +452,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(555, 266);
+            this.ClientSize = new System.Drawing.Size(533, 258);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.lblBMI);

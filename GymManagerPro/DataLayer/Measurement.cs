@@ -158,5 +158,17 @@ namespace GymManagerPro.DataLayer
                 }
             }
         }
+
+        public static int DeleteMeasurement(int id)
+        {
+            using (SqlConnection con = DB.GetSqlConnection())
+            {
+                String query = "DELETE FROM Measurements Where Id = @id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@id", id);
+                int res = cmd.ExecuteNonQuery();
+                return res;
+            }
+        }
     }
 }
