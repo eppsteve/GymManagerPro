@@ -136,8 +136,8 @@ namespace GymManagerPro.View
         }
         public string Notes
         {
-            get { return txtNotes.Text; }
-            set { txtNotes.Text = value; }
+            get { return txtPlanNotes.Text; }
+            set { txtPlanNotes.Text = value; }
         }
         object IMember.MembershipsGridDataSource
         {

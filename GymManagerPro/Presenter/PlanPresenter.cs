@@ -22,6 +22,7 @@ namespace GymManagerPro.Presenter
             view.lbPlans.DataSource = DataLayer.Plan.GetAllPlans().ToList();
             view.lbPlans.ValueMember = "Key";
             view.lbPlans.DisplayMember = "Value";
+            view.lbPlans.ClearSelected();
         }
 
         public void ChangeSelectedPlan()
@@ -52,8 +53,6 @@ namespace GymManagerPro.Presenter
             {
                 if (view.lbPlans.SelectedIndex != -1)
                 {
-                    // get selected plan
-                    int planId = Convert.ToInt32(view.lbPlans.SelectedValue.ToString());
                     new EditPlan(selectedPlan, view.lbPlans).ShowDialog();
                 }
             }
