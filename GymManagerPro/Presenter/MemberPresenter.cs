@@ -205,6 +205,7 @@ namespace GymManagerPro.Presenter
 
                 //load membership data
                 LoadMemberships(SelectedMember);
+                SetUpNotifications();
 
                 //load measurements data
                 view.MeasurementsGrid.DataSource = DataLayer.Measurement.GetAllMeasurements(SelectedMember); 

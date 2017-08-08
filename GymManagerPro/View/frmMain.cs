@@ -12,7 +12,6 @@ namespace GymManagerPro.View
     public partial class frmMain : Form, IMember, ITrainer, IPlan, IWizard
     {
         bool form_loaded;
-        int SelectedMeasurement;
 
         public MemberPresenter Presenter { get; set; }
         public TrainerPresenter TPresenter { get; set; }
