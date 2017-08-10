@@ -221,7 +221,7 @@ namespace GymManagerPro.View
         /// New Member Wizard Properties
         /// </summary>
         string IWizard.FirstName => txtWizardFirstName.Text; 
-        string IWizard.LastName => txtLastName.Text;
+        string IWizard.LastName => txtWizardLastName.Text;
         int IWizard.CardNumber => Int32.Parse(txtWizardCardNumber.Text);
         string IWizard.HomePhone => txtWizardHomePhone.Text;
         string IWizard.CellPhone => txtWizardCellPhone.Text;
@@ -237,6 +237,7 @@ namespace GymManagerPro.View
         public decimal InitializationFee { get => Decimal.Parse(txtWizardInitiationFee.Text); set => txtWizardInitiationFee.Text = value.ToString(); }
         public decimal TotalFee { get => Decimal.Parse(txtWizardTotalFees.Text); set => txtWizardTotalFees.Text = value.ToString(); }
         ComboBox IWizard.cbWizardPlans { get => cbWizardPlans; set => cbWizardPlans = value; }
+        DevComponents.DotNetBar.Wizard IWizard.NewMemberWizard { get => wizard1; set => wizard1 = value; }
         #endregion
 
         public frmMain()
@@ -365,7 +366,21 @@ namespace GymManagerPro.View
             btnMembersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersEdit.Icon")));
         }
 
-        
+        // reloads data to AllMembers datagridview to refresh
+        private void RefreshAllMembersDataGrid()
+        {
+            // get all members and bind them to the members datagridview to reload
+            BindingSource bSource = new BindingSource();
+            var dataset = DataLayer.Members.GetAllMembers();
+            bSource.DataSource = dataset;
+            membersDataGridViewX.DataSource = bSource;
+
+            //set comboboxes to default value
+            cbFindPersonalTrainer.SelectedIndex = 0;
+            cbFindPlan.SelectedIndex = 0;
+        }
+
+
         // --------------------------------- EVENTS ------------------------------------ //
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -509,8 +524,8 @@ namespace GymManagerPro.View
         {
             if (!String.IsNullOrEmpty(txtLastName.Text))
             {
-                Presenter.SaveMember();                
-                DoNotAllowMemberEdit(); // set textboxes to readonly
+                if (Presenter.SaveMember())                
+                    DoNotAllowMemberEdit(); // set textboxes to readonly
             }
             else
             {
@@ -621,6 +636,7 @@ namespace GymManagerPro.View
         private void wizard1_FinishButtonClick(object sender, CancelEventArgs e)
         {
             WPresenter.AddNewMember();
+            RefreshAllMembersDataGrid();
         }
 
         private void dtpWizardStartPlan_ValueChanged(object sender, EventArgs e)

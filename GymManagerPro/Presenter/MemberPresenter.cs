@@ -247,7 +247,7 @@ namespace GymManagerPro.Presenter
             }
         }
 
-        public void SaveMember()
+        public bool SaveMember()
         {
             DataLayer.Members members = new DataLayer.Members();
             DataLayer.Member member = new DataLayer.Member()
@@ -282,12 +282,22 @@ namespace GymManagerPro.Presenter
                 member.Image = empty_array;
             }
 
-            if (DataLayer.Members.UpdateMember(member) > 0)
-                MessageBox.Show("Member Updated successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
-                MessageBox.Show("Failed to Update Member!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!DataLayer.Members.CardNumberExists(member.CardNumber))
+            {
+                if (DataLayer.Members.UpdateMember(member) > 0)
+                    MessageBox.Show("Member Updated successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Failed to Update Member!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            RefreshAllMembersDataGrid();
+                RefreshAllMembersDataGrid();
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("This Card Number already exists!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
         }
 
         public void DeleteMember()

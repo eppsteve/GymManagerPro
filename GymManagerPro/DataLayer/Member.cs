@@ -669,5 +669,22 @@ namespace GymManagerPro.DataLayer
                 return dataset;
             }
         }
+
+        internal static bool CardNumberExists(int cardNumber)
+        {
+            string query = "SELECT CardNumber FROM Members WHERE CardNumber = @cardnumber";
+
+            using (SqlConnection con = DB.GetSqlConnection())
+            {
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@cardnumber", cardNumber);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                    return true;
+                else
+                    return false;
+            }
+        }
     }
 }

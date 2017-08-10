@@ -36,5 +36,7 @@ namespace GymManagerPro.View
         decimal TotalFee { get; set; }
 
         ComboBox cbWizardPlans { get; set; }
+
+        DevComponents.DotNetBar.Wizard NewMemberWizard { get; set; }
     }
 }
