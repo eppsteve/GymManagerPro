@@ -1,4 +1,5 @@
 ﻿using GymManagerPro.View;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace GymManagerPro.Presenter
             view.cbWizardPlans.ValueMember = "Key";
         }
 
-        public void AddNewMember()
+        public bool AddNewMember()
         {
             // Create a new Member
             var member = new DataLayer.Member()
@@ -47,6 +48,20 @@ namespace GymManagerPro.Presenter
                 Notes = view.Notes
             };
 
+            // Check if Card Number is valid
+            if (DataLayer.Members.CardNumberExists(member.CardNumber))
+            {
+                MessageBox.Show("This Card Number already exists!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            //Check if Last Name is empty
+            if (String.IsNullOrWhiteSpace(member.LName))
+            {
+                MessageBox.Show("The Last Name cannot be empty!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             // holds the member's picture
             //byte[] imageBt = null;
             if (view.ImageLocation != null)
@@ -61,42 +76,44 @@ namespace GymManagerPro.Presenter
                 member.Image = empty_array;
             }
 
-            if (!DataLayer.Members.CardNumberExists(member.CardNumber))
+
+            // Save Member to db
+            if (DataLayer.Members.AddNewMember(member) == 0)
             {
-                // Save Member to db
-                if (DataLayer.Members.AddNewMember(member) == 0)
-                    MessageBox.Show("Failed to add new member. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to add new member. Please try again", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClearTextBoxes();
+                return false;
+            }
 
-                // Create Membership for the same member
-                if (view.SelectedPlanName != "None")
+            // Create Membership for the same member
+            if (view.SelectedPlanName != "None")
+            {
+                // create a new membership and fill with data
+                var membership = new DataLayer.Membership()
                 {
-                    // create a new membership and fill with data
-                    var membership = new DataLayer.Membership()
-                    {
-                        //to find member's id we get the last inserted id and increment by 1 because we haven't inserted the new member yet
-                        MemberId = DataLayer.Members.GetLastInsertedMember(),        // member's id
-                                                                                     //membership.MemberId++;
-                        Plan = view.PlanId,                 // id of the selected plan
-                        start = view.MembershipStart,       // when the membership starts
-                        end = view.MembershipEnd            // when the membership expires
-                    };
+                    //to find member's id we get the last inserted id and increment by 1 because we haven't inserted the new member yet
+                    MemberId = DataLayer.Members.GetLastInsertedMember(),        // member's id
+                                                                                 //membership.MemberId++;
+                    Plan = view.PlanId,                 // id of the selected plan
+                    start = view.MembershipStart,       // when the membership starts
+                    end = view.MembershipEnd            // when the membership expires
+                };
 
-                    // Save Membership to db
-                    if (DataLayer.Memberships.NewMembership(membership) > 0)
-                        MessageBox.Show("A New Member has been added successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else
-                        MessageBox.Show("Failed to add new membership. Please add manually from Member Manager", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                //RefreshAllMembersDataGrid();            // refresh AllMembers datagridview
-                //view.IsPanelVisible = false;
-                //panelAllMembers.Visible = true;         // show all members datagrid view   
-                view.NewMemberWizard.NavigateCancel();
+                // Save Membership to db
+                if (DataLayer.Memberships.NewMembership(membership) > 0)
+                    MessageBox.Show("A New Member has been added successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Failed to add new membership. Please add manually from Member Manager", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("This Card Number already exists!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A New Member has been added successfully!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+            view.NewMemberWizard.NavigateCancel();
+            ClearTextBoxes();
+            return true;
+
         }
 
         public void AddInitializationFee()
@@ -104,6 +121,25 @@ namespace GymManagerPro.Presenter
             var plan_id = view.PlanId;
             var plan_fee = DataLayer.Plan.GetPlanPrice(plan_id);                                                // get selected plan's price
             view.TotalFee = plan_fee + view.InitializationFee;
+        }
+
+        public void ClearTextBoxes()
+        {
+            view.CardNumber = 0;
+            view.LastName = String.Empty;
+            view.FirstName = String.Empty;
+            view.IsMaleChecked = true;
+            view.Street = String.Empty;
+            view.Suburb = String.Empty;
+            view.City = String.Empty;
+            view.PostalCode = 0;
+            view.HomePhone = String.Empty;
+            view.CellPhone = String.Empty;
+            view.Email = String.Empty;
+            view.Occupation = String.Empty;
+            view.Notes = String.Empty;
+            view.InitializationFee = 0;
+            view.cbWizardPlans.SelectedIndex = 0;
         }
     }
 }

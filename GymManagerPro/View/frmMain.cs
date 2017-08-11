@@ -220,15 +220,21 @@ namespace GymManagerPro.View
         /// <summary>
         /// New Member Wizard Properties
         /// </summary>
-        string IWizard.FirstName => txtWizardFirstName.Text; 
-        string IWizard.LastName => txtWizardLastName.Text;
-        int IWizard.CardNumber => Int32.Parse(txtWizardCardNumber.Text);
-        string IWizard.HomePhone => txtWizardHomePhone.Text;
-        string IWizard.CellPhone => txtWizardCellPhone.Text;
-        string IWizard.Email => txtWizardEmail.Text;
-        public bool IsMaleChecked => rbWizardMale.Checked;
-        public bool IsFemaleChecked => rbWizardFemale.Checked;
-        public string ImageLocation => picWizard.ImageLocation;
+        string IWizard.FirstName { get => txtWizardFirstName.Text; set => txtWizardFirstName.Text = value; } 
+        string IWizard.LastName { get => txtWizardLastName.Text; set => txtWizardLastName.Text = value; }
+        int IWizard.CardNumber { get => Int32.Parse(txtWizardCardNumber.Text); set => txtWizardCardNumber.Text = value.ToString(); }
+        string IWizard.HomePhone { get => txtWizardHomePhone.Text; set => txtWizardHomePhone.Text = value; }
+        string IWizard.CellPhone { get => txtWizardCellPhone.Text; set => txtWizardCellPhone.Text = value; }
+        string IWizard.Email { get => txtWizardEmail.Text; set => txtWizardEmail.Text = value; }
+        string IWizard.Notes { get => txtWizardNotes.Text; set => txtWizardNotes.Text = value; }
+        string IWizard.Street { get => txtWizardStreet.Text; set => txtWizardStreet.Text = value; }
+        string IWizard.Suburb { get => txtWizardSuburb.Text; set => txtWizardSuburb.Text = value; }
+        string IWizard.City { get => txtWizardCity.Text; set => txtWizardCity.Text = value; }
+        string IWizard.Occupation { get => txtWizardOccupation.Text; set => txtWizardOccupation.Text = value; }
+        int IWizard.PostalCode { get =>Int32.Parse(txtWizardPostalCode.Text); set => txtWizardPostalCode.Text = value.ToString(); }
+        bool IWizard.IsMaleChecked { get => rbWizardMale.Checked; set => rbWizardMale.Checked = value; }
+        bool IWizard.IsFemaleChecked { get => rbWizardFemale.Checked; set => rbWizardFemale.Checked = value; }
+        public string ImageLocation { get => picWizard.ImageLocation; set => picWizard.ImageLocation = value; }
         public DateTime MembershipStart => dtpWizardStartPlan.Value;
         public DateTime MembershipEnd => dtpWizardEndPlan.Value;
         public int PlanId => (int)cbWizardPlans.SelectedValue;
@@ -507,6 +513,7 @@ namespace GymManagerPro.View
         private void btnCheckIn_Click(object sender, EventArgs e)
         {
             Presenter.CheckInMember();
+            SetUpAttedance();
         }
 
         private void btnAttedanceRefresh_Click(object sender, EventArgs e)
@@ -635,8 +642,11 @@ namespace GymManagerPro.View
 
         private void wizard1_FinishButtonClick(object sender, CancelEventArgs e)
         {
-            WPresenter.AddNewMember();
-            RefreshAllMembersDataGrid();
+            if (WPresenter.AddNewMember())
+            {
+                RefreshAllMembersDataGrid();
+                SwitchToPanel(panelAllMembers);
+            }
         }
 
         private void dtpWizardStartPlan_ValueChanged(object sender, EventArgs e)
@@ -650,7 +660,7 @@ namespace GymManagerPro.View
 
         private void wizardPage2_NextButtonClick(object sender, CancelEventArgs e)
         {
-            if (String.IsNullOrEmpty(txtWizardLastName.Text) && String.IsNullOrEmpty(txtWizardCardNumber.Text))
+            if (String.IsNullOrWhiteSpace(txtWizardLastName.Text) && String.IsNullOrWhiteSpace(txtWizardCardNumber.Text))
             {
                 MessageBox.Show("The Last Name and Card Number cannot be empty!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 wizard1.NavigateBack();
@@ -660,12 +670,13 @@ namespace GymManagerPro.View
         private void wizardPage2_CancelButtonClick(object sender, CancelEventArgs e)
         {
             SwitchToPanel(panelAllMembers);
-            wizard1.NavigateCancel();
+            WPresenter.ClearTextBoxes();
         }
 
         private void wizard1_CancelButtonClick(object sender, CancelEventArgs e)
         {
-            panelNewMemberWizard.Visible = false;
+            SwitchToPanel(panelAllMembers);
+            WPresenter.ClearTextBoxes();
         }
 
         private void wizardPage3_CancelButtonClick(object sender, CancelEventArgs e)
@@ -681,12 +692,7 @@ namespace GymManagerPro.View
 
         private void buttonItem1_Click(object sender, EventArgs e)
         {
-            panelAllMembers.Visible = false;
-            panelMemberManager.Visible = false;
-            panelTrainers.Visible = false;
-            panelPlans.Visible = false;
-            panelAttedance.Visible = false;
-            panelNewMemberWizard.Visible = true;
+            SwitchToPanel(panelNewMemberWizard);
         }
 
         private void btnAttedanceSaveTxt_Click(object sender, EventArgs e)
@@ -853,5 +859,3 @@ namespace GymManagerPro.View
         }
     }
 }
-
-

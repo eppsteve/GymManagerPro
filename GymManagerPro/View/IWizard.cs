@@ -5,25 +5,22 @@ namespace GymManagerPro.View
 {
     public interface IWizard
     {
-        string FirstName { get; }
-        string LastName { get; }
-        int CardNumber { get; }
-        bool Male_IsSelected { get; }
-        bool Female_IsSelected { get; }
-        DateTime DateOfBirth { get; }
-        string Street { get; }
-        string Suburb { get; }
-        string City { get; }
-        int PostalCode { get; }
-        string HomePhone { get; }
-        string CellPhone { get; }
-        string Email { get; }
-        string Occupation { get; }
-        bool IsMaleChecked { get; }
-        bool IsFemaleChecked { get; }
-        string ImageLocation { get; }
-        //int PersonalTrainer { get; }
-        string Notes { get; }
+        string FirstName { get; set; }
+        string LastName { get; set; }
+        int CardNumber { get; set; }
+        DateTime DateOfBirth { get; set; }
+        string Street { get; set; }
+        string Suburb { get; set; }
+        string City { get; set; }
+        int PostalCode { get; set; }
+        string HomePhone { get; set; }
+        string CellPhone { get; set; }
+        string Email { get; set; }
+        string Occupation { get; set; }
+        bool IsMaleChecked { get; set; }
+        bool IsFemaleChecked { get; set; }
+        string ImageLocation { get; set; }
+        string Notes { get; set; }
         //Image MemberImage { get; }
         //string MemberImageLocation { get; }
         //public byte[] Image { get; }
