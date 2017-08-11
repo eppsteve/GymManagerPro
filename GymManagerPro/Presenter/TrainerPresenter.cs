@@ -28,16 +28,16 @@ namespace GymManagerPro.Presenter
             {
                 //get trainer's id and load trainer's data
                 SelectedTrainer = Convert.ToInt32(view.lbTrainers.SelectedValue.ToString());
-                LoadTrainer(SelectedTrainer);
+                LoadTrainer();
             }
         }
 
-        public void LoadTrainer(int id)
+        public void LoadTrainer()
         {
            // var trainer = new DataLayer.Trainer();
             try
             {
-                var trainer = DataLayer.Trainers.GetTrainer(id);
+                var trainer = DataLayer.Trainers.GetTrainer(SelectedTrainer);
                 view.FirstName = trainer.FName;
                 view.LastName = trainer.LName;
                 view.CellPhone = trainer.CellPhone;
@@ -53,9 +53,10 @@ namespace GymManagerPro.Presenter
                     view.Female_IsSelected = true;
                 view.Salary = trainer.Salary;
                 view.Suburb = trainer.Suburb;
+                view.Street = trainer.Street;
 
                 // load associated members
-                var membersTable = DataLayer.Trainers.GetAssociatedMembers(id);
+                var membersTable = DataLayer.Trainers.GetAssociatedMembers(SelectedTrainer);
                 view.dgLinkedMembers.DataSource = membersTable;
             }
             catch (Exception ex)

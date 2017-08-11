@@ -160,11 +160,11 @@ namespace GymManagerPro.Presenter
             SelectedMember = view.SelectedMember;
 
             DataLayer.Members members = new DataLayer.Members();
-            DataLayer.Member member = new DataLayer.Member();
+            //DataLayer.Member member = new DataLayer.Member();
 
             try
             {
-                member = members.GetMember(SelectedMember);     // retrieves member data from db
+                var member = members.GetMember(SelectedMember);     // retrieves member data from db
 
                 // populate controls with the data  
                 view.CardNumber = member.CardNumber;
@@ -210,9 +210,6 @@ namespace GymManagerPro.Presenter
                 //load measurements data
                 view.MeasurementsGrid.DataSource = DataLayer.Measurement.GetAllMeasurements(SelectedMember); 
                 view.MeasurementsGrid.AutoResizeColumns();
-
-                //resetTextBoxes();
-
             }
             catch (Exception ex)
             {
@@ -270,12 +267,6 @@ namespace GymManagerPro.Presenter
                 PersonalTrainer = view.PersonalTrainer
             };
 
-            if (DataLayer.Members.CardNumberExists(member.CardNumber))
-            {
-                MessageBox.Show("This Card Number already exists!", "Gym Manager Pro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
             if (view.MemberImageLocation != null)
             {
                 FileStream fstream = new FileStream(view.MemberImageLocation, FileMode.Open, FileAccess.Read);
@@ -296,8 +287,6 @@ namespace GymManagerPro.Presenter
             RefreshAllMembersDataGrid();
             return true;
         }
-
-
 
         public void DeleteMember()
         {

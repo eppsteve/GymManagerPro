@@ -134,10 +134,10 @@ namespace GymManagerPro.View
             get { return txtOccupation.Text; }
             set { txtOccupation.Text = value; }
         }
-        public string Notes
+        string IMember.Notes
         {
-            get { return txtPlanNotes.Text; }
-            set { txtPlanNotes.Text = value; }
+            get { return txtNotes.Text; }
+            set { txtNotes.Text = value; }
         }
         object IMember.MembershipsGridDataSource
         {
@@ -194,11 +194,17 @@ namespace GymManagerPro.View
         /// </summary>
         public int TrainerID { get => Int32.Parse(txtTrainerId.Text); set => txtTrainerId.Text = value.ToString(); }
         string ITrainer.FirstName { get => txtTrainerFName.Text; set => txtTrainerFName.Text = value; }
-        string ITrainer.LastName { get => txtTrainerLName.Text; set => txtTrainerFName.Text = value; }    
-        string ITrainer.HomePhone { get=>txtHomePhone.Text; set =>  txtHomePhone.Text = value; }
-        string ITrainer.CellPhone {get => txtCellPhone.Text; set => txtCellPhone.Text = value; }
-        string ITrainer.Email { get => txtEmail.Text; set => txtEmail.Text = value; }
-        public decimal Salary
+        string ITrainer.LastName { get => txtTrainerLName.Text; set => txtTrainerLName.Text = value; }    
+        string ITrainer.HomePhone { get=>txtTrainerHomePhone.Text; set => txtTrainerHomePhone.Text = value; }
+        string ITrainer.CellPhone {get => txtTrainerCellPhone.Text; set => txtTrainerCellPhone.Text = value; }
+        string ITrainer.Email { get => txtTrainerEmail.Text; set => txtTrainerEmail.Text = value; }
+        string ITrainer.Notes { get => txtTrainerNotes.Text; set => txtTrainerNotes.Text = value; }
+        string ITrainer.Street { get => txtTrainerStreet.Text; set => txtTrainerStreet.Text = value; }
+        string ITrainer.City { get => txtTrainerCity.Text; set => txtTrainerCity.Text = value; }
+        string ITrainer.Suburb { get => txtTrainerSuburb.Text; set => txtTrainerSuburb.Text = value; }
+        bool ITrainer.Male_IsSelected { get => rbTrainerMale.Checked; set => rbTrainerMale.Checked = value; }
+        bool ITrainer.Female_IsSelected { get => rbTrainerFemale.Checked; set => rbTrainerFemale.Checked = value; }
+        decimal ITrainer.Salary
         {
             get { return Decimal.Parse(txtTrainerSalary.Text.ToString()); }
             set { txtTrainerSalary.Text = value.ToString(); }
@@ -215,7 +221,7 @@ namespace GymManagerPro.View
         public string PlanName { get => txtPlanName.Text; set => txtPlanName.Text = value; }
         public bool IsPlansPanelVisible { get => panelPlans.Visible; set => panelPlans.Visible = value; }
         public ListBox lbPlans { get => listBoxPlans; set => listBoxPlans = value; }
-
+        string IPlan.Notes { get => txtPlanNotes.Text; set => txtPlanNotes.Text = value; }
 
         /// <summary>
         /// New Member Wizard Properties
@@ -298,54 +304,49 @@ namespace GymManagerPro.View
             panel.Visible = true;
         }
 
-        // sets the textboxes as editables for editing trainer details
-        private void EditTrainer()
+        private void DoNotAllowTrainerEdit()
         {
-            if (panelTrainers.Visible)
-            {
-                if (btnTrainersEdit.Text == "Edit")
-                {
-                    txtTrainerFName.ReadOnly = false;
-                    txtTrainerLName.ReadOnly = false;
-                    txtTrainerCellPhone.ReadOnly = false;
-                    txtTrainerCity.ReadOnly = false;
-                    txtTrainerEmail.ReadOnly = false;
-                    txtTrainerHomePhone.ReadOnly = false;
-                    txtTrainerNotes.ReadOnly = false;
-                    txtTrainerSalary.ReadOnly = false;
-                    txtTrainerStreet.ReadOnly = false;
-                    txtTrainerSuburb.ReadOnly = false;
-                    dtpTrainerDOB.Enabled = true;
+            txtTrainerFName.ReadOnly = true;
+            txtTrainerLName.ReadOnly = true;
+            txtTrainerCellPhone.ReadOnly = true;
+            txtTrainerCity.ReadOnly = true;
+            txtTrainerEmail.ReadOnly = true;
+            txtTrainerHomePhone.ReadOnly = true;
+            txtTrainerNotes.ReadOnly = true;
+            txtTrainerSalary.ReadOnly = true;
+            txtTrainerStreet.ReadOnly = true;
+            txtTrainerSuburb.ReadOnly = true;
+            dtpTrainerDOB.Enabled = false;
+            btnTrainersSave.Enabled = false;
+            rbTrainerMale.Enabled = false;
+            rbTrainerFemale.Enabled = false;
 
-                    btnTrainersEdit.Text = "Cancel";
-                    btnTrainersEdit.Icon = null;
-                    btnTrainersEdit.Tooltip = "Cancel editing";
-                }
-                else if (btnTrainersEdit.Text == "Cancel")
-                {
-                    txtTrainerFName.ReadOnly = true;
-                    txtTrainerLName.ReadOnly = true;
-                    txtTrainerCellPhone.ReadOnly = true;
-                    txtTrainerCity.ReadOnly = true;
-                    txtTrainerEmail.ReadOnly = true;
-                    txtTrainerHomePhone.ReadOnly = true;
-                    txtTrainerNotes.ReadOnly = true;
-                    txtTrainerSalary.ReadOnly = true;
-                    txtTrainerStreet.ReadOnly = true;
-                    txtTrainerSuburb.ReadOnly = true;
-                    dtpTrainerDOB.Enabled = false;
+            //change button text and icon
+            btnTrainersEdit.Text = "Edit";
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
+            btnTrainersEdit.Icon = ((Icon)(resources.GetObject("btnTrainersEdit.Icon")));
+        }
 
-                    //change button text and icon
-                    btnTrainersEdit.Text = "Edit";
-                    ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
-                    btnTrainersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnTrainersEdit.Icon")));
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a trainer first!");
-                SwitchToPanel(panelTrainers);
-            }
+        private void AllowTrainerEdit()
+        {
+            txtTrainerFName.ReadOnly = false;
+            txtTrainerLName.ReadOnly = false;
+            txtTrainerCellPhone.ReadOnly = false;
+            txtTrainerCity.ReadOnly = false;
+            txtTrainerEmail.ReadOnly = false;
+            txtTrainerHomePhone.ReadOnly = false;
+            txtTrainerNotes.ReadOnly = false;
+            txtTrainerSalary.ReadOnly = false;
+            txtTrainerStreet.ReadOnly = false;
+            txtTrainerSuburb.ReadOnly = false;
+            dtpTrainerDOB.Enabled = true;
+            btnTrainersSave.Enabled = true;
+            rbTrainerMale.Enabled = true;
+            rbTrainerFemale.Enabled = true;
+
+            btnTrainersEdit.Text = "Cancel";
+            btnTrainersEdit.Icon = null;
+            btnTrainersEdit.Tooltip = "Cancel editing";
         }
 
         // sets controls in member manager as read only
@@ -365,11 +366,40 @@ namespace GymManagerPro.View
             txtDateOfBirth.Enabled = false;
             txtCardNumber.Enabled = false;
             cbPersonalTrainer.Enabled = false;
+            rbFemale.Enabled = false;
+            rbMale.Enabled = false;
 
             // change button text and icon
             btnMembersEdit.Text = "Edit";
             ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMain));
             btnMembersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersEdit.Icon")));
+            // disable save button
+            btnMembersSave.Enabled = false;
+        }
+
+        private void AllowMemberEdit()
+        {
+            txtLastName.ReadOnly = false;
+            txtFirstName.ReadOnly = false;
+            txtHomePhone.ReadOnly = false;
+            txtStreet.ReadOnly = false;
+            txtSuburb.ReadOnly = false;
+            txtCity.ReadOnly = false;
+            txtCellPhone.ReadOnly = false;
+            txtOccupation.ReadOnly = false;
+            txtEmail.ReadOnly = false;
+            txtNotes.ReadOnly = false;
+            txtPostalCode.ReadOnly = false;
+            txtDateOfBirth.Enabled = true;
+            txtCardNumber.Enabled = true;
+            cbPersonalTrainer.Enabled = true;
+            rbMale.Enabled = true;
+            rbFemale.Enabled = true;
+
+            btnMembersEdit.Text = "Cancel";
+            btnMembersEdit.Icon = null;
+            btnMembersEdit.Tooltip = "Cancel editing";
+            btnMembersSave.Enabled = true;
         }
 
         // reloads data to AllMembers datagridview to refresh
@@ -505,9 +535,12 @@ namespace GymManagerPro.View
         private void btnMembersSearch_Click(object sender, EventArgs e)
         {
             // loads specified member
-            SelectedMember = DataLayer.Members.QuickSearch(txtMembersSearch.Text);
-            Presenter.LoadMember();
-            SwitchToPanel(panelMemberManager);
+            if (!String.IsNullOrWhiteSpace(txtMembersSearch.Text))
+            {
+                SelectedMember = DataLayer.Members.QuickSearch(txtMembersSearch.Text);
+                Presenter.LoadMember();
+                SwitchToPanel(panelMemberManager);
+            }            
         }
 
         private void btnCheckIn_Click(object sender, EventArgs e)
@@ -549,28 +582,12 @@ namespace GymManagerPro.View
             {
                 if (btnMembersEdit.Text == "Edit")
                 {
-                    txtLastName.ReadOnly = false;
-                    txtFirstName.ReadOnly = false;
-                    txtHomePhone.ReadOnly = false;
-                    txtStreet.ReadOnly = false;
-                    txtSuburb.ReadOnly = false;
-                    txtCity.ReadOnly = false;
-                    txtCellPhone.ReadOnly = false;
-                    txtOccupation.ReadOnly = false;
-                    txtEmail.ReadOnly = false;
-                    txtNotes.ReadOnly = false;
-                    txtPostalCode.ReadOnly = false;
-                    txtDateOfBirth.Enabled = true;
-                    txtCardNumber.Enabled = true;
-                    cbPersonalTrainer.Enabled = true;
-
-                    btnMembersEdit.Text = "Cancel";
-                    btnMembersEdit.Icon = null;
-                    btnMembersEdit.Tooltip = "Cancel editing";
+                    AllowMemberEdit();
                 }
                 else if (btnMembersEdit.Text == "Cancel")
                 {
                     DoNotAllowMemberEdit();
+                    Presenter.LoadMember();
                 }
             }
             else
@@ -748,12 +765,29 @@ namespace GymManagerPro.View
 
         private void btnTrainersEdit_Click(object sender, EventArgs e)
         {
-            EditTrainer();
+            if (panelTrainers.Visible)
+            {
+                if (btnTrainersEdit.Text == "Edit")
+                {
+                    AllowTrainerEdit();
+                }
+                else if (btnTrainersEdit.Text == "Cancel")
+                {
+                    DoNotAllowTrainerEdit();
+                    TPresenter.LoadTrainer();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a trainer first!");
+                SwitchToPanel(panelTrainers);
+            }
         }
 
         private void btnTrainersSave_Click(object sender, EventArgs e)
         {
             TPresenter.SaveTrainer();
+            DoNotAllowTrainerEdit();
         }
 
         private void btnTrainersDelete_Click(object sender, EventArgs e)
@@ -768,7 +802,7 @@ namespace GymManagerPro.View
                 SwitchToPanel(panelTrainers);
 
             TPresenter.AddTrainer();
-            EditTrainer();  // set textboxes editable
+            AllowTrainerEdit();
         }
 
         private void menuAbout_Click(object sender, EventArgs e)
