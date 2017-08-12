@@ -10,7 +10,7 @@ namespace GymManagerPro.DataLayer
             {
                 //return @"Data Source=|DataDirectory|\..\..\Database.sdf";
                 //return ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-                return @"Server=localhost;Database=GymManager;User Id=sa;Password=123;";
+                return @"Server=localhost;Database=GymManager;Trusted_Connection=True;";
             }
         }
 

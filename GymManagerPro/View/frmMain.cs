@@ -204,6 +204,7 @@ namespace GymManagerPro.View
         string ITrainer.Suburb { get => txtTrainerSuburb.Text; set => txtTrainerSuburb.Text = value; }
         bool ITrainer.Male_IsSelected { get => rbTrainerMale.Checked; set => rbTrainerMale.Checked = value; }
         bool ITrainer.Female_IsSelected { get => rbTrainerFemale.Checked; set => rbTrainerFemale.Checked = value; }
+        DateTime ITrainer.DateOfBirth { get => dtpTrainerDOB.Value; set => dtpTrainerDOB.Value = value; }
         decimal ITrainer.Salary
         {
             get { return Decimal.Parse(txtTrainerSalary.Text.ToString()); }
@@ -890,6 +891,11 @@ namespace GymManagerPro.View
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Presenter.DeleteMeasurement();
+        }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            Util.Common.BackUpDatabase();
         }
     }
 }

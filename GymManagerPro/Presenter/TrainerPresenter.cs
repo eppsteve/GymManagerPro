@@ -42,7 +42,7 @@ namespace GymManagerPro.Presenter
                 view.LastName = trainer.LName;
                 view.CellPhone = trainer.CellPhone;
                 view.City = trainer.City;
-                view.DateOfBirth = trainer.DateOfBirth.Date;
+                view.DateOfBirth = trainer.DateOfBirth;
                 view.Email = trainer.Email;
                 view.HomePhone = trainer.HomePhone;
                 view.TrainerID = trainer.TrainerID;
