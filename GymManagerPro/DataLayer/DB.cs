@@ -8,19 +8,22 @@ namespace GymManagerPro.DataLayer
         {
             get
             {
-                //return @"Data Source=|DataDirectory|\..\..\Database.sdf";
-                //return ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
                 return @"Server=localhost;Database=GymManager;Trusted_Connection=True;";
             }
         }
 
-        /// <summary>
-        /// returns an open connection
-        /// </summary>
-        /// <returns></returns>
+        public static string masterConnectionString => @"Server=localhost;Database=master;Trusted_Connection=True;";
+
         public static SqlConnection GetSqlConnection()
         {
             SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            return con;
+        }
+
+        public static SqlConnection GetMasterSqlConnection()
+        {
+            SqlConnection con = new SqlConnection(masterConnectionString);
             con.Open();
             return con;
         }

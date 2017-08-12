@@ -897,5 +897,10 @@ namespace GymManagerPro.View
         {
             Util.Common.BackUpDatabase();
         }
+
+        private void btnRestoreDatabase_Click(object sender, EventArgs e)
+        {
+            Util.Common.RestoreDatabase();
+        }
     }
 }

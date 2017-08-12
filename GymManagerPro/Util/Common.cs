@@ -13,7 +13,7 @@ namespace GymManagerPro.Util
     public static class Common
     {
         private const string DATABASE_NAME = "GymManager";
-        private const string BACKUP_PATH = @"C:\";
+        private static string sqlserverBackupPath = @"C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Backup\";
 
         // highlights specified text
         // http://stackoverflow.com/questions/11851908/highlight-all-searched-word-in-richtextbox-c-sharp
@@ -34,12 +34,6 @@ namespace GymManagerPro.Util
             myRtb.SelectionColor = Color.Black;
         }
 
-        /// <summary>
-        /// exports data to xls file 
-        /// (http://www.codeproject.com/Tips/545456/Exporting-DataGridview-To-Excel)
-        /// </summary>
-        /// <param name="dGV">datagridview</param>
-        /// <param name="filename">filename</param>
         public static void ToCsV(DataGridViewX dgv, string filename)
         {
             string stOutput = "";
@@ -69,7 +63,6 @@ namespace GymManagerPro.Util
 
         public static void BackUpDatabase()
         {
-            var sqlserverBackupPath = @"C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Backup\";
             var tempFileName = string.Format("GymManager-{0}.bak", DateTime.Now.ToString("yyyyMMddhhmmss"));
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog()
@@ -79,7 +72,7 @@ namespace GymManagerPro.Util
                 FileName = string.Format("{0}-{1}.bak", DATABASE_NAME, DateTime.Now.ToString("yyyy-MM-dd")),
                 CheckPathExists = true,
                 DefaultExt = "txt",
-                Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",
+                Filter = "Backup files (*.bak)|*.bak",
                 FilterIndex = 2,
                 RestoreDirectory = true,
                 OverwritePrompt = true
@@ -94,12 +87,62 @@ namespace GymManagerPro.Util
 
                     using (var command = new SqlCommand(query, con))
                     {
-                        command.ExecuteNonQuery();
+                        try
+                        {
+                            command.ExecuteNonQuery();
+                            File.Copy(tempFilePath, saveFileDialog1.FileName, true);
+                            MessageBox.Show("Backup created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show("An error occured: " + e.Message, "Unable to backup database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                     }
-                    File.Copy(tempFilePath, saveFileDialog1.FileName, true);
-                    MessageBox.Show("Backup created successfully!", "Success", MessageBoxButtons.OK);
+                    
                 }
             }            
+        }
+
+        public static bool RestoreDatabase()
+        {
+            DialogResult cresult = MessageBox.Show("This will replace the existing database and cannot be undone. Continue?", "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            if (cresult == DialogResult.No || cresult == DialogResult.Cancel)
+            {
+                return false;
+            }
+
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Backup files (*.bak)|*.bak";            
+            DialogResult result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                using (SqlConnection con = DB.GetMasterSqlConnection())
+                {
+                    var filepath = Path.Combine(sqlserverBackupPath, dialog.SafeFileName);
+                    File.Copy(dialog.FileName, filepath, true);
+
+                    var query = String.Format("RESTORE DATABASE [{0}] FROM DISK='{1}'", DATABASE_NAME, filepath);
+                    using (var command = new SqlCommand(query, con))
+                    {
+                        try
+                        {
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Backup restored successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return true;
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show("An error occured: " + e.Message, "Unable to restore database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }                        
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
