@@ -902,5 +902,50 @@ namespace GymManagerPro.View
         {
             Util.Common.RestoreDatabase();
         }
+
+        private void buttonItem9_Click(object sender, EventArgs e)
+        {
+            SwitchToPanel(panelNewMemberWizard);
+        }
+
+        private void buttonItem6_Click(object sender, EventArgs e)
+        {
+            SwitchToPanel(panelPlans);
+            ribbonTabPlans.Select();
+        }
+
+        private void buttonItem2_Click(object sender, EventArgs e)
+        {
+            PPresenter.NewPlan();
+        }
+
+        private void buttonItem3_Click(object sender, EventArgs e)
+        {
+            // switch to trainers panel
+            if (!panelTrainers.Visible)
+                SwitchToPanel(panelTrainers);
+
+            TPresenter.AddTrainer();
+            AllowTrainerEdit();
+            ribbonTabTrainers.Select();
+        }
+
+        private void buttonItem5_Click(object sender, EventArgs e)
+        {
+            SwitchToPanel(panelAllMembers);
+            ribbonTabFind.Select();
+        }
+
+        private void buttonItem7_Click(object sender, EventArgs e)
+        {
+            SwitchToPanel(panelTrainers);
+            ribbonTabTrainers.Select();
+        }
+
+        private void buttonItem8_Click(object sender, EventArgs e)
+        {
+            SwitchToPanel(panelAttedance);
+            ribbonTabItem1.Select();
+        }
     }
 }

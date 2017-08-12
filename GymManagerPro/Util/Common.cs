@@ -68,7 +68,7 @@ namespace GymManagerPro.Util
             SaveFileDialog saveFileDialog1 = new SaveFileDialog()
             {
                 InitialDirectory = @"C:\",
-                Title = "Save text Files",
+                Title = "Save Database",
                 FileName = string.Format("{0}-{1}.bak", DATABASE_NAME, DateTime.Now.ToString("yyyy-MM-dd")),
                 CheckPathExists = true,
                 DefaultExt = "txt",
