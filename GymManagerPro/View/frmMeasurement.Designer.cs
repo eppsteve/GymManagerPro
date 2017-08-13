@@ -117,7 +117,7 @@
             this.dtpDateCreated.Location = new System.Drawing.Point(162, 5);
             this.dtpDateCreated.Name = "dtpDateCreated";
             this.dtpDateCreated.Size = new System.Drawing.Size(213, 20);
-            this.dtpDateCreated.TabIndex = 5;
+            this.dtpDateCreated.TabIndex = 1;
             // 
             // txtHeight
             // 
@@ -129,10 +129,12 @@
             this.txtHeight.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtHeight.Increment = 1D;
             this.txtHeight.Location = new System.Drawing.Point(78, 41);
+            this.txtHeight.MaxValue = 999.99D;
+            this.txtHeight.MinValue = 0D;
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.ShowUpDown = true;
             this.txtHeight.Size = new System.Drawing.Size(80, 20);
-            this.txtHeight.TabIndex = 6;
+            this.txtHeight.TabIndex = 2;
             this.txtHeight.ValueChanged += new System.EventHandler(this.txtHeight_ValueChanged);
             // 
             // txtWeight
@@ -145,10 +147,12 @@
             this.txtWeight.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtWeight.Increment = 1D;
             this.txtWeight.Location = new System.Drawing.Point(260, 41);
+            this.txtWeight.MaxValue = 999.99D;
+            this.txtWeight.MinValue = 0D;
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.ShowUpDown = true;
             this.txtWeight.Size = new System.Drawing.Size(80, 20);
-            this.txtWeight.TabIndex = 7;
+            this.txtWeight.TabIndex = 3;
             this.txtWeight.ValueChanged += new System.EventHandler(this.txtWeight_ValueChanged);
             // 
             // txtBodyfat
@@ -161,10 +165,12 @@
             this.txtBodyfat.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtBodyfat.Increment = 1D;
             this.txtBodyfat.Location = new System.Drawing.Point(439, 41);
+            this.txtBodyfat.MaxValue = 999.99D;
+            this.txtBodyfat.MinValue = 0D;
             this.txtBodyfat.Name = "txtBodyfat";
             this.txtBodyfat.ShowUpDown = true;
             this.txtBodyfat.Size = new System.Drawing.Size(80, 20);
-            this.txtBodyfat.TabIndex = 8;
+            this.txtBodyfat.TabIndex = 4;
             // 
             // label5
             // 
@@ -239,10 +245,12 @@
             this.txtChest.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtChest.Increment = 1D;
             this.txtChest.Location = new System.Drawing.Point(78, 86);
+            this.txtChest.MaxValue = 999.99D;
+            this.txtChest.MinValue = 0D;
             this.txtChest.Name = "txtChest";
             this.txtChest.ShowUpDown = true;
             this.txtChest.Size = new System.Drawing.Size(80, 20);
-            this.txtChest.TabIndex = 16;
+            this.txtChest.TabIndex = 5;
             // 
             // txtLArm
             // 
@@ -254,10 +262,12 @@
             this.txtLArm.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLArm.Increment = 1D;
             this.txtLArm.Location = new System.Drawing.Point(78, 116);
+            this.txtLArm.MaxValue = 999.99D;
+            this.txtLArm.MinValue = 0D;
             this.txtLArm.Name = "txtLArm";
             this.txtLArm.ShowUpDown = true;
             this.txtLArm.Size = new System.Drawing.Size(80, 20);
-            this.txtLArm.TabIndex = 17;
+            this.txtLArm.TabIndex = 6;
             // 
             // txtRArm
             // 
@@ -269,10 +279,12 @@
             this.txtRArm.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtRArm.Increment = 1D;
             this.txtRArm.Location = new System.Drawing.Point(78, 146);
+            this.txtRArm.MaxValue = 999.99D;
+            this.txtRArm.MinValue = 0D;
             this.txtRArm.Name = "txtRArm";
             this.txtRArm.ShowUpDown = true;
             this.txtRArm.Size = new System.Drawing.Size(80, 20);
-            this.txtRArm.TabIndex = 18;
+            this.txtRArm.TabIndex = 7;
             // 
             // txtWaist
             // 
@@ -284,10 +296,12 @@
             this.txtWaist.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtWaist.Increment = 1D;
             this.txtWaist.Location = new System.Drawing.Point(78, 176);
+            this.txtWaist.MaxValue = 999.99D;
+            this.txtWaist.MinValue = 0D;
             this.txtWaist.Name = "txtWaist";
             this.txtWaist.ShowUpDown = true;
             this.txtWaist.Size = new System.Drawing.Size(80, 20);
-            this.txtWaist.TabIndex = 19;
+            this.txtWaist.TabIndex = 8;
             // 
             // txtAbdomen
             // 
@@ -299,10 +313,12 @@
             this.txtAbdomen.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtAbdomen.Increment = 1D;
             this.txtAbdomen.Location = new System.Drawing.Point(260, 86);
+            this.txtAbdomen.MaxValue = 999.99D;
+            this.txtAbdomen.MinValue = 0D;
             this.txtAbdomen.Name = "txtAbdomen";
             this.txtAbdomen.ShowUpDown = true;
             this.txtAbdomen.Size = new System.Drawing.Size(80, 20);
-            this.txtAbdomen.TabIndex = 20;
+            this.txtAbdomen.TabIndex = 9;
             // 
             // txtHips
             // 
@@ -314,10 +330,12 @@
             this.txtHips.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtHips.Increment = 1D;
             this.txtHips.Location = new System.Drawing.Point(260, 114);
+            this.txtHips.MaxValue = 999.99D;
+            this.txtHips.MinValue = 0D;
             this.txtHips.Name = "txtHips";
             this.txtHips.ShowUpDown = true;
             this.txtHips.Size = new System.Drawing.Size(80, 20);
-            this.txtHips.TabIndex = 21;
+            this.txtHips.TabIndex = 10;
             // 
             // label12
             // 
@@ -356,10 +374,12 @@
             this.txtLThigh.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLThigh.Increment = 1D;
             this.txtLThigh.Location = new System.Drawing.Point(260, 142);
+            this.txtLThigh.MaxValue = 999.99D;
+            this.txtLThigh.MinValue = 0D;
             this.txtLThigh.Name = "txtLThigh";
             this.txtLThigh.ShowUpDown = true;
             this.txtLThigh.Size = new System.Drawing.Size(80, 20);
-            this.txtLThigh.TabIndex = 25;
+            this.txtLThigh.TabIndex = 11;
             // 
             // txtRThigh
             // 
@@ -371,10 +391,12 @@
             this.txtRThigh.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtRThigh.Increment = 1D;
             this.txtRThigh.Location = new System.Drawing.Point(260, 170);
+            this.txtRThigh.MaxValue = 999.99D;
+            this.txtRThigh.MinValue = 0D;
             this.txtRThigh.Name = "txtRThigh";
             this.txtRThigh.ShowUpDown = true;
             this.txtRThigh.Size = new System.Drawing.Size(80, 20);
-            this.txtRThigh.TabIndex = 26;
+            this.txtRThigh.TabIndex = 12;
             // 
             // txtLCalf
             // 
@@ -386,10 +408,12 @@
             this.txtLCalf.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLCalf.Increment = 1D;
             this.txtLCalf.Location = new System.Drawing.Point(439, 86);
+            this.txtLCalf.MaxValue = 999.99D;
+            this.txtLCalf.MinValue = 0D;
             this.txtLCalf.Name = "txtLCalf";
             this.txtLCalf.ShowUpDown = true;
             this.txtLCalf.Size = new System.Drawing.Size(80, 20);
-            this.txtLCalf.TabIndex = 27;
+            this.txtLCalf.TabIndex = 13;
             // 
             // txtRCalf
             // 
@@ -401,10 +425,12 @@
             this.txtRCalf.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtRCalf.Increment = 1D;
             this.txtRCalf.Location = new System.Drawing.Point(439, 114);
+            this.txtRCalf.MaxValue = 999.99D;
+            this.txtRCalf.MinValue = 0D;
             this.txtRCalf.Name = "txtRCalf";
             this.txtRCalf.ShowUpDown = true;
             this.txtRCalf.Size = new System.Drawing.Size(80, 20);
-            this.txtRCalf.TabIndex = 28;
+            this.txtRCalf.TabIndex = 14;
             // 
             // label15
             // 
@@ -430,7 +456,7 @@
             this.btnOK.Location = new System.Drawing.Point(181, 222);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 32;
+            this.btnOK.TabIndex = 15;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -441,7 +467,7 @@
             this.btnCancel.Location = new System.Drawing.Point(283, 222);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 33;
+            this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);

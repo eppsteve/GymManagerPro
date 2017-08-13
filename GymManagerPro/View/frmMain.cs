@@ -301,7 +301,6 @@ namespace GymManagerPro.View
             panelTrainers.Visible = false;
             panelAttedance.Visible = false;
             panelNewMemberWizard.Visible = false;
-            panelReports.Visible = false;
             panel.Visible = true;
         }
 
@@ -834,11 +833,6 @@ namespace GymManagerPro.View
                 string picLoc = fd.FileName.ToString();
                 pictureBoxMemberManager.ImageLocation = picLoc;
             }
-        }
-
-        private void btnReportsOverview_Click(object sender, EventArgs e)
-        {
-            SwitchToPanel(panelReports);
         }
 
         private void btnFindExport_Click(object sender, EventArgs e)

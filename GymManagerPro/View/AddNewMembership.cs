@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -31,16 +32,17 @@ namespace GymManagerPro.View
         private void AddNewContract_Load(object sender, EventArgs e)
         {
             // get all plans and fill the combobox with the data
-            cbProgrammes.DataSource = new BindingSource(DataLayer.Plan.GetAllPlans(), null);    // bind dictionary to combobox
-            cbProgrammes.DisplayMember = "Value";                                               // name of the plan
-            cbProgrammes.ValueMember = "Key";                                                   // id of the plan
+            SortedDictionary<int, string> plans = new SortedDictionary<int, string> (DataLayer.Plan.GetAllPlans());
+            plans.Add(0, "Select a Plan");
+            cbProgrammes.DataSource = new BindingSource(plans, null);    // bind dictionary to combobox
+            cbProgrammes.DisplayMember = "Value";                        // name of the plan
+            cbProgrammes.ValueMember = "Key";                            // id of the plan            
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
-            if (cbProgrammes.Text != "")
-            {
-                
+            if (cbProgrammes.Text != "" && cbProgrammes.SelectedIndex != 0)
+            {                
                 // create a new membership and fill it with data
                 DataLayer.Membership membership = new DataLayer.Membership();
                 membership.MemberId = this.id;                                      // member's id

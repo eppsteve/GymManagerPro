@@ -90,7 +90,7 @@ namespace GymManagerPro.DataLayer
             DataTable dataset;
             using (SqlConnection con = DB.GetSqlConnection())
             {
-                String sql = "SELECT Members.Id, Members.CardNumber, Members.LastName, Members.FirstName, Members.HomePhone, " +
+                String sql = "SELECT Members.Id, Members.CardNumber, Members.FirstName, Members.LastName, Members.HomePhone, " +
                              "Members.CellPhone, Members.Email, (Trainers.FirstName + ' ' + Trainers.LastName) AS PersonalTrainer " +
                              "FROM Members LEFT OUTER JOIN Trainers ON Members.PersonalTrainer = Trainers.Id ";
                 SqlCommand cmd = new SqlCommand(sql, con);
