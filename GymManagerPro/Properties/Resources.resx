@@ -121,9 +121,6 @@
   <data name="symbol_delete_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\symbol-delete-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DeleteIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DeleteIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="trainers" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1385797237_preferences-contact-list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -132,6 +129,9 @@
   </data>
   <data name="new_user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1385791136_user-group-new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="body-tape-measurements" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\body-tape-measurements.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="attedance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1386059751_031.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,6 +154,9 @@
   <data name="Previous" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1385793703_Previous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="user-group-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user-group-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1385791360_iSync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,8 +169,8 @@
   <data name="checkin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\symbol_check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="user-group-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user-group-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DeleteIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DeleteIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="find_members" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\findIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,7 +178,7 @@
   <data name="checklist_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\checklist-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="body-tape-measurements" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\body-tape-measurements.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="measurements_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\measurements_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

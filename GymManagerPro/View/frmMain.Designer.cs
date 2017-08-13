@@ -33,16 +33,32 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
+            this.ribbonPanel2 = new DevComponents.DotNetBar.RibbonPanel();
+            this.ribbonBar17 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnMembersNewMeasurement = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonBar7 = new DevComponents.DotNetBar.RibbonBar();
+            this.txtMembersSearch = new System.Windows.Forms.TextBox();
+            this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
+            this.btnMembersSearch = new DevComponents.DotNetBar.ButtonItem();
+            this.btnMembersPrev = new DevComponents.DotNetBar.ButtonItem();
+            this.btnMembersNext = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonBar6 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnCheckIn = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonBar5 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnMembersNew = new DevComponents.DotNetBar.ButtonItem();
+            this.btnMembersSave = new DevComponents.DotNetBar.ButtonItem();
+            this.btnMembersEdit = new DevComponents.DotNetBar.ButtonItem();
+            this.btnMembersDelete = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar16 = new DevComponents.DotNetBar.RibbonBar();
             this.btnFindExport = new DevComponents.DotNetBar.ButtonItem();
@@ -94,22 +110,6 @@
             this.ribbonBar13 = new DevComponents.DotNetBar.RibbonBar();
             this.btnViewCheckins = new DevComponents.DotNetBar.ButtonItem();
             this.btnAttedanceRefresh = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonPanel2 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonBar17 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnMembersNewMeasurement = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonBar7 = new DevComponents.DotNetBar.RibbonBar();
-            this.txtMembersSearch = new System.Windows.Forms.TextBox();
-            this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
-            this.btnMembersSearch = new DevComponents.DotNetBar.ButtonItem();
-            this.btnMembersPrev = new DevComponents.DotNetBar.ButtonItem();
-            this.btnMembersNext = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonBar6 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnCheckIn = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonBar5 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnMembersNew = new DevComponents.DotNetBar.ButtonItem();
-            this.btnMembersSave = new DevComponents.DotNetBar.ButtonItem();
-            this.btnMembersEdit = new DevComponents.DotNetBar.ButtonItem();
-            this.btnMembersDelete = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar12 = new DevComponents.DotNetBar.RibbonBar();
             this.btnTrainersAddMember = new DevComponents.DotNetBar.ButtonItem();
@@ -315,13 +315,13 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ribbonControl1.SuspendLayout();
+            this.ribbonPanel2.SuspendLayout();
+            this.ribbonBar7.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
             this.ribbonBar2.SuspendLayout();
             this.ribbonPanel5.SuspendLayout();
             this.ribbonPanel3.SuspendLayout();
             this.ribbonBar9.SuspendLayout();
-            this.ribbonPanel2.SuspendLayout();
-            this.ribbonBar7.SuspendLayout();
             this.ribbonPanel4.SuspendLayout();
             this.panelAllMembers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.membersDataGridViewX)).BeginInit();
@@ -368,10 +368,10 @@
             // 
             this.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonControl1.CaptionVisible = true;
+            this.ribbonControl1.Controls.Add(this.ribbonPanel2);
             this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Controls.Add(this.ribbonPanel5);
             this.ribbonControl1.Controls.Add(this.ribbonPanel3);
-            this.ribbonControl1.Controls.Add(this.ribbonPanel2);
             this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ribbonControl1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -409,6 +409,275 @@
             this.ribbonControl1.TabIndex = 0;
             this.ribbonControl1.Text = "ribbonControl1";
             // 
+            // ribbonPanel2
+            // 
+            this.ribbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel2.Controls.Add(this.ribbonBar17);
+            this.ribbonPanel2.Controls.Add(this.ribbonBar7);
+            this.ribbonPanel2.Controls.Add(this.ribbonBar6);
+            this.ribbonPanel2.Controls.Add(this.ribbonBar5);
+            this.ribbonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel2.Location = new System.Drawing.Point(0, 53);
+            this.ribbonPanel2.Name = "ribbonPanel2";
+            this.ribbonPanel2.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ribbonPanel2.Size = new System.Drawing.Size(1222, 98);
+            // 
+            // 
+            // 
+            this.ribbonPanel2.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel2.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonPanel2.TabIndex = 2;
+            // 
+            // ribbonBar17
+            // 
+            this.ribbonBar17.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar17.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar17.ContainerControlProcessDialogKey = true;
+            this.ribbonBar17.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar17.DragDropSupport = true;
+            this.ribbonBar17.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnMembersNewMeasurement});
+            this.ribbonBar17.Location = new System.Drawing.Point(745, 0);
+            this.ribbonBar17.Name = "ribbonBar17";
+            this.ribbonBar17.Size = new System.Drawing.Size(100, 95);
+            this.ribbonBar17.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar17.TabIndex = 3;
+            this.ribbonBar17.Text = "Measurements";
+            // 
+            // 
+            // 
+            this.ribbonBar17.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar17.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // btnMembersNewMeasurement
+            // 
+            this.btnMembersNewMeasurement.Image = global::GymManagerPro.Properties.Resources.measurements_icon;
+            this.btnMembersNewMeasurement.ImageListSizeSelection = DevComponents.DotNetBar.eButtonImageListSelection.Large;
+            this.btnMembersNewMeasurement.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnMembersNewMeasurement.Name = "btnMembersNewMeasurement";
+            this.btnMembersNewMeasurement.SubItemsExpandWidth = 14;
+            this.btnMembersNewMeasurement.Text = "Add New";
+            this.btnMembersNewMeasurement.Tooltip = "Add a New Measurement";
+            this.btnMembersNewMeasurement.Click += new System.EventHandler(this.btnMembersNewMeasurement_Click);
+            // 
+            // ribbonBar7
+            // 
+            this.ribbonBar7.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar7.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar7.ContainerControlProcessDialogKey = true;
+            this.ribbonBar7.Controls.Add(this.txtMembersSearch);
+            this.ribbonBar7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar7.DragDropSupport = true;
+            this.ribbonBar7.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.labelItem6,
+            this.btnMembersSearch,
+            this.btnMembersPrev,
+            this.btnMembersNext});
+            this.ribbonBar7.Location = new System.Drawing.Point(304, 0);
+            this.ribbonBar7.Name = "ribbonBar7";
+            this.ribbonBar7.Size = new System.Drawing.Size(441, 95);
+            this.ribbonBar7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar7.TabIndex = 2;
+            this.ribbonBar7.Text = "Navigation";
+            // 
+            // 
+            // 
+            this.ribbonBar7.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar7.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar7.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
+            // 
+            // txtMembersSearch
+            // 
+            this.txtMembersSearch.Location = new System.Drawing.Point(92, 31);
+            this.txtMembersSearch.MaxLength = 50;
+            this.txtMembersSearch.Name = "txtMembersSearch";
+            this.txtMembersSearch.Size = new System.Drawing.Size(150, 20);
+            this.txtMembersSearch.TabIndex = 1;
+            // 
+            // labelItem6
+            // 
+            this.labelItem6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.labelItem6.Name = "labelItem6";
+            this.labelItem6.PaddingLeft = 5;
+            this.labelItem6.PaddingRight = 180;
+            this.labelItem6.Text = "Quick Search";
+            // 
+            // btnMembersSearch
+            // 
+            this.btnMembersSearch.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersSearch.Icon")));
+            this.btnMembersSearch.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnMembersSearch.Name = "btnMembersSearch";
+            this.btnMembersSearch.SubItemsExpandWidth = 14;
+            this.btnMembersSearch.Text = "Go";
+            this.btnMembersSearch.Tooltip = "Search";
+            this.btnMembersSearch.Click += new System.EventHandler(this.btnMembersSearch_Click);
+            // 
+            // btnMembersPrev
+            // 
+            this.btnMembersPrev.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersPrev.Icon")));
+            this.btnMembersPrev.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnMembersPrev.Name = "btnMembersPrev";
+            this.btnMembersPrev.SubItemsExpandWidth = 14;
+            this.btnMembersPrev.Text = "Prev";
+            this.btnMembersPrev.Tooltip = "Previous Member";
+            this.btnMembersPrev.Click += new System.EventHandler(this.btnMembersPrev_Click);
+            // 
+            // btnMembersNext
+            // 
+            this.btnMembersNext.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersNext.Icon")));
+            this.btnMembersNext.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnMembersNext.Name = "btnMembersNext";
+            this.btnMembersNext.SubItemsExpandWidth = 14;
+            this.btnMembersNext.Text = "Next";
+            this.btnMembersNext.Tooltip = "Next Member";
+            this.btnMembersNext.Click += new System.EventHandler(this.btnMembersNext_Click);
+            // 
+            // ribbonBar6
+            // 
+            this.ribbonBar6.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar6.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar6.ContainerControlProcessDialogKey = true;
+            this.ribbonBar6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar6.DragDropSupport = true;
+            this.ribbonBar6.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnCheckIn});
+            this.ribbonBar6.Location = new System.Drawing.Point(239, 0);
+            this.ribbonBar6.Name = "ribbonBar6";
+            this.ribbonBar6.Size = new System.Drawing.Size(65, 95);
+            this.ribbonBar6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar6.TabIndex = 1;
+            this.ribbonBar6.Text = "Checkin";
+            // 
+            // 
+            // 
+            this.ribbonBar6.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar6.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar6.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
+            // 
+            // btnCheckIn
+            // 
+            this.btnCheckIn.Icon = ((System.Drawing.Icon)(resources.GetObject("btnCheckIn.Icon")));
+            this.btnCheckIn.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnCheckIn.Name = "btnCheckIn";
+            this.btnCheckIn.SubItemsExpandWidth = 14;
+            this.btnCheckIn.Text = "CheckIn";
+            this.btnCheckIn.Tooltip = "Check-In";
+            this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
+            // 
+            // ribbonBar5
+            // 
+            this.ribbonBar5.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar5.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar5.ContainerControlProcessDialogKey = true;
+            this.ribbonBar5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar5.DragDropSupport = true;
+            this.ribbonBar5.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnMembersNew,
+            this.btnMembersSave,
+            this.btnMembersEdit,
+            this.btnMembersDelete});
+            this.ribbonBar5.Location = new System.Drawing.Point(3, 0);
+            this.ribbonBar5.Name = "ribbonBar5";
+            this.ribbonBar5.Size = new System.Drawing.Size(236, 95);
+            this.ribbonBar5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar5.TabIndex = 0;
+            this.ribbonBar5.Text = "Manage";
+            // 
+            // 
+            // 
+            this.ribbonBar5.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar5.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar5.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
+            // 
+            // btnMembersNew
+            // 
+            this.btnMembersNew.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersNew.Icon")));
+            this.btnMembersNew.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnMembersNew.Name = "btnMembersNew";
+            this.btnMembersNew.SubItemsExpandWidth = 14;
+            this.btnMembersNew.Text = "Add New";
+            this.btnMembersNew.Tooltip = "Add a New Member";
+            this.btnMembersNew.Click += new System.EventHandler(this.btnMembersNew_Click);
+            // 
+            // btnMembersSave
+            // 
+            this.btnMembersSave.Enabled = false;
+            this.btnMembersSave.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersSave.Icon")));
+            this.btnMembersSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnMembersSave.Name = "btnMembersSave";
+            this.btnMembersSave.SubItemsExpandWidth = 14;
+            this.btnMembersSave.Text = "Save";
+            this.btnMembersSave.Tooltip = "Save Member Details";
+            this.btnMembersSave.Click += new System.EventHandler(this.btnMembersSave_Click);
+            // 
+            // btnMembersEdit
+            // 
+            this.btnMembersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersEdit.Icon")));
+            this.btnMembersEdit.Image = global::GymManagerPro.Properties.Resources.symbol_delete_icon;
+            this.btnMembersEdit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnMembersEdit.Name = "btnMembersEdit";
+            this.btnMembersEdit.SubItemsExpandWidth = 14;
+            this.btnMembersEdit.Text = "Edit";
+            this.btnMembersEdit.Tooltip = "Edit Member Details";
+            this.btnMembersEdit.Click += new System.EventHandler(this.btnMembersEdit_Click);
+            // 
+            // btnMembersDelete
+            // 
+            this.btnMembersDelete.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersDelete.Icon")));
+            this.btnMembersDelete.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnMembersDelete.Name = "btnMembersDelete";
+            this.btnMembersDelete.SubItemsExpandWidth = 14;
+            this.btnMembersDelete.Text = "Delete";
+            this.btnMembersDelete.Tooltip = "Delete Member";
+            this.btnMembersDelete.Click += new System.EventHandler(this.btnMembersDelete_Click);
+            // 
             // ribbonPanel1
             // 
             this.ribbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -435,6 +704,7 @@
             // 
             this.ribbonPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel1.TabIndex = 1;
+            this.ribbonPanel1.Visible = false;
             // 
             // ribbonBar16
             // 
@@ -1141,272 +1411,6 @@
             this.btnAttedanceRefresh.Tooltip = "Refresh";
             this.btnAttedanceRefresh.Click += new System.EventHandler(this.btnAttedanceRefresh_Click);
             // 
-            // ribbonPanel2
-            // 
-            this.ribbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonPanel2.Controls.Add(this.ribbonBar17);
-            this.ribbonPanel2.Controls.Add(this.ribbonBar7);
-            this.ribbonPanel2.Controls.Add(this.ribbonBar6);
-            this.ribbonPanel2.Controls.Add(this.ribbonBar5);
-            this.ribbonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel2.Location = new System.Drawing.Point(0, 53);
-            this.ribbonPanel2.Name = "ribbonPanel2";
-            this.ribbonPanel2.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel2.Size = new System.Drawing.Size(1222, 98);
-            // 
-            // 
-            // 
-            this.ribbonPanel2.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel2.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonPanel2.TabIndex = 2;
-            this.ribbonPanel2.Visible = false;
-            // 
-            // ribbonBar17
-            // 
-            this.ribbonBar17.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar17.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar17.ContainerControlProcessDialogKey = true;
-            this.ribbonBar17.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar17.DragDropSupport = true;
-            this.ribbonBar17.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnMembersNewMeasurement});
-            this.ribbonBar17.Location = new System.Drawing.Point(745, 0);
-            this.ribbonBar17.Name = "ribbonBar17";
-            this.ribbonBar17.Size = new System.Drawing.Size(100, 95);
-            this.ribbonBar17.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar17.TabIndex = 3;
-            this.ribbonBar17.Text = "Measurements";
-            // 
-            // 
-            // 
-            this.ribbonBar17.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar17.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // btnMembersNewMeasurement
-            // 
-            this.btnMembersNewMeasurement.Name = "btnMembersNewMeasurement";
-            this.btnMembersNewMeasurement.SubItemsExpandWidth = 14;
-            this.btnMembersNewMeasurement.Text = "New Measurement";
-            this.btnMembersNewMeasurement.Click += new System.EventHandler(this.btnMembersNewMeasurement_Click);
-            // 
-            // ribbonBar7
-            // 
-            this.ribbonBar7.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar7.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar7.ContainerControlProcessDialogKey = true;
-            this.ribbonBar7.Controls.Add(this.txtMembersSearch);
-            this.ribbonBar7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar7.DragDropSupport = true;
-            this.ribbonBar7.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.labelItem6,
-            this.btnMembersSearch,
-            this.btnMembersPrev,
-            this.btnMembersNext});
-            this.ribbonBar7.Location = new System.Drawing.Point(304, 0);
-            this.ribbonBar7.Name = "ribbonBar7";
-            this.ribbonBar7.Size = new System.Drawing.Size(441, 95);
-            this.ribbonBar7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar7.TabIndex = 2;
-            this.ribbonBar7.Text = "Navigation";
-            // 
-            // 
-            // 
-            this.ribbonBar7.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar7.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar7.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
-            // 
-            // txtMembersSearch
-            // 
-            this.txtMembersSearch.Location = new System.Drawing.Point(92, 31);
-            this.txtMembersSearch.MaxLength = 50;
-            this.txtMembersSearch.Name = "txtMembersSearch";
-            this.txtMembersSearch.Size = new System.Drawing.Size(150, 20);
-            this.txtMembersSearch.TabIndex = 1;
-            // 
-            // labelItem6
-            // 
-            this.labelItem6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.labelItem6.Name = "labelItem6";
-            this.labelItem6.PaddingLeft = 5;
-            this.labelItem6.PaddingRight = 180;
-            this.labelItem6.Text = "Quick Search";
-            // 
-            // btnMembersSearch
-            // 
-            this.btnMembersSearch.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersSearch.Icon")));
-            this.btnMembersSearch.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnMembersSearch.Name = "btnMembersSearch";
-            this.btnMembersSearch.SubItemsExpandWidth = 14;
-            this.btnMembersSearch.Text = "Go";
-            this.btnMembersSearch.Tooltip = "Search";
-            this.btnMembersSearch.Click += new System.EventHandler(this.btnMembersSearch_Click);
-            // 
-            // btnMembersPrev
-            // 
-            this.btnMembersPrev.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersPrev.Icon")));
-            this.btnMembersPrev.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnMembersPrev.Name = "btnMembersPrev";
-            this.btnMembersPrev.SubItemsExpandWidth = 14;
-            this.btnMembersPrev.Text = "Prev";
-            this.btnMembersPrev.Tooltip = "Previous";
-            this.btnMembersPrev.Click += new System.EventHandler(this.btnMembersPrev_Click);
-            // 
-            // btnMembersNext
-            // 
-            this.btnMembersNext.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersNext.Icon")));
-            this.btnMembersNext.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnMembersNext.Name = "btnMembersNext";
-            this.btnMembersNext.SubItemsExpandWidth = 14;
-            this.btnMembersNext.Text = "Next";
-            this.btnMembersNext.Tooltip = "Next";
-            this.btnMembersNext.Click += new System.EventHandler(this.btnMembersNext_Click);
-            // 
-            // ribbonBar6
-            // 
-            this.ribbonBar6.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar6.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar6.ContainerControlProcessDialogKey = true;
-            this.ribbonBar6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar6.DragDropSupport = true;
-            this.ribbonBar6.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnCheckIn});
-            this.ribbonBar6.Location = new System.Drawing.Point(239, 0);
-            this.ribbonBar6.Name = "ribbonBar6";
-            this.ribbonBar6.Size = new System.Drawing.Size(65, 95);
-            this.ribbonBar6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar6.TabIndex = 1;
-            this.ribbonBar6.Text = "Checkin";
-            // 
-            // 
-            // 
-            this.ribbonBar6.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar6.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar6.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
-            // 
-            // btnCheckIn
-            // 
-            this.btnCheckIn.Icon = ((System.Drawing.Icon)(resources.GetObject("btnCheckIn.Icon")));
-            this.btnCheckIn.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnCheckIn.Name = "btnCheckIn";
-            this.btnCheckIn.SubItemsExpandWidth = 14;
-            this.btnCheckIn.Text = "CheckIn";
-            this.btnCheckIn.Tooltip = "Check-In";
-            this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
-            // 
-            // ribbonBar5
-            // 
-            this.ribbonBar5.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar5.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar5.ContainerControlProcessDialogKey = true;
-            this.ribbonBar5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar5.DragDropSupport = true;
-            this.ribbonBar5.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnMembersNew,
-            this.btnMembersSave,
-            this.btnMembersEdit,
-            this.btnMembersDelete});
-            this.ribbonBar5.Location = new System.Drawing.Point(3, 0);
-            this.ribbonBar5.Name = "ribbonBar5";
-            this.ribbonBar5.Size = new System.Drawing.Size(236, 95);
-            this.ribbonBar5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar5.TabIndex = 0;
-            this.ribbonBar5.Text = "Manage";
-            // 
-            // 
-            // 
-            this.ribbonBar5.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar5.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar5.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle;
-            // 
-            // btnMembersNew
-            // 
-            this.btnMembersNew.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersNew.Icon")));
-            this.btnMembersNew.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnMembersNew.Name = "btnMembersNew";
-            this.btnMembersNew.SubItemsExpandWidth = 14;
-            this.btnMembersNew.Text = "Add New";
-            this.btnMembersNew.Tooltip = "Add a New Member";
-            this.btnMembersNew.Click += new System.EventHandler(this.btnMembersNew_Click);
-            // 
-            // btnMembersSave
-            // 
-            this.btnMembersSave.Enabled = false;
-            this.btnMembersSave.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersSave.Icon")));
-            this.btnMembersSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnMembersSave.Name = "btnMembersSave";
-            this.btnMembersSave.SubItemsExpandWidth = 14;
-            this.btnMembersSave.Text = "Save";
-            this.btnMembersSave.Tooltip = "Save Member Details";
-            this.btnMembersSave.Click += new System.EventHandler(this.btnMembersSave_Click);
-            // 
-            // btnMembersEdit
-            // 
-            this.btnMembersEdit.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersEdit.Icon")));
-            this.btnMembersEdit.Image = global::GymManagerPro.Properties.Resources.symbol_delete_icon;
-            this.btnMembersEdit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnMembersEdit.Name = "btnMembersEdit";
-            this.btnMembersEdit.SubItemsExpandWidth = 14;
-            this.btnMembersEdit.Text = "Edit";
-            this.btnMembersEdit.Tooltip = "Edit Member Details";
-            this.btnMembersEdit.Click += new System.EventHandler(this.btnMembersEdit_Click);
-            // 
-            // btnMembersDelete
-            // 
-            this.btnMembersDelete.Icon = ((System.Drawing.Icon)(resources.GetObject("btnMembersDelete.Icon")));
-            this.btnMembersDelete.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnMembersDelete.Name = "btnMembersDelete";
-            this.btnMembersDelete.SubItemsExpandWidth = 14;
-            this.btnMembersDelete.Text = "Delete";
-            this.btnMembersDelete.Tooltip = "Delete Member";
-            this.btnMembersDelete.Click += new System.EventHandler(this.btnMembersDelete_Click);
-            // 
             // ribbonPanel4
             // 
             this.ribbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1810,13 +1814,13 @@
             // 
             // ribbonTabFind
             // 
-            this.ribbonTabFind.Checked = true;
             this.ribbonTabFind.Name = "ribbonTabFind";
             this.ribbonTabFind.Panel = this.ribbonPanel1;
             this.ribbonTabFind.Text = "Find";
             // 
             // ribbonTabMembers
             // 
+            this.ribbonTabMembers.Checked = true;
             this.ribbonTabMembers.Name = "ribbonTabMembers";
             this.ribbonTabMembers.Panel = this.ribbonPanel2;
             this.ribbonTabMembers.Text = "Members";
@@ -2101,23 +2105,23 @@
             this.dataGridViewMemberships.AllowUserToResizeRows = false;
             this.dataGridViewMemberships.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewMemberships.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMemberships.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMemberships.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewMemberships.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMemberships.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMemberships.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewMemberships.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewMemberships.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewMemberships.EnableHeadersVisualStyles = false;
@@ -2126,14 +2130,14 @@
             this.dataGridViewMemberships.MultiSelect = false;
             this.dataGridViewMemberships.Name = "dataGridViewMemberships";
             this.dataGridViewMemberships.ReadOnly = true;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMemberships.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMemberships.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewMemberships.RowHeadersVisible = false;
             this.dataGridViewMemberships.RowTemplate.Height = 30;
             this.dataGridViewMemberships.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -2638,23 +2642,23 @@
             this.dgvMeasurements.AllowUserToAddRows = false;
             this.dgvMeasurements.AllowUserToDeleteRows = false;
             this.dgvMeasurements.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMeasurements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMeasurements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dgvMeasurements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMeasurements.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMeasurements.DefaultCellStyle = dataGridViewCellStyle20;
             this.dgvMeasurements.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMeasurements.EnableHeadersVisualStyles = false;
             this.dgvMeasurements.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -2662,14 +2666,14 @@
             this.dgvMeasurements.MultiSelect = false;
             this.dgvMeasurements.Name = "dgvMeasurements";
             this.dgvMeasurements.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMeasurements.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMeasurements.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvMeasurements.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMeasurements.Size = new System.Drawing.Size(1222, 527);
             this.dgvMeasurements.TabIndex = 0;
@@ -4123,8 +4127,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1222, 704);
-            this.Controls.Add(this.panelTrainers);
             this.Controls.Add(this.panelMemberManager);
+            this.Controls.Add(this.panelTrainers);
             this.Controls.Add(this.panelAllMembers);
             this.Controls.Add(this.panelNewMemberWizard);
             this.Controls.Add(this.panelPlans);
@@ -4139,15 +4143,15 @@
             this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.ribbonControl1.ResumeLayout(false);
             this.ribbonControl1.PerformLayout();
+            this.ribbonPanel2.ResumeLayout(false);
+            this.ribbonBar7.ResumeLayout(false);
+            this.ribbonBar7.PerformLayout();
             this.ribbonPanel1.ResumeLayout(false);
             this.ribbonBar2.ResumeLayout(false);
             this.ribbonPanel5.ResumeLayout(false);
             this.ribbonPanel3.ResumeLayout(false);
             this.ribbonBar9.ResumeLayout(false);
             this.ribbonBar9.PerformLayout();
-            this.ribbonPanel2.ResumeLayout(false);
-            this.ribbonBar7.ResumeLayout(false);
-            this.ribbonBar7.PerformLayout();
             this.ribbonPanel4.ResumeLayout(false);
             this.panelAllMembers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.membersDataGridViewX)).EndInit();
