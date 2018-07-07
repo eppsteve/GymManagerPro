@@ -14,6 +14,3 @@ The application manages every aspect of a gym business including client, employe
 ![alt text](GymManagerPro/screenshots/screen1.png "Members List")
 
 ![alt text](GymManagerPro/screenshots/screen2.png "Member Manager")
-
-## Database Diagram
-![alt text](GymManagerPro/screenshots/db.png "Database Diagram")
